@@ -1,10 +1,11 @@
 const assert = require('node:assert/strict');
-const { Reacon, ReaconProtocolError, ReaconTimeoutError, ReaconStreamApiError } = require(process.env.SDK_DIRECTORY + '/dist');
+const { Reacon, ReaconProtocolError, ReaconTimeoutError, ReaconStreamApiError } = globalThis.REACON_STREAM_SDK ?? require(process.env.SDK_DIRECTORY + '/dist');
 async function collect(stream) { const values = []; for await (const value of stream) values.push(value); return values; }
 async function main() {
   const basePath = process.env.REACON_TEST_URL;
-  const client = new Reacon({ basePath, apiKey: 'synthetic-typescript' });
-  const isolated = new Reacon({ basePath, apiKey: 'isolated-typescript' });
+  const mode = process.env.REACON_STREAM_MODE ?? 'typescript';
+  const client = new Reacon({ basePath, apiKey: `synthetic-${mode}` });
+  const isolated = new Reacon({ basePath, apiKey: `isolated-${mode}` });
   client.verification.stream('never@example.test'); // creating a stream sends nothing
   const preCancelled = new AbortController(); preCancelled.abort();
   await assert.rejects(() => collect(client.verification.stream('never@example.test', { signal: preCancelled.signal })), error => error.name === 'AbortError');
