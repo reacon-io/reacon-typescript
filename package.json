@@ -1,0 +1,46 @@
+{
+  "name": "@reacon-io/sdk",
+  "version": "0.1.0-beta.1",
+  "description": "Official Reacon API client for TypeScript and JavaScript",
+  "author": "Reacon contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reacon-io/reacon-typescript.git"
+  },
+  "license": "Apache-2.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc && tsc -p tsconfig.esm.json && node scripts/mark-esm.cjs",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^4.0 || ^5.0"
+  },
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "eventsource-parser": "3.1.0"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  }
+}
