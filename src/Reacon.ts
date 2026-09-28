@@ -1,7 +1,8 @@
 // Copyright Reacon contributors. Licensed under Apache-2.0.
 import { createParser } from 'eventsource-parser';
-import { Configuration, ConfigurationParameters } from './runtime.js';
-import { DomainsApi, EmailsApi, LeadsApi, VerificationApi } from './apis/index.js';
+import { Configuration, ConfigurationParameters, InitOverrideFunction } from './runtime.js';
+import { DomainsApi, EmailsApi, LeadsApi, VerificationApi, ListLeadsRequest, ListEmailsRequest, ListEmailMentionsRequest } from './apis/index.js';
+import { ReaconRequestAbortedError } from './Http.js';
 import {
   VerificationStage, VerificationStageFromJSON,
   VerificationProgress, VerificationProgressFromJSON,
@@ -151,19 +152,122 @@ export class VerificationClient extends VerificationApi {
   }
 }
 
+export interface PaginationOptions {
+  /** Maximum requests, including empty pages. Defaults to 100; zero makes no requests. */
+  maxPages?: number;
+  /** Maximum returned items. Each requested page is capped to the remaining bound. Defaults to 10000. */
+  maxItems?: number;
+  signal?: AbortSignal;
+  /** Deadline for each page, including reading its body. */
+  timeoutMs?: number;
+}
+export interface EmailPaginationOptions extends PaginationOptions {
+  /** Explicit acknowledgement that listEmails may spend credits on every page. Not a spending cap. */
+  allowPaidRequests?: boolean;
+}
+type CursorRequest = { cursor?: string; limit?: number; offset?: number; xLrCursor?: string; xLrLimit?: number };
+type CursorPage = { results: unknown[]; nextCursor?: string | null };
+const bound = (value: number, name: string) => {
+  if (!Number.isSafeInteger(value) || value < 0 || value > 1_000_000) throw new RangeError(`${name} must be an integer from 0 to 1000000`);
+  return value;
+};
+function cancelled(signal?: AbortSignal) {
+  if (signal?.aborted) throw new ReaconRequestAbortedError(signal.reason);
+}
+
+/** Snapshot inputs immediately; make requests only as the caller advances. */
+function cursorPages<Q extends CursorRequest, P extends CursorPage>(request: Q, options: PaginationOptions,
+  fetchPage: (request: Q, options: PaginationOptions) => Promise<P>): AsyncGenerator<P> {
+  const query = { ...request }, settings = { ...options };
+  return (async function* () {
+    const maxPages = bound(settings.maxPages ?? 100, 'maxPages'), maxItems = bound(settings.maxItems ?? 10000, 'maxItems');
+    if (query.offset !== undefined) throw new TypeError('Cursor iterators do not accept offset; use the one-page method for offset pagination');
+    const pageSize = Math.min(query.limit ?? 100, query.xLrLimit ?? 500);
+    if (!Number.isSafeInteger(pageSize) || pageSize < 1 || pageSize > 500) throw new RangeError('Page size must be an integer from 1 to 500');
+    const seen = new Set<string>();
+    const firstCursor = query.xLrCursor ?? query.cursor;
+    if (firstCursor !== undefined) seen.add(firstCursor);
+    let count = 0;
+    for (let index = 0; index < maxPages && count < maxItems; index++) {
+      cancelled(settings.signal);
+      const limit = Math.min(pageSize, maxItems - count);
+      const page = await fetchPage({ ...query, limit, ...(query.xLrLimit !== undefined ? { xLrLimit: limit } : {}) }, settings);
+      cancelled(settings.signal);
+      if (!Array.isArray(page.results) || page.results.length > limit) throw new ReaconProtocolError('Pagination response exceeds requested item bound');
+      count += page.results.length;
+      const next = page.nextCursor;
+      if (next != null && (typeof next !== 'string' || !next)) throw new ReaconProtocolError('Invalid pagination cursor');
+      yield page;
+      if (next == null || index + 1 >= maxPages || count >= maxItems) return;
+      if (seen.has(next)) throw new ReaconProtocolError('Repeated pagination cursor');
+      seen.add(next); query.cursor = next;
+      if (query.xLrCursor !== undefined) query.xLrCursor = next;
+    }
+  })();
+}
+async function* cursorItems<T>(pages: AsyncGenerator<{ results: T[] }>, signal?: AbortSignal): AsyncGenerator<T> {
+  for await (const page of pages) for (const item of page.results) { cancelled(signal); yield item; }
+}
+
+export class LeadsClient extends LeadsApi {
+  pages(request: Omit<ListLeadsRequest, 'offset'>, options: PaginationOptions = {}) {
+    return cursorPages(request, options, (query, settings) => this.listLeads(query, { signal: settings.signal, timeoutMs: settings.timeoutMs, retry: false }));
+  }
+  items(request: Omit<ListLeadsRequest, 'offset'>, options: PaginationOptions = {}) {
+    return cursorItems(this.pages(request, options), options.signal);
+  }
+}
+export class EmailsClient extends EmailsApi {
+  private pageOverrides(query: CursorRequest, settings: PaginationOptions): InitOverrideFunction {
+    return async ({ init }) => {
+      const headers = new Headers(init.headers);
+      // Configuration headers may use different casing from generated headers.
+      // Replace the effective values, avoiding a stale comma-joined cursor.
+      if (query.xLrCursor !== undefined) headers.set('X-LR-Cursor', query.xLrCursor);
+      if (query.xLrLimit !== undefined) headers.set('X-LR-Limit', String(query.xLrLimit));
+      return { headers, signal: settings.signal, timeoutMs: settings.timeoutMs, retry: false };
+    };
+  }
+  private paginationRequest<Q extends CursorRequest>(request: Q): Q {
+    const headers = new Headers(this.configuration.headers);
+    const cursor = request.xLrCursor ?? headers.get('X-LR-Cursor') ?? undefined;
+    const limit = request.xLrLimit ?? (headers.has('X-LR-Limit') ? Number(headers.get('X-LR-Limit')) : undefined);
+    return { ...request, xLrCursor: cursor, xLrLimit: limit };
+  }
+  /** Every page may consume credits unless onlyIfFree is explicitly enabled. */
+  pages(request: Omit<ListEmailsRequest, 'offset'>, options: EmailPaginationOptions = {}) {
+    const query = this.paginationRequest(request), settings = { ...options };
+    return cursorPages(query, settings, (next, pageOptions) => {
+      if (query.onlyIfFree !== 'true' && settings.allowPaidRequests !== true) throw new TypeError('Set onlyIfFree to true or acknowledge allowPaidRequests');
+      return this.listEmails(next, this.pageOverrides(next, pageOptions));
+    });
+  }
+  items(request: Omit<ListEmailsRequest, 'offset'>, options: EmailPaginationOptions = {}) {
+    return cursorItems(this.pages(request, options), options.signal);
+  }
+  mentionPages(request: ListEmailMentionsRequest, options: PaginationOptions = {}) {
+    const query = this.paginationRequest(request);
+    if (query.xLrLimit !== undefined) query.limit = query.xLrLimit; // Mentions use header precedence, not the email-list minimum rule.
+    return cursorPages(query, options, (next, settings) => this.listEmailMentions(next, this.pageOverrides(next, settings)));
+  }
+  mentionItems(request: ListEmailMentionsRequest, options: PaginationOptions = {}) {
+    return cursorItems(this.mentionPages(request, options), options.signal);
+  }
+}
+
 export interface ReaconOptions extends Omit<ConfigurationParameters, 'apiKey'> { apiKey: string }
 /** Each client has its own credentials and transport. Generated one-page JSON methods remain available. */
 export class Reacon {
   readonly domains: DomainsApi;
-  readonly emails: EmailsApi;
-  readonly leads: LeadsApi;
+  readonly emails: EmailsClient;
+  readonly leads: LeadsClient;
   readonly verification: VerificationClient;
   constructor(options: ReaconOptions) {
     if (!options.apiKey) throw new TypeError('apiKey is required');
     const configuration = new Configuration({ ...options, headers: { ...options.headers } });
     this.domains = new DomainsApi(configuration);
-    this.emails = new EmailsApi(configuration);
-    this.leads = new LeadsApi(configuration);
+    this.emails = new EmailsClient(configuration);
+    this.leads = new LeadsClient(configuration);
     this.verification = new VerificationClient(configuration);
   }
 }
