@@ -49,6 +49,7 @@ export interface MailPostSuppressionsRequest {
  * @export
  */
 export const MailPostSuppressionsRequestScopeEnum = {
+    Email: 'email',
     Domain: 'domain',
 } as const;
 export type MailPostSuppressionsRequestScopeEnum = typeof MailPostSuppressionsRequestScopeEnum[keyof typeof MailPostSuppressionsRequestScopeEnum];
@@ -59,8 +60,6 @@ export type MailPostSuppressionsRequestScopeEnum = typeof MailPostSuppressionsRe
  */
 export function instanceOfMailPostSuppressionsRequest(value: object): value is MailPostSuppressionsRequest {
     if (!('scope' in value) || value['scope'] === undefined) return false;
-    if (value['scope'] !== 'domain') return false;
-    
     if (!('value' in value) || value['value'] === undefined) return false;
     return true;
 }

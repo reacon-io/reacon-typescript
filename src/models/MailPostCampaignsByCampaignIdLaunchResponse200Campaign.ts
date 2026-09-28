@@ -31,9 +31,9 @@ import {
 /**
  * 
  * @export
- * @interface MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign
+ * @interface MailPostCampaignsByCampaignIdLaunchResponse200Campaign
  */
-export interface MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign {
+export interface MailPostCampaignsByCampaignIdLaunchResponse200Campaign {
     /**
      * 
      */
@@ -77,9 +77,9 @@ export interface MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign {
 }
 
 /**
- * Check if a given object implements the MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign interface.
+ * Check if a given object implements the MailPostCampaignsByCampaignIdLaunchResponse200Campaign interface.
  */
-export function instanceOfMailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign(value: object): value is MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign {
+export function instanceOfMailPostCampaignsByCampaignIdLaunchResponse200Campaign(value: object): value is MailPostCampaignsByCampaignIdLaunchResponse200Campaign {
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('messageCounts' in value) || value['messageCounts'] === undefined) return false;
@@ -93,11 +93,11 @@ export function instanceOfMailPostCampaignsByCampaignIdLaunchResponse200AnyOfCam
     return true;
 }
 
-export function MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignFromJSON(json: any): MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign {
-    return MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignFromJSONTyped(json, false);
+export function MailPostCampaignsByCampaignIdLaunchResponse200CampaignFromJSON(json: any): MailPostCampaignsByCampaignIdLaunchResponse200Campaign {
+    return MailPostCampaignsByCampaignIdLaunchResponse200CampaignFromJSONTyped(json, false);
 }
 
-export function MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignFromJSONTyped(json: any, ignoreDiscriminator: boolean): MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign {
+export function MailPostCampaignsByCampaignIdLaunchResponse200CampaignFromJSONTyped(json: any, ignoreDiscriminator: boolean): MailPostCampaignsByCampaignIdLaunchResponse200Campaign {
     if (json == null) {
         return json;
     }
@@ -116,11 +116,11 @@ export function MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignFromJ
     };
 }
 
-export function MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignToJSON(json: any): MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign {
-    return MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignToJSONTyped(json, false);
+export function MailPostCampaignsByCampaignIdLaunchResponse200CampaignToJSON(json: any): MailPostCampaignsByCampaignIdLaunchResponse200Campaign {
+    return MailPostCampaignsByCampaignIdLaunchResponse200CampaignToJSONTyped(json, false);
 }
 
-export function MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignToJSONTyped(value?: MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign | null, ignoreDiscriminator: boolean = false): any {
+export function MailPostCampaignsByCampaignIdLaunchResponse200CampaignToJSONTyped(value?: MailPostCampaignsByCampaignIdLaunchResponse200Campaign | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

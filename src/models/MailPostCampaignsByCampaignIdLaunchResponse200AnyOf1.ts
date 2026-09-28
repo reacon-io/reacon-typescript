@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime.js';
-import type { MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign } from './MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign.js';
+import type { MailPostCampaignsByCampaignIdLaunchResponse200Campaign } from './MailPostCampaignsByCampaignIdLaunchResponse200Campaign.js';
 import {
-    MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignFromJSON,
-    MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignFromJSONTyped,
-    MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignToJSON,
-    MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignToJSONTyped,
-} from './MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign.js';
+    MailPostCampaignsByCampaignIdLaunchResponse200CampaignFromJSON,
+    MailPostCampaignsByCampaignIdLaunchResponse200CampaignFromJSONTyped,
+    MailPostCampaignsByCampaignIdLaunchResponse200CampaignToJSON,
+    MailPostCampaignsByCampaignIdLaunchResponse200CampaignToJSONTyped,
+} from './MailPostCampaignsByCampaignIdLaunchResponse200Campaign.js';
 import type { MailSequenceRunRecord } from './MailSequenceRunRecord.js';
 import {
     MailSequenceRunRecordFromJSON,
@@ -44,7 +44,7 @@ export interface MailPostCampaignsByCampaignIdLaunchResponse200AnyOf1 {
     /**
      * 
      */
-    campaign: MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign;
+    campaign: MailPostCampaignsByCampaignIdLaunchResponse200Campaign;
     /**
      * 
      */
@@ -75,7 +75,7 @@ export function MailPostCampaignsByCampaignIdLaunchResponse200AnyOf1FromJSONType
     }
     return {
         
-        'campaign': MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignFromJSON(json['campaign']),
+        'campaign': MailPostCampaignsByCampaignIdLaunchResponse200CampaignFromJSON(json['campaign']),
         'draft': MailCampaignDraftRecordFromJSON(json['draft']),
         'sequences': ((json['sequences'] as Array<any>).map(MailSequenceRunRecordFromJSON)),
     };
@@ -92,7 +92,7 @@ export function MailPostCampaignsByCampaignIdLaunchResponse200AnyOf1ToJSONTyped(
 
     return {
         
-        'campaign': MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaignToJSON(value['campaign']),
+        'campaign': MailPostCampaignsByCampaignIdLaunchResponse200CampaignToJSON(value['campaign']),
         'draft': MailCampaignDraftRecordToJSON(value['draft']),
         'sequences': ((value['sequences'] as Array<any>).map(MailSequenceRunRecordToJSON)),
     };

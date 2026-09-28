@@ -70,7 +70,7 @@ try {
     child.once('error', reject); child.once('close', code => done(code ?? 1));
   });
   const buildExitCode = await runContainer(args);
-  let httpPolicy = null, pagination = null;
+  let httpPolicy = null, pagination = null, pythonHttpPolicy = null;
   let streamExitCode = null, streamRuntime = null, streamPackageFiles = null, streamFailure = null;
   const streamModes = family === 'typescript' ? ['typescript','typescript-esm'] : [family];
   if (buildExitCode === 0) {
@@ -93,6 +93,21 @@ try {
         : {proof:JSON.parse(await readFile(resolve(streamOutput,'streaming-runtime.json')))};
       streamRuntime = installedStreamRuntimeEvidence({family,packageVersion:manifest.packageVersion,files:after,...proof});
       streamPackageFiles = after;
+      if (family === 'python') {
+        const policy = manifest.pythonHttpPolicy;
+        if (policy?.isolation !== 'retained-packages-without-source' || policy.testSha256 !== manifest.files['http-python.py'] ||
+            JSON.stringify(policy.modes) !== JSON.stringify(['async', 'sync']) || policy.minimumTests < 39) throw Error('Missing Python HTTP policy suite');
+        const modes = [];
+        for (const mode of policy.modes) {
+          const result = JSON.parse(await readFile(resolve(streamOutput, `http-${mode}.json`)));
+          if (result.mode !== mode || !Number.isSafeInteger(result.tests) || result.tests < policy.minimumTests ||
+              result.passed !== true || result.failures !== 0 || result.errors !== 0 || result.skipped !== 0 ||
+              result.dependencies?.['reacon-sdk'] !== manifest.packageVersion) throw Error('Python installed HTTP policy failed');
+          modes.push(result);
+        }
+        pythonHttpPolicy = { ...policy, packageVersion: manifest.packageVersion,
+          archiveSha256: after[`reacon_sdk-${manifest.packageVersion}-py3-none-any.whl`]?.sha256, modes };
+      }
       if (family === 'typescript') {
         for (const [name, reportFile, testFile, minimum] of [['httpPolicy', 'http-policy.json', 'http-typescript.test.mjs', 45], ['pagination', 'pagination.json', 'pagination-typescript.test.mjs', 16]]) {
         const actual = JSON.parse(await readFile(resolve(streamOutput, reportFile)));
@@ -143,6 +158,7 @@ try {
       modes: streamModes.map(mode=>({mode,requests:streams.observations.get(mode)})) },
     ...(httpPolicy ? { httpPolicy } : {}),
     ...(pagination ? { pagination } : {}),
+    ...(pythonHttpPolicy ? { pythonHttpPolicy } : {}),
     suiteManifestSha256: hash(manifestBytes), publicRegistryInstallPassed: false, liveApiPassed: false, publishable: false };
   await writeFile(resolve(output, 'responses.json'), JSON.stringify(results, null, 2) + '\n');
   await writeFile(resolve(output, 'evidence.json'), JSON.stringify(report, null, 2) + '\n');

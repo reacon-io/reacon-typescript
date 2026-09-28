@@ -256,6 +256,7 @@ src/models/MailGetPortfolioOverviewResponse200.ts
 src/models/MailGetPortfolioResponse200.ts
 src/models/MailGetPortfolioResponse200AnyOf.ts
 src/models/MailGetPortfolioResponse200AnyOf1.ts
+src/models/MailGetPortfolioResponse200Portfolio.ts
 src/models/MailGetQueueResponse200.ts
 src/models/MailGetReplyAutomationsResponse200.ts
 src/models/MailGetSignaturesResponse200.ts
@@ -338,7 +339,7 @@ src/models/MailPostCampaignsByCampaignIdLaunchRequest.ts
 src/models/MailPostCampaignsByCampaignIdLaunchResponse200.ts
 src/models/MailPostCampaignsByCampaignIdLaunchResponse200AnyOf.ts
 src/models/MailPostCampaignsByCampaignIdLaunchResponse200AnyOf1.ts
-src/models/MailPostCampaignsByCampaignIdLaunchResponse200AnyOfCampaign.ts
+src/models/MailPostCampaignsByCampaignIdLaunchResponse200Campaign.ts
 src/models/MailPostCampaignsByCampaignIdStateRequest.ts
 src/models/MailPostCampaignsByCampaignIdStateResponse200.ts
 src/models/MailPostCampaignsRequest.ts

@@ -67,7 +67,7 @@ export interface MailExperimentReport {
     /**
      * 
      */
-    decision: MailExperimentReportDecision;
+    decision: MailExperimentReportDecision | null;
     /**
      * 
      */
