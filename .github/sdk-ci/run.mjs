@@ -70,6 +70,7 @@ try {
     child.once('error', reject); child.once('close', code => done(code ?? 1));
   });
   const buildExitCode = await runContainer(args);
+  let httpPolicy = null;
   let streamExitCode = null, streamRuntime = null, streamPackageFiles = null, streamFailure = null;
   const streamModes = family === 'typescript' ? ['typescript','typescript-esm'] : [family];
   if (buildExitCode === 0) {
@@ -92,6 +93,18 @@ try {
         : {proof:JSON.parse(await readFile(resolve(streamOutput,'streaming-runtime.json')))};
       streamRuntime = installedStreamRuntimeEvidence({family,packageVersion:manifest.packageVersion,files:after,...proof});
       streamPackageFiles = after;
+      if (family === 'typescript') {
+        httpPolicy = JSON.parse(await readFile(resolve(streamOutput, 'http-policy.json')));
+        const policy = manifest.httpPolicy;
+        if (policy?.isolation !== 'retained-packages-without-source' || policy.testSha256 !== manifest.files['http-typescript.test.mjs'] ||
+            httpPolicy.testSha256 !== policy.testSha256 || httpPolicy.packageVersion !== manifest.packageVersion ||
+            httpPolicy.isolation !== policy.isolation || httpPolicy.archiveSha256 !== after[`reacon-io-sdk-${manifest.packageVersion}.tgz`]?.sha256 ||
+            JSON.stringify(policy.modes) !== JSON.stringify(['cjs','esm']) || !Number.isSafeInteger(policy.minimumTests) || policy.minimumTests < 22 ||
+            httpPolicy.modes?.length !== 2 || httpPolicy.modes.some((item, index) => item.mode !== policy.modes[index] ||
+              !Number.isSafeInteger(item.tests) || item.tests < policy.minimumTests || item.passed !== item.tests || item.failed !== 0 || item.skipped !== 0 || item.cancelled !== 0))
+          throw new Error('Installed HTTP policy checks are incomplete or bind different artifacts');
+      }
+
     } catch(error) {streamFailure=error.message;}
   }
   await new Promise(done => log.end(done));
@@ -125,6 +138,7 @@ try {
     recordedResponses: results, streaming: { evidence: 'synthetic-http-streaming-subset', scenarios: streamScenarios, requests: streams.observations.get(family),
       isolation: 'retained-packages-without-source', exitCode: streamExitCode, files: streamPackageFiles, runtime: streamRuntime,
       modes: streamModes.map(mode=>({mode,requests:streams.observations.get(mode)})) },
+    ...(httpPolicy ? { httpPolicy } : {}),
     suiteManifestSha256: hash(manifestBytes), publicRegistryInstallPassed: false, liveApiPassed: false, publishable: false };
   await writeFile(resolve(output, 'responses.json'), JSON.stringify(results, null, 2) + '\n');
   await writeFile(resolve(output, 'evidence.json'), JSON.stringify(report, null, 2) + '\n');

@@ -45,13 +45,13 @@ export interface IdentityApiInterface {
      * @throws {RequiredError}
      * @memberof IdentityApiInterface
      */
-    getApiKeyIdentityRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ApiKeyIdentity>>;
+    getApiKeyIdentityRaw(initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ApiKeyIdentity>>;
 
     /**
      * Returns the current API key ID and team ID. This route accepts API-key authentication only.
      * Get API-key identity
      */
-    getApiKeyIdentity(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ApiKeyIdentity>;
+    getApiKeyIdentity(initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<ApiKeyIdentity>;
 
 }
 
@@ -87,7 +87,7 @@ export class IdentityApi extends runtime.BaseAPI implements IdentityApiInterface
      * Returns the current API key ID and team ID. This route accepts API-key authentication only.
      * Get API-key identity
      */
-    async getApiKeyIdentityRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ApiKeyIdentity>> {
+    async getApiKeyIdentityRaw(initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ApiKeyIdentity>> {
         const requestOptions = await this.getApiKeyIdentityRequestOpts();
         const response = await this.request(requestOptions, initOverrides);
 
@@ -98,7 +98,7 @@ export class IdentityApi extends runtime.BaseAPI implements IdentityApiInterface
      * Returns the current API key ID and team ID. This route accepts API-key authentication only.
      * Get API-key identity
      */
-    async getApiKeyIdentity(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ApiKeyIdentity> {
+    async getApiKeyIdentity(initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<ApiKeyIdentity> {
         const response = await this.getApiKeyIdentityRaw(initOverrides);
         return await response.value();
     }

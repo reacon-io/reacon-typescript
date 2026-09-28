@@ -1,6 +1,6 @@
 {
   "name": "@reacon-io/sdk",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0-beta.2",
   "description": "Official Reacon API client for TypeScript and JavaScript",
   "author": "Reacon contributors",
   "repository": {

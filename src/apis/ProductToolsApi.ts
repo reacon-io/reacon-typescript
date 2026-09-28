@@ -65,13 +65,13 @@ export interface ProductToolsApiInterface {
      * @throws {RequiredError}
      * @memberof ProductToolsApiInterface
      */
-    executeProductToolRaw(requestParameters: ExecuteProductToolRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProductToolExecution>>;
+    executeProductToolRaw(requestParameters: ExecuteProductToolRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProductToolExecution>>;
 
     /**
      * Execute one of the listed tools using a team API key. Choose the input schema associated with the tool path parameter; the input union alone cannot express that relationship. Read tools return executionId=null and replay=false. Write tools require input.idempotencyKey (16–200 characters), scoped to the team across tools. Reusing a key with the same tool and validated input returns the committed output with replay=true while retained; different input or an unfinished execution returns HTTP 409. The SDK does not automatically retry this dispatcher. Tool scopes describe the shared integration/MCP catalog; this HTTP endpoint uses team API-key authentication and team-access checks. Missing database resources can currently surface as HTTP 500. See each tool for output and pagination semantics.
      * Execute a product tool
      */
-    executeProductTool(requestParameters: ExecuteProductToolRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProductToolExecution>;
+    executeProductTool(requestParameters: ExecuteProductToolRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<ProductToolExecution>;
 
 }
 
@@ -125,7 +125,7 @@ export class ProductToolsApi extends runtime.BaseAPI implements ProductToolsApiI
      * Execute one of the listed tools using a team API key. Choose the input schema associated with the tool path parameter; the input union alone cannot express that relationship. Read tools return executionId=null and replay=false. Write tools require input.idempotencyKey (16–200 characters), scoped to the team across tools. Reusing a key with the same tool and validated input returns the committed output with replay=true while retained; different input or an unfinished execution returns HTTP 409. The SDK does not automatically retry this dispatcher. Tool scopes describe the shared integration/MCP catalog; this HTTP endpoint uses team API-key authentication and team-access checks. Missing database resources can currently surface as HTTP 500. See each tool for output and pagination semantics.
      * Execute a product tool
      */
-    async executeProductToolRaw(requestParameters: ExecuteProductToolRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProductToolExecution>> {
+    async executeProductToolRaw(requestParameters: ExecuteProductToolRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProductToolExecution>> {
         const requestOptions = await this.executeProductToolRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -136,7 +136,7 @@ export class ProductToolsApi extends runtime.BaseAPI implements ProductToolsApiI
      * Execute one of the listed tools using a team API key. Choose the input schema associated with the tool path parameter; the input union alone cannot express that relationship. Read tools return executionId=null and replay=false. Write tools require input.idempotencyKey (16–200 characters), scoped to the team across tools. Reusing a key with the same tool and validated input returns the committed output with replay=true while retained; different input or an unfinished execution returns HTTP 409. The SDK does not automatically retry this dispatcher. Tool scopes describe the shared integration/MCP catalog; this HTTP endpoint uses team API-key authentication and team-access checks. Missing database resources can currently surface as HTTP 500. See each tool for output and pagination semantics.
      * Execute a product tool
      */
-    async executeProductTool(requestParameters: ExecuteProductToolRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProductToolExecution> {
+    async executeProductTool(requestParameters: ExecuteProductToolRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<ProductToolExecution> {
         const response = await this.executeProductToolRaw(requestParameters, initOverrides);
         return await response.value();
     }

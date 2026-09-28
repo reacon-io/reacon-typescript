@@ -162,13 +162,13 @@ export interface EmailsApiInterface {
      * @throws {RequiredError}
      * @memberof EmailsApiInterface
      */
-    deleteEmailRaw(requestParameters: DeleteEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteEmailResponse>>;
+    deleteEmailRaw(requestParameters: DeleteEmailRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteEmailResponse>>;
 
     /**
      * Deletes the email and its mentions. deleted is false when no email row was removed. This changes stored data and must not be retried automatically.
      * Delete an email and its mentions
      */
-    deleteEmail(requestParameters: DeleteEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteEmailResponse>;
+    deleteEmail(requestParameters: DeleteEmailRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<DeleteEmailResponse>;
 
     /**
      * Creates request options for listEmailMentions without sending the request
@@ -194,13 +194,13 @@ export interface EmailsApiInterface {
      * @throws {RequiredError}
      * @memberof EmailsApiInterface
      */
-    listEmailMentionsRaw(requestParameters: ListEmailMentionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailMentionsPage>>;
+    listEmailMentionsRaw(requestParameters: ListEmailMentionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailMentionsPage>>;
 
     /**
      * Returns a cursor page of source mentions. X-LR-Cursor and X-LR-Limit override query values. A full page can carry a cursor even if the next page is empty; continue until nextCursor is null.
      * List sources mentioning an email
      */
-    listEmailMentions(requestParameters: ListEmailMentionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailMentionsPage>;
+    listEmailMentions(requestParameters: ListEmailMentionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<EmailMentionsPage>;
 
     /**
      * Creates request options for listEmails without sending the request
@@ -232,13 +232,13 @@ export interface EmailsApiInterface {
      * @throws {RequiredError}
      * @memberof EmailsApiInterface
      */
-    listEmailsRaw(requestParameters: ListEmailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailPage>>;
+    listEmailsRaw(requestParameters: ListEmailsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailPage>>;
 
     /**
      * Lists emails and optional sources. This request may consume credits even though it uses GET. The nextCursor value is null at the end. X-LR-Cursor overrides cursor; when both limits are present, the smaller limit applies. Do not automatically retry a failed or interrupted request.
      * List and reveal emails for a domain
      */
-    listEmails(requestParameters: ListEmailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailPage>;
+    listEmails(requestParameters: ListEmailsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<EmailPage>;
 
     /**
      * Creates request options for revealEmail without sending the request
@@ -260,13 +260,13 @@ export interface EmailsApiInterface {
      * @throws {RequiredError}
      * @memberof EmailsApiInterface
      */
-    revealEmailRaw(requestParameters: RevealEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailRevealResponse>>;
+    revealEmailRaw(requestParameters: RevealEmailRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailRevealResponse>>;
 
     /**
      * Reveals an email profile with a bounded list of mentions and may create a team lead. May spend credits despite using GET. A 404 uses a nested error object. Do not automatically retry an interrupted request.
      * Reveal an email profile
      */
-    revealEmail(requestParameters: RevealEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailRevealResponse>;
+    revealEmail(requestParameters: RevealEmailRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<EmailRevealResponse>;
 
     /**
      * Creates request options for revealEmailById without sending the request
@@ -288,13 +288,13 @@ export interface EmailsApiInterface {
      * @throws {RequiredError}
      * @memberof EmailsApiInterface
      */
-    revealEmailByIdRaw(requestParameters: RevealEmailByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailRevealResponse>>;
+    revealEmailByIdRaw(requestParameters: RevealEmailByIdRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailRevealResponse>>;
 
     /**
      * Reveals an email profile by its stable ID with a bounded list of mentions. May spend credits and create a lead. A 404 uses a nested error object. Do not automatically retry.
      * Reveal an email profile by ID
      */
-    revealEmailById(requestParameters: RevealEmailByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailRevealResponse>;
+    revealEmailById(requestParameters: RevealEmailByIdRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<EmailRevealResponse>;
 
 }
 
@@ -338,7 +338,7 @@ export class EmailsApi extends runtime.BaseAPI implements EmailsApiInterface {
      * Deletes the email and its mentions. deleted is false when no email row was removed. This changes stored data and must not be retried automatically.
      * Delete an email and its mentions
      */
-    async deleteEmailRaw(requestParameters: DeleteEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteEmailResponse>> {
+    async deleteEmailRaw(requestParameters: DeleteEmailRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteEmailResponse>> {
         const requestOptions = await this.deleteEmailRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -349,7 +349,7 @@ export class EmailsApi extends runtime.BaseAPI implements EmailsApiInterface {
      * Deletes the email and its mentions. deleted is false when no email row was removed. This changes stored data and must not be retried automatically.
      * Delete an email and its mentions
      */
-    async deleteEmail(requestParameters: DeleteEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteEmailResponse> {
+    async deleteEmail(requestParameters: DeleteEmailRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<DeleteEmailResponse> {
         const response = await this.deleteEmailRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -405,7 +405,7 @@ export class EmailsApi extends runtime.BaseAPI implements EmailsApiInterface {
      * Returns a cursor page of source mentions. X-LR-Cursor and X-LR-Limit override query values. A full page can carry a cursor even if the next page is empty; continue until nextCursor is null.
      * List sources mentioning an email
      */
-    async listEmailMentionsRaw(requestParameters: ListEmailMentionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailMentionsPage>> {
+    async listEmailMentionsRaw(requestParameters: ListEmailMentionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailMentionsPage>> {
         const requestOptions = await this.listEmailMentionsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -416,7 +416,7 @@ export class EmailsApi extends runtime.BaseAPI implements EmailsApiInterface {
      * Returns a cursor page of source mentions. X-LR-Cursor and X-LR-Limit override query values. A full page can carry a cursor even if the next page is empty; continue until nextCursor is null.
      * List sources mentioning an email
      */
-    async listEmailMentions(requestParameters: ListEmailMentionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailMentionsPage> {
+    async listEmailMentions(requestParameters: ListEmailMentionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<EmailMentionsPage> {
         const response = await this.listEmailMentionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -487,7 +487,7 @@ export class EmailsApi extends runtime.BaseAPI implements EmailsApiInterface {
      * Lists emails and optional sources. This request may consume credits even though it uses GET. The nextCursor value is null at the end. X-LR-Cursor overrides cursor; when both limits are present, the smaller limit applies. Do not automatically retry a failed or interrupted request.
      * List and reveal emails for a domain
      */
-    async listEmailsRaw(requestParameters: ListEmailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailPage>> {
+    async listEmailsRaw(requestParameters: ListEmailsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailPage>> {
         const requestOptions = await this.listEmailsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -498,7 +498,7 @@ export class EmailsApi extends runtime.BaseAPI implements EmailsApiInterface {
      * Lists emails and optional sources. This request may consume credits even though it uses GET. The nextCursor value is null at the end. X-LR-Cursor overrides cursor; when both limits are present, the smaller limit applies. Do not automatically retry a failed or interrupted request.
      * List and reveal emails for a domain
      */
-    async listEmails(requestParameters: ListEmailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailPage> {
+    async listEmails(requestParameters: ListEmailsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<EmailPage> {
         const response = await this.listEmailsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -546,7 +546,7 @@ export class EmailsApi extends runtime.BaseAPI implements EmailsApiInterface {
      * Reveals an email profile with a bounded list of mentions and may create a team lead. May spend credits despite using GET. A 404 uses a nested error object. Do not automatically retry an interrupted request.
      * Reveal an email profile
      */
-    async revealEmailRaw(requestParameters: RevealEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailRevealResponse>> {
+    async revealEmailRaw(requestParameters: RevealEmailRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailRevealResponse>> {
         const requestOptions = await this.revealEmailRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -557,7 +557,7 @@ export class EmailsApi extends runtime.BaseAPI implements EmailsApiInterface {
      * Reveals an email profile with a bounded list of mentions and may create a team lead. May spend credits despite using GET. A 404 uses a nested error object. Do not automatically retry an interrupted request.
      * Reveal an email profile
      */
-    async revealEmail(requestParameters: RevealEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailRevealResponse> {
+    async revealEmail(requestParameters: RevealEmailRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<EmailRevealResponse> {
         const response = await this.revealEmailRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -605,7 +605,7 @@ export class EmailsApi extends runtime.BaseAPI implements EmailsApiInterface {
      * Reveals an email profile by its stable ID with a bounded list of mentions. May spend credits and create a lead. A 404 uses a nested error object. Do not automatically retry.
      * Reveal an email profile by ID
      */
-    async revealEmailByIdRaw(requestParameters: RevealEmailByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailRevealResponse>> {
+    async revealEmailByIdRaw(requestParameters: RevealEmailByIdRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailRevealResponse>> {
         const requestOptions = await this.revealEmailByIdRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -616,7 +616,7 @@ export class EmailsApi extends runtime.BaseAPI implements EmailsApiInterface {
      * Reveals an email profile by its stable ID with a bounded list of mentions. May spend credits and create a lead. A 404 uses a nested error object. Do not automatically retry.
      * Reveal an email profile by ID
      */
-    async revealEmailById(requestParameters: RevealEmailByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailRevealResponse> {
+    async revealEmailById(requestParameters: RevealEmailByIdRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<EmailRevealResponse> {
         const response = await this.revealEmailByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }

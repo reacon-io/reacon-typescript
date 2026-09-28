@@ -90,13 +90,13 @@ export interface CompaniesApiInterface {
      * @throws {RequiredError}
      * @memberof CompaniesApiInterface
      */
-    listCompaniesRaw(requestParameters: ListCompaniesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CompanyList>>;
+    listCompaniesRaw(requestParameters: ListCompaniesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CompanyList>>;
 
     /**
      * Returns a bounded company list with optional domain, name, website and sort filters. Pagination uses limit and offset; there is no response cursor.
      * List companies
      */
-    listCompanies(requestParameters: ListCompaniesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompanyList>;
+    listCompanies(requestParameters: ListCompaniesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<CompanyList>;
 
 }
 
@@ -160,7 +160,7 @@ export class CompaniesApi extends runtime.BaseAPI implements CompaniesApiInterfa
      * Returns a bounded company list with optional domain, name, website and sort filters. Pagination uses limit and offset; there is no response cursor.
      * List companies
      */
-    async listCompaniesRaw(requestParameters: ListCompaniesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CompanyList>> {
+    async listCompaniesRaw(requestParameters: ListCompaniesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CompanyList>> {
         const requestOptions = await this.listCompaniesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -171,7 +171,7 @@ export class CompaniesApi extends runtime.BaseAPI implements CompaniesApiInterfa
      * Returns a bounded company list with optional domain, name, website and sort filters. Pagination uses limit and offset; there is no response cursor.
      * List companies
      */
-    async listCompanies(requestParameters: ListCompaniesRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CompanyList> {
+    async listCompanies(requestParameters: ListCompaniesRequest = {}, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<CompanyList> {
         const response = await this.listCompaniesRaw(requestParameters, initOverrides);
         return await response.value();
     }
