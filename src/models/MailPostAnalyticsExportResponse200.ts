@@ -42,7 +42,7 @@ export interface MailPostAnalyticsExportResponse200 {
     /**
      * 
      */
-    nextCursor: MailPostAnalyticsExportResponse200NextCursor;
+    nextCursor: MailPostAnalyticsExportResponse200NextCursor | null;
     /**
      * 
      */
