@@ -1,23 +1,24 @@
 {
   "formatVersion": 1,
   "family": "typescript",
-  "packageVersion": "0.1.0-beta.2",
-  "canonicalVersion": "0.1.0-beta.2",
+  "packageVersion": "0.1.0-beta.3",
+  "canonicalVersion": "0.1.0-beta.3",
   "image": "node@sha256:a9f5f7c91a432850b2a8a7797adf5eadb6c733ceed61167806cee7ea7fbc29df",
   "contractSha256": "ea1576c82a7ad69122985805e2f3303b4ddf8592b4fcbc22cd1435ba1289f020",
   "recordingIndexSha256": "ff806fb5d2b230cb0bb415449876854a038f6ffb29c6b48505e7f11c5d10332d",
   "recordedScenarios": 40,
   "files": {
     "cases.json": "ff7a5c0a7855efd30b9839e2062b35619bfe786f334db5991fa1277af6bf4e47",
-    "run.mjs": "8b96e0216118625153b1386113d911e297c3d6e39a9f1e7f6dc03d571b9a0cef",
+    "run.mjs": "83d2457ead5013849d2ed8e86aeeb11e869aea18f43ca26fa4d8c221d017619a",
     "streaming-package-evidence.mjs": "c1cb8197317740fb01b056bbadaa66c0d5e1743bf7cd5b476295b4349c9ecb99",
     "stream-typescript.sh": "f690a3330db687b008429767f13c89a70fd595573d277a8f2ca4a97f00ccca6e",
     "package-artifacts.mjs": "285a9c494b9b80415b38caa8b6e99b9099eef7c11f5ed9c3b640be1d20f0f281",
     "typescript.sh": "b13e15a4a8250fbeae7cb1e3ec89ec261c03f10c20ea5b1c034e4d822612566e",
     "replay-server.mjs": "3f7b872956c781b087c07112eccfc3a1119f734b8e06a762cddbade8c6ad8dcd",
     "stream-server.mjs": "a63f2c6c0d8a3f6ea7742301e0a173824c1a58cf6438a09cfb8115cdafeaccfe",
-    "http-typescript.test.mjs": "348f185e15c0af02694b405a65571b08eb7f5d0709b43a2a0d45ab5356552f97",
-    "stream-node-package.mjs": "1e554faae9f29238eedb9fdf3eb214263f7b09d852a05c7ddf2ec3cf7e371a84",
+    "http-typescript.test.mjs": "c18ca60b2eab487c4ff85ece45212b4bdb1312bc532adbbae77fccbee1084f36",
+    "pagination-typescript.test.mjs": "7553a84d03247d2f179d11c00d5e5ee3d48a636e9d081c16496b24c6b97a3356",
+    "stream-node-package.mjs": "2ceeaae323831236c449cdc459d9f72f60064d594d3abd69693158d3c2b8decb",
     "stream-python-package.py": "d977782469f699b2d873e1051f8fc9e57062077a735d0f8fb328cde079b8dd77",
     "stream-ruby-package.rb": "e7cb06ffc005e2d303142ce692625dba418093ad7030fc9a9235b9a069ca29de",
     "recordings/csharp-package.sh": "c3511a9bfcd1305ff1bad283544202ee2ba39548f909c4130b49aec5dcfeff22",
@@ -60,8 +61,17 @@
       "cjs",
       "esm"
     ],
-    "minimumTests": 22,
-    "testSha256": "348f185e15c0af02694b405a65571b08eb7f5d0709b43a2a0d45ab5356552f97"
+    "minimumTests": 45,
+    "testSha256": "c18ca60b2eab487c4ff85ece45212b4bdb1312bc532adbbae77fccbee1084f36"
+  },
+  "pagination": {
+    "isolation": "retained-packages-without-source",
+    "modes": [
+      "cjs",
+      "esm"
+    ],
+    "minimumTests": 16,
+    "testSha256": "7553a84d03247d2f179d11c00d5e5ee3d48a636e9d081c16496b24c6b97a3356"
   },
   "evidence": "reviewed-response-package-consumers-and-synthetic-streaming",
   "streamingIsolation": "retained-packages-without-source",

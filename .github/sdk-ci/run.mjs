@@ -70,7 +70,7 @@ try {
     child.once('error', reject); child.once('close', code => done(code ?? 1));
   });
   const buildExitCode = await runContainer(args);
-  let httpPolicy = null;
+  let httpPolicy = null, pagination = null;
   let streamExitCode = null, streamRuntime = null, streamPackageFiles = null, streamFailure = null;
   const streamModes = family === 'typescript' ? ['typescript','typescript-esm'] : [family];
   if (buildExitCode === 0) {
@@ -94,15 +94,18 @@ try {
       streamRuntime = installedStreamRuntimeEvidence({family,packageVersion:manifest.packageVersion,files:after,...proof});
       streamPackageFiles = after;
       if (family === 'typescript') {
-        httpPolicy = JSON.parse(await readFile(resolve(streamOutput, 'http-policy.json')));
-        const policy = manifest.httpPolicy;
-        if (policy?.isolation !== 'retained-packages-without-source' || policy.testSha256 !== manifest.files['http-typescript.test.mjs'] ||
-            httpPolicy.testSha256 !== policy.testSha256 || httpPolicy.packageVersion !== manifest.packageVersion ||
-            httpPolicy.isolation !== policy.isolation || httpPolicy.archiveSha256 !== after[`reacon-io-sdk-${manifest.packageVersion}.tgz`]?.sha256 ||
-            JSON.stringify(policy.modes) !== JSON.stringify(['cjs','esm']) || !Number.isSafeInteger(policy.minimumTests) || policy.minimumTests < 22 ||
-            httpPolicy.modes?.length !== 2 || httpPolicy.modes.some((item, index) => item.mode !== policy.modes[index] ||
+        for (const [name, reportFile, testFile, minimum] of [['httpPolicy', 'http-policy.json', 'http-typescript.test.mjs', 45], ['pagination', 'pagination.json', 'pagination-typescript.test.mjs', 16]]) {
+        const actual = JSON.parse(await readFile(resolve(streamOutput, reportFile)));
+        const policy = manifest[name];
+        if (policy?.isolation !== 'retained-packages-without-source' || policy.testSha256 !== manifest.files[testFile] ||
+            actual.testSha256 !== policy.testSha256 || actual.packageVersion !== manifest.packageVersion ||
+            actual.isolation !== policy.isolation || actual.archiveSha256 !== after[`reacon-io-sdk-${manifest.packageVersion}.tgz`]?.sha256 ||
+            JSON.stringify(policy.modes) !== JSON.stringify(['cjs','esm']) || !Number.isSafeInteger(policy.minimumTests) || policy.minimumTests < minimum ||
+            actual.modes?.length !== 2 || actual.modes.some((item, index) => item.mode !== policy.modes[index] ||
               !Number.isSafeInteger(item.tests) || item.tests < policy.minimumTests || item.passed !== item.tests || item.failed !== 0 || item.skipped !== 0 || item.cancelled !== 0))
-          throw new Error('Installed HTTP policy checks are incomplete or bind different artifacts');
+          throw new Error(`Installed ${name} checks are incomplete or bind different artifacts`);
+        if (name === 'httpPolicy') httpPolicy = actual; else pagination = actual;
+        }
       }
 
     } catch(error) {streamFailure=error.message;}
@@ -139,6 +142,7 @@ try {
       isolation: 'retained-packages-without-source', exitCode: streamExitCode, files: streamPackageFiles, runtime: streamRuntime,
       modes: streamModes.map(mode=>({mode,requests:streams.observations.get(mode)})) },
     ...(httpPolicy ? { httpPolicy } : {}),
+    ...(pagination ? { pagination } : {}),
     suiteManifestSha256: hash(manifestBytes), publicRegistryInstallPassed: false, liveApiPassed: false, publishable: false };
   await writeFile(resolve(output, 'responses.json'), JSON.stringify(results, null, 2) + '\n');
   await writeFile(resolve(output, 'evidence.json'), JSON.stringify(report, null, 2) + '\n');

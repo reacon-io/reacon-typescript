@@ -143,3 +143,99 @@ for (const method of ['revealEmail', 'deleteEmail']) test(`lost response to ${me
   assert.equal(counts.get('lost-response') - before, 1);
   assert.equal(requests.at(-1).method, method === 'revealEmail' ? 'GET' : 'DELETE');
 });
+
+function retryClient(responses, extra = {}) {
+  const calls = [];
+  const api = new sdk.DomainsApi(new sdk.Configuration({ basePath: 'https://fixture.invalid', requestTimeoutMs: 5000, ...extra,
+    fetchApi: async (url, init) => {
+      calls.push({ url, init, at: Date.now() });
+      const step = responses[calls.length - 1]; assert(step, 'Unexpected extra retry');
+      if (step instanceof Error) throw step;
+      return new Response(JSON.stringify(step.status === 200 ? wire : { code: 'temporary_failure' }),
+        { status: step.status, headers: { 'content-type': 'application/json', ...step.headers } });
+    } }));
+  return { api, calls };
+}
+for (const status of [429, 502, 503, 504]) test(`audited reads retry HTTP ${status} only when opted in`, async () => {
+  const { api, calls } = retryClient([{ status }, { status: 200 }]);
+  assert.deepEqual(await call(api, { retry: { maxRetries: 1, baseDelayMs: 20, maxDelayMs: 40 } }), expected);
+  assert.equal(calls.length, 2); assert(calls[1].at - calls[0].at >= 5);
+  assert.equal(calls[0].init.retry, undefined); assert.equal(calls[1].init.redirect, 'manual');
+});
+test('retry count is bounded and exhaustion preserves the final response', async () => {
+  const { api, calls } = retryClient(Array.from({ length: 4 }, () => ({ status: 503 })));
+  const error = await rejection(call(api, { retry: { maxRetries: 3, baseDelayMs: 1, maxDelayMs: 4 } }));
+  assert.equal(calls.length, 4); assert.equal(error.status, 503); assert.equal(error.code, 'temporary_failure');
+});
+test('client safeRetries can be disabled or overridden per request', async () => {
+  const { api, calls } = retryClient([{ status: 503 }, { status: 503 }, { status: 200 }, { status: 503 }],
+    { safeRetries: { maxRetries: 2, baseDelayMs: 1, maxDelayMs: 4 } });
+  assert.equal((await rejection(call(api, { retry: false }))).status, 503); assert.equal(calls.length, 1);
+  assert.deepEqual(await call(api, { retry: { maxRetries: 1, baseDelayMs: 1, maxDelayMs: 4 } }), expected);
+  assert.equal(calls.length, 3);
+  assert.equal((await rejection(call(api, { retry: { maxRetries: 0 } }))).status, 503); assert.equal(calls.length, 4);
+});
+test('a valid Retry-After seconds value is respected', async () => {
+  const { api, calls } = retryClient([{ status: 429, headers: { 'retry-after': '1' } }, { status: 200 }]);
+  await call(api, { retry: { maxRetries: 1, baseDelayMs: 1, maxDelayMs: 2000 } });
+  assert(calls[1].at - calls[0].at >= 950);
+});
+test('a valid Retry-After HTTP date is respected', async () => {
+  const date = new Date(Date.now() + 1800).toUTCString();
+  const { api, calls } = retryClient([{ status: 503, headers: { 'retry-after': date } }, { status: 200 }]);
+  await call(api, { retry: { maxRetries: 1, baseDelayMs: 1, maxDelayMs: 2500 } });
+  assert(calls[1].at >= Date.parse(date) - 25);
+});
+test('invalid Retry-After falls back to bounded jitter', async () => {
+  const { api, calls } = retryClient([{ status: 503, headers: { 'retry-after': '-1' } }, { status: 200 }]);
+  await call(api, { retry: { maxRetries: 1, baseDelayMs: 10, maxDelayMs: 20 } });
+  assert.equal(calls.length, 2);
+});
+test('Retry-After beyond the delay cap or total deadline is never shortened', async () => {
+  for (const timeoutMs of [50, 5000]) {
+    const { api, calls } = retryClient([{ status: 503, headers: { 'retry-after': '60' } }]);
+    const error = await rejection(call(api, { timeoutMs, retry: { maxRetries: 3, baseDelayMs: 1, maxDelayMs: 100 } }));
+    assert.equal(error.status, 503); assert.equal(error.headers.get('retry-after'), '60'); assert.equal(calls.length, 1);
+  }
+});
+test('caller cancellation interrupts backoff without another request', async () => {
+  const { api, calls } = retryClient([{ status: 503 }]);
+  const controller = new AbortController();
+  const promise = call(api, { signal: controller.signal, retry: { maxRetries: 3, baseDelayMs: 500, maxDelayMs: 1000 } });
+  const timer = setTimeout(() => controller.abort('stop-backoff'), 20);
+  try { const error = await rejection(promise); assert(error instanceof sdk.ReaconRequestAbortedError); }
+  finally { clearTimeout(timer); }
+  assert.equal(calls.length, 1);
+});
+test('retry settings cannot exceed the audited maximum or introduce unbounded delays', async () => {
+  const { api, calls } = retryClient([]);
+  for (const retry of [{ maxRetries: 4 }, { maxRetries: -1 }, { maxRetries: 1.1 }, { maxRetries: NaN },
+    { maxRetries: 1, baseDelayMs: 0 }, { maxRetries: 1, baseDelayMs: 100, maxDelayMs: 50 }, { maxRetries: 1, maxDelayMs: 60001 }]) {
+    assert(await rejection(call(api, { retry })) instanceof sdk.ReaconRetryPolicyError);
+  }
+  assert.equal(calls.length, 0);
+});
+for (const status of [400, 401, 402, 403, 404, 409, 500]) test(`HTTP ${status} is not retried by the transient-status policy`, async () => {
+  const { api, calls } = retryClient([{ status }]);
+  assert.equal((await rejection(call(api, { retry: { maxRetries: 3 } }))).status, status);
+  assert.equal(calls.length, 1);
+});
+test('transport failures are never retried, including on audited reads', async () => {
+  const { api, calls } = retryClient([new TypeError('synthetic lost connection')]);
+  assert(await rejection(call(api, { retry: { maxRetries: 3 } })) instanceof sdk.ReaconTransportError);
+  assert.equal(calls.length, 1);
+});
+for (const method of ['revealEmail', 'deleteEmail']) test(`explicit retries on ${method} fail before transmission`, async () => {
+  let calls = 0;
+  const api = new sdk.EmailsApi(new sdk.Configuration({ fetchApi: async () => { calls++; throw Error('Must not send'); } }));
+  assert(await rejection(api[method]({ email: 'synthetic@example.invalid' }, { retry: { maxRetries: 1 } })) instanceof sdk.ReaconRetryPolicyError);
+  assert.equal(calls, 0);
+});
+test('global safe retries never replay billable GET or DELETE after an accepted request loses its response', async () => {
+  for (const method of ['revealEmail', 'deleteEmail']) {
+    const before = counts.get('lost-response') ?? 0;
+    const api = new sdk.EmailsApi(config('lost-response', { safeRetries: { maxRetries: 3, baseDelayMs: 1, maxDelayMs: 4 } }));
+    assert(await rejection(api[method]({ email: 'synthetic@example.invalid' })) instanceof sdk.ReaconTransportError);
+    assert.equal(counts.get('lost-response') - before, 1);
+  }
+});

@@ -1,5 +1,5 @@
-import { RequestOptions, fetchWithRequestPolicy, isReaconRequestError, responseErrorBody, responseErrorCode, responseJson } from './Http.js';
-export { RequestOptions, ReaconRequestTimeoutError, ReaconRequestAbortedError, ReaconTransportError, ReaconResponseDecodeError } from './Http.js';
+import { RequestOptions, RetryOptions, fetchWithRequestPolicy, isReaconRequestError, responseErrorBody, responseErrorCode, responseJson } from './Http.js';
+export { RequestOptions, RetryOptions, ReaconRetryPolicyError, ReaconRequestTimeoutError, ReaconRequestAbortedError, ReaconTransportError, ReaconResponseDecodeError } from './Http.js';
 /* tslint:disable */
 /* eslint-disable */
 /**
@@ -17,6 +17,8 @@ export { RequestOptions, ReaconRequestTimeoutError, ReaconRequestAbortedError, R
 export const BASE_PATH = "https://api.reacon.io".replace(/\/+$/, "");
 
 export interface ConfigurationParameters {
+    /** Opt-in bounded retries on audited reads only. Other operations remain single-attempt. */
+    safeRetries?: RetryOptions;
     /** Total network deadline through body reads; defaults to 30000 milliseconds. */
     requestTimeoutMs?: number;
     basePath?: string; // override base path
@@ -43,6 +45,8 @@ export class Configuration {
     }
 
     get requestTimeoutMs(): number { return this.configuration.requestTimeoutMs ?? 30_000; }
+
+    get safeRetries(): RetryOptions | undefined { return this.configuration.safeRetries; }
 
     get fetchApi(): FetchAPI | undefined {
         return this.configuration.fetchApi;
@@ -208,7 +212,7 @@ export class BaseAPI {
         }
         let response: Response | undefined = undefined;
         try {
-            response = await fetchWithRequestPolicy(this.configuration.fetchApi || fetch, fetchParams.url, fetchParams.init, this.configuration.requestTimeoutMs);
+            response = await fetchWithRequestPolicy(this.configuration.fetchApi || fetch, fetchParams.url, fetchParams.init, this.configuration.requestTimeoutMs, this.configuration.safeRetries);
         } catch (e) {
             for (const middleware of this.middleware) {
                 if (middleware.onError) {
