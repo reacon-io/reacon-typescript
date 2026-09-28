@@ -900,8 +900,31 @@ metadata = email.parser.BytesParser().parsebytes(data)
 if len(metadata.get_all('Name', [])) != 1 or len(metadata.get_all('Version', [])) != 1: raise ValueError('Ambiguous metadata')
 print(json.dumps({'name': metadata['Name'], 'version': metadata['Version']}))
 `;
-function nativePackageUploader({ family, toolPath, getCredentials, runProcess = runPublisherProcess }) {
+function nativePackageUploader({
+  family,
+  toolPath,
+  getCredentials,
+  runProcess = runPublisherProcess,
+  npmBootstrap: npmBootstrap2 = false,
+  fetchImpl = fetch
+}) {
   if (!["typescript", "python"].includes(family) || typeof toolPath !== "string" || !isAbsolute(toolPath)) throw new Error("Explicit publisher tool path is required");
+  if (typeof npmBootstrap2 !== "boolean" || npmBootstrap2 && family !== "typescript") throw new Error("Bootstrap is explicit and npm-only");
+  async function assertNewNpmPackage() {
+    let response;
+    try {
+      response = await fetchImpl("https://registry.npmjs.org/@reacon-io%2fsdk", {
+        method: "GET",
+        redirect: "error",
+        signal: AbortSignal.timeout(15e3),
+        headers: { Accept: "application/json" }
+      });
+    } catch {
+      throw new Error("Cannot establish npm package absence for bootstrap");
+    }
+    await response.body?.cancel();
+    if (response.status !== 404) throw new Error("Bootstrap requires an absent npm package, not merely an absent version");
+  }
   async function execute({ identity: identity2, bytes, assertCurrentIntent }, publish) {
     if (publish && typeof assertCurrentIntent !== "function") throw new Error("Native publication requires a current durable-intent verifier");
     const filename = family === "typescript" ? `reacon-io-sdk-${identity2.version}.tgz` : identity2.filename;
@@ -971,10 +994,24 @@ function nativePackageUploader({ family, toolPath, getCredentials, runProcess = 
       if (typeof getCredentials !== "function") throw new Error("Explicit publication credentials are required");
       const credentials = await getCredentials({ registry: identity2.registry, packageName: identity2.packageName });
       const repository = family === "typescript" ? "reacon-io/reacon-typescript" : "reacon-io/reacon-python";
-      if (credentials.kind !== "github-oidc" || !credentials.environment || Object.keys(credentials.environment).some((key2) => !OIDC_KEYS.includes(key2)) || credentials.environment.GITHUB_REPOSITORY !== repository || credentials.environment.GITHUB_ACTIONS !== "true" || credentials.environment.RUNNER_ENVIRONMENT !== "github-hosted" || credentials.environment.GITHUB_REF !== "refs/heads/main" || credentials.environment.GITHUB_WORKFLOW_REF !== `${repository}/.github/workflows/publish.yml@refs/heads/main` || credentials.environment.GITHUB_SERVER_URL !== "https://github.com" || !credentials.environment.ACTIONS_ID_TOKEN_REQUEST_TOKEN || !credentials.environment.ACTIONS_ID_TOKEN_REQUEST_URL) throw new Error("Publication requires the company workflow OIDC environment");
+      if (credentials.kind !== (npmBootstrap2 ? "github-oidc-npm-bootstrap" : "github-oidc") || !credentials.environment || Object.keys(credentials.environment).some((key2) => !OIDC_KEYS.includes(key2)) || credentials.environment.GITHUB_REPOSITORY !== repository || credentials.environment.GITHUB_ACTIONS !== "true" || credentials.environment.RUNNER_ENVIRONMENT !== "github-hosted" || credentials.environment.GITHUB_REF !== "refs/heads/main" || credentials.environment.GITHUB_WORKFLOW_REF !== `${repository}/.github/workflows/publish.yml@refs/heads/main` || credentials.environment.GITHUB_SERVER_URL !== "https://github.com" || !credentials.environment.ACTIONS_ID_TOKEN_REQUEST_TOKEN || !credentials.environment.ACTIONS_ID_TOKEN_REQUEST_URL) throw new Error("Publication requires the company workflow OIDC environment");
       const requestUrl = new URL(credentials.environment.ACTIONS_ID_TOKEN_REQUEST_URL);
       if (requestUrl.protocol !== "https:" || !requestUrl.hostname.endsWith(".actions.githubusercontent.com") || requestUrl.port || requestUrl.username || requestUrl.password || requestUrl.hash) throw new Error("Unexpected GitHub OIDC endpoint");
       Object.assign(env, credentials.environment);
+      if (npmBootstrap2) {
+        if (!/^\d+\.\d+\.\d+-(?:alpha|beta|rc)\.\d+$/.test(identity2.version) || typeof credentials.token !== "string" || !/^npm_[A-Za-z0-9]{30,500}$/.test(credentials.token))
+          throw new Error("Initial npm registration requires a prerelease and explicit bootstrap credential");
+        await assertNewNpmPackage();
+        env.REACON_NPM_BOOTSTRAP_TOKEN = credentials.token;
+        await writeFile(
+          env.NPM_CONFIG_USERCONFIG,
+          "//registry.npmjs.org/:_authToken=${REACON_NPM_BOOTSTRAP_TOKEN}\n",
+          { mode: 384 }
+        );
+        if ((await run(["whoami", "--registry", NPM_REGISTRY])).trim() !== "reacon-achazal")
+          throw new Error("Bootstrap credential must belong to the dedicated Reacon work account");
+        await assertNewNpmPackage();
+      }
       await assertCurrentIntent();
       if (family === "typescript") {
         await run([
@@ -1388,6 +1425,10 @@ async function runNpmPublicationWorker({
 
 // sdk-generation/ci/publisher/publish-npm.mjs
 var directory = dirname2(fileURLToPath2(import.meta.url));
+var npmBootstrap = process.env.REACON_NPM_BOOTSTRAP === "true";
+var bootstrapToken = process.env.REACON_NPM_BOOTSTRAP_TOKEN;
+delete process.env.REACON_NPM_BOOTSTRAP_TOKEN;
+if (npmBootstrap ? !bootstrapToken : Boolean(bootstrapToken)) throw new Error("Explicit first-registration mode and credential must agree");
 var configuration = JSON.parse(await readFile(join4(directory, "configuration.json")));
 var identity = await githubPublisherIdentity({ configuration, environment: process.env, tokenProvider: () => getIDToken() });
 await mkdir4("sdk-release-results", { recursive: true });
@@ -1419,24 +1460,29 @@ try {
   const uploader = nativePackageUploader({
     family: "typescript",
     toolPath: process.env.REACON_NPM_CLI,
-    getCredentials: async () => ({ kind: "github-oidc", environment: Object.fromEntries([
-      "ACTIONS_ID_TOKEN_REQUEST_URL",
-      "ACTIONS_ID_TOKEN_REQUEST_TOKEN",
-      "GITHUB_ACTIONS",
-      "GITHUB_REPOSITORY",
-      "GITHUB_REPOSITORY_ID",
-      "GITHUB_REPOSITORY_OWNER",
-      "GITHUB_REPOSITORY_OWNER_ID",
-      "GITHUB_SERVER_URL",
-      "GITHUB_API_URL",
-      "GITHUB_REF",
-      "GITHUB_SHA",
-      "GITHUB_RUN_ID",
-      "GITHUB_RUN_ATTEMPT",
-      "GITHUB_WORKFLOW_REF",
-      "GITHUB_WORKFLOW_SHA",
-      "RUNNER_ENVIRONMENT"
-    ].filter((name) => process.env[name] !== void 0).map((name) => [name, process.env[name]])) })
+    npmBootstrap,
+    getCredentials: async () => ({
+      kind: npmBootstrap ? "github-oidc-npm-bootstrap" : "github-oidc",
+      ...npmBootstrap ? { token: bootstrapToken } : {},
+      environment: Object.fromEntries([
+        "ACTIONS_ID_TOKEN_REQUEST_URL",
+        "ACTIONS_ID_TOKEN_REQUEST_TOKEN",
+        "GITHUB_ACTIONS",
+        "GITHUB_REPOSITORY",
+        "GITHUB_REPOSITORY_ID",
+        "GITHUB_REPOSITORY_OWNER",
+        "GITHUB_REPOSITORY_OWNER_ID",
+        "GITHUB_SERVER_URL",
+        "GITHUB_API_URL",
+        "GITHUB_REF",
+        "GITHUB_SHA",
+        "GITHUB_RUN_ID",
+        "GITHUB_RUN_ATTEMPT",
+        "GITHUB_WORKFLOW_REF",
+        "GITHUB_WORKFLOW_SHA",
+        "RUNNER_ENVIRONMENT"
+      ].filter((name) => process.env[name] !== void 0).map((name) => [name, process.env[name]]))
+    })
   });
   const report = await runNpmPublicationWorker({
     identity,
@@ -1470,10 +1516,11 @@ try {
       };
     }
   });
-  await writeFile2("sdk-release-results/publication.json", JSON.stringify(report, null, 2) + "\n");
+  await writeFile2("sdk-release-results/publication.json", JSON.stringify({ ...report, npmBootstrap }, null, 2) + "\n");
   if (!report.packagePublished) throw new Error("npm outcome requires coordinator reconciliation; no automatic retry");
   console.log("Exact npm package observed. Coordinator must verify installation and update the release ledger.");
 } finally {
+  bootstrapToken = void 0;
   await store?.close();
   key.fill(0);
   await rm4(temporary, { recursive: true, force: true });
