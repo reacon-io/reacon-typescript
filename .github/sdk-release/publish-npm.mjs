@@ -551,15 +551,24 @@ async function defaultRunGit(args, input, env) {
   const { spawn: spawn2 } = await import("node:child_process");
   return await new Promise((resolveRun, reject) => {
     const child = spawn2("/usr/bin/git", args, { env, stdio: ["pipe", "pipe", "pipe"] });
-    const timeout = setTimeout(() => child.kill("SIGTERM"), 3e4);
+    let timedOut = false;
+    const timeout = setTimeout(() => {
+      timedOut = true;
+      child.kill("SIGTERM");
+    }, 3e4);
     const chunks = [];
     let size = 0;
+    const diagnostics = [];
+    let diagnosticSize = 0;
     child.stdout.on("data", (chunk) => {
       size += chunk.length;
       if (size > 16 * 1024 * 1024) child.kill("SIGTERM");
       else chunks.push(chunk);
     });
-    child.stderr.resume();
+    child.stderr.on("data", (chunk) => {
+      diagnosticSize += chunk.length;
+      if (diagnosticSize <= 16384) diagnostics.push(chunk);
+    });
     child.stdin.on("error", () => {
     });
     child.once("error", () => {
@@ -568,7 +577,10 @@ async function defaultRunGit(args, input, env) {
     });
     child.once("close", (code) => {
       clearTimeout(timeout);
-      code === 0 && size <= 16 * 1024 * 1024 ? resolveRun(Buffer.concat(chunks)) : reject(new Error("Git state command failed"));
+      if (code === 0 && size <= 16 * 1024 * 1024) return resolveRun(Buffer.concat(chunks));
+      const detail = Buffer.concat(diagnostics).toString("utf8");
+      const category = timedOut ? "timeout" : /authentication failed|invalid username|could not read Username|error: 401|error: 403/i.test(detail) ? "authentication" : /Could not resolve host/i.test(detail) ? "dns" : /SSL certificate|certificate verify/i.test(detail) ? "tls" : /RPC failed|HTTP\/2|remote end hung up|connection reset|Failed to connect|error: 50[234]/i.test(detail) ? "transport" : "other";
+      reject(new Error(`Git state command failed (${category})`));
     });
     child.stdin.end(input);
   });
@@ -875,6 +887,7 @@ var OIDC_KEYS = [
   "GITHUB_RUN_ATTEMPT",
   "GITHUB_WORKFLOW_REF",
   "GITHUB_WORKFLOW_SHA",
+  "GITHUB_EVENT_NAME",
   "RUNNER_ENVIRONMENT"
 ];
 var NPM_METADATA = String.raw`
@@ -959,7 +972,11 @@ function nativePackageUploader({
         try {
           return await runProcess({ command, args: [...prefix, ...args], cwd: directory2, env });
         } catch (error) {
-          error.publicationDiagnostic = { stage: args[0], code: error.publisherCode ?? null };
+          error.publicationDiagnostic = {
+            stage: args[0],
+            code: error.publisherCode ?? null,
+            ...error.publisherSummary ? { summary: error.publisherSummary } : {}
+          };
           throw error;
         }
       };
@@ -1002,7 +1019,7 @@ function nativePackageUploader({
       if (typeof getCredentials !== "function") throw new Error("Explicit publication credentials are required");
       const credentials = await getCredentials({ registry: identity2.registry, packageName: identity2.packageName });
       const repository = family === "typescript" ? "reacon-io/reacon-typescript" : "reacon-io/reacon-python";
-      if (credentials.kind !== (npmBootstrap2 ? "github-oidc-npm-bootstrap" : "github-oidc") || !credentials.environment || Object.keys(credentials.environment).some((key2) => !OIDC_KEYS.includes(key2)) || credentials.environment.GITHUB_REPOSITORY !== repository || credentials.environment.GITHUB_ACTIONS !== "true" || credentials.environment.RUNNER_ENVIRONMENT !== "github-hosted" || credentials.environment.GITHUB_REF !== "refs/heads/main" || credentials.environment.GITHUB_WORKFLOW_REF !== `${repository}/.github/workflows/publish.yml@refs/heads/main` || credentials.environment.GITHUB_SERVER_URL !== "https://github.com" || !credentials.environment.ACTIONS_ID_TOKEN_REQUEST_TOKEN || !credentials.environment.ACTIONS_ID_TOKEN_REQUEST_URL) throw new Error("Publication requires the company workflow OIDC environment");
+      if (credentials.kind !== (npmBootstrap2 ? "github-oidc-npm-bootstrap" : "github-oidc") || !credentials.environment || Object.keys(credentials.environment).some((key2) => !OIDC_KEYS.includes(key2)) || credentials.environment.GITHUB_REPOSITORY !== repository || credentials.environment.GITHUB_ACTIONS !== "true" || credentials.environment.RUNNER_ENVIRONMENT !== "github-hosted" || credentials.environment.GITHUB_REF !== "refs/heads/main" || credentials.environment.GITHUB_EVENT_NAME !== "workflow_dispatch" || credentials.environment.GITHUB_WORKFLOW_REF !== `${repository}/.github/workflows/publish.yml@refs/heads/main` || credentials.environment.GITHUB_SERVER_URL !== "https://github.com" || !credentials.environment.ACTIONS_ID_TOKEN_REQUEST_TOKEN || !credentials.environment.ACTIONS_ID_TOKEN_REQUEST_URL) throw new Error("Publication requires the company workflow OIDC environment");
       const requestUrl = new URL(credentials.environment.ACTIONS_ID_TOKEN_REQUEST_URL);
       if (requestUrl.protocol !== "https:" || !requestUrl.hostname.endsWith(".actions.githubusercontent.com") || requestUrl.port || requestUrl.username || requestUrl.password || requestUrl.hash) throw new Error("Unexpected GitHub OIDC endpoint");
       Object.assign(env, credentials.environment);
@@ -1076,8 +1093,14 @@ async function runPublisherProcess({ command, args, cwd, env }) {
       clearTimeout(killTimer);
       const error = new Error("Native publisher command failed; details suppressed to protect credentials");
       try {
-        const code = JSON.parse(Buffer.concat(chunks).toString("utf8")).error?.code;
+        const diagnostic = JSON.parse(Buffer.concat(chunks).toString("utf8")).error;
+        const code = diagnostic?.code;
         if (["E401", "E403", "E404", "EOTP", "ENEEDAUTH", "EUSAGE", "EUNPROCESSABLE", "E422", "E409", "EPUBLISHCONFLICT", "EINTEGRITY", "EPRIVATE", "EINVALIDPROVENANCE"].includes(code)) error.publisherCode = code;
+        if (error.publisherCode && typeof diagnostic.summary === "string") {
+          let summary = diagnostic.summary;
+          for (const [name, value] of Object.entries(env)) if (/TOKEN|PASSWORD|SECRET/i.test(name) && value) summary = summary.split(value).join("[redacted]");
+          error.publisherSummary = summary.replace(/https?:\/\/\S+/g, "[url]").replace(/(?:npm_|gh[sopur]_)[A-Za-z0-9_]+/g, "[redacted]").replace(/eyJ[A-Za-z0-9_.-]+/g, "[redacted]").replace(/[A-Za-z0-9_+/=-]{40,}/g, "[redacted]").slice(0, 1e3);
+        }
       } catch {
       }
       reject(error);
@@ -1504,6 +1527,7 @@ try {
         "GITHUB_RUN_ATTEMPT",
         "GITHUB_WORKFLOW_REF",
         "GITHUB_WORKFLOW_SHA",
+        "GITHUB_EVENT_NAME",
         "RUNNER_ENVIRONMENT"
       ].filter((name) => process.env[name] !== void 0).map((name) => [name, process.env[name]]))
     })
