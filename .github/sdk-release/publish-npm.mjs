@@ -1300,8 +1300,8 @@ async function runNpmPublicationWorker({
     release = snapshot.state.releases[releaseId];
     pkg = release?.packages.typescript;
     unit = pkg?.units?.npm;
-    if (snapshot.state.activeReleaseId !== releaseId || !release || release.superseded || releasePhase(release) === "collision" || FAMILIES2.some((family) => !release.packages[family]?.testEvidenceSha256) || !unit || !release.compatibility || Date.parse(release.compatibility.expiresAt) <= Date.parse(now())) {
-      throw new Error("Coordinator has not qualified an active, compatible release");
+    if (snapshot.state.activeReleaseId !== releaseId || !release || release.superseded || releasePhase(release) === "collision" || !pkg?.testEvidenceSha256 || !unit || !release.compatibility || Date.parse(release.compatibility.expiresAt) <= Date.parse(now())) {
+      throw new Error("Coordinator has not qualified an active, compatible TypeScript candidate");
     }
     const attempt = unit.attempts.at(-1);
     if (attempt?.attemptId === attemptId && attempt.runId === identity2.workerId && !attempt.stoppedEvidenceSha256) {
