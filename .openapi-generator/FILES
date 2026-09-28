@@ -140,6 +140,7 @@ src/models/InspectExcelWorkbookRequest.ts
 src/models/InspectGoogleSheetRequest.ts
 src/models/IntegrationCapabilityResponse.ts
 src/models/IntegrationCapabilityResponseOutput.ts
+src/models/IntegrationCapabilityResponseOutputNonNull.ts
 src/models/IntegrationConnection.ts
 src/models/IntegrationConnectionHealth.ts
 src/models/IntegrationConnectionList.ts
