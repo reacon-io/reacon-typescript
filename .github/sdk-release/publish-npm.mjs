@@ -600,7 +600,8 @@ function appJwt(clientId, privateKey, now = Date.now()) {
   return `${input}.${sign("RSA-SHA256", Buffer.from(input), key2).toString("base64url")}`;
 }
 async function githubRequest(fetchImpl, token, path, { method = "GET", body, expectedStatus = 200 } = {}) {
-  if (!/^\/[A-Za-z0-9_/?=&.-]+$/.test(path) || path.startsWith("//") || path.includes("..")) throw new Error("Invalid GitHub API path");
+  const validatedPath = path.replace(/(\/compare\/[a-f0-9]{40})\.\.\.([a-f0-9]{40})(?=\?|$)/, "$1-to-$2");
+  if (!/^\/[A-Za-z0-9_/?=&.-]+$/.test(path) || path.startsWith("//") || validatedPath.includes("..")) throw new Error("Invalid GitHub API path");
   let response;
   try {
     response = await fetchImpl(`${API}${path}`, {
@@ -954,7 +955,14 @@ function nativePackageUploader({
       await writeFile(env.NPM_CONFIG_GLOBALCONFIG, "", { mode: 384 });
       const command = family === "typescript" ? process.execPath : tool;
       const prefix = family === "typescript" ? [tool] : ["-I", "-m", "twine"];
-      const run = (args) => runProcess({ command, args: [...prefix, ...args], cwd: directory2, env });
+      const run = async (args) => {
+        try {
+          return await runProcess({ command, args: [...prefix, ...args], cwd: directory2, env });
+        } catch (error) {
+          error.publicationDiagnostic = { stage: args[0], code: error.publisherCode ?? null };
+          throw error;
+        }
+      };
       const version = (await run(["--version"])).trim();
       if (family === "typescript" ? version !== PUBLISHER_VERSIONS.npm : !version.startsWith(`twine version ${PUBLISHER_VERSIONS.twine} `)) throw new Error("Publisher tool version differs from the pinned toolchain");
       if (family === "typescript") {
@@ -1066,7 +1074,13 @@ async function runPublisherProcess({ command, args, cwd, env }) {
     const fail = () => {
       clearTimeout(timer);
       clearTimeout(killTimer);
-      reject(new Error("Native publisher command failed; details suppressed to protect credentials"));
+      const error = new Error("Native publisher command failed; details suppressed to protect credentials");
+      try {
+        const code = JSON.parse(Buffer.concat(chunks).toString("utf8")).error?.code;
+        if (["E401", "E403", "E404", "EOTP", "ENEEDAUTH", "EUSAGE", "EUNPROCESSABLE", "E422", "E409", "EPUBLISHCONFLICT", "EINTEGRITY", "EPRIVATE", "EINVALIDPROVENANCE"].includes(code)) error.publisherCode = code;
+      } catch {
+      }
+      reject(error);
     };
     child.once("error", fail);
     child.once("close", (code) => {
@@ -1387,14 +1401,23 @@ async function runNpmPublicationWorker({
     }
   });
   const before = await registry.inspect(subject);
-  let uploadAttempted = false, uploadReturned = false;
+  let uploadAttempted = false, uploadReturned = false, uploadFailure = null;
   if (before.status === "found" && before.identitySha256 !== expected.identitySha256) throw new Error("npm version collision; nothing uploaded");
   if (before.status === "absent" && unit.state === "publishing") {
     uploadAttempted = true;
     try {
       await registry.publish(subject);
       uploadReturned = true;
-    } catch {
+    } catch (error) {
+      const known = [
+        "Git state command failed",
+        "GitHub state token revocation failed; stop and reconcile",
+        "No current durable publication intent",
+        "npm would publish a different package identity",
+        "Bootstrap credential must belong to the dedicated Reacon work account",
+        "Initial npm registration requires a prerelease and explicit bootstrap credential"
+      ];
+      uploadFailure = error.publicationDiagnostic ?? { stage: "upload", reason: known.includes(error.message) ? error.message : "Unrecognized upload error; details suppressed" };
     }
   }
   const after = uploadAttempted ? await registry.inspect(subject) : before;
@@ -1415,6 +1438,7 @@ async function runNpmPublicationWorker({
     ciArtifact: loaded.ciArtifact,
     uploadAttempted,
     uploadReturned,
+    uploadFailure,
     before,
     after,
     packagePublished: after.status === "found" && after.identitySha256 === expected.identitySha256,
