@@ -30,7 +30,7 @@ export interface MailGetTrackingDomainResponse200 {
     /**
      * 
      */
-    domain: MailGetTrackingDomainResponse200Domain;
+    domain: MailGetTrackingDomainResponse200Domain | null;
 }
 
 /**

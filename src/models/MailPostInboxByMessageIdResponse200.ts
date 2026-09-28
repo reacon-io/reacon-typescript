@@ -30,7 +30,7 @@ export interface MailPostInboxByMessageIdResponse200 {
     /**
      * 
      */
-    message: MailPostInboxByMessageIdResponse200Message;
+    message: MailPostInboxByMessageIdResponse200Message | null;
 }
 
 /**

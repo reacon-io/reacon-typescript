@@ -119,7 +119,7 @@ export interface DomainsApiInterface {
     getDomainCountsRequestOpts(requestParameters: GetDomainCountsRequest): Promise<runtime.RequestOpts>;
 
     /**
-     * Returns personal, generic and total email counts for the domain. Authenticate with X-API-Key.
+     * Returns personal, generic and total known email counts for the domain. Authenticate with X-API-Key. This endpoint reports counts only; it does not reveal email addresses. The recorded example uses a reserved example.invalid domain with zero known emails.
      * @summary Count known emails for a domain
      * @param {string} domain 
      * @param {*} [options] Override http request option.
@@ -129,7 +129,7 @@ export interface DomainsApiInterface {
     getDomainCountsRaw(requestParameters: GetDomainCountsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCounts>>;
 
     /**
-     * Returns personal, generic and total email counts for the domain. Authenticate with X-API-Key.
+     * Returns personal, generic and total known email counts for the domain. Authenticate with X-API-Key. This endpoint reports counts only; it does not reveal email addresses. The recorded example uses a reserved example.invalid domain with zero known emails.
      * Count known emails for a domain
      */
     getDomainCounts(requestParameters: GetDomainCountsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<DomainCounts>;
@@ -275,7 +275,7 @@ export class DomainsApi extends runtime.BaseAPI implements DomainsApiInterface {
     }
 
     /**
-     * Returns personal, generic and total email counts for the domain. Authenticate with X-API-Key.
+     * Returns personal, generic and total known email counts for the domain. Authenticate with X-API-Key. This endpoint reports counts only; it does not reveal email addresses. The recorded example uses a reserved example.invalid domain with zero known emails.
      * Count known emails for a domain
      */
     async getDomainCountsRaw(requestParameters: GetDomainCountsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCounts>> {
@@ -286,7 +286,7 @@ export class DomainsApi extends runtime.BaseAPI implements DomainsApiInterface {
     }
 
     /**
-     * Returns personal, generic and total email counts for the domain. Authenticate with X-API-Key.
+     * Returns personal, generic and total known email counts for the domain. Authenticate with X-API-Key. This endpoint reports counts only; it does not reveal email addresses. The recorded example uses a reserved example.invalid domain with zero known emails.
      * Count known emails for a domain
      */
     async getDomainCounts(requestParameters: GetDomainCountsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<DomainCounts> {
