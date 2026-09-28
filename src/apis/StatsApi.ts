@@ -45,13 +45,13 @@ export interface StatsApiInterface {
      * @throws {RequiredError}
      * @memberof StatsApiInterface
      */
-    getStatsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicStats>>;
+    getStatsRaw(initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicStats>>;
 
     /**
      * Returns email and mention counts plus the actions version. This endpoint does not require authentication.
      * Get public dataset statistics
      */
-    getStats(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicStats>;
+    getStats(initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<PublicStats>;
 
 }
 
@@ -83,7 +83,7 @@ export class StatsApi extends runtime.BaseAPI implements StatsApiInterface {
      * Returns email and mention counts plus the actions version. This endpoint does not require authentication.
      * Get public dataset statistics
      */
-    async getStatsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicStats>> {
+    async getStatsRaw(initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicStats>> {
         const requestOptions = await this.getStatsRequestOpts();
         const response = await this.request(requestOptions, initOverrides);
 
@@ -94,7 +94,7 @@ export class StatsApi extends runtime.BaseAPI implements StatsApiInterface {
      * Returns email and mention counts plus the actions version. This endpoint does not require authentication.
      * Get public dataset statistics
      */
-    async getStats(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicStats> {
+    async getStats(initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<PublicStats> {
         const response = await this.getStatsRaw(initOverrides);
         return await response.value();
     }

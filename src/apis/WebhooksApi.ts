@@ -90,13 +90,13 @@ export interface WebhooksApiInterface {
      * @throws {RequiredError}
      * @memberof WebhooksApiInterface
      */
-    createAutomationHookRaw(requestParameters: CreateAutomationHookOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationHookCreated>>;
+    createAutomationHookRaw(requestParameters: CreateAutomationHookOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationHookCreated>>;
 
     /**
      * Creates an event subscription for the API key team. The signing secret is returned on creation; store it securely and exclude it from logs and documentation recordings.
      * Create an automation webhook
      */
-    createAutomationHook(requestParameters: CreateAutomationHookOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationHookCreated>;
+    createAutomationHook(requestParameters: CreateAutomationHookOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<AutomationHookCreated>;
 
     /**
      * Creates request options for createSegmentInstallation without sending the request
@@ -114,13 +114,13 @@ export interface WebhooksApiInterface {
      * @throws {RequiredError}
      * @memberof WebhooksApiInterface
      */
-    createSegmentInstallationRaw(requestParameters: CreateSegmentInstallationOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentInstallationCreated>>;
+    createSegmentInstallationRaw(requestParameters: CreateSegmentInstallationOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentInstallationCreated>>;
 
     /**
      * Creates a signing identity for Segment-origin requests. The response contains a secret and is marked Cache-Control: no-store. Store the secret securely and redact it from recordings.
      * Create a Segment origin installation
      */
-    createSegmentInstallation(requestParameters: CreateSegmentInstallationOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentInstallationCreated>;
+    createSegmentInstallation(requestParameters: CreateSegmentInstallationOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<SegmentInstallationCreated>;
 
     /**
      * Creates request options for deleteAutomationHook without sending the request
@@ -138,13 +138,13 @@ export interface WebhooksApiInterface {
      * @throws {RequiredError}
      * @memberof WebhooksApiInterface
      */
-    deleteAutomationHookRaw(requestParameters: DeleteAutomationHookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    deleteAutomationHookRaw(requestParameters: DeleteAutomationHookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
 
     /**
      * Deletes a subscription in the API key team. Returns 204 without a body or 404 if no subscription matches.
      * Delete an automation webhook
      */
-    deleteAutomationHook(requestParameters: DeleteAutomationHookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    deleteAutomationHook(requestParameters: DeleteAutomationHookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<void>;
 
     /**
      * Creates request options for deleteSegmentInstallation without sending the request
@@ -162,13 +162,13 @@ export interface WebhooksApiInterface {
      * @throws {RequiredError}
      * @memberof WebhooksApiInterface
      */
-    deleteSegmentInstallationRaw(requestParameters: DeleteSegmentInstallationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    deleteSegmentInstallationRaw(requestParameters: DeleteSegmentInstallationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
 
     /**
      * Deletes the installation within the API key team. Returns 204 with no body or 404 if no installation matches.
      * Delete a Segment origin installation
      */
-    deleteSegmentInstallation(requestParameters: DeleteSegmentInstallationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    deleteSegmentInstallation(requestParameters: DeleteSegmentInstallationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<void>;
 
 }
 
@@ -214,7 +214,7 @@ export class WebhooksApi extends runtime.BaseAPI implements WebhooksApiInterface
      * Creates an event subscription for the API key team. The signing secret is returned on creation; store it securely and exclude it from logs and documentation recordings.
      * Create an automation webhook
      */
-    async createAutomationHookRaw(requestParameters: CreateAutomationHookOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationHookCreated>> {
+    async createAutomationHookRaw(requestParameters: CreateAutomationHookOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationHookCreated>> {
         const requestOptions = await this.createAutomationHookRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -225,7 +225,7 @@ export class WebhooksApi extends runtime.BaseAPI implements WebhooksApiInterface
      * Creates an event subscription for the API key team. The signing secret is returned on creation; store it securely and exclude it from logs and documentation recordings.
      * Create an automation webhook
      */
-    async createAutomationHook(requestParameters: CreateAutomationHookOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationHookCreated> {
+    async createAutomationHook(requestParameters: CreateAutomationHookOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<AutomationHookCreated> {
         const response = await this.createAutomationHookRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -267,7 +267,7 @@ export class WebhooksApi extends runtime.BaseAPI implements WebhooksApiInterface
      * Creates a signing identity for Segment-origin requests. The response contains a secret and is marked Cache-Control: no-store. Store the secret securely and redact it from recordings.
      * Create a Segment origin installation
      */
-    async createSegmentInstallationRaw(requestParameters: CreateSegmentInstallationOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentInstallationCreated>> {
+    async createSegmentInstallationRaw(requestParameters: CreateSegmentInstallationOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentInstallationCreated>> {
         const requestOptions = await this.createSegmentInstallationRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -278,7 +278,7 @@ export class WebhooksApi extends runtime.BaseAPI implements WebhooksApiInterface
      * Creates a signing identity for Segment-origin requests. The response contains a secret and is marked Cache-Control: no-store. Store the secret securely and redact it from recordings.
      * Create a Segment origin installation
      */
-    async createSegmentInstallation(requestParameters: CreateSegmentInstallationOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentInstallationCreated> {
+    async createSegmentInstallation(requestParameters: CreateSegmentInstallationOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<SegmentInstallationCreated> {
         const response = await this.createSegmentInstallationRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -318,7 +318,7 @@ export class WebhooksApi extends runtime.BaseAPI implements WebhooksApiInterface
      * Deletes a subscription in the API key team. Returns 204 without a body or 404 if no subscription matches.
      * Delete an automation webhook
      */
-    async deleteAutomationHookRaw(requestParameters: DeleteAutomationHookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async deleteAutomationHookRaw(requestParameters: DeleteAutomationHookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const requestOptions = await this.deleteAutomationHookRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -329,7 +329,7 @@ export class WebhooksApi extends runtime.BaseAPI implements WebhooksApiInterface
      * Deletes a subscription in the API key team. Returns 204 without a body or 404 if no subscription matches.
      * Delete an automation webhook
      */
-    async deleteAutomationHook(requestParameters: DeleteAutomationHookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    async deleteAutomationHook(requestParameters: DeleteAutomationHookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteAutomationHookRaw(requestParameters, initOverrides);
     }
 
@@ -368,7 +368,7 @@ export class WebhooksApi extends runtime.BaseAPI implements WebhooksApiInterface
      * Deletes the installation within the API key team. Returns 204 with no body or 404 if no installation matches.
      * Delete a Segment origin installation
      */
-    async deleteSegmentInstallationRaw(requestParameters: DeleteSegmentInstallationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async deleteSegmentInstallationRaw(requestParameters: DeleteSegmentInstallationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const requestOptions = await this.deleteSegmentInstallationRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -379,7 +379,7 @@ export class WebhooksApi extends runtime.BaseAPI implements WebhooksApiInterface
      * Deletes the installation within the API key team. Returns 204 with no body or 404 if no installation matches.
      * Delete a Segment origin installation
      */
-    async deleteSegmentInstallation(requestParameters: DeleteSegmentInstallationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    async deleteSegmentInstallation(requestParameters: DeleteSegmentInstallationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteSegmentInstallationRaw(requestParameters, initOverrides);
     }
 

@@ -1795,13 +1795,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    addMailPortfolioTeamRaw(requestParameters: AddMailPortfolioTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioTeamsResponse200>>;
+    addMailPortfolioTeamRaw(requestParameters: AddMailPortfolioTeamRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioTeamsResponse200>>;
 
     /**
      * Adds a target team to the portfolio. The actor must also be an administrator of the target team. Requires team OWNER or ADMIN membership.
      * Add a team to a portfolio
      */
-    addMailPortfolioTeam(requestParameters: AddMailPortfolioTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostPortfolioTeamsResponse200>;
+    addMailPortfolioTeam(requestParameters: AddMailPortfolioTeamRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostPortfolioTeamsResponse200>;
 
     /**
      * Creates request options for archiveMailExperiment without sending the request
@@ -1821,13 +1821,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    archiveMailExperimentRaw(requestParameters: ArchiveMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyArchiveResponse200>>;
+    archiveMailExperimentRaw(requestParameters: ArchiveMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyArchiveResponse200>>;
 
     /**
      * Archives a draft, stopped or decided experiment. Requires team OWNER or ADMIN membership.
      * Archive an experiment
      */
-    archiveMailExperiment(requestParameters: ArchiveMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyArchiveResponse200>;
+    archiveMailExperiment(requestParameters: ArchiveMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyArchiveResponse200>;
 
     /**
      * Creates request options for cancelMailMessage without sending the request
@@ -1847,13 +1847,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    cancelMailMessageRaw(requestParameters: CancelMailMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMessagesByMessageIdCancelResponse200>>;
+    cancelMailMessageRaw(requestParameters: CancelMailMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMessagesByMessageIdCancelResponse200>>;
 
     /**
      * Requests cancellation of a message belonging to this team. The returned message describes the resulting state; already accepted delivery cannot be undone. Requires team OWNER or ADMIN membership.
      * Cancel a queued message
      */
-    cancelMailMessage(requestParameters: CancelMailMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostMessagesByMessageIdCancelResponse200>;
+    cancelMailMessage(requestParameters: CancelMailMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostMessagesByMessageIdCancelResponse200>;
 
     /**
      * Creates request options for changeMailCadenceCampaignState without sending the request
@@ -1875,13 +1875,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    changeMailCadenceCampaignStateRaw(requestParameters: ChangeMailCadenceCampaignStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceCampaignsByCampaignIdStateResponse200>>;
+    changeMailCadenceCampaignStateRaw(requestParameters: ChangeMailCadenceCampaignStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceCampaignsByCampaignIdStateResponse200>>;
 
     /**
      * Pauses, resumes or cancels a cadence campaign and eligible runs. The response includes changed-run counts; legacy run-only campaigns can return a response without a campaign record. Requires team OWNER or ADMIN membership.
      * Change a cadence campaign state
      */
-    changeMailCadenceCampaignState(requestParameters: ChangeMailCadenceCampaignStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadenceCampaignsByCampaignIdStateResponse200>;
+    changeMailCadenceCampaignState(requestParameters: ChangeMailCadenceCampaignStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadenceCampaignsByCampaignIdStateResponse200>;
 
     /**
      * Creates request options for changeMailCadenceRunState without sending the request
@@ -1903,13 +1903,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    changeMailCadenceRunStateRaw(requestParameters: ChangeMailCadenceRunStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceRunsByRunIdStateResponse200>>;
+    changeMailCadenceRunStateRaw(requestParameters: ChangeMailCadenceRunStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceRunsByRunIdStateResponse200>>;
 
     /**
      * Pauses, resumes or cancels an eligible run. An absent run or incompatible current state can return the combined not-found/conflict error. Requires team OWNER or ADMIN membership.
      * Change a cadence run state
      */
-    changeMailCadenceRunState(requestParameters: ChangeMailCadenceRunStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadenceRunsByRunIdStateResponse200>;
+    changeMailCadenceRunState(requestParameters: ChangeMailCadenceRunStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadenceRunsByRunIdStateResponse200>;
 
     /**
      * Creates request options for changeMailCampaignState without sending the request
@@ -1931,13 +1931,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    changeMailCampaignStateRaw(requestParameters: ChangeMailCampaignStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsByCampaignIdStateResponse200>>;
+    changeMailCampaignStateRaw(requestParameters: ChangeMailCampaignStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsByCampaignIdStateResponse200>>;
 
     /**
      * Pauses, resumes or cancels the campaign using the requested action. Requires team OWNER or ADMIN membership.
      * Change a campaign state
      */
-    changeMailCampaignState(requestParameters: ChangeMailCampaignStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCampaignsByCampaignIdStateResponse200>;
+    changeMailCampaignState(requestParameters: ChangeMailCampaignStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCampaignsByCampaignIdStateResponse200>;
 
     /**
      * Creates request options for classifyMailReply without sending the request
@@ -1957,13 +1957,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    classifyMailReplyRaw(requestParameters: ClassifyMailReplyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmClassifyReplyResponse200>>;
+    classifyMailReplyRaw(requestParameters: ClassifyMailReplyRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmClassifyReplyResponse200>>;
 
     /**
      * Classifies reply text and records the resulting contact/timeline state. Optional contact references remain tenant-scoped. Requires authenticated team membership.
      * Classify a reply
      */
-    classifyMailReply(requestParameters: ClassifyMailReplyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCrmClassifyReplyResponse200>;
+    classifyMailReply(requestParameters: ClassifyMailReplyRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCrmClassifyReplyResponse200>;
 
     /**
      * Creates request options for completeMailCrmTask without sending the request
@@ -1985,13 +1985,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    completeMailCrmTaskRaw(requestParameters: CompleteMailCrmTaskRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmTasksByTaskIdCompleteResponse200>>;
+    completeMailCrmTaskRaw(requestParameters: CompleteMailCrmTaskRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmTasksByTaskIdCompleteResponse200>>;
 
     /**
      * Completes a task with the supplied outcome and optional note. The default outcome is completed. Requires authenticated team membership.
      * Complete a CRM task
      */
-    completeMailCrmTask(requestParameters: CompleteMailCrmTaskRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCrmTasksByTaskIdCompleteResponse200>;
+    completeMailCrmTask(requestParameters: CompleteMailCrmTaskRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCrmTasksByTaskIdCompleteResponse200>;
 
     /**
      * Creates request options for configureMailDeliverability without sending the request
@@ -2013,13 +2013,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    configureMailDeliverabilityRaw(requestParameters: ConfigureMailDeliverabilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdResponse200>>;
+    configureMailDeliverabilityRaw(requestParameters: ConfigureMailDeliverabilityRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdResponse200>>;
 
     /**
      * Configures ramp limits and interval. startingDailyLimit must not exceed targetDailyLimit. Requires team OWNER or ADMIN membership.
      * Configure a mailbox sending ramp
      */
-    configureMailDeliverability(requestParameters: ConfigureMailDeliverabilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdResponse200>;
+    configureMailDeliverability(requestParameters: ConfigureMailDeliverabilityRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdResponse200>;
 
     /**
      * Creates request options for configureMailTrackingDomain without sending the request
@@ -2039,13 +2039,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    configureMailTrackingDomainRaw(requestParameters: ConfigureMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTrackingDomainResponse200>>;
+    configureMailTrackingDomainRaw(requestParameters: ConfigureMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTrackingDomainResponse200>>;
 
     /**
      * Normalizes and saves a tracking domain with ownership-verification data. Complete its DNS verification before using it. Requires team OWNER or ADMIN membership.
      * Configure a tracking domain
      */
-    configureMailTrackingDomain(requestParameters: ConfigureMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostTrackingDomainResponse200>;
+    configureMailTrackingDomain(requestParameters: ConfigureMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostTrackingDomainResponse200>;
 
     /**
      * Creates request options for copyMailCadence without sending the request
@@ -2067,13 +2067,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    copyMailCadenceRaw(requestParameters: CopyMailCadenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadencesByCadenceIdCopyResponse200>>;
+    copyMailCadenceRaw(requestParameters: CopyMailCadenceRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadencesByCadenceIdCopyResponse200>>;
 
     /**
      * Copies a cadence and its referenced content using targetName. Requires administrator access in both source and target teams. Requires team OWNER or ADMIN membership.
      * Copy a cadence to another team
      */
-    copyMailCadence(requestParameters: CopyMailCadenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadencesByCadenceIdCopyResponse200>;
+    copyMailCadence(requestParameters: CopyMailCadenceRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadencesByCadenceIdCopyResponse200>;
 
     /**
      * Creates request options for copyMailTemplate without sending the request
@@ -2095,13 +2095,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    copyMailTemplateRaw(requestParameters: CopyMailTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTemplatesByTemplateIdCopyResponse200>>;
+    copyMailTemplateRaw(requestParameters: CopyMailTemplateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTemplatesByTemplateIdCopyResponse200>>;
 
     /**
      * Copies a template into targetTeamId with a new ID. The current actor must be an administrator of both source and target teams. Requires team OWNER or ADMIN membership.
      * Copy a template to another team
      */
-    copyMailTemplate(requestParameters: CopyMailTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostTemplatesByTemplateIdCopyResponse200>;
+    copyMailTemplate(requestParameters: CopyMailTemplateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostTemplatesByTemplateIdCopyResponse200>;
 
     /**
      * Creates request options for createMailCampaignDraft without sending the request
@@ -2121,13 +2121,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    createMailCampaignDraftRaw(requestParameters: CreateMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsResponse201>>;
+    createMailCampaignDraftRaw(requestParameters: CreateMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsResponse201>>;
 
     /**
      * Creates a versioned campaign draft and returns 201. Each sending window must end after it starts. Creating a draft does not launch delivery. Requires authenticated team membership.
      * Create a campaign draft
      */
-    createMailCampaignDraft(requestParameters: CreateMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCampaignsResponse201>;
+    createMailCampaignDraft(requestParameters: CreateMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCampaignsResponse201>;
 
     /**
      * Creates request options for createMailCrmNote without sending the request
@@ -2147,13 +2147,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    createMailCrmNoteRaw(requestParameters: CreateMailCrmNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmNotesResponse200>>;
+    createMailCrmNoteRaw(requestParameters: CreateMailCrmNoteRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmNotesResponse200>>;
 
     /**
      * Adds a tenant-scoped contact note and its CRM timeline event. Requires authenticated team membership.
      * Add a contact note
      */
-    createMailCrmNote(requestParameters: CreateMailCrmNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCrmNotesResponse200>;
+    createMailCrmNote(requestParameters: CreateMailCrmNoteRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCrmNotesResponse200>;
 
     /**
      * Creates request options for createMailCrmTask without sending the request
@@ -2173,13 +2173,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    createMailCrmTaskRaw(requestParameters: CreateMailCrmTaskRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmTasksResponse201>>;
+    createMailCrmTaskRaw(requestParameters: CreateMailCrmTaskRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmTasksResponse201>>;
 
     /**
      * Creates an assigned, scheduled task for a team contact and returns 201. The assignee must belong to the team. Requires authenticated team membership.
      * Create a CRM task
      */
-    createMailCrmTask(requestParameters: CreateMailCrmTaskRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCrmTasksResponse201>;
+    createMailCrmTask(requestParameters: CreateMailCrmTaskRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCrmTasksResponse201>;
 
     /**
      * Creates request options for createMailMailboxPool without sending the request
@@ -2199,13 +2199,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    createMailMailboxPoolRaw(requestParameters: CreateMailMailboxPoolRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityPoolsResponse201>>;
+    createMailMailboxPoolRaw(requestParameters: CreateMailMailboxPoolRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityPoolsResponse201>>;
 
     /**
      * Creates a round-robin or capacity-weighted sending pool and returns 201 with an initially empty member list. Requires team OWNER or ADMIN membership.
      * Create a mailbox pool
      */
-    createMailMailboxPool(requestParameters: CreateMailMailboxPoolRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityPoolsResponse201>;
+    createMailMailboxPool(requestParameters: CreateMailMailboxPoolRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityPoolsResponse201>;
 
     /**
      * Creates request options for createMailPortfolio without sending the request
@@ -2225,13 +2225,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    createMailPortfolioRaw(requestParameters: CreateMailPortfolioRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioResponse200>>;
+    createMailPortfolioRaw(requestParameters: CreateMailPortfolioRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioResponse200>>;
 
     /**
      * Creates a portfolio owned by this team. An existing portfolio returns a conflict. Requires team OWNER or ADMIN membership.
      * Create a mail portfolio
      */
-    createMailPortfolio(requestParameters: CreateMailPortfolioRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostPortfolioResponse200>;
+    createMailPortfolio(requestParameters: CreateMailPortfolioRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostPortfolioResponse200>;
 
     /**
      * Creates request options for createMailPortfolioSuppression without sending the request
@@ -2251,13 +2251,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    createMailPortfolioSuppressionRaw(requestParameters: CreateMailPortfolioSuppressionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioSuppressionsResponse200>>;
+    createMailPortfolioSuppressionRaw(requestParameters: CreateMailPortfolioSuppressionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioSuppressionsResponse200>>;
 
     /**
      * Creates an email or domain suppression shared within the portfolio. The default reason is agency policy. Requires team OWNER or ADMIN membership.
      * Create a portfolio suppression
      */
-    createMailPortfolioSuppression(requestParameters: CreateMailPortfolioSuppressionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostPortfolioSuppressionsResponse200>;
+    createMailPortfolioSuppression(requestParameters: CreateMailPortfolioSuppressionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostPortfolioSuppressionsResponse200>;
 
     /**
      * Creates request options for createMailSuppression without sending the request
@@ -2277,13 +2277,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    createMailSuppressionRaw(requestParameters: CreateMailSuppressionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostSuppressionsResponse200>>;
+    createMailSuppressionRaw(requestParameters: CreateMailSuppressionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostSuppressionsResponse200>>;
 
     /**
      * Creates an email or domain suppression with reason manual. Scope determines the format of value. Requires team OWNER or ADMIN membership.
      * Suppress an email or domain
      */
-    createMailSuppression(requestParameters: CreateMailSuppressionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostSuppressionsResponse200>;
+    createMailSuppression(requestParameters: CreateMailSuppressionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostSuppressionsResponse200>;
 
     /**
      * Creates request options for createMailWebhook without sending the request
@@ -2303,13 +2303,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    createMailWebhookRaw(requestParameters: CreateMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksResponse201>>;
+    createMailWebhookRaw(requestParameters: CreateMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksResponse201>>;
 
     /**
      * Creates a subscription and returns 201 with its signingSecret. Store this secret securely; redact it from examples and logs. Requires team OWNER or ADMIN membership.
      * Create a mail webhook
      */
-    createMailWebhook(requestParameters: CreateMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostWebhooksResponse201>;
+    createMailWebhook(requestParameters: CreateMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostWebhooksResponse201>;
 
     /**
      * Creates request options for decideMailExperiment without sending the request
@@ -2331,13 +2331,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    decideMailExperimentRaw(requestParameters: DecideMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyDecideResponse200>>;
+    decideMailExperimentRaw(requestParameters: DecideMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyDecideResponse200>>;
 
     /**
      * Records a winning variant for a revision. Automatic decisions must satisfy the report eligibility guard and recommended winner. An inconclusive manual override requires allowInconclusiveManualDecision and a reason. Requires team OWNER or ADMIN membership.
      * Record an experiment decision
      */
-    decideMailExperiment(requestParameters: DecideMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyDecideResponse200>;
+    decideMailExperiment(requestParameters: DecideMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyDecideResponse200>;
 
     /**
      * Creates request options for deleteMailCampaignDraft without sending the request
@@ -2359,13 +2359,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    deleteMailCampaignDraftRaw(requestParameters: DeleteMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteCampaignsByCampaignIdResponse200>>;
+    deleteMailCampaignDraftRaw(requestParameters: DeleteMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteCampaignsByCampaignIdResponse200>>;
 
     /**
      * Deletes a draft using expectedVersion in the JSON request body and returns a deleted envelope. This DELETE has a request body. Requires authenticated team membership.
      * Delete a campaign draft
      */
-    deleteMailCampaignDraft(requestParameters: DeleteMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeleteCampaignsByCampaignIdResponse200>;
+    deleteMailCampaignDraft(requestParameters: DeleteMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeleteCampaignsByCampaignIdResponse200>;
 
     /**
      * Creates request options for deleteMailReplyAutomation without sending the request
@@ -2385,13 +2385,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    deleteMailReplyAutomationRaw(requestParameters: DeleteMailReplyAutomationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteReplyAutomationsByAutomationIdResponse200>>;
+    deleteMailReplyAutomationRaw(requestParameters: DeleteMailReplyAutomationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteReplyAutomationsByAutomationIdResponse200>>;
 
     /**
      * Deletes a tenant-scoped reply automation and returns a result envelope. Requires team OWNER or ADMIN membership.
      * Delete a reply automation
      */
-    deleteMailReplyAutomation(requestParameters: DeleteMailReplyAutomationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeleteReplyAutomationsByAutomationIdResponse200>;
+    deleteMailReplyAutomation(requestParameters: DeleteMailReplyAutomationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeleteReplyAutomationsByAutomationIdResponse200>;
 
     /**
      * Creates request options for deleteMailTrackingDomain without sending the request
@@ -2409,13 +2409,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    deleteMailTrackingDomainRaw(requestParameters: DeleteMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteTrackingDomainResponse200>>;
+    deleteMailTrackingDomainRaw(requestParameters: DeleteMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteTrackingDomainResponse200>>;
 
     /**
      * Removes the tracking-domain configuration and returns removed. Requires team OWNER or ADMIN membership.
      * Delete a tracking domain
      */
-    deleteMailTrackingDomain(requestParameters: DeleteMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeleteTrackingDomainResponse200>;
+    deleteMailTrackingDomain(requestParameters: DeleteMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeleteTrackingDomainResponse200>;
 
     /**
      * Creates request options for deleteMailWebhook without sending the request
@@ -2435,13 +2435,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    deleteMailWebhookRaw(requestParameters: DeleteMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteWebhooksBySubscriptionIdResponse200>>;
+    deleteMailWebhookRaw(requestParameters: DeleteMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteWebhooksBySubscriptionIdResponse200>>;
 
     /**
      * Deletes the team subscription and returns a JSON deleted envelope, not a bodyless response. Requires team OWNER or ADMIN membership.
      * Delete a mail webhook
      */
-    deleteMailWebhook(requestParameters: DeleteMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeleteWebhooksBySubscriptionIdResponse200>;
+    deleteMailWebhook(requestParameters: DeleteMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeleteWebhooksBySubscriptionIdResponse200>;
 
     /**
      * Creates request options for disconnectMailMailbox without sending the request
@@ -2461,13 +2461,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    disconnectMailMailboxRaw(requestParameters: DisconnectMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteMailboxesByMailboxIdResponse200>>;
+    disconnectMailMailboxRaw(requestParameters: DisconnectMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteMailboxesByMailboxIdResponse200>>;
 
     /**
      * Disconnects the mailbox using the configured mailbox-disconnection service. Missing service configuration fails a precondition. Requires team OWNER or ADMIN membership.
      * Disconnect a mailbox
      */
-    disconnectMailMailbox(requestParameters: DisconnectMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeleteMailboxesByMailboxIdResponse200>;
+    disconnectMailMailbox(requestParameters: DisconnectMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeleteMailboxesByMailboxIdResponse200>;
 
     /**
      * Creates request options for duplicateMailCampaignDraft without sending the request
@@ -2487,13 +2487,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    duplicateMailCampaignDraftRaw(requestParameters: DuplicateMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsByCampaignIdDuplicateResponse201>>;
+    duplicateMailCampaignDraftRaw(requestParameters: DuplicateMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsByCampaignIdDuplicateResponse201>>;
 
     /**
      * Creates a new draft with new campaign and step IDs and returns 201. The copy starts at version 1 and is not launched. Requires authenticated team membership.
      * Duplicate a campaign draft
      */
-    duplicateMailCampaignDraft(requestParameters: DuplicateMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCampaignsByCampaignIdDuplicateResponse201>;
+    duplicateMailCampaignDraft(requestParameters: DuplicateMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCampaignsByCampaignIdDuplicateResponse201>;
 
     /**
      * Creates request options for enqueueMailMessage without sending the request
@@ -2513,13 +2513,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    enqueueMailMessageRaw(requestParameters: EnqueueMailMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMessagesResponse201>>;
+    enqueueMailMessageRaw(requestParameters: EnqueueMailMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMessagesResponse201>>;
 
     /**
      * Queues a message and returns 201 with its current state. The response does not prove delivery. Supply a stable idempotencyKey and inspect delivery activity for its outcome. Do not automatically replay an interrupted call. Requires team OWNER or ADMIN membership.
      * Queue an outbound message
      */
-    enqueueMailMessage(requestParameters: EnqueueMailMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostMessagesResponse201>;
+    enqueueMailMessage(requestParameters: EnqueueMailMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostMessagesResponse201>;
 
     /**
      * Creates request options for enrollMailCadence without sending the request
@@ -2539,13 +2539,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    enrollMailCadenceRaw(requestParameters: EnrollMailCadenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceRunsResponse200>>;
+    enrollMailCadenceRaw(requestParameters: EnrollMailCadenceRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceRunsResponse200>>;
 
     /**
      * Enrolls contacts and returns their runs. Select exactly one contact source and exactly one sending source. A campaignName requires campaignId. Supply idempotencyKey; enrollmentMode distinguishes new_only from reenroll. A response acknowledges enrollment, not successful delivery. Requires team OWNER or ADMIN membership.
      * Enroll contacts in a cadence
      */
-    enrollMailCadence(requestParameters: EnrollMailCadenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadenceRunsResponse200>;
+    enrollMailCadence(requestParameters: EnrollMailCadenceRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadenceRunsResponse200>;
 
     /**
      * Creates request options for exportMailAnalytics without sending the request
@@ -2565,13 +2565,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    exportMailAnalyticsRaw(requestParameters: ExportMailAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostAnalyticsExportResponse200>>;
+    exportMailAnalyticsRaw(requestParameters: ExportMailAnalyticsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostAnalyticsExportResponse200>>;
 
     /**
      * Returns a JSON envelope containing CSV text, filename and contentType. from/to must form a positive range no longer than 366 days. Use the returned structured nextCursor as body.after until it is null. Default limit is 2000, maximum 10000. Requires authenticated team membership.
      * Export mail analytics
      */
-    exportMailAnalytics(requestParameters: ExportMailAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostAnalyticsExportResponse200>;
+    exportMailAnalytics(requestParameters: ExportMailAnalyticsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostAnalyticsExportResponse200>;
 
     /**
      * Creates request options for exportMailPortfolio without sending the request
@@ -2593,13 +2593,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    exportMailPortfolioRaw(requestParameters: ExportMailPortfolioRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioExportResponse200>>;
+    exportMailPortfolioRaw(requestParameters: ExportMailPortfolioRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioExportResponse200>>;
 
     /**
      * Returns a JSON envelope with CSV content, filename and contentType. Uses the same positive, at-most-366-day range as the portfolio overview; it does not return a raw CSV HTTP body. Requires team OWNER or ADMIN membership.
      * Export portfolio analytics
      */
-    exportMailPortfolio(requestParameters: ExportMailPortfolioRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostPortfolioExportResponse200>;
+    exportMailPortfolio(requestParameters: ExportMailPortfolioRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostPortfolioExportResponse200>;
 
     /**
      * Creates request options for getMailAnalytics without sending the request
@@ -2621,13 +2621,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailAnalyticsRaw(requestParameters: GetMailAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetAnalyticsResponse200>>;
+    getMailAnalyticsRaw(requestParameters: GetMailAnalyticsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetAnalyticsResponse200>>;
 
     /**
      * Returns message and operational analytics for the requested range, defaulting to the previous 30 days. Operational fallback data can be sample-limited; inspect the returned coverage indicators. Requires authenticated team membership.
      * Get mail analytics
      */
-    getMailAnalytics(requestParameters: GetMailAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetAnalyticsResponse200>;
+    getMailAnalytics(requestParameters: GetMailAnalyticsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetAnalyticsResponse200>;
 
     /**
      * Creates request options for getMailCampaignDraft without sending the request
@@ -2647,13 +2647,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailCampaignDraftRaw(requestParameters: GetMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCampaignsByCampaignIdResponse200>>;
+    getMailCampaignDraftRaw(requestParameters: GetMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCampaignsByCampaignIdResponse200>>;
 
     /**
      * Returns one tenant-scoped campaign draft, or 404 when absent. Requires authenticated team membership.
      * Get a campaign draft
      */
-    getMailCampaignDraft(requestParameters: GetMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCampaignsByCampaignIdResponse200>;
+    getMailCampaignDraft(requestParameters: GetMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCampaignsByCampaignIdResponse200>;
 
     /**
      * Creates request options for getMailCampaignProgress without sending the request
@@ -2671,13 +2671,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailCampaignProgressRaw(requestParameters: GetMailCampaignProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCampaignProgressResponse200>>;
+    getMailCampaignProgressRaw(requestParameters: GetMailCampaignProgressRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCampaignProgressResponse200>>;
 
     /**
      * Returns delivery and sequence progress for this team. Requires authenticated team membership.
      * Get campaign progress
      */
-    getMailCampaignProgress(requestParameters: GetMailCampaignProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCampaignProgressResponse200>;
+    getMailCampaignProgress(requestParameters: GetMailCampaignProgressRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCampaignProgressResponse200>;
 
     /**
      * Creates request options for getMailChannels without sending the request
@@ -2695,13 +2695,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailChannelsRaw(requestParameters: GetMailChannelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetChannelsResponse200>>;
+    getMailChannelsRaw(requestParameters: GetMailChannelsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetChannelsResponse200>>;
 
     /**
      * Reports mailbox/connection readiness and whether outbound, cadence and inbound execution are enabled. SMS and WhatsApp report consent, template and cost-ceiling requirements. Requires authenticated team membership.
      * Get channel availability
      */
-    getMailChannels(requestParameters: GetMailChannelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetChannelsResponse200>;
+    getMailChannels(requestParameters: GetMailChannelsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetChannelsResponse200>;
 
     /**
      * Creates request options for getMailContactStates without sending the request
@@ -2721,13 +2721,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailContactStatesRaw(requestParameters: GetMailContactStatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmStatesBatchResponse200>>;
+    getMailContactStatesRaw(requestParameters: GetMailContactStatesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmStatesBatchResponse200>>;
 
     /**
      * Returns CRM states for the explicitly supplied contact IDs within this team. Requires authenticated team membership.
      * Get contact CRM states in a batch
      */
-    getMailContactStates(requestParameters: GetMailContactStatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCrmStatesBatchResponse200>;
+    getMailContactStates(requestParameters: GetMailContactStatesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCrmStatesBatchResponse200>;
 
     /**
      * Creates request options for getMailContacts without sending the request
@@ -2747,13 +2747,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailContactsRaw(requestParameters: GetMailContactsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmContactsBatchResponse200>>;
+    getMailContactsRaw(requestParameters: GetMailContactsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmContactsBatchResponse200>>;
 
     /**
      * Returns tenant-scoped contact records for the supplied IDs. Requires authenticated team membership.
      * Get mail contacts in a batch
      */
-    getMailContacts(requestParameters: GetMailContactsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCrmContactsBatchResponse200>;
+    getMailContacts(requestParameters: GetMailContactsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCrmContactsBatchResponse200>;
 
     /**
      * Creates request options for getMailDeliverability without sending the request
@@ -2771,13 +2771,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailDeliverabilityRaw(requestParameters: GetMailDeliverabilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetDeliverabilityResponse200>>;
+    getMailDeliverabilityRaw(requestParameters: GetMailDeliverabilityRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetDeliverabilityResponse200>>;
 
     /**
      * Returns mailbox health and pools with their members. Requires authenticated team membership.
      * Get deliverability configuration
      */
-    getMailDeliverability(requestParameters: GetMailDeliverabilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetDeliverabilityResponse200>;
+    getMailDeliverability(requestParameters: GetMailDeliverabilityRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetDeliverabilityResponse200>;
 
     /**
      * Creates request options for getMailExperimentReport without sending the request
@@ -2801,13 +2801,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailExperimentReportRaw(requestParameters: GetMailExperimentReportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetExperimentsByExperimentKeyReportResponse200>>;
+    getMailExperimentReportRaw(requestParameters: GetMailExperimentReportRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetExperimentsByExperimentKeyReportResponse200>>;
 
     /**
      * Returns the report for a required positive revision. Optional at sets the report time; omission uses the current time. Requires authenticated team membership.
      * Get an experiment report
      */
-    getMailExperimentReport(requestParameters: GetMailExperimentReportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetExperimentsByExperimentKeyReportResponse200>;
+    getMailExperimentReport(requestParameters: GetMailExperimentReportRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetExperimentsByExperimentKeyReportResponse200>;
 
     /**
      * Creates request options for getMailExperimentsOverview without sending the request
@@ -2825,13 +2825,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailExperimentsOverviewRaw(requestParameters: GetMailExperimentsOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetExperimentsOverviewResponse200>>;
+    getMailExperimentsOverviewRaw(requestParameters: GetMailExperimentsOverviewRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetExperimentsOverviewResponse200>>;
 
     /**
      * Returns reports for the latest available revision of each experiment. Definitions without revisions are omitted. Requires authenticated team membership.
      * Get experiment overview
      */
-    getMailExperimentsOverview(requestParameters: GetMailExperimentsOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetExperimentsOverviewResponse200>;
+    getMailExperimentsOverview(requestParameters: GetMailExperimentsOverviewRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetExperimentsOverviewResponse200>;
 
     /**
      * Creates request options for getMailOverview without sending the request
@@ -2853,13 +2853,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailOverviewRaw(requestParameters: GetMailOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetOverviewResponse200>>;
+    getMailOverviewRaw(requestParameters: GetMailOverviewRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetOverviewResponse200>>;
 
     /**
      * Returns mailbox, connection, delivery, campaign, cadence and inbox summaries. The default range is the previous 30 days; from/to must form a positive range no longer than 366 days. Requires authenticated team membership.
      * Get mail overview
      */
-    getMailOverview(requestParameters: GetMailOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetOverviewResponse200>;
+    getMailOverview(requestParameters: GetMailOverviewRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetOverviewResponse200>;
 
     /**
      * Creates request options for getMailPortfolio without sending the request
@@ -2877,13 +2877,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailPortfolioRaw(requestParameters: GetMailPortfolioRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetPortfolioResponse200>>;
+    getMailPortfolioRaw(requestParameters: GetMailPortfolioRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetPortfolioResponse200>>;
 
     /**
      * Returns the team-owned portfolio, member teams and shared suppressions. An unconfigured portfolio returns portfolio=null and empty lists. Requires team OWNER or ADMIN membership.
      * Get a mail portfolio
      */
-    getMailPortfolio(requestParameters: GetMailPortfolioRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetPortfolioResponse200>;
+    getMailPortfolio(requestParameters: GetMailPortfolioRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetPortfolioResponse200>;
 
     /**
      * Creates request options for getMailPortfolioOverview without sending the request
@@ -2905,13 +2905,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailPortfolioOverviewRaw(requestParameters: GetMailPortfolioOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetPortfolioOverviewResponse200>>;
+    getMailPortfolioOverviewRaw(requestParameters: GetMailPortfolioOverviewRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetPortfolioOverviewResponse200>>;
 
     /**
      * Returns team-level delivery, mailbox, contact and usage summaries. The default range is the previous 30 days and must be positive and no longer than 366 days. Requires team OWNER or ADMIN membership.
      * Get portfolio analytics
      */
-    getMailPortfolioOverview(requestParameters: GetMailPortfolioOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetPortfolioOverviewResponse200>;
+    getMailPortfolioOverview(requestParameters: GetMailPortfolioOverviewRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetPortfolioOverviewResponse200>;
 
     /**
      * Creates request options for getMailQueue without sending the request
@@ -2929,13 +2929,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailQueueRaw(requestParameters: GetMailQueueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetQueueResponse200>>;
+    getMailQueueRaw(requestParameters: GetMailQueueRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetQueueResponse200>>;
 
     /**
      * Returns the tenant-scoped queue snapshot and current delivery state. Requires authenticated team membership.
      * Get mail queue status
      */
-    getMailQueue(requestParameters: GetMailQueueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetQueueResponse200>;
+    getMailQueue(requestParameters: GetMailQueueRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetQueueResponse200>;
 
     /**
      * Creates request options for getMailTrackingDomain without sending the request
@@ -2953,13 +2953,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    getMailTrackingDomainRaw(requestParameters: GetMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetTrackingDomainResponse200>>;
+    getMailTrackingDomainRaw(requestParameters: GetMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetTrackingDomainResponse200>>;
 
     /**
      * Returns the team tracking domain, or null when none is configured. Requires authenticated team membership.
      * Get tracking domain configuration
      */
-    getMailTrackingDomain(requestParameters: GetMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetTrackingDomainResponse200>;
+    getMailTrackingDomain(requestParameters: GetMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetTrackingDomainResponse200>;
 
     /**
      * Creates request options for inspectMailDomainHealth without sending the request
@@ -2979,13 +2979,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    inspectMailDomainHealthRaw(requestParameters: InspectMailDomainHealthRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityDomainHealthResponse200>>;
+    inspectMailDomainHealthRaw(requestParameters: InspectMailDomainHealthRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityDomainHealthResponse200>>;
 
     /**
      * Inspects public DNS evidence for the domain and up to five DKIM selectors. Returns the individual checks and overall report. Requires authenticated team membership.
      * Inspect domain authentication
      */
-    inspectMailDomainHealth(requestParameters: InspectMailDomainHealthRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityDomainHealthResponse200>;
+    inspectMailDomainHealth(requestParameters: InspectMailDomainHealthRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityDomainHealthResponse200>;
 
     /**
      * Creates request options for launchMailCadenceCampaign without sending the request
@@ -3005,13 +3005,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    launchMailCadenceCampaignRaw(requestParameters: LaunchMailCadenceCampaignRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceCampaignsResponse202>>;
+    launchMailCadenceCampaignRaw(requestParameters: LaunchMailCadenceCampaignRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceCampaignsResponse202>>;
 
     /**
      * Queues a named campaign for audience-list enrollment and returns 202. Select exactly one sending source (mailboxId or mailboxPoolId). Supply idempotencyKey and inspect campaign progress after acceptance. Requires team OWNER or ADMIN membership.
      * Queue a cadence campaign
      */
-    launchMailCadenceCampaign(requestParameters: LaunchMailCadenceCampaignRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadenceCampaignsResponse202>;
+    launchMailCadenceCampaign(requestParameters: LaunchMailCadenceCampaignRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadenceCampaignsResponse202>;
 
     /**
      * Creates request options for launchMailCampaignDraft without sending the request
@@ -3033,13 +3033,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    launchMailCampaignDraftRaw(requestParameters: LaunchMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsByCampaignIdLaunchResponse200>>;
+    launchMailCampaignDraftRaw(requestParameters: LaunchMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsByCampaignIdLaunchResponse200>>;
 
     /**
      * Launches a versioned draft after validating mailboxes, audience and steps. expectedVersion protects against stale edits. The response contains draft, campaign and sequence state; it does not prove delivery. Requires team OWNER or ADMIN membership.
      * Launch a campaign draft
      */
-    launchMailCampaignDraft(requestParameters: LaunchMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCampaignsByCampaignIdLaunchResponse200>;
+    launchMailCampaignDraft(requestParameters: LaunchMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCampaignsByCampaignIdLaunchResponse200>;
 
     /**
      * Creates request options for listMailAudienceLists without sending the request
@@ -3057,13 +3057,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailAudienceListsRaw(requestParameters: ListMailAudienceListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetAudienceListsResponse200>>;
+    listMailAudienceListsRaw(requestParameters: ListMailAudienceListsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetAudienceListsResponse200>>;
 
     /**
      * Returns available audience-list summaries for campaign enrollment. Requires authenticated team membership.
      * List campaign audience lists
      */
-    listMailAudienceLists(requestParameters: ListMailAudienceListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetAudienceListsResponse200>;
+    listMailAudienceLists(requestParameters: ListMailAudienceListsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetAudienceListsResponse200>;
 
     /**
      * Creates request options for listMailCadenceCampaigns without sending the request
@@ -3081,13 +3081,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailCadenceCampaignsRaw(requestParameters: ListMailCadenceCampaignsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCadenceCampaignsResponse200>>;
+    listMailCadenceCampaignsRaw(requestParameters: ListMailCadenceCampaignsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCadenceCampaignsResponse200>>;
 
     /**
      * Returns queued and active cadence campaigns, including enrollment progress. Requires authenticated team membership.
      * List cadence campaigns
      */
-    listMailCadenceCampaigns(requestParameters: ListMailCadenceCampaignsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCadenceCampaignsResponse200>;
+    listMailCadenceCampaigns(requestParameters: ListMailCadenceCampaignsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCadenceCampaignsResponse200>;
 
     /**
      * Creates request options for listMailCadenceRuns without sending the request
@@ -3105,13 +3105,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailCadenceRunsRaw(requestParameters: ListMailCadenceRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCadenceRunsResponse200>>;
+    listMailCadenceRunsRaw(requestParameters: ListMailCadenceRunsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCadenceRunsResponse200>>;
 
     /**
      * Returns tenant-scoped cadence runs and their execution state. Requires authenticated team membership.
      * List cadence runs
      */
-    listMailCadenceRuns(requestParameters: ListMailCadenceRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCadenceRunsResponse200>;
+    listMailCadenceRuns(requestParameters: ListMailCadenceRunsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCadenceRunsResponse200>;
 
     /**
      * Creates request options for listMailCadences without sending the request
@@ -3129,13 +3129,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailCadencesRaw(requestParameters: ListMailCadencesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCadencesResponse200>>;
+    listMailCadencesRaw(requestParameters: ListMailCadencesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCadencesResponse200>>;
 
     /**
      * Returns reusable cadence definitions and versions. Requires authenticated team membership.
      * List cadences
      */
-    listMailCadences(requestParameters: ListMailCadencesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCadencesResponse200>;
+    listMailCadences(requestParameters: ListMailCadencesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCadencesResponse200>;
 
     /**
      * Creates request options for listMailCampaignDrafts without sending the request
@@ -3153,13 +3153,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailCampaignDraftsRaw(requestParameters: ListMailCampaignDraftsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCampaignsResponse200>>;
+    listMailCampaignDraftsRaw(requestParameters: ListMailCampaignDraftsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCampaignsResponse200>>;
 
     /**
      * Returns the team campaign drafts and their current versions. Requires authenticated team membership.
      * List campaign drafts
      */
-    listMailCampaignDrafts(requestParameters: ListMailCampaignDraftsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCampaignsResponse200>;
+    listMailCampaignDrafts(requestParameters: ListMailCampaignDraftsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCampaignsResponse200>;
 
     /**
      * Creates request options for listMailContactStates without sending the request
@@ -3177,13 +3177,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailContactStatesRaw(requestParameters: ListMailContactStatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCrmStatesResponse200>>;
+    listMailContactStatesRaw(requestParameters: ListMailContactStatesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCrmStatesResponse200>>;
 
     /**
      * Returns team contact stages, ownership and outcomes. Requires authenticated team membership.
      * List contact CRM states
      */
-    listMailContactStates(requestParameters: ListMailContactStatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCrmStatesResponse200>;
+    listMailContactStates(requestParameters: ListMailContactStatesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCrmStatesResponse200>;
 
     /**
      * Creates request options for listMailCrmTasks without sending the request
@@ -3205,13 +3205,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailCrmTasksRaw(requestParameters: ListMailCrmTasksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCrmTasksResponse200>>;
+    listMailCrmTasksRaw(requestParameters: ListMailCrmTasksRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCrmTasksResponse200>>;
 
     /**
      * Returns tasks filtered by status. limit defaults to 100 and is bounded to 1–500; there is no continuation cursor. Requires authenticated team membership.
      * List CRM tasks
      */
-    listMailCrmTasks(requestParameters: ListMailCrmTasksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCrmTasksResponse200>;
+    listMailCrmTasks(requestParameters: ListMailCrmTasksRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCrmTasksResponse200>;
 
     /**
      * Creates request options for listMailCrmTimeline without sending the request
@@ -3233,13 +3233,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailCrmTimelineRaw(requestParameters: ListMailCrmTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCrmTimelineResponse200>>;
+    listMailCrmTimelineRaw(requestParameters: ListMailCrmTimelineRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCrmTimelineResponse200>>;
 
     /**
      * Returns a bounded timeline, optionally restricted to contactId. limit defaults to 100 and is bounded to 1–500. Requires authenticated team membership.
      * List CRM timeline events
      */
-    listMailCrmTimeline(requestParameters: ListMailCrmTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCrmTimelineResponse200>;
+    listMailCrmTimeline(requestParameters: ListMailCrmTimelineRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCrmTimelineResponse200>;
 
     /**
      * Creates request options for listMailExperiments without sending the request
@@ -3257,13 +3257,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailExperimentsRaw(requestParameters: ListMailExperimentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetExperimentsResponse200>>;
+    listMailExperimentsRaw(requestParameters: ListMailExperimentsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetExperimentsResponse200>>;
 
     /**
      * Returns experiment definitions with their revisions. Requires authenticated team membership.
      * List mail experiments
      */
-    listMailExperiments(requestParameters: ListMailExperimentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetExperimentsResponse200>;
+    listMailExperiments(requestParameters: ListMailExperimentsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetExperimentsResponse200>;
 
     /**
      * Creates request options for listMailInbox without sending the request
@@ -3289,13 +3289,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailInboxRaw(requestParameters: ListMailInboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetInboxResponse200>>;
+    listMailInboxRaw(requestParameters: ListMailInboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetInboxResponse200>>;
 
     /**
      * Returns inbox messages filtered by status, label and query. limit defaults to 100 and is bounded to 1–500. This is a bounded list without a continuation cursor. Requires authenticated team membership.
      * List inbox messages
      */
-    listMailInbox(requestParameters: ListMailInboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetInboxResponse200>;
+    listMailInbox(requestParameters: ListMailInboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetInboxResponse200>;
 
     /**
      * Creates request options for listMailInboxThreads without sending the request
@@ -3323,13 +3323,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailInboxThreadsRaw(requestParameters: ListMailInboxThreadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetInboxThreadsResponse200>>;
+    listMailInboxThreadsRaw(requestParameters: ListMailInboxThreadsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetInboxThreadsResponse200>>;
 
     /**
      * Projects conversations from bounded outbound and inbound samples. Filter by status, label, query and assignment (any, mine or unassigned). limit defaults to 100, maximum 200. sampleLimited indicates that the underlying history was truncated; no continuation cursor is returned. Requires authenticated team membership.
      * List inbox conversation threads
      */
-    listMailInboxThreads(requestParameters: ListMailInboxThreadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetInboxThreadsResponse200>;
+    listMailInboxThreads(requestParameters: ListMailInboxThreadsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetInboxThreadsResponse200>;
 
     /**
      * Creates request options for listMailMailboxes without sending the request
@@ -3347,13 +3347,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailMailboxesRaw(requestParameters: ListMailMailboxesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetMailboxesResponse200>>;
+    listMailMailboxesRaw(requestParameters: ListMailMailboxesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetMailboxesResponse200>>;
 
     /**
      * Returns mailbox records and connection state for this team. Requires authenticated team membership.
      * List mailboxes and connections
      */
-    listMailMailboxes(requestParameters: ListMailMailboxesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetMailboxesResponse200>;
+    listMailMailboxes(requestParameters: ListMailMailboxesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetMailboxesResponse200>;
 
     /**
      * Creates request options for listMailMessages without sending the request
@@ -3375,13 +3375,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailMessagesRaw(requestParameters: ListMailMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetMessagesResponse200>>;
+    listMailMessagesRaw(requestParameters: ListMailMessagesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetMessagesResponse200>>;
 
     /**
      * Returns a cursor page of outbound messages. limit defaults to 100 and must be an integer from 1 to 500. nextCursor is omitted when exhausted. Requires authenticated team membership.
      * List mail delivery activity
      */
-    listMailMessages(requestParameters: ListMailMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetMessagesResponse200>;
+    listMailMessages(requestParameters: ListMailMessagesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetMessagesResponse200>;
 
     /**
      * Creates request options for listMailReplyAutomations without sending the request
@@ -3399,13 +3399,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailReplyAutomationsRaw(requestParameters: ListMailReplyAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetReplyAutomationsResponse200>>;
+    listMailReplyAutomationsRaw(requestParameters: ListMailReplyAutomationsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetReplyAutomationsResponse200>>;
 
     /**
      * Returns team reply-classification automation rules. Requires authenticated team membership.
      * List reply automations
      */
-    listMailReplyAutomations(requestParameters: ListMailReplyAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetReplyAutomationsResponse200>;
+    listMailReplyAutomations(requestParameters: ListMailReplyAutomationsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetReplyAutomationsResponse200>;
 
     /**
      * Creates request options for listMailSignatures without sending the request
@@ -3427,13 +3427,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailSignaturesRaw(requestParameters: ListMailSignaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetSignaturesResponse200>>;
+    listMailSignaturesRaw(requestParameters: ListMailSignaturesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetSignaturesResponse200>>;
 
     /**
      * Returns signature candidates with an opaque cursor. The default limit is 50, maximum 200. nextCursor is omitted when exhausted; it is not an explicit null. Requires authenticated team membership.
      * List extracted signatures
      */
-    listMailSignatures(requestParameters: ListMailSignaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetSignaturesResponse200>;
+    listMailSignatures(requestParameters: ListMailSignaturesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetSignaturesResponse200>;
 
     /**
      * Creates request options for listMailSuppressions without sending the request
@@ -3451,13 +3451,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailSuppressionsRaw(requestParameters: ListMailSuppressionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetSuppressionsResponse200>>;
+    listMailSuppressionsRaw(requestParameters: ListMailSuppressionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetSuppressionsResponse200>>;
 
     /**
      * Returns team-scoped email and domain suppression records. Requires authenticated team membership.
      * List mail suppressions
      */
-    listMailSuppressions(requestParameters: ListMailSuppressionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetSuppressionsResponse200>;
+    listMailSuppressions(requestParameters: ListMailSuppressionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetSuppressionsResponse200>;
 
     /**
      * Creates request options for listMailTemplates without sending the request
@@ -3475,13 +3475,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailTemplatesRaw(requestParameters: ListMailTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetTemplatesResponse200>>;
+    listMailTemplatesRaw(requestParameters: ListMailTemplatesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetTemplatesResponse200>>;
 
     /**
      * Returns reusable template versions for this team. Requires authenticated team membership.
      * List message templates
      */
-    listMailTemplates(requestParameters: ListMailTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetTemplatesResponse200>;
+    listMailTemplates(requestParameters: ListMailTemplatesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetTemplatesResponse200>;
 
     /**
      * Creates request options for listMailWebhooks without sending the request
@@ -3499,13 +3499,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    listMailWebhooksRaw(requestParameters: ListMailWebhooksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetWebhooksResponse200>>;
+    listMailWebhooksRaw(requestParameters: ListMailWebhooksRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetWebhooksResponse200>>;
 
     /**
      * Returns subscriptions with secret references removed and up to 100 recent delivery records. Signing secret values are not returned. Requires team OWNER or ADMIN membership.
      * List mail webhooks and deliveries
      */
-    listMailWebhooks(requestParameters: ListMailWebhooksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetWebhooksResponse200>;
+    listMailWebhooks(requestParameters: ListMailWebhooksRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetWebhooksResponse200>;
 
     /**
      * Creates request options for pauseMailExperiment without sending the request
@@ -3525,13 +3525,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    pauseMailExperimentRaw(requestParameters: PauseMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyPauseResponse200>>;
+    pauseMailExperimentRaw(requestParameters: PauseMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyPauseResponse200>>;
 
     /**
      * Transitions a running experiment to stopped. An incompatible state returns a conflict. Requires team OWNER or ADMIN membership.
      * Pause an experiment
      */
-    pauseMailExperiment(requestParameters: PauseMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyPauseResponse200>;
+    pauseMailExperiment(requestParameters: PauseMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyPauseResponse200>;
 
     /**
      * Creates request options for pauseMailMailbox without sending the request
@@ -3553,13 +3553,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    pauseMailMailboxRaw(requestParameters: PauseMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdPauseResponse200>>;
+    pauseMailMailboxRaw(requestParameters: PauseMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdPauseResponse200>>;
 
     /**
      * Pauses mailbox delivery with an optional reason. Requires team OWNER or ADMIN membership.
      * Pause a mailbox
      */
-    pauseMailMailbox(requestParameters: PauseMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdPauseResponse200>;
+    pauseMailMailbox(requestParameters: PauseMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdPauseResponse200>;
 
     /**
      * Creates request options for preflightMailCadenceEnrollment without sending the request
@@ -3579,13 +3579,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    preflightMailCadenceEnrollmentRaw(requestParameters: PreflightMailCadenceEnrollmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceRunsPreflightResponse200>>;
+    preflightMailCadenceEnrollmentRaw(requestParameters: PreflightMailCadenceEnrollmentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceRunsPreflightResponse200>>;
 
     /**
      * Checks enrollment readiness without enrolling contacts. Select exactly one contact source (contactIds or audienceListId) and exactly one sending source (mailboxId or mailboxPoolId). Review missing-variable and readiness results before enrollment. Requires team OWNER or ADMIN membership.
      * Check cadence enrollment
      */
-    preflightMailCadenceEnrollment(requestParameters: PreflightMailCadenceEnrollmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadenceRunsPreflightResponse200>;
+    preflightMailCadenceEnrollment(requestParameters: PreflightMailCadenceEnrollmentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadenceRunsPreflightResponse200>;
 
     /**
      * Creates request options for provisionMailMailbox without sending the request
@@ -3605,13 +3605,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    provisionMailMailboxRaw(requestParameters: ProvisionMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMailboxesManualResponse200>>;
+    provisionMailMailboxRaw(requestParameters: ProvisionMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMailboxesManualResponse200>>;
 
     /**
      * Provisions and verifies a manual mailbox using supplied credentials. SMTP ports 25, 465, 587 and 2525 and IMAP ports 143 and 993 are allowed by default; deployments may allow additional ports. Credentials must be excluded from logs and examples. Provisioning requires the manual mailbox service to be configured. Requires team OWNER or ADMIN membership.
      * Connect an SMTP/IMAP mailbox
      */
-    provisionMailMailbox(requestParameters: ProvisionMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostMailboxesManualResponse200>;
+    provisionMailMailbox(requestParameters: ProvisionMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostMailboxesManualResponse200>;
 
     /**
      * Creates request options for reconcileMailMailboxHealth without sending the request
@@ -3631,13 +3631,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    reconcileMailMailboxHealthRaw(requestParameters: ReconcileMailMailboxHealthRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdReconcileResponse200>>;
+    reconcileMailMailboxHealthRaw(requestParameters: ReconcileMailMailboxHealthRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdReconcileResponse200>>;
 
     /**
      * Recomputes health from current delivery evidence. Missing mailbox or health records return 404. Requires team OWNER or ADMIN membership.
      * Reconcile mailbox health
      */
-    reconcileMailMailboxHealth(requestParameters: ReconcileMailMailboxHealthRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdReconcileResponse200>;
+    reconcileMailMailboxHealth(requestParameters: ReconcileMailMailboxHealthRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdReconcileResponse200>;
 
     /**
      * Creates request options for reconcileMailWebhook without sending the request
@@ -3657,13 +3657,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    reconcileMailWebhookRaw(requestParameters: ReconcileMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksBySubscriptionIdReconcileResponse200>>;
+    reconcileMailWebhookRaw(requestParameters: ReconcileMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksBySubscriptionIdReconcileResponse200>>;
 
     /**
      * Reconciles a subscription with current delivery/event state. The subscription must belong to this team. Requires team OWNER or ADMIN membership.
      * Reconcile a mail webhook
      */
-    reconcileMailWebhook(requestParameters: ReconcileMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostWebhooksBySubscriptionIdReconcileResponse200>;
+    reconcileMailWebhook(requestParameters: ReconcileMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostWebhooksBySubscriptionIdReconcileResponse200>;
 
     /**
      * Creates request options for recordMailExperimentConversion without sending the request
@@ -3685,13 +3685,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    recordMailExperimentConversionRaw(requestParameters: RecordMailExperimentConversionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyConversionsResponse200>>;
+    recordMailExperimentConversionRaw(requestParameters: RecordMailExperimentConversionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyConversionsResponse200>>;
 
     /**
      * Records a custom conversion for an existing assignment. occurredAt cannot precede assignment or exceed current time by more than five minutes. A stable idempotencyKey identifies the conversion source. Requires authenticated team membership.
      * Record an experiment conversion
      */
-    recordMailExperimentConversion(requestParameters: RecordMailExperimentConversionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyConversionsResponse200>;
+    recordMailExperimentConversion(requestParameters: RecordMailExperimentConversionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyConversionsResponse200>;
 
     /**
      * Creates request options for removeMailMailboxPoolMember without sending the request
@@ -3713,13 +3713,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    removeMailMailboxPoolMemberRaw(requestParameters: RemoveMailMailboxPoolMemberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200>>;
+    removeMailMailboxPoolMemberRaw(requestParameters: RemoveMailMailboxPoolMemberRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200>>;
 
     /**
      * Removes a mailbox from the sending pool and returns a result envelope. Requires team OWNER or ADMIN membership.
      * Remove a mailbox pool member
      */
-    removeMailMailboxPoolMember(requestParameters: RemoveMailMailboxPoolMemberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeleteDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200>;
+    removeMailMailboxPoolMember(requestParameters: RemoveMailMailboxPoolMemberRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeleteDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200>;
 
     /**
      * Creates request options for removeMailPortfolioTeam without sending the request
@@ -3739,13 +3739,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    removeMailPortfolioTeamRaw(requestParameters: RemoveMailPortfolioTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeletePortfolioTeamsByMemberTeamIdResponse200>>;
+    removeMailPortfolioTeamRaw(requestParameters: RemoveMailPortfolioTeamRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeletePortfolioTeamsByMemberTeamIdResponse200>>;
 
     /**
      * Removes the specified team from this team-owned portfolio. Requires team OWNER or ADMIN membership.
      * Remove a team from a portfolio
      */
-    removeMailPortfolioTeam(requestParameters: RemoveMailPortfolioTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeletePortfolioTeamsByMemberTeamIdResponse200>;
+    removeMailPortfolioTeam(requestParameters: RemoveMailPortfolioTeamRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeletePortfolioTeamsByMemberTeamIdResponse200>;
 
     /**
      * Creates request options for replayMailWebhookDelivery without sending the request
@@ -3765,13 +3765,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    replayMailWebhookDeliveryRaw(requestParameters: ReplayMailWebhookDeliveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksDeliveriesByDeliveryIdReplayResponse200>>;
+    replayMailWebhookDeliveryRaw(requestParameters: ReplayMailWebhookDeliveryRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksDeliveriesByDeliveryIdReplayResponse200>>;
 
     /**
      * Explicitly replays a selected delivery. This can invoke the receiver again; do not automatically replay this API call. Requires team OWNER or ADMIN membership.
      * Replay a webhook delivery
      */
-    replayMailWebhookDelivery(requestParameters: ReplayMailWebhookDeliveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostWebhooksDeliveriesByDeliveryIdReplayResponse200>;
+    replayMailWebhookDelivery(requestParameters: ReplayMailWebhookDeliveryRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostWebhooksDeliveriesByDeliveryIdReplayResponse200>;
 
     /**
      * Creates request options for replyToMailInboxMessage without sending the request
@@ -3793,13 +3793,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    replyToMailInboxMessageRaw(requestParameters: ReplyToMailInboxMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostInboxByMessageIdReplyResponse200>>;
+    replyToMailInboxMessageRaw(requestParameters: ReplyToMailInboxMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostInboxByMessageIdReplyResponse200>>;
 
     /**
      * Queues a reply with a stable clientRequestId and marks the inbox message read. Bounce/unsubscribe messages and unavailable sending mailboxes fail preconditions. The returned message represents queued delivery. Requires authenticated team membership.
      * Queue an inbox reply
      */
-    replyToMailInboxMessage(requestParameters: ReplyToMailInboxMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostInboxByMessageIdReplyResponse200>;
+    replyToMailInboxMessage(requestParameters: ReplyToMailInboxMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostInboxByMessageIdReplyResponse200>;
 
     /**
      * Creates request options for resumeMailExperiment without sending the request
@@ -3819,13 +3819,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    resumeMailExperimentRaw(requestParameters: ResumeMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyResumeResponse200>>;
+    resumeMailExperimentRaw(requestParameters: ResumeMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyResumeResponse200>>;
 
     /**
      * Transitions a stopped experiment to running. Requires team OWNER or ADMIN membership.
      * Resume an experiment
      */
-    resumeMailExperiment(requestParameters: ResumeMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyResumeResponse200>;
+    resumeMailExperiment(requestParameters: ResumeMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyResumeResponse200>;
 
     /**
      * Creates request options for resumeMailMailbox without sending the request
@@ -3845,13 +3845,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    resumeMailMailboxRaw(requestParameters: ResumeMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdResumeResponse200>>;
+    resumeMailMailboxRaw(requestParameters: ResumeMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdResumeResponse200>>;
 
     /**
      * Resumes the mailbox and reconciles its current health. Requires team OWNER or ADMIN membership.
      * Resume a mailbox
      */
-    resumeMailMailbox(requestParameters: ResumeMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdResumeResponse200>;
+    resumeMailMailbox(requestParameters: ResumeMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdResumeResponse200>;
 
     /**
      * Creates request options for retryMailMessage without sending the request
@@ -3871,13 +3871,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    retryMailMessageRaw(requestParameters: RetryMailMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMessagesByMessageIdRetryResponse200>>;
+    retryMailMessageRaw(requestParameters: RetryMailMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMessagesByMessageIdRetryResponse200>>;
 
     /**
      * Explicitly retries an eligible message. This is a user-requested delivery action; clients must not automatically replay the API call. Requires team OWNER or ADMIN membership.
      * Retry a message explicitly
      */
-    retryMailMessage(requestParameters: RetryMailMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostMessagesByMessageIdRetryResponse200>;
+    retryMailMessage(requestParameters: RetryMailMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostMessagesByMessageIdRetryResponse200>;
 
     /**
      * Creates request options for rotateMailWebhookSecret without sending the request
@@ -3897,13 +3897,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    rotateMailWebhookSecretRaw(requestParameters: RotateMailWebhookSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksBySubscriptionIdRotateSecretResponse200>>;
+    rotateMailWebhookSecretRaw(requestParameters: RotateMailWebhookSecretRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksBySubscriptionIdRotateSecretResponse200>>;
 
     /**
      * Rotates the signing secret and returns its new value. Store it securely and update the receiver; exclude it from examples and logs. Requires team OWNER or ADMIN membership.
      * Rotate a mail webhook secret
      */
-    rotateMailWebhookSecret(requestParameters: RotateMailWebhookSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostWebhooksBySubscriptionIdRotateSecretResponse200>;
+    rotateMailWebhookSecret(requestParameters: RotateMailWebhookSecretRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostWebhooksBySubscriptionIdRotateSecretResponse200>;
 
     /**
      * Creates request options for saveMailCadence without sending the request
@@ -3923,13 +3923,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    saveMailCadenceRaw(requestParameters: SaveMailCadenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadencesResponse200>>;
+    saveMailCadenceRaw(requestParameters: SaveMailCadenceRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadencesResponse200>>;
 
     /**
      * Creates the next cadence version. Referenced templates must exist and match each message channel; publishing requires published templates. Experiment variant IDs must be unique and weights must total 100. A message experiment control variant must match its message template and version. Requires authenticated team membership.
      * Save a cadence version
      */
-    saveMailCadence(requestParameters: SaveMailCadenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadencesResponse200>;
+    saveMailCadence(requestParameters: SaveMailCadenceRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadencesResponse200>;
 
     /**
      * Creates request options for saveMailReplyAutomation without sending the request
@@ -3949,13 +3949,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    saveMailReplyAutomationRaw(requestParameters: SaveMailReplyAutomationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostReplyAutomationsResponse200>>;
+    saveMailReplyAutomationRaw(requestParameters: SaveMailReplyAutomationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostReplyAutomationsResponse200>>;
 
     /**
      * Creates or updates a rule that matches reply labels and can stop cadences, update a contact stage, assign an owner or create a task. Requires team OWNER or ADMIN membership.
      * Save a reply automation
      */
-    saveMailReplyAutomation(requestParameters: SaveMailReplyAutomationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostReplyAutomationsResponse200>;
+    saveMailReplyAutomation(requestParameters: SaveMailReplyAutomationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostReplyAutomationsResponse200>;
 
     /**
      * Creates request options for saveMailTemplate without sending the request
@@ -3975,13 +3975,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    saveMailTemplateRaw(requestParameters: SaveMailTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTemplatesResponse200>>;
+    saveMailTemplateRaw(requestParameters: SaveMailTemplateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTemplatesResponse200>>;
 
     /**
      * Creates the next version of a reusable email, SMS or WhatsApp template. Omit id to create a new template. Variables are derived from subject and body; WhatsApp approval metadata is channel-specific. Requires authenticated team membership.
      * Save a message template
      */
-    saveMailTemplate(requestParameters: SaveMailTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostTemplatesResponse200>;
+    saveMailTemplate(requestParameters: SaveMailTemplateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostTemplatesResponse200>;
 
     /**
      * Creates request options for setMailContactState without sending the request
@@ -4001,13 +4001,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    setMailContactStateRaw(requestParameters: SetMailContactStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPutCrmStatesResponse200>>;
+    setMailContactStateRaw(requestParameters: SetMailContactStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPutCrmStatesResponse200>>;
 
     /**
      * Sets the contact stage and optional owner/outcome. An assigned owner must belong to the team. Requires authenticated team membership.
      * Set a contact CRM state
      */
-    setMailContactState(requestParameters: SetMailContactStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPutCrmStatesResponse200>;
+    setMailContactState(requestParameters: SetMailContactStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPutCrmStatesResponse200>;
 
     /**
      * Creates request options for setMailMailboxPoolMember without sending the request
@@ -4031,13 +4031,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    setMailMailboxPoolMemberRaw(requestParameters: SetMailMailboxPoolMemberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPutDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200>>;
+    setMailMailboxPoolMemberRaw(requestParameters: SetMailMailboxPoolMemberRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPutDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200>>;
 
     /**
      * Creates or updates a pool member, including its priority, positive weight and enabled state. Requires team OWNER or ADMIN membership.
      * Set a mailbox pool member
      */
-    setMailMailboxPoolMember(requestParameters: SetMailMailboxPoolMemberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPutDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200>;
+    setMailMailboxPoolMember(requestParameters: SetMailMailboxPoolMemberRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPutDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200>;
 
     /**
      * Creates request options for setMailWebhookStatus without sending the request
@@ -4059,13 +4059,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    setMailWebhookStatusRaw(requestParameters: SetMailWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksBySubscriptionIdStatusResponse200>>;
+    setMailWebhookStatusRaw(requestParameters: SetMailWebhookStatusRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksBySubscriptionIdStatusResponse200>>;
 
     /**
      * Updates the subscription status and returns its public configuration. Requires team OWNER or ADMIN membership.
      * Set a mail webhook status
      */
-    setMailWebhookStatus(requestParameters: SetMailWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostWebhooksBySubscriptionIdStatusResponse200>;
+    setMailWebhookStatus(requestParameters: SetMailWebhookStatusRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostWebhooksBySubscriptionIdStatusResponse200>;
 
     /**
      * Creates request options for startMailOAuth without sending the request
@@ -4085,13 +4085,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    startMailOAuthRaw(requestParameters: StartMailOAuthRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostOauthBeginResponse200>>;
+    startMailOAuthRaw(requestParameters: StartMailOAuthRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostOauthBeginResponse200>>;
 
     /**
      * Creates a Gmail or Microsoft authorization transaction. Open authorizationUrl in a browser to complete provider consent. Mailbox identity is verified by the provider during the callback; returnTo is restricted to a safe local path. Requires team OWNER or ADMIN membership.
      * Start mailbox authorization
      */
-    startMailOAuth(requestParameters: StartMailOAuthRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostOauthBeginResponse200>;
+    startMailOAuth(requestParameters: StartMailOAuthRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostOauthBeginResponse200>;
 
     /**
      * Creates request options for updateMailCampaignDraft without sending the request
@@ -4113,13 +4113,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    updateMailCampaignDraftRaw(requestParameters: UpdateMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPatchCampaignsByCampaignIdResponse200>>;
+    updateMailCampaignDraftRaw(requestParameters: UpdateMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPatchCampaignsByCampaignIdResponse200>>;
 
     /**
      * Updates a campaign draft using expectedVersion for optimistic concurrency. Supply the draft content, not an arbitrary partial patch. Sending windows must end after they start. Requires authenticated team membership.
      * Update a campaign draft
      */
-    updateMailCampaignDraft(requestParameters: UpdateMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPatchCampaignsByCampaignIdResponse200>;
+    updateMailCampaignDraft(requestParameters: UpdateMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPatchCampaignsByCampaignIdResponse200>;
 
     /**
      * Creates request options for updateMailInboxMessage without sending the request
@@ -4141,13 +4141,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    updateMailInboxMessageRaw(requestParameters: UpdateMailInboxMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostInboxByMessageIdResponse200>>;
+    updateMailInboxMessageRaw(requestParameters: UpdateMailInboxMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostInboxByMessageIdResponse200>>;
 
     /**
      * Changes read/archive status or assignee. At least one of status and assignedToActorId is required. Set assignedToActorId to null to unassign; a non-null assignee must belong to the team. Requires authenticated team membership.
      * Update an inbox message
      */
-    updateMailInboxMessage(requestParameters: UpdateMailInboxMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostInboxByMessageIdResponse200>;
+    updateMailInboxMessage(requestParameters: UpdateMailInboxMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostInboxByMessageIdResponse200>;
 
     /**
      * Creates request options for updateMailWebhook without sending the request
@@ -4169,13 +4169,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    updateMailWebhookRaw(requestParameters: UpdateMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPatchWebhooksBySubscriptionIdResponse200>>;
+    updateMailWebhookRaw(requestParameters: UpdateMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPatchWebhooksBySubscriptionIdResponse200>>;
 
     /**
      * Changes endpoint or eventTypes. At least one of those fields is required. The public subscription omits its secret reference. Requires team OWNER or ADMIN membership.
      * Update a mail webhook
      */
-    updateMailWebhook(requestParameters: UpdateMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPatchWebhooksBySubscriptionIdResponse200>;
+    updateMailWebhook(requestParameters: UpdateMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPatchWebhooksBySubscriptionIdResponse200>;
 
     /**
      * Creates request options for verifyMailTrackingDomain without sending the request
@@ -4193,13 +4193,13 @@ export interface MailApiInterface {
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
-    verifyMailTrackingDomainRaw(requestParameters: VerifyMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTrackingDomainVerifyResponse200>>;
+    verifyMailTrackingDomainRaw(requestParameters: VerifyMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTrackingDomainVerifyResponse200>>;
 
     /**
      * Checks domain ownership evidence. A successful HTTP response can contain verified=false. Verified domains are activated and receive a verification timestamp. Requires team OWNER or ADMIN membership.
      * Verify a tracking domain
      */
-    verifyMailTrackingDomain(requestParameters: VerifyMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostTrackingDomainVerifyResponse200>;
+    verifyMailTrackingDomain(requestParameters: VerifyMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostTrackingDomainVerifyResponse200>;
 
 }
 
@@ -4253,7 +4253,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Adds a target team to the portfolio. The actor must also be an administrator of the target team. Requires team OWNER or ADMIN membership.
      * Add a team to a portfolio
      */
-    async addMailPortfolioTeamRaw(requestParameters: AddMailPortfolioTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioTeamsResponse200>> {
+    async addMailPortfolioTeamRaw(requestParameters: AddMailPortfolioTeamRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioTeamsResponse200>> {
         const requestOptions = await this.addMailPortfolioTeamRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4264,7 +4264,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Adds a target team to the portfolio. The actor must also be an administrator of the target team. Requires team OWNER or ADMIN membership.
      * Add a team to a portfolio
      */
-    async addMailPortfolioTeam(requestParameters: AddMailPortfolioTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostPortfolioTeamsResponse200> {
+    async addMailPortfolioTeam(requestParameters: AddMailPortfolioTeamRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostPortfolioTeamsResponse200> {
         const response = await this.addMailPortfolioTeamRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4312,7 +4312,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Archives a draft, stopped or decided experiment. Requires team OWNER or ADMIN membership.
      * Archive an experiment
      */
-    async archiveMailExperimentRaw(requestParameters: ArchiveMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyArchiveResponse200>> {
+    async archiveMailExperimentRaw(requestParameters: ArchiveMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyArchiveResponse200>> {
         const requestOptions = await this.archiveMailExperimentRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4323,7 +4323,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Archives a draft, stopped or decided experiment. Requires team OWNER or ADMIN membership.
      * Archive an experiment
      */
-    async archiveMailExperiment(requestParameters: ArchiveMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyArchiveResponse200> {
+    async archiveMailExperiment(requestParameters: ArchiveMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyArchiveResponse200> {
         const response = await this.archiveMailExperimentRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4371,7 +4371,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Requests cancellation of a message belonging to this team. The returned message describes the resulting state; already accepted delivery cannot be undone. Requires team OWNER or ADMIN membership.
      * Cancel a queued message
      */
-    async cancelMailMessageRaw(requestParameters: CancelMailMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMessagesByMessageIdCancelResponse200>> {
+    async cancelMailMessageRaw(requestParameters: CancelMailMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMessagesByMessageIdCancelResponse200>> {
         const requestOptions = await this.cancelMailMessageRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4382,7 +4382,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Requests cancellation of a message belonging to this team. The returned message describes the resulting state; already accepted delivery cannot be undone. Requires team OWNER or ADMIN membership.
      * Cancel a queued message
      */
-    async cancelMailMessage(requestParameters: CancelMailMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostMessagesByMessageIdCancelResponse200> {
+    async cancelMailMessage(requestParameters: CancelMailMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostMessagesByMessageIdCancelResponse200> {
         const response = await this.cancelMailMessageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4440,7 +4440,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Pauses, resumes or cancels a cadence campaign and eligible runs. The response includes changed-run counts; legacy run-only campaigns can return a response without a campaign record. Requires team OWNER or ADMIN membership.
      * Change a cadence campaign state
      */
-    async changeMailCadenceCampaignStateRaw(requestParameters: ChangeMailCadenceCampaignStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceCampaignsByCampaignIdStateResponse200>> {
+    async changeMailCadenceCampaignStateRaw(requestParameters: ChangeMailCadenceCampaignStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceCampaignsByCampaignIdStateResponse200>> {
         const requestOptions = await this.changeMailCadenceCampaignStateRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4451,7 +4451,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Pauses, resumes or cancels a cadence campaign and eligible runs. The response includes changed-run counts; legacy run-only campaigns can return a response without a campaign record. Requires team OWNER or ADMIN membership.
      * Change a cadence campaign state
      */
-    async changeMailCadenceCampaignState(requestParameters: ChangeMailCadenceCampaignStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadenceCampaignsByCampaignIdStateResponse200> {
+    async changeMailCadenceCampaignState(requestParameters: ChangeMailCadenceCampaignStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadenceCampaignsByCampaignIdStateResponse200> {
         const response = await this.changeMailCadenceCampaignStateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4509,7 +4509,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Pauses, resumes or cancels an eligible run. An absent run or incompatible current state can return the combined not-found/conflict error. Requires team OWNER or ADMIN membership.
      * Change a cadence run state
      */
-    async changeMailCadenceRunStateRaw(requestParameters: ChangeMailCadenceRunStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceRunsByRunIdStateResponse200>> {
+    async changeMailCadenceRunStateRaw(requestParameters: ChangeMailCadenceRunStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceRunsByRunIdStateResponse200>> {
         const requestOptions = await this.changeMailCadenceRunStateRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4520,7 +4520,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Pauses, resumes or cancels an eligible run. An absent run or incompatible current state can return the combined not-found/conflict error. Requires team OWNER or ADMIN membership.
      * Change a cadence run state
      */
-    async changeMailCadenceRunState(requestParameters: ChangeMailCadenceRunStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadenceRunsByRunIdStateResponse200> {
+    async changeMailCadenceRunState(requestParameters: ChangeMailCadenceRunStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadenceRunsByRunIdStateResponse200> {
         const response = await this.changeMailCadenceRunStateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4578,7 +4578,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Pauses, resumes or cancels the campaign using the requested action. Requires team OWNER or ADMIN membership.
      * Change a campaign state
      */
-    async changeMailCampaignStateRaw(requestParameters: ChangeMailCampaignStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsByCampaignIdStateResponse200>> {
+    async changeMailCampaignStateRaw(requestParameters: ChangeMailCampaignStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsByCampaignIdStateResponse200>> {
         const requestOptions = await this.changeMailCampaignStateRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4589,7 +4589,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Pauses, resumes or cancels the campaign using the requested action. Requires team OWNER or ADMIN membership.
      * Change a campaign state
      */
-    async changeMailCampaignState(requestParameters: ChangeMailCampaignStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCampaignsByCampaignIdStateResponse200> {
+    async changeMailCampaignState(requestParameters: ChangeMailCampaignStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCampaignsByCampaignIdStateResponse200> {
         const response = await this.changeMailCampaignStateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4639,7 +4639,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Classifies reply text and records the resulting contact/timeline state. Optional contact references remain tenant-scoped. Requires authenticated team membership.
      * Classify a reply
      */
-    async classifyMailReplyRaw(requestParameters: ClassifyMailReplyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmClassifyReplyResponse200>> {
+    async classifyMailReplyRaw(requestParameters: ClassifyMailReplyRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmClassifyReplyResponse200>> {
         const requestOptions = await this.classifyMailReplyRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4650,7 +4650,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Classifies reply text and records the resulting contact/timeline state. Optional contact references remain tenant-scoped. Requires authenticated team membership.
      * Classify a reply
      */
-    async classifyMailReply(requestParameters: ClassifyMailReplyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCrmClassifyReplyResponse200> {
+    async classifyMailReply(requestParameters: ClassifyMailReplyRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCrmClassifyReplyResponse200> {
         const response = await this.classifyMailReplyRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4708,7 +4708,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Completes a task with the supplied outcome and optional note. The default outcome is completed. Requires authenticated team membership.
      * Complete a CRM task
      */
-    async completeMailCrmTaskRaw(requestParameters: CompleteMailCrmTaskRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmTasksByTaskIdCompleteResponse200>> {
+    async completeMailCrmTaskRaw(requestParameters: CompleteMailCrmTaskRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmTasksByTaskIdCompleteResponse200>> {
         const requestOptions = await this.completeMailCrmTaskRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4719,7 +4719,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Completes a task with the supplied outcome and optional note. The default outcome is completed. Requires authenticated team membership.
      * Complete a CRM task
      */
-    async completeMailCrmTask(requestParameters: CompleteMailCrmTaskRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCrmTasksByTaskIdCompleteResponse200> {
+    async completeMailCrmTask(requestParameters: CompleteMailCrmTaskRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCrmTasksByTaskIdCompleteResponse200> {
         const response = await this.completeMailCrmTaskRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4777,7 +4777,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Configures ramp limits and interval. startingDailyLimit must not exceed targetDailyLimit. Requires team OWNER or ADMIN membership.
      * Configure a mailbox sending ramp
      */
-    async configureMailDeliverabilityRaw(requestParameters: ConfigureMailDeliverabilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdResponse200>> {
+    async configureMailDeliverabilityRaw(requestParameters: ConfigureMailDeliverabilityRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdResponse200>> {
         const requestOptions = await this.configureMailDeliverabilityRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4788,7 +4788,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Configures ramp limits and interval. startingDailyLimit must not exceed targetDailyLimit. Requires team OWNER or ADMIN membership.
      * Configure a mailbox sending ramp
      */
-    async configureMailDeliverability(requestParameters: ConfigureMailDeliverabilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdResponse200> {
+    async configureMailDeliverability(requestParameters: ConfigureMailDeliverabilityRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdResponse200> {
         const response = await this.configureMailDeliverabilityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4838,7 +4838,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Normalizes and saves a tracking domain with ownership-verification data. Complete its DNS verification before using it. Requires team OWNER or ADMIN membership.
      * Configure a tracking domain
      */
-    async configureMailTrackingDomainRaw(requestParameters: ConfigureMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTrackingDomainResponse200>> {
+    async configureMailTrackingDomainRaw(requestParameters: ConfigureMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTrackingDomainResponse200>> {
         const requestOptions = await this.configureMailTrackingDomainRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4849,7 +4849,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Normalizes and saves a tracking domain with ownership-verification data. Complete its DNS verification before using it. Requires team OWNER or ADMIN membership.
      * Configure a tracking domain
      */
-    async configureMailTrackingDomain(requestParameters: ConfigureMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostTrackingDomainResponse200> {
+    async configureMailTrackingDomain(requestParameters: ConfigureMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostTrackingDomainResponse200> {
         const response = await this.configureMailTrackingDomainRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4907,7 +4907,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Copies a cadence and its referenced content using targetName. Requires administrator access in both source and target teams. Requires team OWNER or ADMIN membership.
      * Copy a cadence to another team
      */
-    async copyMailCadenceRaw(requestParameters: CopyMailCadenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadencesByCadenceIdCopyResponse200>> {
+    async copyMailCadenceRaw(requestParameters: CopyMailCadenceRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadencesByCadenceIdCopyResponse200>> {
         const requestOptions = await this.copyMailCadenceRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4918,7 +4918,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Copies a cadence and its referenced content using targetName. Requires administrator access in both source and target teams. Requires team OWNER or ADMIN membership.
      * Copy a cadence to another team
      */
-    async copyMailCadence(requestParameters: CopyMailCadenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadencesByCadenceIdCopyResponse200> {
+    async copyMailCadence(requestParameters: CopyMailCadenceRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadencesByCadenceIdCopyResponse200> {
         const response = await this.copyMailCadenceRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4976,7 +4976,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Copies a template into targetTeamId with a new ID. The current actor must be an administrator of both source and target teams. Requires team OWNER or ADMIN membership.
      * Copy a template to another team
      */
-    async copyMailTemplateRaw(requestParameters: CopyMailTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTemplatesByTemplateIdCopyResponse200>> {
+    async copyMailTemplateRaw(requestParameters: CopyMailTemplateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTemplatesByTemplateIdCopyResponse200>> {
         const requestOptions = await this.copyMailTemplateRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4987,7 +4987,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Copies a template into targetTeamId with a new ID. The current actor must be an administrator of both source and target teams. Requires team OWNER or ADMIN membership.
      * Copy a template to another team
      */
-    async copyMailTemplate(requestParameters: CopyMailTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostTemplatesByTemplateIdCopyResponse200> {
+    async copyMailTemplate(requestParameters: CopyMailTemplateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostTemplatesByTemplateIdCopyResponse200> {
         const response = await this.copyMailTemplateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5037,7 +5037,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates a versioned campaign draft and returns 201. Each sending window must end after it starts. Creating a draft does not launch delivery. Requires authenticated team membership.
      * Create a campaign draft
      */
-    async createMailCampaignDraftRaw(requestParameters: CreateMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsResponse201>> {
+    async createMailCampaignDraftRaw(requestParameters: CreateMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsResponse201>> {
         const requestOptions = await this.createMailCampaignDraftRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5048,7 +5048,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates a versioned campaign draft and returns 201. Each sending window must end after it starts. Creating a draft does not launch delivery. Requires authenticated team membership.
      * Create a campaign draft
      */
-    async createMailCampaignDraft(requestParameters: CreateMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCampaignsResponse201> {
+    async createMailCampaignDraft(requestParameters: CreateMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCampaignsResponse201> {
         const response = await this.createMailCampaignDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5098,7 +5098,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Adds a tenant-scoped contact note and its CRM timeline event. Requires authenticated team membership.
      * Add a contact note
      */
-    async createMailCrmNoteRaw(requestParameters: CreateMailCrmNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmNotesResponse200>> {
+    async createMailCrmNoteRaw(requestParameters: CreateMailCrmNoteRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmNotesResponse200>> {
         const requestOptions = await this.createMailCrmNoteRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5109,7 +5109,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Adds a tenant-scoped contact note and its CRM timeline event. Requires authenticated team membership.
      * Add a contact note
      */
-    async createMailCrmNote(requestParameters: CreateMailCrmNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCrmNotesResponse200> {
+    async createMailCrmNote(requestParameters: CreateMailCrmNoteRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCrmNotesResponse200> {
         const response = await this.createMailCrmNoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5159,7 +5159,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates an assigned, scheduled task for a team contact and returns 201. The assignee must belong to the team. Requires authenticated team membership.
      * Create a CRM task
      */
-    async createMailCrmTaskRaw(requestParameters: CreateMailCrmTaskRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmTasksResponse201>> {
+    async createMailCrmTaskRaw(requestParameters: CreateMailCrmTaskRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmTasksResponse201>> {
         const requestOptions = await this.createMailCrmTaskRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5170,7 +5170,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates an assigned, scheduled task for a team contact and returns 201. The assignee must belong to the team. Requires authenticated team membership.
      * Create a CRM task
      */
-    async createMailCrmTask(requestParameters: CreateMailCrmTaskRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCrmTasksResponse201> {
+    async createMailCrmTask(requestParameters: CreateMailCrmTaskRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCrmTasksResponse201> {
         const response = await this.createMailCrmTaskRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5220,7 +5220,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates a round-robin or capacity-weighted sending pool and returns 201 with an initially empty member list. Requires team OWNER or ADMIN membership.
      * Create a mailbox pool
      */
-    async createMailMailboxPoolRaw(requestParameters: CreateMailMailboxPoolRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityPoolsResponse201>> {
+    async createMailMailboxPoolRaw(requestParameters: CreateMailMailboxPoolRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityPoolsResponse201>> {
         const requestOptions = await this.createMailMailboxPoolRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5231,7 +5231,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates a round-robin or capacity-weighted sending pool and returns 201 with an initially empty member list. Requires team OWNER or ADMIN membership.
      * Create a mailbox pool
      */
-    async createMailMailboxPool(requestParameters: CreateMailMailboxPoolRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityPoolsResponse201> {
+    async createMailMailboxPool(requestParameters: CreateMailMailboxPoolRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityPoolsResponse201> {
         const response = await this.createMailMailboxPoolRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5281,7 +5281,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates a portfolio owned by this team. An existing portfolio returns a conflict. Requires team OWNER or ADMIN membership.
      * Create a mail portfolio
      */
-    async createMailPortfolioRaw(requestParameters: CreateMailPortfolioRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioResponse200>> {
+    async createMailPortfolioRaw(requestParameters: CreateMailPortfolioRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioResponse200>> {
         const requestOptions = await this.createMailPortfolioRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5292,7 +5292,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates a portfolio owned by this team. An existing portfolio returns a conflict. Requires team OWNER or ADMIN membership.
      * Create a mail portfolio
      */
-    async createMailPortfolio(requestParameters: CreateMailPortfolioRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostPortfolioResponse200> {
+    async createMailPortfolio(requestParameters: CreateMailPortfolioRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostPortfolioResponse200> {
         const response = await this.createMailPortfolioRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5342,7 +5342,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates an email or domain suppression shared within the portfolio. The default reason is agency policy. Requires team OWNER or ADMIN membership.
      * Create a portfolio suppression
      */
-    async createMailPortfolioSuppressionRaw(requestParameters: CreateMailPortfolioSuppressionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioSuppressionsResponse200>> {
+    async createMailPortfolioSuppressionRaw(requestParameters: CreateMailPortfolioSuppressionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioSuppressionsResponse200>> {
         const requestOptions = await this.createMailPortfolioSuppressionRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5353,7 +5353,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates an email or domain suppression shared within the portfolio. The default reason is agency policy. Requires team OWNER or ADMIN membership.
      * Create a portfolio suppression
      */
-    async createMailPortfolioSuppression(requestParameters: CreateMailPortfolioSuppressionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostPortfolioSuppressionsResponse200> {
+    async createMailPortfolioSuppression(requestParameters: CreateMailPortfolioSuppressionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostPortfolioSuppressionsResponse200> {
         const response = await this.createMailPortfolioSuppressionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5403,7 +5403,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates an email or domain suppression with reason manual. Scope determines the format of value. Requires team OWNER or ADMIN membership.
      * Suppress an email or domain
      */
-    async createMailSuppressionRaw(requestParameters: CreateMailSuppressionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostSuppressionsResponse200>> {
+    async createMailSuppressionRaw(requestParameters: CreateMailSuppressionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostSuppressionsResponse200>> {
         const requestOptions = await this.createMailSuppressionRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5414,7 +5414,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates an email or domain suppression with reason manual. Scope determines the format of value. Requires team OWNER or ADMIN membership.
      * Suppress an email or domain
      */
-    async createMailSuppression(requestParameters: CreateMailSuppressionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostSuppressionsResponse200> {
+    async createMailSuppression(requestParameters: CreateMailSuppressionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostSuppressionsResponse200> {
         const response = await this.createMailSuppressionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5464,7 +5464,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates a subscription and returns 201 with its signingSecret. Store this secret securely; redact it from examples and logs. Requires team OWNER or ADMIN membership.
      * Create a mail webhook
      */
-    async createMailWebhookRaw(requestParameters: CreateMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksResponse201>> {
+    async createMailWebhookRaw(requestParameters: CreateMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksResponse201>> {
         const requestOptions = await this.createMailWebhookRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5475,7 +5475,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates a subscription and returns 201 with its signingSecret. Store this secret securely; redact it from examples and logs. Requires team OWNER or ADMIN membership.
      * Create a mail webhook
      */
-    async createMailWebhook(requestParameters: CreateMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostWebhooksResponse201> {
+    async createMailWebhook(requestParameters: CreateMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostWebhooksResponse201> {
         const response = await this.createMailWebhookRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5533,7 +5533,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Records a winning variant for a revision. Automatic decisions must satisfy the report eligibility guard and recommended winner. An inconclusive manual override requires allowInconclusiveManualDecision and a reason. Requires team OWNER or ADMIN membership.
      * Record an experiment decision
      */
-    async decideMailExperimentRaw(requestParameters: DecideMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyDecideResponse200>> {
+    async decideMailExperimentRaw(requestParameters: DecideMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyDecideResponse200>> {
         const requestOptions = await this.decideMailExperimentRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5544,7 +5544,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Records a winning variant for a revision. Automatic decisions must satisfy the report eligibility guard and recommended winner. An inconclusive manual override requires allowInconclusiveManualDecision and a reason. Requires team OWNER or ADMIN membership.
      * Record an experiment decision
      */
-    async decideMailExperiment(requestParameters: DecideMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyDecideResponse200> {
+    async decideMailExperiment(requestParameters: DecideMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyDecideResponse200> {
         const response = await this.decideMailExperimentRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5602,7 +5602,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Deletes a draft using expectedVersion in the JSON request body and returns a deleted envelope. This DELETE has a request body. Requires authenticated team membership.
      * Delete a campaign draft
      */
-    async deleteMailCampaignDraftRaw(requestParameters: DeleteMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteCampaignsByCampaignIdResponse200>> {
+    async deleteMailCampaignDraftRaw(requestParameters: DeleteMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteCampaignsByCampaignIdResponse200>> {
         const requestOptions = await this.deleteMailCampaignDraftRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5613,7 +5613,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Deletes a draft using expectedVersion in the JSON request body and returns a deleted envelope. This DELETE has a request body. Requires authenticated team membership.
      * Delete a campaign draft
      */
-    async deleteMailCampaignDraft(requestParameters: DeleteMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeleteCampaignsByCampaignIdResponse200> {
+    async deleteMailCampaignDraft(requestParameters: DeleteMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeleteCampaignsByCampaignIdResponse200> {
         const response = await this.deleteMailCampaignDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5661,7 +5661,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Deletes a tenant-scoped reply automation and returns a result envelope. Requires team OWNER or ADMIN membership.
      * Delete a reply automation
      */
-    async deleteMailReplyAutomationRaw(requestParameters: DeleteMailReplyAutomationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteReplyAutomationsByAutomationIdResponse200>> {
+    async deleteMailReplyAutomationRaw(requestParameters: DeleteMailReplyAutomationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteReplyAutomationsByAutomationIdResponse200>> {
         const requestOptions = await this.deleteMailReplyAutomationRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5672,7 +5672,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Deletes a tenant-scoped reply automation and returns a result envelope. Requires team OWNER or ADMIN membership.
      * Delete a reply automation
      */
-    async deleteMailReplyAutomation(requestParameters: DeleteMailReplyAutomationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeleteReplyAutomationsByAutomationIdResponse200> {
+    async deleteMailReplyAutomation(requestParameters: DeleteMailReplyAutomationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeleteReplyAutomationsByAutomationIdResponse200> {
         const response = await this.deleteMailReplyAutomationRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5712,7 +5712,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Removes the tracking-domain configuration and returns removed. Requires team OWNER or ADMIN membership.
      * Delete a tracking domain
      */
-    async deleteMailTrackingDomainRaw(requestParameters: DeleteMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteTrackingDomainResponse200>> {
+    async deleteMailTrackingDomainRaw(requestParameters: DeleteMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteTrackingDomainResponse200>> {
         const requestOptions = await this.deleteMailTrackingDomainRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5723,7 +5723,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Removes the tracking-domain configuration and returns removed. Requires team OWNER or ADMIN membership.
      * Delete a tracking domain
      */
-    async deleteMailTrackingDomain(requestParameters: DeleteMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeleteTrackingDomainResponse200> {
+    async deleteMailTrackingDomain(requestParameters: DeleteMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeleteTrackingDomainResponse200> {
         const response = await this.deleteMailTrackingDomainRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5771,7 +5771,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Deletes the team subscription and returns a JSON deleted envelope, not a bodyless response. Requires team OWNER or ADMIN membership.
      * Delete a mail webhook
      */
-    async deleteMailWebhookRaw(requestParameters: DeleteMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteWebhooksBySubscriptionIdResponse200>> {
+    async deleteMailWebhookRaw(requestParameters: DeleteMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteWebhooksBySubscriptionIdResponse200>> {
         const requestOptions = await this.deleteMailWebhookRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5782,7 +5782,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Deletes the team subscription and returns a JSON deleted envelope, not a bodyless response. Requires team OWNER or ADMIN membership.
      * Delete a mail webhook
      */
-    async deleteMailWebhook(requestParameters: DeleteMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeleteWebhooksBySubscriptionIdResponse200> {
+    async deleteMailWebhook(requestParameters: DeleteMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeleteWebhooksBySubscriptionIdResponse200> {
         const response = await this.deleteMailWebhookRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5830,7 +5830,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Disconnects the mailbox using the configured mailbox-disconnection service. Missing service configuration fails a precondition. Requires team OWNER or ADMIN membership.
      * Disconnect a mailbox
      */
-    async disconnectMailMailboxRaw(requestParameters: DisconnectMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteMailboxesByMailboxIdResponse200>> {
+    async disconnectMailMailboxRaw(requestParameters: DisconnectMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteMailboxesByMailboxIdResponse200>> {
         const requestOptions = await this.disconnectMailMailboxRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5841,7 +5841,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Disconnects the mailbox using the configured mailbox-disconnection service. Missing service configuration fails a precondition. Requires team OWNER or ADMIN membership.
      * Disconnect a mailbox
      */
-    async disconnectMailMailbox(requestParameters: DisconnectMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeleteMailboxesByMailboxIdResponse200> {
+    async disconnectMailMailbox(requestParameters: DisconnectMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeleteMailboxesByMailboxIdResponse200> {
         const response = await this.disconnectMailMailboxRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5889,7 +5889,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates a new draft with new campaign and step IDs and returns 201. The copy starts at version 1 and is not launched. Requires authenticated team membership.
      * Duplicate a campaign draft
      */
-    async duplicateMailCampaignDraftRaw(requestParameters: DuplicateMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsByCampaignIdDuplicateResponse201>> {
+    async duplicateMailCampaignDraftRaw(requestParameters: DuplicateMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsByCampaignIdDuplicateResponse201>> {
         const requestOptions = await this.duplicateMailCampaignDraftRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5900,7 +5900,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates a new draft with new campaign and step IDs and returns 201. The copy starts at version 1 and is not launched. Requires authenticated team membership.
      * Duplicate a campaign draft
      */
-    async duplicateMailCampaignDraft(requestParameters: DuplicateMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCampaignsByCampaignIdDuplicateResponse201> {
+    async duplicateMailCampaignDraft(requestParameters: DuplicateMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCampaignsByCampaignIdDuplicateResponse201> {
         const response = await this.duplicateMailCampaignDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5950,7 +5950,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Queues a message and returns 201 with its current state. The response does not prove delivery. Supply a stable idempotencyKey and inspect delivery activity for its outcome. Do not automatically replay an interrupted call. Requires team OWNER or ADMIN membership.
      * Queue an outbound message
      */
-    async enqueueMailMessageRaw(requestParameters: EnqueueMailMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMessagesResponse201>> {
+    async enqueueMailMessageRaw(requestParameters: EnqueueMailMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMessagesResponse201>> {
         const requestOptions = await this.enqueueMailMessageRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -5961,7 +5961,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Queues a message and returns 201 with its current state. The response does not prove delivery. Supply a stable idempotencyKey and inspect delivery activity for its outcome. Do not automatically replay an interrupted call. Requires team OWNER or ADMIN membership.
      * Queue an outbound message
      */
-    async enqueueMailMessage(requestParameters: EnqueueMailMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostMessagesResponse201> {
+    async enqueueMailMessage(requestParameters: EnqueueMailMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostMessagesResponse201> {
         const response = await this.enqueueMailMessageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6011,7 +6011,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Enrolls contacts and returns their runs. Select exactly one contact source and exactly one sending source. A campaignName requires campaignId. Supply idempotencyKey; enrollmentMode distinguishes new_only from reenroll. A response acknowledges enrollment, not successful delivery. Requires team OWNER or ADMIN membership.
      * Enroll contacts in a cadence
      */
-    async enrollMailCadenceRaw(requestParameters: EnrollMailCadenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceRunsResponse200>> {
+    async enrollMailCadenceRaw(requestParameters: EnrollMailCadenceRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceRunsResponse200>> {
         const requestOptions = await this.enrollMailCadenceRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6022,7 +6022,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Enrolls contacts and returns their runs. Select exactly one contact source and exactly one sending source. A campaignName requires campaignId. Supply idempotencyKey; enrollmentMode distinguishes new_only from reenroll. A response acknowledges enrollment, not successful delivery. Requires team OWNER or ADMIN membership.
      * Enroll contacts in a cadence
      */
-    async enrollMailCadence(requestParameters: EnrollMailCadenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadenceRunsResponse200> {
+    async enrollMailCadence(requestParameters: EnrollMailCadenceRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadenceRunsResponse200> {
         const response = await this.enrollMailCadenceRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6072,7 +6072,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns a JSON envelope containing CSV text, filename and contentType. from/to must form a positive range no longer than 366 days. Use the returned structured nextCursor as body.after until it is null. Default limit is 2000, maximum 10000. Requires authenticated team membership.
      * Export mail analytics
      */
-    async exportMailAnalyticsRaw(requestParameters: ExportMailAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostAnalyticsExportResponse200>> {
+    async exportMailAnalyticsRaw(requestParameters: ExportMailAnalyticsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostAnalyticsExportResponse200>> {
         const requestOptions = await this.exportMailAnalyticsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6083,7 +6083,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns a JSON envelope containing CSV text, filename and contentType. from/to must form a positive range no longer than 366 days. Use the returned structured nextCursor as body.after until it is null. Default limit is 2000, maximum 10000. Requires authenticated team membership.
      * Export mail analytics
      */
-    async exportMailAnalytics(requestParameters: ExportMailAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostAnalyticsExportResponse200> {
+    async exportMailAnalytics(requestParameters: ExportMailAnalyticsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostAnalyticsExportResponse200> {
         const response = await this.exportMailAnalyticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6131,7 +6131,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns a JSON envelope with CSV content, filename and contentType. Uses the same positive, at-most-366-day range as the portfolio overview; it does not return a raw CSV HTTP body. Requires team OWNER or ADMIN membership.
      * Export portfolio analytics
      */
-    async exportMailPortfolioRaw(requestParameters: ExportMailPortfolioRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioExportResponse200>> {
+    async exportMailPortfolioRaw(requestParameters: ExportMailPortfolioRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostPortfolioExportResponse200>> {
         const requestOptions = await this.exportMailPortfolioRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6142,7 +6142,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns a JSON envelope with CSV content, filename and contentType. Uses the same positive, at-most-366-day range as the portfolio overview; it does not return a raw CSV HTTP body. Requires team OWNER or ADMIN membership.
      * Export portfolio analytics
      */
-    async exportMailPortfolio(requestParameters: ExportMailPortfolioRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostPortfolioExportResponse200> {
+    async exportMailPortfolio(requestParameters: ExportMailPortfolioRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostPortfolioExportResponse200> {
         const response = await this.exportMailPortfolioRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6190,7 +6190,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns message and operational analytics for the requested range, defaulting to the previous 30 days. Operational fallback data can be sample-limited; inspect the returned coverage indicators. Requires authenticated team membership.
      * Get mail analytics
      */
-    async getMailAnalyticsRaw(requestParameters: GetMailAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetAnalyticsResponse200>> {
+    async getMailAnalyticsRaw(requestParameters: GetMailAnalyticsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetAnalyticsResponse200>> {
         const requestOptions = await this.getMailAnalyticsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6201,7 +6201,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns message and operational analytics for the requested range, defaulting to the previous 30 days. Operational fallback data can be sample-limited; inspect the returned coverage indicators. Requires authenticated team membership.
      * Get mail analytics
      */
-    async getMailAnalytics(requestParameters: GetMailAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetAnalyticsResponse200> {
+    async getMailAnalytics(requestParameters: GetMailAnalyticsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetAnalyticsResponse200> {
         const response = await this.getMailAnalyticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6249,7 +6249,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns one tenant-scoped campaign draft, or 404 when absent. Requires authenticated team membership.
      * Get a campaign draft
      */
-    async getMailCampaignDraftRaw(requestParameters: GetMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCampaignsByCampaignIdResponse200>> {
+    async getMailCampaignDraftRaw(requestParameters: GetMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCampaignsByCampaignIdResponse200>> {
         const requestOptions = await this.getMailCampaignDraftRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6260,7 +6260,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns one tenant-scoped campaign draft, or 404 when absent. Requires authenticated team membership.
      * Get a campaign draft
      */
-    async getMailCampaignDraft(requestParameters: GetMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCampaignsByCampaignIdResponse200> {
+    async getMailCampaignDraft(requestParameters: GetMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCampaignsByCampaignIdResponse200> {
         const response = await this.getMailCampaignDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6300,7 +6300,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns delivery and sequence progress for this team. Requires authenticated team membership.
      * Get campaign progress
      */
-    async getMailCampaignProgressRaw(requestParameters: GetMailCampaignProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCampaignProgressResponse200>> {
+    async getMailCampaignProgressRaw(requestParameters: GetMailCampaignProgressRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCampaignProgressResponse200>> {
         const requestOptions = await this.getMailCampaignProgressRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6311,7 +6311,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns delivery and sequence progress for this team. Requires authenticated team membership.
      * Get campaign progress
      */
-    async getMailCampaignProgress(requestParameters: GetMailCampaignProgressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCampaignProgressResponse200> {
+    async getMailCampaignProgress(requestParameters: GetMailCampaignProgressRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCampaignProgressResponse200> {
         const response = await this.getMailCampaignProgressRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6351,7 +6351,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Reports mailbox/connection readiness and whether outbound, cadence and inbound execution are enabled. SMS and WhatsApp report consent, template and cost-ceiling requirements. Requires authenticated team membership.
      * Get channel availability
      */
-    async getMailChannelsRaw(requestParameters: GetMailChannelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetChannelsResponse200>> {
+    async getMailChannelsRaw(requestParameters: GetMailChannelsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetChannelsResponse200>> {
         const requestOptions = await this.getMailChannelsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6362,7 +6362,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Reports mailbox/connection readiness and whether outbound, cadence and inbound execution are enabled. SMS and WhatsApp report consent, template and cost-ceiling requirements. Requires authenticated team membership.
      * Get channel availability
      */
-    async getMailChannels(requestParameters: GetMailChannelsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetChannelsResponse200> {
+    async getMailChannels(requestParameters: GetMailChannelsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetChannelsResponse200> {
         const response = await this.getMailChannelsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6412,7 +6412,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns CRM states for the explicitly supplied contact IDs within this team. Requires authenticated team membership.
      * Get contact CRM states in a batch
      */
-    async getMailContactStatesRaw(requestParameters: GetMailContactStatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmStatesBatchResponse200>> {
+    async getMailContactStatesRaw(requestParameters: GetMailContactStatesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmStatesBatchResponse200>> {
         const requestOptions = await this.getMailContactStatesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6423,7 +6423,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns CRM states for the explicitly supplied contact IDs within this team. Requires authenticated team membership.
      * Get contact CRM states in a batch
      */
-    async getMailContactStates(requestParameters: GetMailContactStatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCrmStatesBatchResponse200> {
+    async getMailContactStates(requestParameters: GetMailContactStatesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCrmStatesBatchResponse200> {
         const response = await this.getMailContactStatesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6473,7 +6473,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns tenant-scoped contact records for the supplied IDs. Requires authenticated team membership.
      * Get mail contacts in a batch
      */
-    async getMailContactsRaw(requestParameters: GetMailContactsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmContactsBatchResponse200>> {
+    async getMailContactsRaw(requestParameters: GetMailContactsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCrmContactsBatchResponse200>> {
         const requestOptions = await this.getMailContactsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6484,7 +6484,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns tenant-scoped contact records for the supplied IDs. Requires authenticated team membership.
      * Get mail contacts in a batch
      */
-    async getMailContacts(requestParameters: GetMailContactsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCrmContactsBatchResponse200> {
+    async getMailContacts(requestParameters: GetMailContactsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCrmContactsBatchResponse200> {
         const response = await this.getMailContactsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6524,7 +6524,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns mailbox health and pools with their members. Requires authenticated team membership.
      * Get deliverability configuration
      */
-    async getMailDeliverabilityRaw(requestParameters: GetMailDeliverabilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetDeliverabilityResponse200>> {
+    async getMailDeliverabilityRaw(requestParameters: GetMailDeliverabilityRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetDeliverabilityResponse200>> {
         const requestOptions = await this.getMailDeliverabilityRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6535,7 +6535,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns mailbox health and pools with their members. Requires authenticated team membership.
      * Get deliverability configuration
      */
-    async getMailDeliverability(requestParameters: GetMailDeliverabilityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetDeliverabilityResponse200> {
+    async getMailDeliverability(requestParameters: GetMailDeliverabilityRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetDeliverabilityResponse200> {
         const response = await this.getMailDeliverabilityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6598,7 +6598,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns the report for a required positive revision. Optional at sets the report time; omission uses the current time. Requires authenticated team membership.
      * Get an experiment report
      */
-    async getMailExperimentReportRaw(requestParameters: GetMailExperimentReportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetExperimentsByExperimentKeyReportResponse200>> {
+    async getMailExperimentReportRaw(requestParameters: GetMailExperimentReportRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetExperimentsByExperimentKeyReportResponse200>> {
         const requestOptions = await this.getMailExperimentReportRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6609,7 +6609,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns the report for a required positive revision. Optional at sets the report time; omission uses the current time. Requires authenticated team membership.
      * Get an experiment report
      */
-    async getMailExperimentReport(requestParameters: GetMailExperimentReportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetExperimentsByExperimentKeyReportResponse200> {
+    async getMailExperimentReport(requestParameters: GetMailExperimentReportRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetExperimentsByExperimentKeyReportResponse200> {
         const response = await this.getMailExperimentReportRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6649,7 +6649,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns reports for the latest available revision of each experiment. Definitions without revisions are omitted. Requires authenticated team membership.
      * Get experiment overview
      */
-    async getMailExperimentsOverviewRaw(requestParameters: GetMailExperimentsOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetExperimentsOverviewResponse200>> {
+    async getMailExperimentsOverviewRaw(requestParameters: GetMailExperimentsOverviewRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetExperimentsOverviewResponse200>> {
         const requestOptions = await this.getMailExperimentsOverviewRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6660,7 +6660,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns reports for the latest available revision of each experiment. Definitions without revisions are omitted. Requires authenticated team membership.
      * Get experiment overview
      */
-    async getMailExperimentsOverview(requestParameters: GetMailExperimentsOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetExperimentsOverviewResponse200> {
+    async getMailExperimentsOverview(requestParameters: GetMailExperimentsOverviewRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetExperimentsOverviewResponse200> {
         const response = await this.getMailExperimentsOverviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6708,7 +6708,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns mailbox, connection, delivery, campaign, cadence and inbox summaries. The default range is the previous 30 days; from/to must form a positive range no longer than 366 days. Requires authenticated team membership.
      * Get mail overview
      */
-    async getMailOverviewRaw(requestParameters: GetMailOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetOverviewResponse200>> {
+    async getMailOverviewRaw(requestParameters: GetMailOverviewRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetOverviewResponse200>> {
         const requestOptions = await this.getMailOverviewRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6719,7 +6719,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns mailbox, connection, delivery, campaign, cadence and inbox summaries. The default range is the previous 30 days; from/to must form a positive range no longer than 366 days. Requires authenticated team membership.
      * Get mail overview
      */
-    async getMailOverview(requestParameters: GetMailOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetOverviewResponse200> {
+    async getMailOverview(requestParameters: GetMailOverviewRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetOverviewResponse200> {
         const response = await this.getMailOverviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6759,7 +6759,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns the team-owned portfolio, member teams and shared suppressions. An unconfigured portfolio returns portfolio=null and empty lists. Requires team OWNER or ADMIN membership.
      * Get a mail portfolio
      */
-    async getMailPortfolioRaw(requestParameters: GetMailPortfolioRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetPortfolioResponse200>> {
+    async getMailPortfolioRaw(requestParameters: GetMailPortfolioRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetPortfolioResponse200>> {
         const requestOptions = await this.getMailPortfolioRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6770,7 +6770,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns the team-owned portfolio, member teams and shared suppressions. An unconfigured portfolio returns portfolio=null and empty lists. Requires team OWNER or ADMIN membership.
      * Get a mail portfolio
      */
-    async getMailPortfolio(requestParameters: GetMailPortfolioRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetPortfolioResponse200> {
+    async getMailPortfolio(requestParameters: GetMailPortfolioRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetPortfolioResponse200> {
         const response = await this.getMailPortfolioRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6818,7 +6818,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns team-level delivery, mailbox, contact and usage summaries. The default range is the previous 30 days and must be positive and no longer than 366 days. Requires team OWNER or ADMIN membership.
      * Get portfolio analytics
      */
-    async getMailPortfolioOverviewRaw(requestParameters: GetMailPortfolioOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetPortfolioOverviewResponse200>> {
+    async getMailPortfolioOverviewRaw(requestParameters: GetMailPortfolioOverviewRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetPortfolioOverviewResponse200>> {
         const requestOptions = await this.getMailPortfolioOverviewRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6829,7 +6829,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns team-level delivery, mailbox, contact and usage summaries. The default range is the previous 30 days and must be positive and no longer than 366 days. Requires team OWNER or ADMIN membership.
      * Get portfolio analytics
      */
-    async getMailPortfolioOverview(requestParameters: GetMailPortfolioOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetPortfolioOverviewResponse200> {
+    async getMailPortfolioOverview(requestParameters: GetMailPortfolioOverviewRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetPortfolioOverviewResponse200> {
         const response = await this.getMailPortfolioOverviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6869,7 +6869,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns the tenant-scoped queue snapshot and current delivery state. Requires authenticated team membership.
      * Get mail queue status
      */
-    async getMailQueueRaw(requestParameters: GetMailQueueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetQueueResponse200>> {
+    async getMailQueueRaw(requestParameters: GetMailQueueRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetQueueResponse200>> {
         const requestOptions = await this.getMailQueueRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6880,7 +6880,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns the tenant-scoped queue snapshot and current delivery state. Requires authenticated team membership.
      * Get mail queue status
      */
-    async getMailQueue(requestParameters: GetMailQueueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetQueueResponse200> {
+    async getMailQueue(requestParameters: GetMailQueueRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetQueueResponse200> {
         const response = await this.getMailQueueRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6920,7 +6920,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns the team tracking domain, or null when none is configured. Requires authenticated team membership.
      * Get tracking domain configuration
      */
-    async getMailTrackingDomainRaw(requestParameters: GetMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetTrackingDomainResponse200>> {
+    async getMailTrackingDomainRaw(requestParameters: GetMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetTrackingDomainResponse200>> {
         const requestOptions = await this.getMailTrackingDomainRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6931,7 +6931,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns the team tracking domain, or null when none is configured. Requires authenticated team membership.
      * Get tracking domain configuration
      */
-    async getMailTrackingDomain(requestParameters: GetMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetTrackingDomainResponse200> {
+    async getMailTrackingDomain(requestParameters: GetMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetTrackingDomainResponse200> {
         const response = await this.getMailTrackingDomainRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6981,7 +6981,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Inspects public DNS evidence for the domain and up to five DKIM selectors. Returns the individual checks and overall report. Requires authenticated team membership.
      * Inspect domain authentication
      */
-    async inspectMailDomainHealthRaw(requestParameters: InspectMailDomainHealthRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityDomainHealthResponse200>> {
+    async inspectMailDomainHealthRaw(requestParameters: InspectMailDomainHealthRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityDomainHealthResponse200>> {
         const requestOptions = await this.inspectMailDomainHealthRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -6992,7 +6992,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Inspects public DNS evidence for the domain and up to five DKIM selectors. Returns the individual checks and overall report. Requires authenticated team membership.
      * Inspect domain authentication
      */
-    async inspectMailDomainHealth(requestParameters: InspectMailDomainHealthRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityDomainHealthResponse200> {
+    async inspectMailDomainHealth(requestParameters: InspectMailDomainHealthRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityDomainHealthResponse200> {
         const response = await this.inspectMailDomainHealthRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7042,7 +7042,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Queues a named campaign for audience-list enrollment and returns 202. Select exactly one sending source (mailboxId or mailboxPoolId). Supply idempotencyKey and inspect campaign progress after acceptance. Requires team OWNER or ADMIN membership.
      * Queue a cadence campaign
      */
-    async launchMailCadenceCampaignRaw(requestParameters: LaunchMailCadenceCampaignRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceCampaignsResponse202>> {
+    async launchMailCadenceCampaignRaw(requestParameters: LaunchMailCadenceCampaignRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceCampaignsResponse202>> {
         const requestOptions = await this.launchMailCadenceCampaignRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7053,7 +7053,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Queues a named campaign for audience-list enrollment and returns 202. Select exactly one sending source (mailboxId or mailboxPoolId). Supply idempotencyKey and inspect campaign progress after acceptance. Requires team OWNER or ADMIN membership.
      * Queue a cadence campaign
      */
-    async launchMailCadenceCampaign(requestParameters: LaunchMailCadenceCampaignRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadenceCampaignsResponse202> {
+    async launchMailCadenceCampaign(requestParameters: LaunchMailCadenceCampaignRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadenceCampaignsResponse202> {
         const response = await this.launchMailCadenceCampaignRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7111,7 +7111,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Launches a versioned draft after validating mailboxes, audience and steps. expectedVersion protects against stale edits. The response contains draft, campaign and sequence state; it does not prove delivery. Requires team OWNER or ADMIN membership.
      * Launch a campaign draft
      */
-    async launchMailCampaignDraftRaw(requestParameters: LaunchMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsByCampaignIdLaunchResponse200>> {
+    async launchMailCampaignDraftRaw(requestParameters: LaunchMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCampaignsByCampaignIdLaunchResponse200>> {
         const requestOptions = await this.launchMailCampaignDraftRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7122,7 +7122,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Launches a versioned draft after validating mailboxes, audience and steps. expectedVersion protects against stale edits. The response contains draft, campaign and sequence state; it does not prove delivery. Requires team OWNER or ADMIN membership.
      * Launch a campaign draft
      */
-    async launchMailCampaignDraft(requestParameters: LaunchMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCampaignsByCampaignIdLaunchResponse200> {
+    async launchMailCampaignDraft(requestParameters: LaunchMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCampaignsByCampaignIdLaunchResponse200> {
         const response = await this.launchMailCampaignDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7162,7 +7162,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns available audience-list summaries for campaign enrollment. Requires authenticated team membership.
      * List campaign audience lists
      */
-    async listMailAudienceListsRaw(requestParameters: ListMailAudienceListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetAudienceListsResponse200>> {
+    async listMailAudienceListsRaw(requestParameters: ListMailAudienceListsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetAudienceListsResponse200>> {
         const requestOptions = await this.listMailAudienceListsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7173,7 +7173,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns available audience-list summaries for campaign enrollment. Requires authenticated team membership.
      * List campaign audience lists
      */
-    async listMailAudienceLists(requestParameters: ListMailAudienceListsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetAudienceListsResponse200> {
+    async listMailAudienceLists(requestParameters: ListMailAudienceListsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetAudienceListsResponse200> {
         const response = await this.listMailAudienceListsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7213,7 +7213,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns queued and active cadence campaigns, including enrollment progress. Requires authenticated team membership.
      * List cadence campaigns
      */
-    async listMailCadenceCampaignsRaw(requestParameters: ListMailCadenceCampaignsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCadenceCampaignsResponse200>> {
+    async listMailCadenceCampaignsRaw(requestParameters: ListMailCadenceCampaignsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCadenceCampaignsResponse200>> {
         const requestOptions = await this.listMailCadenceCampaignsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7224,7 +7224,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns queued and active cadence campaigns, including enrollment progress. Requires authenticated team membership.
      * List cadence campaigns
      */
-    async listMailCadenceCampaigns(requestParameters: ListMailCadenceCampaignsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCadenceCampaignsResponse200> {
+    async listMailCadenceCampaigns(requestParameters: ListMailCadenceCampaignsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCadenceCampaignsResponse200> {
         const response = await this.listMailCadenceCampaignsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7264,7 +7264,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns tenant-scoped cadence runs and their execution state. Requires authenticated team membership.
      * List cadence runs
      */
-    async listMailCadenceRunsRaw(requestParameters: ListMailCadenceRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCadenceRunsResponse200>> {
+    async listMailCadenceRunsRaw(requestParameters: ListMailCadenceRunsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCadenceRunsResponse200>> {
         const requestOptions = await this.listMailCadenceRunsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7275,7 +7275,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns tenant-scoped cadence runs and their execution state. Requires authenticated team membership.
      * List cadence runs
      */
-    async listMailCadenceRuns(requestParameters: ListMailCadenceRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCadenceRunsResponse200> {
+    async listMailCadenceRuns(requestParameters: ListMailCadenceRunsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCadenceRunsResponse200> {
         const response = await this.listMailCadenceRunsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7315,7 +7315,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns reusable cadence definitions and versions. Requires authenticated team membership.
      * List cadences
      */
-    async listMailCadencesRaw(requestParameters: ListMailCadencesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCadencesResponse200>> {
+    async listMailCadencesRaw(requestParameters: ListMailCadencesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCadencesResponse200>> {
         const requestOptions = await this.listMailCadencesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7326,7 +7326,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns reusable cadence definitions and versions. Requires authenticated team membership.
      * List cadences
      */
-    async listMailCadences(requestParameters: ListMailCadencesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCadencesResponse200> {
+    async listMailCadences(requestParameters: ListMailCadencesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCadencesResponse200> {
         const response = await this.listMailCadencesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7366,7 +7366,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns the team campaign drafts and their current versions. Requires authenticated team membership.
      * List campaign drafts
      */
-    async listMailCampaignDraftsRaw(requestParameters: ListMailCampaignDraftsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCampaignsResponse200>> {
+    async listMailCampaignDraftsRaw(requestParameters: ListMailCampaignDraftsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCampaignsResponse200>> {
         const requestOptions = await this.listMailCampaignDraftsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7377,7 +7377,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns the team campaign drafts and their current versions. Requires authenticated team membership.
      * List campaign drafts
      */
-    async listMailCampaignDrafts(requestParameters: ListMailCampaignDraftsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCampaignsResponse200> {
+    async listMailCampaignDrafts(requestParameters: ListMailCampaignDraftsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCampaignsResponse200> {
         const response = await this.listMailCampaignDraftsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7417,7 +7417,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns team contact stages, ownership and outcomes. Requires authenticated team membership.
      * List contact CRM states
      */
-    async listMailContactStatesRaw(requestParameters: ListMailContactStatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCrmStatesResponse200>> {
+    async listMailContactStatesRaw(requestParameters: ListMailContactStatesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCrmStatesResponse200>> {
         const requestOptions = await this.listMailContactStatesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7428,7 +7428,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns team contact stages, ownership and outcomes. Requires authenticated team membership.
      * List contact CRM states
      */
-    async listMailContactStates(requestParameters: ListMailContactStatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCrmStatesResponse200> {
+    async listMailContactStates(requestParameters: ListMailContactStatesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCrmStatesResponse200> {
         const response = await this.listMailContactStatesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7476,7 +7476,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns tasks filtered by status. limit defaults to 100 and is bounded to 1–500; there is no continuation cursor. Requires authenticated team membership.
      * List CRM tasks
      */
-    async listMailCrmTasksRaw(requestParameters: ListMailCrmTasksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCrmTasksResponse200>> {
+    async listMailCrmTasksRaw(requestParameters: ListMailCrmTasksRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCrmTasksResponse200>> {
         const requestOptions = await this.listMailCrmTasksRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7487,7 +7487,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns tasks filtered by status. limit defaults to 100 and is bounded to 1–500; there is no continuation cursor. Requires authenticated team membership.
      * List CRM tasks
      */
-    async listMailCrmTasks(requestParameters: ListMailCrmTasksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCrmTasksResponse200> {
+    async listMailCrmTasks(requestParameters: ListMailCrmTasksRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCrmTasksResponse200> {
         const response = await this.listMailCrmTasksRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7535,7 +7535,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns a bounded timeline, optionally restricted to contactId. limit defaults to 100 and is bounded to 1–500. Requires authenticated team membership.
      * List CRM timeline events
      */
-    async listMailCrmTimelineRaw(requestParameters: ListMailCrmTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCrmTimelineResponse200>> {
+    async listMailCrmTimelineRaw(requestParameters: ListMailCrmTimelineRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetCrmTimelineResponse200>> {
         const requestOptions = await this.listMailCrmTimelineRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7546,7 +7546,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns a bounded timeline, optionally restricted to contactId. limit defaults to 100 and is bounded to 1–500. Requires authenticated team membership.
      * List CRM timeline events
      */
-    async listMailCrmTimeline(requestParameters: ListMailCrmTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetCrmTimelineResponse200> {
+    async listMailCrmTimeline(requestParameters: ListMailCrmTimelineRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetCrmTimelineResponse200> {
         const response = await this.listMailCrmTimelineRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7586,7 +7586,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns experiment definitions with their revisions. Requires authenticated team membership.
      * List mail experiments
      */
-    async listMailExperimentsRaw(requestParameters: ListMailExperimentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetExperimentsResponse200>> {
+    async listMailExperimentsRaw(requestParameters: ListMailExperimentsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetExperimentsResponse200>> {
         const requestOptions = await this.listMailExperimentsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7597,7 +7597,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns experiment definitions with their revisions. Requires authenticated team membership.
      * List mail experiments
      */
-    async listMailExperiments(requestParameters: ListMailExperimentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetExperimentsResponse200> {
+    async listMailExperiments(requestParameters: ListMailExperimentsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetExperimentsResponse200> {
         const response = await this.listMailExperimentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7653,7 +7653,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns inbox messages filtered by status, label and query. limit defaults to 100 and is bounded to 1–500. This is a bounded list without a continuation cursor. Requires authenticated team membership.
      * List inbox messages
      */
-    async listMailInboxRaw(requestParameters: ListMailInboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetInboxResponse200>> {
+    async listMailInboxRaw(requestParameters: ListMailInboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetInboxResponse200>> {
         const requestOptions = await this.listMailInboxRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7664,7 +7664,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns inbox messages filtered by status, label and query. limit defaults to 100 and is bounded to 1–500. This is a bounded list without a continuation cursor. Requires authenticated team membership.
      * List inbox messages
      */
-    async listMailInbox(requestParameters: ListMailInboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetInboxResponse200> {
+    async listMailInbox(requestParameters: ListMailInboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetInboxResponse200> {
         const response = await this.listMailInboxRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7724,7 +7724,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Projects conversations from bounded outbound and inbound samples. Filter by status, label, query and assignment (any, mine or unassigned). limit defaults to 100, maximum 200. sampleLimited indicates that the underlying history was truncated; no continuation cursor is returned. Requires authenticated team membership.
      * List inbox conversation threads
      */
-    async listMailInboxThreadsRaw(requestParameters: ListMailInboxThreadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetInboxThreadsResponse200>> {
+    async listMailInboxThreadsRaw(requestParameters: ListMailInboxThreadsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetInboxThreadsResponse200>> {
         const requestOptions = await this.listMailInboxThreadsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7735,7 +7735,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Projects conversations from bounded outbound and inbound samples. Filter by status, label, query and assignment (any, mine or unassigned). limit defaults to 100, maximum 200. sampleLimited indicates that the underlying history was truncated; no continuation cursor is returned. Requires authenticated team membership.
      * List inbox conversation threads
      */
-    async listMailInboxThreads(requestParameters: ListMailInboxThreadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetInboxThreadsResponse200> {
+    async listMailInboxThreads(requestParameters: ListMailInboxThreadsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetInboxThreadsResponse200> {
         const response = await this.listMailInboxThreadsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7775,7 +7775,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns mailbox records and connection state for this team. Requires authenticated team membership.
      * List mailboxes and connections
      */
-    async listMailMailboxesRaw(requestParameters: ListMailMailboxesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetMailboxesResponse200>> {
+    async listMailMailboxesRaw(requestParameters: ListMailMailboxesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetMailboxesResponse200>> {
         const requestOptions = await this.listMailMailboxesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7786,7 +7786,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns mailbox records and connection state for this team. Requires authenticated team membership.
      * List mailboxes and connections
      */
-    async listMailMailboxes(requestParameters: ListMailMailboxesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetMailboxesResponse200> {
+    async listMailMailboxes(requestParameters: ListMailMailboxesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetMailboxesResponse200> {
         const response = await this.listMailMailboxesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7834,7 +7834,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns a cursor page of outbound messages. limit defaults to 100 and must be an integer from 1 to 500. nextCursor is omitted when exhausted. Requires authenticated team membership.
      * List mail delivery activity
      */
-    async listMailMessagesRaw(requestParameters: ListMailMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetMessagesResponse200>> {
+    async listMailMessagesRaw(requestParameters: ListMailMessagesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetMessagesResponse200>> {
         const requestOptions = await this.listMailMessagesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7845,7 +7845,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns a cursor page of outbound messages. limit defaults to 100 and must be an integer from 1 to 500. nextCursor is omitted when exhausted. Requires authenticated team membership.
      * List mail delivery activity
      */
-    async listMailMessages(requestParameters: ListMailMessagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetMessagesResponse200> {
+    async listMailMessages(requestParameters: ListMailMessagesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetMessagesResponse200> {
         const response = await this.listMailMessagesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7885,7 +7885,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns team reply-classification automation rules. Requires authenticated team membership.
      * List reply automations
      */
-    async listMailReplyAutomationsRaw(requestParameters: ListMailReplyAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetReplyAutomationsResponse200>> {
+    async listMailReplyAutomationsRaw(requestParameters: ListMailReplyAutomationsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetReplyAutomationsResponse200>> {
         const requestOptions = await this.listMailReplyAutomationsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7896,7 +7896,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns team reply-classification automation rules. Requires authenticated team membership.
      * List reply automations
      */
-    async listMailReplyAutomations(requestParameters: ListMailReplyAutomationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetReplyAutomationsResponse200> {
+    async listMailReplyAutomations(requestParameters: ListMailReplyAutomationsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetReplyAutomationsResponse200> {
         const response = await this.listMailReplyAutomationsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7944,7 +7944,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns signature candidates with an opaque cursor. The default limit is 50, maximum 200. nextCursor is omitted when exhausted; it is not an explicit null. Requires authenticated team membership.
      * List extracted signatures
      */
-    async listMailSignaturesRaw(requestParameters: ListMailSignaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetSignaturesResponse200>> {
+    async listMailSignaturesRaw(requestParameters: ListMailSignaturesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetSignaturesResponse200>> {
         const requestOptions = await this.listMailSignaturesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -7955,7 +7955,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns signature candidates with an opaque cursor. The default limit is 50, maximum 200. nextCursor is omitted when exhausted; it is not an explicit null. Requires authenticated team membership.
      * List extracted signatures
      */
-    async listMailSignatures(requestParameters: ListMailSignaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetSignaturesResponse200> {
+    async listMailSignatures(requestParameters: ListMailSignaturesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetSignaturesResponse200> {
         const response = await this.listMailSignaturesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7995,7 +7995,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns team-scoped email and domain suppression records. Requires authenticated team membership.
      * List mail suppressions
      */
-    async listMailSuppressionsRaw(requestParameters: ListMailSuppressionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetSuppressionsResponse200>> {
+    async listMailSuppressionsRaw(requestParameters: ListMailSuppressionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetSuppressionsResponse200>> {
         const requestOptions = await this.listMailSuppressionsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8006,7 +8006,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns team-scoped email and domain suppression records. Requires authenticated team membership.
      * List mail suppressions
      */
-    async listMailSuppressions(requestParameters: ListMailSuppressionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetSuppressionsResponse200> {
+    async listMailSuppressions(requestParameters: ListMailSuppressionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetSuppressionsResponse200> {
         const response = await this.listMailSuppressionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8046,7 +8046,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns reusable template versions for this team. Requires authenticated team membership.
      * List message templates
      */
-    async listMailTemplatesRaw(requestParameters: ListMailTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetTemplatesResponse200>> {
+    async listMailTemplatesRaw(requestParameters: ListMailTemplatesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetTemplatesResponse200>> {
         const requestOptions = await this.listMailTemplatesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8057,7 +8057,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns reusable template versions for this team. Requires authenticated team membership.
      * List message templates
      */
-    async listMailTemplates(requestParameters: ListMailTemplatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetTemplatesResponse200> {
+    async listMailTemplates(requestParameters: ListMailTemplatesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetTemplatesResponse200> {
         const response = await this.listMailTemplatesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8097,7 +8097,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns subscriptions with secret references removed and up to 100 recent delivery records. Signing secret values are not returned. Requires team OWNER or ADMIN membership.
      * List mail webhooks and deliveries
      */
-    async listMailWebhooksRaw(requestParameters: ListMailWebhooksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetWebhooksResponse200>> {
+    async listMailWebhooksRaw(requestParameters: ListMailWebhooksRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailGetWebhooksResponse200>> {
         const requestOptions = await this.listMailWebhooksRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8108,7 +8108,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Returns subscriptions with secret references removed and up to 100 recent delivery records. Signing secret values are not returned. Requires team OWNER or ADMIN membership.
      * List mail webhooks and deliveries
      */
-    async listMailWebhooks(requestParameters: ListMailWebhooksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailGetWebhooksResponse200> {
+    async listMailWebhooks(requestParameters: ListMailWebhooksRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailGetWebhooksResponse200> {
         const response = await this.listMailWebhooksRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8156,7 +8156,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Transitions a running experiment to stopped. An incompatible state returns a conflict. Requires team OWNER or ADMIN membership.
      * Pause an experiment
      */
-    async pauseMailExperimentRaw(requestParameters: PauseMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyPauseResponse200>> {
+    async pauseMailExperimentRaw(requestParameters: PauseMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyPauseResponse200>> {
         const requestOptions = await this.pauseMailExperimentRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8167,7 +8167,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Transitions a running experiment to stopped. An incompatible state returns a conflict. Requires team OWNER or ADMIN membership.
      * Pause an experiment
      */
-    async pauseMailExperiment(requestParameters: PauseMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyPauseResponse200> {
+    async pauseMailExperiment(requestParameters: PauseMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyPauseResponse200> {
         const response = await this.pauseMailExperimentRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8225,7 +8225,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Pauses mailbox delivery with an optional reason. Requires team OWNER or ADMIN membership.
      * Pause a mailbox
      */
-    async pauseMailMailboxRaw(requestParameters: PauseMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdPauseResponse200>> {
+    async pauseMailMailboxRaw(requestParameters: PauseMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdPauseResponse200>> {
         const requestOptions = await this.pauseMailMailboxRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8236,7 +8236,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Pauses mailbox delivery with an optional reason. Requires team OWNER or ADMIN membership.
      * Pause a mailbox
      */
-    async pauseMailMailbox(requestParameters: PauseMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdPauseResponse200> {
+    async pauseMailMailbox(requestParameters: PauseMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdPauseResponse200> {
         const response = await this.pauseMailMailboxRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8286,7 +8286,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Checks enrollment readiness without enrolling contacts. Select exactly one contact source (contactIds or audienceListId) and exactly one sending source (mailboxId or mailboxPoolId). Review missing-variable and readiness results before enrollment. Requires team OWNER or ADMIN membership.
      * Check cadence enrollment
      */
-    async preflightMailCadenceEnrollmentRaw(requestParameters: PreflightMailCadenceEnrollmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceRunsPreflightResponse200>> {
+    async preflightMailCadenceEnrollmentRaw(requestParameters: PreflightMailCadenceEnrollmentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadenceRunsPreflightResponse200>> {
         const requestOptions = await this.preflightMailCadenceEnrollmentRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8297,7 +8297,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Checks enrollment readiness without enrolling contacts. Select exactly one contact source (contactIds or audienceListId) and exactly one sending source (mailboxId or mailboxPoolId). Review missing-variable and readiness results before enrollment. Requires team OWNER or ADMIN membership.
      * Check cadence enrollment
      */
-    async preflightMailCadenceEnrollment(requestParameters: PreflightMailCadenceEnrollmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadenceRunsPreflightResponse200> {
+    async preflightMailCadenceEnrollment(requestParameters: PreflightMailCadenceEnrollmentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadenceRunsPreflightResponse200> {
         const response = await this.preflightMailCadenceEnrollmentRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8347,7 +8347,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Provisions and verifies a manual mailbox using supplied credentials. SMTP ports 25, 465, 587 and 2525 and IMAP ports 143 and 993 are allowed by default; deployments may allow additional ports. Credentials must be excluded from logs and examples. Provisioning requires the manual mailbox service to be configured. Requires team OWNER or ADMIN membership.
      * Connect an SMTP/IMAP mailbox
      */
-    async provisionMailMailboxRaw(requestParameters: ProvisionMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMailboxesManualResponse200>> {
+    async provisionMailMailboxRaw(requestParameters: ProvisionMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMailboxesManualResponse200>> {
         const requestOptions = await this.provisionMailMailboxRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8358,7 +8358,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Provisions and verifies a manual mailbox using supplied credentials. SMTP ports 25, 465, 587 and 2525 and IMAP ports 143 and 993 are allowed by default; deployments may allow additional ports. Credentials must be excluded from logs and examples. Provisioning requires the manual mailbox service to be configured. Requires team OWNER or ADMIN membership.
      * Connect an SMTP/IMAP mailbox
      */
-    async provisionMailMailbox(requestParameters: ProvisionMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostMailboxesManualResponse200> {
+    async provisionMailMailbox(requestParameters: ProvisionMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostMailboxesManualResponse200> {
         const response = await this.provisionMailMailboxRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8406,7 +8406,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Recomputes health from current delivery evidence. Missing mailbox or health records return 404. Requires team OWNER or ADMIN membership.
      * Reconcile mailbox health
      */
-    async reconcileMailMailboxHealthRaw(requestParameters: ReconcileMailMailboxHealthRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdReconcileResponse200>> {
+    async reconcileMailMailboxHealthRaw(requestParameters: ReconcileMailMailboxHealthRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdReconcileResponse200>> {
         const requestOptions = await this.reconcileMailMailboxHealthRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8417,7 +8417,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Recomputes health from current delivery evidence. Missing mailbox or health records return 404. Requires team OWNER or ADMIN membership.
      * Reconcile mailbox health
      */
-    async reconcileMailMailboxHealth(requestParameters: ReconcileMailMailboxHealthRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdReconcileResponse200> {
+    async reconcileMailMailboxHealth(requestParameters: ReconcileMailMailboxHealthRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdReconcileResponse200> {
         const response = await this.reconcileMailMailboxHealthRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8465,7 +8465,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Reconciles a subscription with current delivery/event state. The subscription must belong to this team. Requires team OWNER or ADMIN membership.
      * Reconcile a mail webhook
      */
-    async reconcileMailWebhookRaw(requestParameters: ReconcileMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksBySubscriptionIdReconcileResponse200>> {
+    async reconcileMailWebhookRaw(requestParameters: ReconcileMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksBySubscriptionIdReconcileResponse200>> {
         const requestOptions = await this.reconcileMailWebhookRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8476,7 +8476,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Reconciles a subscription with current delivery/event state. The subscription must belong to this team. Requires team OWNER or ADMIN membership.
      * Reconcile a mail webhook
      */
-    async reconcileMailWebhook(requestParameters: ReconcileMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostWebhooksBySubscriptionIdReconcileResponse200> {
+    async reconcileMailWebhook(requestParameters: ReconcileMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostWebhooksBySubscriptionIdReconcileResponse200> {
         const response = await this.reconcileMailWebhookRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8534,7 +8534,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Records a custom conversion for an existing assignment. occurredAt cannot precede assignment or exceed current time by more than five minutes. A stable idempotencyKey identifies the conversion source. Requires authenticated team membership.
      * Record an experiment conversion
      */
-    async recordMailExperimentConversionRaw(requestParameters: RecordMailExperimentConversionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyConversionsResponse200>> {
+    async recordMailExperimentConversionRaw(requestParameters: RecordMailExperimentConversionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyConversionsResponse200>> {
         const requestOptions = await this.recordMailExperimentConversionRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8545,7 +8545,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Records a custom conversion for an existing assignment. occurredAt cannot precede assignment or exceed current time by more than five minutes. A stable idempotencyKey identifies the conversion source. Requires authenticated team membership.
      * Record an experiment conversion
      */
-    async recordMailExperimentConversion(requestParameters: RecordMailExperimentConversionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyConversionsResponse200> {
+    async recordMailExperimentConversion(requestParameters: RecordMailExperimentConversionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyConversionsResponse200> {
         const response = await this.recordMailExperimentConversionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8601,7 +8601,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Removes a mailbox from the sending pool and returns a result envelope. Requires team OWNER or ADMIN membership.
      * Remove a mailbox pool member
      */
-    async removeMailMailboxPoolMemberRaw(requestParameters: RemoveMailMailboxPoolMemberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200>> {
+    async removeMailMailboxPoolMemberRaw(requestParameters: RemoveMailMailboxPoolMemberRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeleteDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200>> {
         const requestOptions = await this.removeMailMailboxPoolMemberRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8612,7 +8612,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Removes a mailbox from the sending pool and returns a result envelope. Requires team OWNER or ADMIN membership.
      * Remove a mailbox pool member
      */
-    async removeMailMailboxPoolMember(requestParameters: RemoveMailMailboxPoolMemberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeleteDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200> {
+    async removeMailMailboxPoolMember(requestParameters: RemoveMailMailboxPoolMemberRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeleteDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200> {
         const response = await this.removeMailMailboxPoolMemberRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8660,7 +8660,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Removes the specified team from this team-owned portfolio. Requires team OWNER or ADMIN membership.
      * Remove a team from a portfolio
      */
-    async removeMailPortfolioTeamRaw(requestParameters: RemoveMailPortfolioTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeletePortfolioTeamsByMemberTeamIdResponse200>> {
+    async removeMailPortfolioTeamRaw(requestParameters: RemoveMailPortfolioTeamRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailDeletePortfolioTeamsByMemberTeamIdResponse200>> {
         const requestOptions = await this.removeMailPortfolioTeamRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8671,7 +8671,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Removes the specified team from this team-owned portfolio. Requires team OWNER or ADMIN membership.
      * Remove a team from a portfolio
      */
-    async removeMailPortfolioTeam(requestParameters: RemoveMailPortfolioTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailDeletePortfolioTeamsByMemberTeamIdResponse200> {
+    async removeMailPortfolioTeam(requestParameters: RemoveMailPortfolioTeamRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailDeletePortfolioTeamsByMemberTeamIdResponse200> {
         const response = await this.removeMailPortfolioTeamRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8719,7 +8719,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Explicitly replays a selected delivery. This can invoke the receiver again; do not automatically replay this API call. Requires team OWNER or ADMIN membership.
      * Replay a webhook delivery
      */
-    async replayMailWebhookDeliveryRaw(requestParameters: ReplayMailWebhookDeliveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksDeliveriesByDeliveryIdReplayResponse200>> {
+    async replayMailWebhookDeliveryRaw(requestParameters: ReplayMailWebhookDeliveryRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksDeliveriesByDeliveryIdReplayResponse200>> {
         const requestOptions = await this.replayMailWebhookDeliveryRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8730,7 +8730,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Explicitly replays a selected delivery. This can invoke the receiver again; do not automatically replay this API call. Requires team OWNER or ADMIN membership.
      * Replay a webhook delivery
      */
-    async replayMailWebhookDelivery(requestParameters: ReplayMailWebhookDeliveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostWebhooksDeliveriesByDeliveryIdReplayResponse200> {
+    async replayMailWebhookDelivery(requestParameters: ReplayMailWebhookDeliveryRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostWebhooksDeliveriesByDeliveryIdReplayResponse200> {
         const response = await this.replayMailWebhookDeliveryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8788,7 +8788,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Queues a reply with a stable clientRequestId and marks the inbox message read. Bounce/unsubscribe messages and unavailable sending mailboxes fail preconditions. The returned message represents queued delivery. Requires authenticated team membership.
      * Queue an inbox reply
      */
-    async replyToMailInboxMessageRaw(requestParameters: ReplyToMailInboxMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostInboxByMessageIdReplyResponse200>> {
+    async replyToMailInboxMessageRaw(requestParameters: ReplyToMailInboxMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostInboxByMessageIdReplyResponse200>> {
         const requestOptions = await this.replyToMailInboxMessageRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8799,7 +8799,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Queues a reply with a stable clientRequestId and marks the inbox message read. Bounce/unsubscribe messages and unavailable sending mailboxes fail preconditions. The returned message represents queued delivery. Requires authenticated team membership.
      * Queue an inbox reply
      */
-    async replyToMailInboxMessage(requestParameters: ReplyToMailInboxMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostInboxByMessageIdReplyResponse200> {
+    async replyToMailInboxMessage(requestParameters: ReplyToMailInboxMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostInboxByMessageIdReplyResponse200> {
         const response = await this.replyToMailInboxMessageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8847,7 +8847,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Transitions a stopped experiment to running. Requires team OWNER or ADMIN membership.
      * Resume an experiment
      */
-    async resumeMailExperimentRaw(requestParameters: ResumeMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyResumeResponse200>> {
+    async resumeMailExperimentRaw(requestParameters: ResumeMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostExperimentsByExperimentKeyResumeResponse200>> {
         const requestOptions = await this.resumeMailExperimentRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8858,7 +8858,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Transitions a stopped experiment to running. Requires team OWNER or ADMIN membership.
      * Resume an experiment
      */
-    async resumeMailExperiment(requestParameters: ResumeMailExperimentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyResumeResponse200> {
+    async resumeMailExperiment(requestParameters: ResumeMailExperimentRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostExperimentsByExperimentKeyResumeResponse200> {
         const response = await this.resumeMailExperimentRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8906,7 +8906,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Resumes the mailbox and reconciles its current health. Requires team OWNER or ADMIN membership.
      * Resume a mailbox
      */
-    async resumeMailMailboxRaw(requestParameters: ResumeMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdResumeResponse200>> {
+    async resumeMailMailboxRaw(requestParameters: ResumeMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostDeliverabilityMailboxesByMailboxIdResumeResponse200>> {
         const requestOptions = await this.resumeMailMailboxRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8917,7 +8917,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Resumes the mailbox and reconciles its current health. Requires team OWNER or ADMIN membership.
      * Resume a mailbox
      */
-    async resumeMailMailbox(requestParameters: ResumeMailMailboxRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdResumeResponse200> {
+    async resumeMailMailbox(requestParameters: ResumeMailMailboxRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostDeliverabilityMailboxesByMailboxIdResumeResponse200> {
         const response = await this.resumeMailMailboxRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -8965,7 +8965,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Explicitly retries an eligible message. This is a user-requested delivery action; clients must not automatically replay the API call. Requires team OWNER or ADMIN membership.
      * Retry a message explicitly
      */
-    async retryMailMessageRaw(requestParameters: RetryMailMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMessagesByMessageIdRetryResponse200>> {
+    async retryMailMessageRaw(requestParameters: RetryMailMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostMessagesByMessageIdRetryResponse200>> {
         const requestOptions = await this.retryMailMessageRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -8976,7 +8976,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Explicitly retries an eligible message. This is a user-requested delivery action; clients must not automatically replay the API call. Requires team OWNER or ADMIN membership.
      * Retry a message explicitly
      */
-    async retryMailMessage(requestParameters: RetryMailMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostMessagesByMessageIdRetryResponse200> {
+    async retryMailMessage(requestParameters: RetryMailMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostMessagesByMessageIdRetryResponse200> {
         const response = await this.retryMailMessageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9024,7 +9024,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Rotates the signing secret and returns its new value. Store it securely and update the receiver; exclude it from examples and logs. Requires team OWNER or ADMIN membership.
      * Rotate a mail webhook secret
      */
-    async rotateMailWebhookSecretRaw(requestParameters: RotateMailWebhookSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksBySubscriptionIdRotateSecretResponse200>> {
+    async rotateMailWebhookSecretRaw(requestParameters: RotateMailWebhookSecretRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksBySubscriptionIdRotateSecretResponse200>> {
         const requestOptions = await this.rotateMailWebhookSecretRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -9035,7 +9035,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Rotates the signing secret and returns its new value. Store it securely and update the receiver; exclude it from examples and logs. Requires team OWNER or ADMIN membership.
      * Rotate a mail webhook secret
      */
-    async rotateMailWebhookSecret(requestParameters: RotateMailWebhookSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostWebhooksBySubscriptionIdRotateSecretResponse200> {
+    async rotateMailWebhookSecret(requestParameters: RotateMailWebhookSecretRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostWebhooksBySubscriptionIdRotateSecretResponse200> {
         const response = await this.rotateMailWebhookSecretRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9085,7 +9085,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates the next cadence version. Referenced templates must exist and match each message channel; publishing requires published templates. Experiment variant IDs must be unique and weights must total 100. A message experiment control variant must match its message template and version. Requires authenticated team membership.
      * Save a cadence version
      */
-    async saveMailCadenceRaw(requestParameters: SaveMailCadenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadencesResponse200>> {
+    async saveMailCadenceRaw(requestParameters: SaveMailCadenceRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostCadencesResponse200>> {
         const requestOptions = await this.saveMailCadenceRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -9096,7 +9096,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates the next cadence version. Referenced templates must exist and match each message channel; publishing requires published templates. Experiment variant IDs must be unique and weights must total 100. A message experiment control variant must match its message template and version. Requires authenticated team membership.
      * Save a cadence version
      */
-    async saveMailCadence(requestParameters: SaveMailCadenceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostCadencesResponse200> {
+    async saveMailCadence(requestParameters: SaveMailCadenceRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostCadencesResponse200> {
         const response = await this.saveMailCadenceRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9146,7 +9146,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates or updates a rule that matches reply labels and can stop cadences, update a contact stage, assign an owner or create a task. Requires team OWNER or ADMIN membership.
      * Save a reply automation
      */
-    async saveMailReplyAutomationRaw(requestParameters: SaveMailReplyAutomationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostReplyAutomationsResponse200>> {
+    async saveMailReplyAutomationRaw(requestParameters: SaveMailReplyAutomationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostReplyAutomationsResponse200>> {
         const requestOptions = await this.saveMailReplyAutomationRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -9157,7 +9157,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates or updates a rule that matches reply labels and can stop cadences, update a contact stage, assign an owner or create a task. Requires team OWNER or ADMIN membership.
      * Save a reply automation
      */
-    async saveMailReplyAutomation(requestParameters: SaveMailReplyAutomationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostReplyAutomationsResponse200> {
+    async saveMailReplyAutomation(requestParameters: SaveMailReplyAutomationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostReplyAutomationsResponse200> {
         const response = await this.saveMailReplyAutomationRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9207,7 +9207,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates the next version of a reusable email, SMS or WhatsApp template. Omit id to create a new template. Variables are derived from subject and body; WhatsApp approval metadata is channel-specific. Requires authenticated team membership.
      * Save a message template
      */
-    async saveMailTemplateRaw(requestParameters: SaveMailTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTemplatesResponse200>> {
+    async saveMailTemplateRaw(requestParameters: SaveMailTemplateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTemplatesResponse200>> {
         const requestOptions = await this.saveMailTemplateRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -9218,7 +9218,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates the next version of a reusable email, SMS or WhatsApp template. Omit id to create a new template. Variables are derived from subject and body; WhatsApp approval metadata is channel-specific. Requires authenticated team membership.
      * Save a message template
      */
-    async saveMailTemplate(requestParameters: SaveMailTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostTemplatesResponse200> {
+    async saveMailTemplate(requestParameters: SaveMailTemplateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostTemplatesResponse200> {
         const response = await this.saveMailTemplateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9268,7 +9268,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Sets the contact stage and optional owner/outcome. An assigned owner must belong to the team. Requires authenticated team membership.
      * Set a contact CRM state
      */
-    async setMailContactStateRaw(requestParameters: SetMailContactStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPutCrmStatesResponse200>> {
+    async setMailContactStateRaw(requestParameters: SetMailContactStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPutCrmStatesResponse200>> {
         const requestOptions = await this.setMailContactStateRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -9279,7 +9279,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Sets the contact stage and optional owner/outcome. An assigned owner must belong to the team. Requires authenticated team membership.
      * Set a contact CRM state
      */
-    async setMailContactState(requestParameters: SetMailContactStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPutCrmStatesResponse200> {
+    async setMailContactState(requestParameters: SetMailContactStateRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPutCrmStatesResponse200> {
         const response = await this.setMailContactStateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9345,7 +9345,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates or updates a pool member, including its priority, positive weight and enabled state. Requires team OWNER or ADMIN membership.
      * Set a mailbox pool member
      */
-    async setMailMailboxPoolMemberRaw(requestParameters: SetMailMailboxPoolMemberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPutDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200>> {
+    async setMailMailboxPoolMemberRaw(requestParameters: SetMailMailboxPoolMemberRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPutDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200>> {
         const requestOptions = await this.setMailMailboxPoolMemberRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -9356,7 +9356,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates or updates a pool member, including its priority, positive weight and enabled state. Requires team OWNER or ADMIN membership.
      * Set a mailbox pool member
      */
-    async setMailMailboxPoolMember(requestParameters: SetMailMailboxPoolMemberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPutDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200> {
+    async setMailMailboxPoolMember(requestParameters: SetMailMailboxPoolMemberRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPutDeliverabilityPoolsByPoolIdMembersByMailboxIdResponse200> {
         const response = await this.setMailMailboxPoolMemberRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9414,7 +9414,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Updates the subscription status and returns its public configuration. Requires team OWNER or ADMIN membership.
      * Set a mail webhook status
      */
-    async setMailWebhookStatusRaw(requestParameters: SetMailWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksBySubscriptionIdStatusResponse200>> {
+    async setMailWebhookStatusRaw(requestParameters: SetMailWebhookStatusRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostWebhooksBySubscriptionIdStatusResponse200>> {
         const requestOptions = await this.setMailWebhookStatusRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -9425,7 +9425,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Updates the subscription status and returns its public configuration. Requires team OWNER or ADMIN membership.
      * Set a mail webhook status
      */
-    async setMailWebhookStatus(requestParameters: SetMailWebhookStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostWebhooksBySubscriptionIdStatusResponse200> {
+    async setMailWebhookStatus(requestParameters: SetMailWebhookStatusRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostWebhooksBySubscriptionIdStatusResponse200> {
         const response = await this.setMailWebhookStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9475,7 +9475,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates a Gmail or Microsoft authorization transaction. Open authorizationUrl in a browser to complete provider consent. Mailbox identity is verified by the provider during the callback; returnTo is restricted to a safe local path. Requires team OWNER or ADMIN membership.
      * Start mailbox authorization
      */
-    async startMailOAuthRaw(requestParameters: StartMailOAuthRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostOauthBeginResponse200>> {
+    async startMailOAuthRaw(requestParameters: StartMailOAuthRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostOauthBeginResponse200>> {
         const requestOptions = await this.startMailOAuthRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -9486,7 +9486,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Creates a Gmail or Microsoft authorization transaction. Open authorizationUrl in a browser to complete provider consent. Mailbox identity is verified by the provider during the callback; returnTo is restricted to a safe local path. Requires team OWNER or ADMIN membership.
      * Start mailbox authorization
      */
-    async startMailOAuth(requestParameters: StartMailOAuthRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostOauthBeginResponse200> {
+    async startMailOAuth(requestParameters: StartMailOAuthRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostOauthBeginResponse200> {
         const response = await this.startMailOAuthRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9544,7 +9544,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Updates a campaign draft using expectedVersion for optimistic concurrency. Supply the draft content, not an arbitrary partial patch. Sending windows must end after they start. Requires authenticated team membership.
      * Update a campaign draft
      */
-    async updateMailCampaignDraftRaw(requestParameters: UpdateMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPatchCampaignsByCampaignIdResponse200>> {
+    async updateMailCampaignDraftRaw(requestParameters: UpdateMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPatchCampaignsByCampaignIdResponse200>> {
         const requestOptions = await this.updateMailCampaignDraftRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -9555,7 +9555,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Updates a campaign draft using expectedVersion for optimistic concurrency. Supply the draft content, not an arbitrary partial patch. Sending windows must end after they start. Requires authenticated team membership.
      * Update a campaign draft
      */
-    async updateMailCampaignDraft(requestParameters: UpdateMailCampaignDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPatchCampaignsByCampaignIdResponse200> {
+    async updateMailCampaignDraft(requestParameters: UpdateMailCampaignDraftRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPatchCampaignsByCampaignIdResponse200> {
         const response = await this.updateMailCampaignDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9613,7 +9613,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Changes read/archive status or assignee. At least one of status and assignedToActorId is required. Set assignedToActorId to null to unassign; a non-null assignee must belong to the team. Requires authenticated team membership.
      * Update an inbox message
      */
-    async updateMailInboxMessageRaw(requestParameters: UpdateMailInboxMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostInboxByMessageIdResponse200>> {
+    async updateMailInboxMessageRaw(requestParameters: UpdateMailInboxMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostInboxByMessageIdResponse200>> {
         const requestOptions = await this.updateMailInboxMessageRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -9624,7 +9624,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Changes read/archive status or assignee. At least one of status and assignedToActorId is required. Set assignedToActorId to null to unassign; a non-null assignee must belong to the team. Requires authenticated team membership.
      * Update an inbox message
      */
-    async updateMailInboxMessage(requestParameters: UpdateMailInboxMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostInboxByMessageIdResponse200> {
+    async updateMailInboxMessage(requestParameters: UpdateMailInboxMessageRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostInboxByMessageIdResponse200> {
         const response = await this.updateMailInboxMessageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9682,7 +9682,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Changes endpoint or eventTypes. At least one of those fields is required. The public subscription omits its secret reference. Requires team OWNER or ADMIN membership.
      * Update a mail webhook
      */
-    async updateMailWebhookRaw(requestParameters: UpdateMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPatchWebhooksBySubscriptionIdResponse200>> {
+    async updateMailWebhookRaw(requestParameters: UpdateMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPatchWebhooksBySubscriptionIdResponse200>> {
         const requestOptions = await this.updateMailWebhookRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -9693,7 +9693,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Changes endpoint or eventTypes. At least one of those fields is required. The public subscription omits its secret reference. Requires team OWNER or ADMIN membership.
      * Update a mail webhook
      */
-    async updateMailWebhook(requestParameters: UpdateMailWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPatchWebhooksBySubscriptionIdResponse200> {
+    async updateMailWebhook(requestParameters: UpdateMailWebhookRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPatchWebhooksBySubscriptionIdResponse200> {
         const response = await this.updateMailWebhookRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9733,7 +9733,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Checks domain ownership evidence. A successful HTTP response can contain verified=false. Verified domains are activated and receive a verification timestamp. Requires team OWNER or ADMIN membership.
      * Verify a tracking domain
      */
-    async verifyMailTrackingDomainRaw(requestParameters: VerifyMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTrackingDomainVerifyResponse200>> {
+    async verifyMailTrackingDomainRaw(requestParameters: VerifyMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MailPostTrackingDomainVerifyResponse200>> {
         const requestOptions = await this.verifyMailTrackingDomainRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -9744,7 +9744,7 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
      * Checks domain ownership evidence. A successful HTTP response can contain verified=false. Verified domains are activated and receive a verification timestamp. Requires team OWNER or ADMIN membership.
      * Verify a tracking domain
      */
-    async verifyMailTrackingDomain(requestParameters: VerifyMailTrackingDomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MailPostTrackingDomainVerifyResponse200> {
+    async verifyMailTrackingDomain(requestParameters: VerifyMailTrackingDomainRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<MailPostTrackingDomainVerifyResponse200> {
         const response = await this.verifyMailTrackingDomainRaw(requestParameters, initOverrides);
         return await response.value();
     }

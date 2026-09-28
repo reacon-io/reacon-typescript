@@ -859,13 +859,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    bindTypeformFormRaw(requestParameters: BindTypeformFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>>;
+    bindTypeformFormRaw(requestParameters: BindTypeformFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>>;
 
     /**
      * Binds a form to an existing OAuth connection and configures the provider callback.
      * Bind a Typeform OAuth form
      */
-    bindTypeformForm(requestParameters: BindTypeformFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse>;
+    bindTypeformForm(requestParameters: BindTypeformFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse>;
 
     /**
      * Creates request options for bindWebflowForm without sending the request
@@ -885,13 +885,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    bindWebflowFormRaw(requestParameters: BindWebflowFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>>;
+    bindWebflowFormRaw(requestParameters: BindWebflowFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>>;
 
     /**
      * Binds a form to an existing OAuth connection and configures the provider callback.
      * Bind a Webflow OAuth form
      */
-    bindWebflowForm(requestParameters: BindWebflowFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse>;
+    bindWebflowForm(requestParameters: BindWebflowFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse>;
 
     /**
      * Creates request options for cancelIntegrationJob without sending the request
@@ -911,13 +911,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    cancelIntegrationJobRaw(requestParameters: CancelIntegrationJobRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationJobCancellation>>;
+    cancelIntegrationJobRaw(requestParameters: CancelIntegrationJobRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationJobCancellation>>;
 
     /**
      * Requires team administrator access. Cancels a pending job or requests cancellation of running work. Terminal jobs return already_terminal.
      * Cancel an integration job
      */
-    cancelIntegrationJob(requestParameters: CancelIntegrationJobRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationJobCancellation>;
+    cancelIntegrationJob(requestParameters: CancelIntegrationJobRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationJobCancellation>;
 
     /**
      * Creates request options for configureAirtableMapping without sending the request
@@ -939,13 +939,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    configureAirtableMappingRaw(requestParameters: ConfigureAirtableMappingOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
+    configureAirtableMappingRaw(requestParameters: ConfigureAirtableMappingOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
 
     /**
      * Validates remote fields, updates the mapping and tests the connection. Inspect test.state for provider readiness.
      * Configure Airtable field mapping
      */
-    configureAirtableMapping(requestParameters: ConfigureAirtableMappingOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
+    configureAirtableMapping(requestParameters: ConfigureAirtableMappingOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
 
     /**
      * Creates request options for configureCoda without sending the request
@@ -965,13 +965,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    configureCodaRaw(requestParameters: ConfigureCodaOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
+    configureCodaRaw(requestParameters: ConfigureCodaOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
 
     /**
      * Creates a mapped Coda connection and tests access. Inspect test.state for provider health.
      * Configure a Coda connection
      */
-    configureCoda(requestParameters: ConfigureCodaOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
+    configureCoda(requestParameters: ConfigureCodaOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
 
     /**
      * Creates request options for configureCrmMapping without sending the request
@@ -993,13 +993,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    configureCrmMappingRaw(requestParameters: ConfigureCrmMappingOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
+    configureCrmMappingRaw(requestParameters: ConfigureCrmMappingOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
 
     /**
      * Validates provider-specific mapping, updates the connection and runs a connection test.
      * Configure CRM field mapping
      */
-    configureCrmMapping(requestParameters: ConfigureCrmMappingOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
+    configureCrmMapping(requestParameters: ConfigureCrmMappingOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
 
     /**
      * Creates request options for configureCrmSync without sending the request
@@ -1021,13 +1021,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    configureCrmSyncRaw(requestParameters: ConfigureCrmSyncOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CrmSyncConfigurationResponse>>;
+    configureCrmSyncRaw(requestParameters: ConfigureCrmSyncOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CrmSyncConfigurationResponse>>;
 
     /**
      * Validates and saves lifecycle sync policies and optional HubSpot owner/deal configuration. Returns normalized configuration.
      * Configure CRM synchronization
      */
-    configureCrmSync(requestParameters: ConfigureCrmSyncOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CrmSyncConfigurationResponse>;
+    configureCrmSync(requestParameters: ConfigureCrmSyncOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<CrmSyncConfigurationResponse>;
 
     /**
      * Creates request options for configureFreshsales without sending the request
@@ -1047,13 +1047,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    configureFreshsalesRaw(requestParameters: ConfigureFreshsalesOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
+    configureFreshsalesRaw(requestParameters: ConfigureFreshsalesOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
 
     /**
      * Creates a connection, securely stores the supplied credential and runs a connection test. Inspect test.state; HTTP success does not imply a healthy provider.
      * Configure a Freshsales connection
      */
-    configureFreshsales(requestParameters: ConfigureFreshsalesOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
+    configureFreshsales(requestParameters: ConfigureFreshsalesOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
 
     /**
      * Creates request options for configureNotificationRoutes without sending the request
@@ -1075,13 +1075,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    configureNotificationRoutesRaw(requestParameters: ConfigureNotificationRoutesOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>>;
+    configureNotificationRoutesRaw(requestParameters: ConfigureNotificationRoutesOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>>;
 
     /**
      * Saves notification event routes for the connection.
      * Configure notification routes
      */
-    configureNotificationRoutes(requestParameters: ConfigureNotificationRoutesOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse>;
+    configureNotificationRoutes(requestParameters: ConfigureNotificationRoutesOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse>;
 
     /**
      * Creates request options for configureSlackDestination without sending the request
@@ -1103,13 +1103,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    configureSlackDestinationRaw(requestParameters: ConfigureSlackDestinationOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>>;
+    configureSlackDestinationRaw(requestParameters: ConfigureSlackDestinationOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>>;
 
     /**
      * Sets the destination channel and notification routes for a Slack connection.
      * Configure a Slack destination
      */
-    configureSlackDestination(requestParameters: ConfigureSlackDestinationOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse>;
+    configureSlackDestination(requestParameters: ConfigureSlackDestinationOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse>;
 
     /**
      * Creates request options for configureTeamsWorkflow without sending the request
@@ -1129,13 +1129,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    configureTeamsWorkflowRaw(requestParameters: ConfigureTeamsWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>>;
+    configureTeamsWorkflowRaw(requestParameters: ConfigureTeamsWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>>;
 
     /**
      * Creates a connection using the supplied Teams webhook URL and notification routes. The credential is stored separately from public connection configuration.
      * Configure a Microsoft Teams workflow
      */
-    configureTeamsWorkflow(requestParameters: ConfigureTeamsWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse>;
+    configureTeamsWorkflow(requestParameters: ConfigureTeamsWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse>;
 
     /**
      * Creates request options for configureTypeformForm without sending the request
@@ -1155,13 +1155,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    configureTypeformFormRaw(requestParameters: ConfigureTypeformFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>>;
+    configureTypeformFormRaw(requestParameters: ConfigureTypeformFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>>;
 
     /**
      * Creates a form connection and configures its provider callback. Requires administrator access.
      * Configure a Typeform form
      */
-    configureTypeformForm(requestParameters: ConfigureTypeformFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse>;
+    configureTypeformForm(requestParameters: ConfigureTypeformFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse>;
 
     /**
      * Creates request options for configureWarehouse without sending the request
@@ -1181,13 +1181,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    configureWarehouseRaw(requestParameters: ConfigureWarehouseOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>>;
+    configureWarehouseRaw(requestParameters: ConfigureWarehouseOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>>;
 
     /**
      * Creates a warehouse connection from the provider-specific configuration and credentials. Requires administrator access.
      * Configure a warehouse connection
      */
-    configureWarehouse(requestParameters: ConfigureWarehouseOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse>;
+    configureWarehouse(requestParameters: ConfigureWarehouseOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse>;
 
     /**
      * Creates request options for configureWebflowForm without sending the request
@@ -1207,13 +1207,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    configureWebflowFormRaw(requestParameters: ConfigureWebflowFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>>;
+    configureWebflowFormRaw(requestParameters: ConfigureWebflowFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>>;
 
     /**
      * Creates a form connection and configures its provider callback. Requires administrator access.
      * Configure a Webflow form
      */
-    configureWebflowForm(requestParameters: ConfigureWebflowFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse>;
+    configureWebflowForm(requestParameters: ConfigureWebflowFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse>;
 
     /**
      * Creates request options for disableMcpIdentity without sending the request
@@ -1233,13 +1233,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    disableMcpIdentityRaw(requestParameters: DisableMcpIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    disableMcpIdentityRaw(requestParameters: DisableMcpIdentityRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
 
     /**
      * Disables an identity belonging to the current user and team. Returns 204 without a response body, or 404 when no matching identity exists.
      * Disable an MCP identity
      */
-    disableMcpIdentity(requestParameters: DisableMcpIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    disableMcpIdentity(requestParameters: DisableMcpIdentityRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<void>;
 
     /**
      * Creates request options for executeIntegrationCapability without sending the request
@@ -1269,13 +1269,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    executeIntegrationCapabilityRaw(requestParameters: ExecuteIntegrationCapabilityOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationCapabilityResponse>>;
+    executeIntegrationCapabilityRaw(requestParameters: ExecuteIntegrationCapabilityOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationCapabilityResponse>>;
 
     /**
      * Runs email.find, email.verify or domain.search against existing revealed/cached data without charging credits. mode defaults to live; preview returns output null. email.find input uses firstName, lastName and domain; email.verify uses email; domain.search uses domain and limit (1–100), with optional company. idempotencyKey is required by HTTP validation in both modes. replay describes invocation recording and must not be treated as permission to automatically replay execution. Segment-signed requests must supply all five origin headers and use segment:SHA256(capability + \":\" + eventId) as idempotencyKey.
      * Execute an integration capability
      */
-    executeIntegrationCapability(requestParameters: ExecuteIntegrationCapabilityOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationCapabilityResponse>;
+    executeIntegrationCapability(requestParameters: ExecuteIntegrationCapabilityOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationCapabilityResponse>;
 
     /**
      * Creates request options for getAirtableMappingOptions without sending the request
@@ -1297,13 +1297,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    getAirtableMappingOptionsRaw(requestParameters: GetAirtableMappingOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AirtableMappingOptionsResponse>>;
+    getAirtableMappingOptionsRaw(requestParameters: GetAirtableMappingOptionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AirtableMappingOptionsResponse>>;
 
     /**
      * Lists accessible bases and, when baseId is supplied, its tables and fields. Requires administrator access.
      * Get Airtable mapping options
      */
-    getAirtableMappingOptions(requestParameters: GetAirtableMappingOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AirtableMappingOptionsResponse>;
+    getAirtableMappingOptions(requestParameters: GetAirtableMappingOptionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<AirtableMappingOptionsResponse>;
 
     /**
      * Creates request options for getCrmMappingOptions without sending the request
@@ -1325,13 +1325,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    getCrmMappingOptionsRaw(requestParameters: GetCrmMappingOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CrmMappingOptionsResponse>>;
+    getCrmMappingOptionsRaw(requestParameters: GetCrmMappingOptionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CrmMappingOptionsResponse>>;
 
     /**
      * Returns provider objects and writable fields. resourceId selects a provider resource where required, such as a Notion data source.
      * Get CRM mapping options
      */
-    getCrmMappingOptions(requestParameters: GetCrmMappingOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CrmMappingOptionsResponse>;
+    getCrmMappingOptions(requestParameters: GetCrmMappingOptionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<CrmMappingOptionsResponse>;
 
     /**
      * Creates request options for getHubSpotConfigurationOptions without sending the request
@@ -1351,13 +1351,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    getHubSpotConfigurationOptionsRaw(requestParameters: GetHubSpotConfigurationOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<HubSpotConfigurationOptionsResponse>>;
+    getHubSpotConfigurationOptionsRaw(requestParameters: GetHubSpotConfigurationOptionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<HubSpotConfigurationOptionsResponse>>;
 
     /**
      * Lists available contact owners and deal pipelines with their stages. Requires a HubSpot connection and administrator access.
      * Get HubSpot configuration options
      */
-    getHubSpotConfigurationOptions(requestParameters: GetHubSpotConfigurationOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<HubSpotConfigurationOptionsResponse>;
+    getHubSpotConfigurationOptions(requestParameters: GetHubSpotConfigurationOptionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<HubSpotConfigurationOptionsResponse>;
 
     /**
      * Creates request options for getIntegrationJob without sending the request
@@ -1377,13 +1377,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    getIntegrationJobRaw(requestParameters: GetIntegrationJobRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationJobResponse>>;
+    getIntegrationJobRaw(requestParameters: GetIntegrationJobRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationJobResponse>>;
 
     /**
      * Returns a job visible to the current user. A missing job is a 400 validation error.
      * Get an integration job
      */
-    getIntegrationJob(requestParameters: GetIntegrationJobRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationJobResponse>;
+    getIntegrationJob(requestParameters: GetIntegrationJobRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationJobResponse>;
 
     /**
      * Creates request options for inspectCodaTable without sending the request
@@ -1403,13 +1403,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    inspectCodaTableRaw(requestParameters: InspectCodaTableOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CodaTableInspectionResponse>>;
+    inspectCodaTableRaw(requestParameters: InspectCodaTableOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CodaTableInspectionResponse>>;
 
     /**
      * Requires team administrator access. Uses the supplied API token to discover document and table columns without saving a connection.
      * Inspect Coda table columns
      */
-    inspectCodaTable(requestParameters: InspectCodaTableOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CodaTableInspectionResponse>;
+    inspectCodaTable(requestParameters: InspectCodaTableOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<CodaTableInspectionResponse>;
 
     /**
      * Creates request options for inspectExcelWorkbook without sending the request
@@ -1429,13 +1429,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    inspectExcelWorkbookRaw(requestParameters: InspectExcelWorkbookOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ExcelWorkbookInspectionResponse>>;
+    inspectExcelWorkbookRaw(requestParameters: InspectExcelWorkbookOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ExcelWorkbookInspectionResponse>>;
 
     /**
      * Requires a ready connection owned by the current user and exactly one of driveItemId or shareUrl. Falls back to the first visible worksheet when the requested worksheet is unavailable.
      * Inspect an Excel workbook
      */
-    inspectExcelWorkbook(requestParameters: InspectExcelWorkbookOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ExcelWorkbookInspectionResponse>;
+    inspectExcelWorkbook(requestParameters: InspectExcelWorkbookOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<ExcelWorkbookInspectionResponse>;
 
     /**
      * Creates request options for inspectGoogleSheet without sending the request
@@ -1455,13 +1455,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    inspectGoogleSheetRaw(requestParameters: InspectGoogleSheetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GoogleSheetInspectionResponse>>;
+    inspectGoogleSheetRaw(requestParameters: InspectGoogleSheetOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GoogleSheetInspectionResponse>>;
 
     /**
      * Reads sheet names and header columns using a ready connection. headerRow defaults to 1.
      * Inspect a Google spreadsheet
      */
-    inspectGoogleSheet(requestParameters: InspectGoogleSheetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GoogleSheetInspectionResponse>;
+    inspectGoogleSheet(requestParameters: InspectGoogleSheetOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<GoogleSheetInspectionResponse>;
 
     /**
      * Creates request options for linkMcpIdentity without sending the request
@@ -1481,13 +1481,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    linkMcpIdentityRaw(requestParameters: LinkMcpIdentityOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpIdentityResponse>>;
+    linkMcpIdentityRaw(requestParameters: LinkMcpIdentityOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpIdentityResponse>>;
 
     /**
      * Requires X-API-Key and a separate verified OIDC token in Authorization: Bearer. Requested scopes must be a subset of the verified token scopes. Omission uses the token scopes. Returns 503 when MCP OIDC is not configured.
      * Link an MCP identity
      */
-    linkMcpIdentity(requestParameters: LinkMcpIdentityOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpIdentityResponse>;
+    linkMcpIdentity(requestParameters: LinkMcpIdentityOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<McpIdentityResponse>;
 
     /**
      * Creates request options for listIntegrationConnections without sending the request
@@ -1505,13 +1505,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    listIntegrationConnectionsRaw(requestParameters: ListIntegrationConnectionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionList>>;
+    listIntegrationConnectionsRaw(requestParameters: ListIntegrationConnectionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionList>>;
 
     /**
      * Lists visible, non-deleted connections for the authenticated team. Credential values are not included.
      * List integration connections
      */
-    listIntegrationConnections(requestParameters: ListIntegrationConnectionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionList>;
+    listIntegrationConnections(requestParameters: ListIntegrationConnectionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionList>;
 
     /**
      * Creates request options for listIntegrationJobs without sending the request
@@ -1537,13 +1537,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    listIntegrationJobsRaw(requestParameters: ListIntegrationJobsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationJobPage>>;
+    listIntegrationJobsRaw(requestParameters: ListIntegrationJobsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationJobPage>>;
 
     /**
      * Lists visible jobs, optionally filtered by connection or status. The default limit is 25 and the maximum is 100. Continue until nextCursor is null.
      * List integration jobs
      */
-    listIntegrationJobs(requestParameters: ListIntegrationJobsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationJobPage>;
+    listIntegrationJobs(requestParameters: ListIntegrationJobsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationJobPage>;
 
     /**
      * Creates request options for listIntegrationProviders without sending the request
@@ -1559,13 +1559,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    listIntegrationProvidersRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationProviderList>>;
+    listIntegrationProvidersRaw(initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationProviderList>>;
 
     /**
      * Lists provider metadata, readiness and supported capabilities. Provider identifiers and response status fields remain extensible.
      * List integration providers
      */
-    listIntegrationProviders(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationProviderList>;
+    listIntegrationProviders(initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationProviderList>;
 
     /**
      * Creates request options for listMcpIdentities without sending the request
@@ -1583,13 +1583,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    listMcpIdentitiesRaw(requestParameters: ListMcpIdentitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpIdentityList>>;
+    listMcpIdentitiesRaw(requestParameters: ListMcpIdentitiesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpIdentityList>>;
 
     /**
      * Returns up to 100 identities belonging to this user and team.
      * List linked MCP identities
      */
-    listMcpIdentities(requestParameters: ListMcpIdentitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpIdentityList>;
+    listMcpIdentities(requestParameters: ListMcpIdentitiesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<McpIdentityList>;
 
     /**
      * Creates request options for listSheetWorkflows without sending the request
@@ -1607,13 +1607,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    listSheetWorkflowsRaw(requestParameters: ListSheetWorkflowsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowList>>;
+    listSheetWorkflowsRaw(requestParameters: ListSheetWorkflowsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowList>>;
 
     /**
      * Returns up to 100 workflows visible to this user. Provider ownership and team administrator rules apply.
      * List spreadsheet workflows
      */
-    listSheetWorkflows(requestParameters: ListSheetWorkflowsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SheetWorkflowList>;
+    listSheetWorkflows(requestParameters: ListSheetWorkflowsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<SheetWorkflowList>;
 
     /**
      * Creates request options for previewSheetWorkflow without sending the request
@@ -1635,13 +1635,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    previewSheetWorkflowRaw(requestParameters: PreviewSheetWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowPreview>>;
+    previewSheetWorkflowRaw(requestParameters: PreviewSheetWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowPreview>>;
 
     /**
      * Reads rows and validates the layout without executing the capability. Also updates workflow validation state. rowLimit defaults to 20 and is bounded to 1–50.
      * Preview spreadsheet workflow inputs
      */
-    previewSheetWorkflow(requestParameters: PreviewSheetWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SheetWorkflowPreview>;
+    previewSheetWorkflow(requestParameters: PreviewSheetWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<SheetWorkflowPreview>;
 
     /**
      * Creates request options for queueIntegrationLeadExport without sending the request
@@ -1663,13 +1663,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    queueIntegrationLeadExportRaw(requestParameters: QueueIntegrationLeadExportOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationLeadExportResponse>>;
+    queueIntegrationLeadExportRaw(requestParameters: QueueIntegrationLeadExportOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationLeadExportResponse>>;
 
     /**
      * Queues selected leads for provider export and returns their count. Supply a stable requestId for request identification. A 202 response acknowledges queuing; poll getIntegrationJob for completion.
      * Queue lead export to an integration
      */
-    queueIntegrationLeadExport(requestParameters: QueueIntegrationLeadExportOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationLeadExportResponse>;
+    queueIntegrationLeadExport(requestParameters: QueueIntegrationLeadExportOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationLeadExportResponse>;
 
     /**
      * Creates request options for queueNotificationTest without sending the request
@@ -1691,13 +1691,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    queueNotificationTestRaw(requestParameters: QueueNotificationTestOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<QueuedIntegrationJobResponse>>;
+    queueNotificationTestRaw(requestParameters: QueueNotificationTestOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<QueuedIntegrationJobResponse>>;
 
     /**
      * Queues a provider test notification and returns 202. Poll getIntegrationJob for completion. This can send a message to the configured destination.
      * Queue a test notification
      */
-    queueNotificationTest(requestParameters: QueueNotificationTestOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<QueuedIntegrationJobResponse>;
+    queueNotificationTest(requestParameters: QueueNotificationTestOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<QueuedIntegrationJobResponse>;
 
     /**
      * Creates request options for rotateCodaCredential without sending the request
@@ -1719,13 +1719,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    rotateCodaCredentialRaw(requestParameters: RotateCodaCredentialOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
+    rotateCodaCredentialRaw(requestParameters: RotateCodaCredentialOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
 
     /**
      * Stages and tests the replacement API token before completing rotation.
      * Rotate a Coda credential
      */
-    rotateCodaCredential(requestParameters: RotateCodaCredentialOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
+    rotateCodaCredential(requestParameters: RotateCodaCredentialOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
 
     /**
      * Creates request options for rotateFreshsalesCredential without sending the request
@@ -1747,13 +1747,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    rotateFreshsalesCredentialRaw(requestParameters: RotateFreshsalesCredentialOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
+    rotateFreshsalesCredentialRaw(requestParameters: RotateFreshsalesCredentialOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
 
     /**
      * Stages and tests the replacement credential before completing rotation. Requires connection operator access.
      * Rotate a Freshsales credential
      */
-    rotateFreshsalesCredential(requestParameters: RotateFreshsalesCredentialOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
+    rotateFreshsalesCredential(requestParameters: RotateFreshsalesCredentialOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
 
     /**
      * Creates request options for runSheetWorkflow without sending the request
@@ -1775,13 +1775,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    runSheetWorkflowRaw(requestParameters: RunSheetWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<QueuedIntegrationJobResponse>>;
+    runSheetWorkflowRaw(requestParameters: RunSheetWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<QueuedIntegrationJobResponse>>;
 
     /**
      * Queues writeback and returns 202, not completion. Supply a stable requestId to identify this workflow revision and request; omission creates a new request ID. Poll getIntegrationJob for completion.
      * Queue a spreadsheet workflow
      */
-    runSheetWorkflow(requestParameters: RunSheetWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<QueuedIntegrationJobResponse>;
+    runSheetWorkflow(requestParameters: RunSheetWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<QueuedIntegrationJobResponse>;
 
     /**
      * Creates request options for saveSheetWorkflow without sending the request
@@ -1801,13 +1801,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    saveSheetWorkflowRaw(requestParameters: SaveSheetWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowResponse>>;
+    saveSheetWorkflowRaw(requestParameters: SaveSheetWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowResponse>>;
 
     /**
      * Creates a workflow with 201, or updates the supplied workflowId with 200. The configuration is validated for its spreadsheet provider and capability.
      * Create or update a spreadsheet workflow
      */
-    saveSheetWorkflow(requestParameters: SaveSheetWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SheetWorkflowResponse>;
+    saveSheetWorkflow(requestParameters: SaveSheetWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<SheetWorkflowResponse>;
 
     /**
      * Creates request options for startAttioOAuth without sending the request
@@ -1827,13 +1827,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    startAttioOAuthRaw(requestParameters: StartAttioOAuthOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationOAuthStartResponse>>;
+    startAttioOAuthRaw(requestParameters: StartAttioOAuthOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationOAuthStartResponse>>;
 
     /**
      * Creates an authorization transaction and returns its URL and expiry. Complete consent in a browser.
      * Start Attio authorization
      */
-    startAttioOAuth(requestParameters: StartAttioOAuthOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationOAuthStartResponse>;
+    startAttioOAuth(requestParameters: StartAttioOAuthOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationOAuthStartResponse>;
 
     /**
      * Creates request options for startGoogleSheetsOAuth without sending the request
@@ -1853,13 +1853,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    startGoogleSheetsOAuthRaw(requestParameters: StartGoogleSheetsOAuthOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationOAuthStartResponse>>;
+    startGoogleSheetsOAuthRaw(requestParameters: StartGoogleSheetsOAuthOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationOAuthStartResponse>>;
 
     /**
      * Creates a short-lived authorization transaction. Open authorizationUrl in a browser to complete provider consent before using the resulting connection.
      * Start Google Sheets authorization
      */
-    startGoogleSheetsOAuth(requestParameters: StartGoogleSheetsOAuthOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationOAuthStartResponse>;
+    startGoogleSheetsOAuth(requestParameters: StartGoogleSheetsOAuthOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationOAuthStartResponse>;
 
     /**
      * Creates request options for startIntegrationOAuth without sending the request
@@ -1881,13 +1881,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    startIntegrationOAuthRaw(requestParameters: StartIntegrationOAuthOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationOAuthStartResponse>>;
+    startIntegrationOAuthRaw(requestParameters: StartIntegrationOAuthOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationOAuthStartResponse>>;
 
     /**
      * Starts authorization for the supported provider. Complete consent at authorizationUrl before configuring the connection. Provider-specific authorizationServer and resourceUrl inputs are validated by the server.
      * Start provider authorization
      */
-    startIntegrationOAuth(requestParameters: StartIntegrationOAuthOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationOAuthStartResponse>;
+    startIntegrationOAuth(requestParameters: StartIntegrationOAuthOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationOAuthStartResponse>;
 
     /**
      * Creates request options for testIntegrationConnection without sending the request
@@ -1907,13 +1907,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    testIntegrationConnectionRaw(requestParameters: TestIntegrationConnectionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
+    testIntegrationConnectionRaw(requestParameters: TestIntegrationConnectionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>>;
 
     /**
      * Calls the provider and updates connection health. Inspect test.state and test.code; provider test failure may be represented in a successful HTTP response.
      * Test an integration connection
      */
-    testIntegrationConnection(requestParameters: TestIntegrationConnectionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
+    testIntegrationConnection(requestParameters: TestIntegrationConnectionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse>;
 
     /**
      * Creates request options for updateIntegrationConnectionState without sending the request
@@ -1935,13 +1935,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    updateIntegrationConnectionStateRaw(requestParameters: UpdateIntegrationConnectionStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionStateResponse>>;
+    updateIntegrationConnectionStateRaw(requestParameters: UpdateIntegrationConnectionStateOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionStateResponse>>;
 
     /**
      * Pauses, resumes or disconnects a connection. vaultDeletionPending counts credential deletions still pending cleanup.
      * Change integration connection state
      */
-    updateIntegrationConnectionState(requestParameters: UpdateIntegrationConnectionStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionStateResponse>;
+    updateIntegrationConnectionState(requestParameters: UpdateIntegrationConnectionStateOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionStateResponse>;
 
     /**
      * Creates request options for updateSheetWorkflowState without sending the request
@@ -1963,13 +1963,13 @@ export interface IntegrationsApiInterface {
      * @throws {RequiredError}
      * @memberof IntegrationsApiInterface
      */
-    updateSheetWorkflowStateRaw(requestParameters: UpdateSheetWorkflowStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowStateResponse>>;
+    updateSheetWorkflowStateRaw(requestParameters: UpdateSheetWorkflowStateOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowStateResponse>>;
 
     /**
      * Pauses, resumes or deletes the workflow. Delete returns deleted and workflowId; pause and resume return the workflow.
      * Change spreadsheet workflow state
      */
-    updateSheetWorkflowState(requestParameters: UpdateSheetWorkflowStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SheetWorkflowStateResponse>;
+    updateSheetWorkflowState(requestParameters: UpdateSheetWorkflowStateOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<SheetWorkflowStateResponse>;
 
 }
 
@@ -2023,7 +2023,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Binds a form to an existing OAuth connection and configures the provider callback.
      * Bind a Typeform OAuth form
      */
-    async bindTypeformFormRaw(requestParameters: BindTypeformFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>> {
+    async bindTypeformFormRaw(requestParameters: BindTypeformFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>> {
         const requestOptions = await this.bindTypeformFormRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2034,7 +2034,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Binds a form to an existing OAuth connection and configures the provider callback.
      * Bind a Typeform OAuth form
      */
-    async bindTypeformForm(requestParameters: BindTypeformFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse> {
+    async bindTypeformForm(requestParameters: BindTypeformFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse> {
         const response = await this.bindTypeformFormRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2084,7 +2084,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Binds a form to an existing OAuth connection and configures the provider callback.
      * Bind a Webflow OAuth form
      */
-    async bindWebflowFormRaw(requestParameters: BindWebflowFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>> {
+    async bindWebflowFormRaw(requestParameters: BindWebflowFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>> {
         const requestOptions = await this.bindWebflowFormRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2095,7 +2095,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Binds a form to an existing OAuth connection and configures the provider callback.
      * Bind a Webflow OAuth form
      */
-    async bindWebflowForm(requestParameters: BindWebflowFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse> {
+    async bindWebflowForm(requestParameters: BindWebflowFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse> {
         const response = await this.bindWebflowFormRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2143,7 +2143,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Requires team administrator access. Cancels a pending job or requests cancellation of running work. Terminal jobs return already_terminal.
      * Cancel an integration job
      */
-    async cancelIntegrationJobRaw(requestParameters: CancelIntegrationJobRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationJobCancellation>> {
+    async cancelIntegrationJobRaw(requestParameters: CancelIntegrationJobRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationJobCancellation>> {
         const requestOptions = await this.cancelIntegrationJobRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2154,7 +2154,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Requires team administrator access. Cancels a pending job or requests cancellation of running work. Terminal jobs return already_terminal.
      * Cancel an integration job
      */
-    async cancelIntegrationJob(requestParameters: CancelIntegrationJobRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationJobCancellation> {
+    async cancelIntegrationJob(requestParameters: CancelIntegrationJobRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationJobCancellation> {
         const response = await this.cancelIntegrationJobRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2212,7 +2212,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Validates remote fields, updates the mapping and tests the connection. Inspect test.state for provider readiness.
      * Configure Airtable field mapping
      */
-    async configureAirtableMappingRaw(requestParameters: ConfigureAirtableMappingOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
+    async configureAirtableMappingRaw(requestParameters: ConfigureAirtableMappingOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
         const requestOptions = await this.configureAirtableMappingRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2223,7 +2223,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Validates remote fields, updates the mapping and tests the connection. Inspect test.state for provider readiness.
      * Configure Airtable field mapping
      */
-    async configureAirtableMapping(requestParameters: ConfigureAirtableMappingOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
+    async configureAirtableMapping(requestParameters: ConfigureAirtableMappingOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
         const response = await this.configureAirtableMappingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2273,7 +2273,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a mapped Coda connection and tests access. Inspect test.state for provider health.
      * Configure a Coda connection
      */
-    async configureCodaRaw(requestParameters: ConfigureCodaOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
+    async configureCodaRaw(requestParameters: ConfigureCodaOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
         const requestOptions = await this.configureCodaRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2284,7 +2284,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a mapped Coda connection and tests access. Inspect test.state for provider health.
      * Configure a Coda connection
      */
-    async configureCoda(requestParameters: ConfigureCodaOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
+    async configureCoda(requestParameters: ConfigureCodaOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
         const response = await this.configureCodaRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2342,7 +2342,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Validates provider-specific mapping, updates the connection and runs a connection test.
      * Configure CRM field mapping
      */
-    async configureCrmMappingRaw(requestParameters: ConfigureCrmMappingOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
+    async configureCrmMappingRaw(requestParameters: ConfigureCrmMappingOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
         const requestOptions = await this.configureCrmMappingRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2353,7 +2353,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Validates provider-specific mapping, updates the connection and runs a connection test.
      * Configure CRM field mapping
      */
-    async configureCrmMapping(requestParameters: ConfigureCrmMappingOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
+    async configureCrmMapping(requestParameters: ConfigureCrmMappingOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
         const response = await this.configureCrmMappingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2411,7 +2411,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Validates and saves lifecycle sync policies and optional HubSpot owner/deal configuration. Returns normalized configuration.
      * Configure CRM synchronization
      */
-    async configureCrmSyncRaw(requestParameters: ConfigureCrmSyncOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CrmSyncConfigurationResponse>> {
+    async configureCrmSyncRaw(requestParameters: ConfigureCrmSyncOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CrmSyncConfigurationResponse>> {
         const requestOptions = await this.configureCrmSyncRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2422,7 +2422,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Validates and saves lifecycle sync policies and optional HubSpot owner/deal configuration. Returns normalized configuration.
      * Configure CRM synchronization
      */
-    async configureCrmSync(requestParameters: ConfigureCrmSyncOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CrmSyncConfigurationResponse> {
+    async configureCrmSync(requestParameters: ConfigureCrmSyncOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<CrmSyncConfigurationResponse> {
         const response = await this.configureCrmSyncRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2472,7 +2472,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a connection, securely stores the supplied credential and runs a connection test. Inspect test.state; HTTP success does not imply a healthy provider.
      * Configure a Freshsales connection
      */
-    async configureFreshsalesRaw(requestParameters: ConfigureFreshsalesOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
+    async configureFreshsalesRaw(requestParameters: ConfigureFreshsalesOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
         const requestOptions = await this.configureFreshsalesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2483,7 +2483,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a connection, securely stores the supplied credential and runs a connection test. Inspect test.state; HTTP success does not imply a healthy provider.
      * Configure a Freshsales connection
      */
-    async configureFreshsales(requestParameters: ConfigureFreshsalesOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
+    async configureFreshsales(requestParameters: ConfigureFreshsalesOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
         const response = await this.configureFreshsalesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2541,7 +2541,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Saves notification event routes for the connection.
      * Configure notification routes
      */
-    async configureNotificationRoutesRaw(requestParameters: ConfigureNotificationRoutesOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>> {
+    async configureNotificationRoutesRaw(requestParameters: ConfigureNotificationRoutesOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>> {
         const requestOptions = await this.configureNotificationRoutesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2552,7 +2552,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Saves notification event routes for the connection.
      * Configure notification routes
      */
-    async configureNotificationRoutes(requestParameters: ConfigureNotificationRoutesOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse> {
+    async configureNotificationRoutes(requestParameters: ConfigureNotificationRoutesOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse> {
         const response = await this.configureNotificationRoutesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2610,7 +2610,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Sets the destination channel and notification routes for a Slack connection.
      * Configure a Slack destination
      */
-    async configureSlackDestinationRaw(requestParameters: ConfigureSlackDestinationOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>> {
+    async configureSlackDestinationRaw(requestParameters: ConfigureSlackDestinationOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>> {
         const requestOptions = await this.configureSlackDestinationRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2621,7 +2621,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Sets the destination channel and notification routes for a Slack connection.
      * Configure a Slack destination
      */
-    async configureSlackDestination(requestParameters: ConfigureSlackDestinationOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse> {
+    async configureSlackDestination(requestParameters: ConfigureSlackDestinationOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse> {
         const response = await this.configureSlackDestinationRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2671,7 +2671,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a connection using the supplied Teams webhook URL and notification routes. The credential is stored separately from public connection configuration.
      * Configure a Microsoft Teams workflow
      */
-    async configureTeamsWorkflowRaw(requestParameters: ConfigureTeamsWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>> {
+    async configureTeamsWorkflowRaw(requestParameters: ConfigureTeamsWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>> {
         const requestOptions = await this.configureTeamsWorkflowRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2682,7 +2682,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a connection using the supplied Teams webhook URL and notification routes. The credential is stored separately from public connection configuration.
      * Configure a Microsoft Teams workflow
      */
-    async configureTeamsWorkflow(requestParameters: ConfigureTeamsWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse> {
+    async configureTeamsWorkflow(requestParameters: ConfigureTeamsWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse> {
         const response = await this.configureTeamsWorkflowRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2732,7 +2732,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a form connection and configures its provider callback. Requires administrator access.
      * Configure a Typeform form
      */
-    async configureTypeformFormRaw(requestParameters: ConfigureTypeformFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>> {
+    async configureTypeformFormRaw(requestParameters: ConfigureTypeformFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>> {
         const requestOptions = await this.configureTypeformFormRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2743,7 +2743,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a form connection and configures its provider callback. Requires administrator access.
      * Configure a Typeform form
      */
-    async configureTypeformForm(requestParameters: ConfigureTypeformFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse> {
+    async configureTypeformForm(requestParameters: ConfigureTypeformFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse> {
         const response = await this.configureTypeformFormRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2793,7 +2793,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a warehouse connection from the provider-specific configuration and credentials. Requires administrator access.
      * Configure a warehouse connection
      */
-    async configureWarehouseRaw(requestParameters: ConfigureWarehouseOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>> {
+    async configureWarehouseRaw(requestParameters: ConfigureWarehouseOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionResponse>> {
         const requestOptions = await this.configureWarehouseRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2804,7 +2804,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a warehouse connection from the provider-specific configuration and credentials. Requires administrator access.
      * Configure a warehouse connection
      */
-    async configureWarehouse(requestParameters: ConfigureWarehouseOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse> {
+    async configureWarehouse(requestParameters: ConfigureWarehouseOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionResponse> {
         const response = await this.configureWarehouseRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2854,7 +2854,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a form connection and configures its provider callback. Requires administrator access.
      * Configure a Webflow form
      */
-    async configureWebflowFormRaw(requestParameters: ConfigureWebflowFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>> {
+    async configureWebflowFormRaw(requestParameters: ConfigureWebflowFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationFormConnectionResponse>> {
         const requestOptions = await this.configureWebflowFormRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2865,7 +2865,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a form connection and configures its provider callback. Requires administrator access.
      * Configure a Webflow form
      */
-    async configureWebflowForm(requestParameters: ConfigureWebflowFormOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse> {
+    async configureWebflowForm(requestParameters: ConfigureWebflowFormOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationFormConnectionResponse> {
         const response = await this.configureWebflowFormRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2913,7 +2913,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Disables an identity belonging to the current user and team. Returns 204 without a response body, or 404 when no matching identity exists.
      * Disable an MCP identity
      */
-    async disableMcpIdentityRaw(requestParameters: DisableMcpIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async disableMcpIdentityRaw(requestParameters: DisableMcpIdentityRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const requestOptions = await this.disableMcpIdentityRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -2924,7 +2924,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Disables an identity belonging to the current user and team. Returns 204 without a response body, or 404 when no matching identity exists.
      * Disable an MCP identity
      */
-    async disableMcpIdentity(requestParameters: DisableMcpIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    async disableMcpIdentity(requestParameters: DisableMcpIdentityRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<void> {
         await this.disableMcpIdentityRaw(requestParameters, initOverrides);
     }
 
@@ -2993,7 +2993,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Runs email.find, email.verify or domain.search against existing revealed/cached data without charging credits. mode defaults to live; preview returns output null. email.find input uses firstName, lastName and domain; email.verify uses email; domain.search uses domain and limit (1–100), with optional company. idempotencyKey is required by HTTP validation in both modes. replay describes invocation recording and must not be treated as permission to automatically replay execution. Segment-signed requests must supply all five origin headers and use segment:SHA256(capability + \":\" + eventId) as idempotencyKey.
      * Execute an integration capability
      */
-    async executeIntegrationCapabilityRaw(requestParameters: ExecuteIntegrationCapabilityOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationCapabilityResponse>> {
+    async executeIntegrationCapabilityRaw(requestParameters: ExecuteIntegrationCapabilityOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationCapabilityResponse>> {
         const requestOptions = await this.executeIntegrationCapabilityRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3004,7 +3004,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Runs email.find, email.verify or domain.search against existing revealed/cached data without charging credits. mode defaults to live; preview returns output null. email.find input uses firstName, lastName and domain; email.verify uses email; domain.search uses domain and limit (1–100), with optional company. idempotencyKey is required by HTTP validation in both modes. replay describes invocation recording and must not be treated as permission to automatically replay execution. Segment-signed requests must supply all five origin headers and use segment:SHA256(capability + \":\" + eventId) as idempotencyKey.
      * Execute an integration capability
      */
-    async executeIntegrationCapability(requestParameters: ExecuteIntegrationCapabilityOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationCapabilityResponse> {
+    async executeIntegrationCapability(requestParameters: ExecuteIntegrationCapabilityOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationCapabilityResponse> {
         const response = await this.executeIntegrationCapabilityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3056,7 +3056,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Lists accessible bases and, when baseId is supplied, its tables and fields. Requires administrator access.
      * Get Airtable mapping options
      */
-    async getAirtableMappingOptionsRaw(requestParameters: GetAirtableMappingOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AirtableMappingOptionsResponse>> {
+    async getAirtableMappingOptionsRaw(requestParameters: GetAirtableMappingOptionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AirtableMappingOptionsResponse>> {
         const requestOptions = await this.getAirtableMappingOptionsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3067,7 +3067,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Lists accessible bases and, when baseId is supplied, its tables and fields. Requires administrator access.
      * Get Airtable mapping options
      */
-    async getAirtableMappingOptions(requestParameters: GetAirtableMappingOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AirtableMappingOptionsResponse> {
+    async getAirtableMappingOptions(requestParameters: GetAirtableMappingOptionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<AirtableMappingOptionsResponse> {
         const response = await this.getAirtableMappingOptionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3119,7 +3119,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Returns provider objects and writable fields. resourceId selects a provider resource where required, such as a Notion data source.
      * Get CRM mapping options
      */
-    async getCrmMappingOptionsRaw(requestParameters: GetCrmMappingOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CrmMappingOptionsResponse>> {
+    async getCrmMappingOptionsRaw(requestParameters: GetCrmMappingOptionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CrmMappingOptionsResponse>> {
         const requestOptions = await this.getCrmMappingOptionsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3130,7 +3130,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Returns provider objects and writable fields. resourceId selects a provider resource where required, such as a Notion data source.
      * Get CRM mapping options
      */
-    async getCrmMappingOptions(requestParameters: GetCrmMappingOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CrmMappingOptionsResponse> {
+    async getCrmMappingOptions(requestParameters: GetCrmMappingOptionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<CrmMappingOptionsResponse> {
         const response = await this.getCrmMappingOptionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3178,7 +3178,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Lists available contact owners and deal pipelines with their stages. Requires a HubSpot connection and administrator access.
      * Get HubSpot configuration options
      */
-    async getHubSpotConfigurationOptionsRaw(requestParameters: GetHubSpotConfigurationOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<HubSpotConfigurationOptionsResponse>> {
+    async getHubSpotConfigurationOptionsRaw(requestParameters: GetHubSpotConfigurationOptionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<HubSpotConfigurationOptionsResponse>> {
         const requestOptions = await this.getHubSpotConfigurationOptionsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3189,7 +3189,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Lists available contact owners and deal pipelines with their stages. Requires a HubSpot connection and administrator access.
      * Get HubSpot configuration options
      */
-    async getHubSpotConfigurationOptions(requestParameters: GetHubSpotConfigurationOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<HubSpotConfigurationOptionsResponse> {
+    async getHubSpotConfigurationOptions(requestParameters: GetHubSpotConfigurationOptionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<HubSpotConfigurationOptionsResponse> {
         const response = await this.getHubSpotConfigurationOptionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3237,7 +3237,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Returns a job visible to the current user. A missing job is a 400 validation error.
      * Get an integration job
      */
-    async getIntegrationJobRaw(requestParameters: GetIntegrationJobRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationJobResponse>> {
+    async getIntegrationJobRaw(requestParameters: GetIntegrationJobRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationJobResponse>> {
         const requestOptions = await this.getIntegrationJobRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3248,7 +3248,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Returns a job visible to the current user. A missing job is a 400 validation error.
      * Get an integration job
      */
-    async getIntegrationJob(requestParameters: GetIntegrationJobRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationJobResponse> {
+    async getIntegrationJob(requestParameters: GetIntegrationJobRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationJobResponse> {
         const response = await this.getIntegrationJobRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3298,7 +3298,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Requires team administrator access. Uses the supplied API token to discover document and table columns without saving a connection.
      * Inspect Coda table columns
      */
-    async inspectCodaTableRaw(requestParameters: InspectCodaTableOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CodaTableInspectionResponse>> {
+    async inspectCodaTableRaw(requestParameters: InspectCodaTableOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CodaTableInspectionResponse>> {
         const requestOptions = await this.inspectCodaTableRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3309,7 +3309,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Requires team administrator access. Uses the supplied API token to discover document and table columns without saving a connection.
      * Inspect Coda table columns
      */
-    async inspectCodaTable(requestParameters: InspectCodaTableOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CodaTableInspectionResponse> {
+    async inspectCodaTable(requestParameters: InspectCodaTableOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<CodaTableInspectionResponse> {
         const response = await this.inspectCodaTableRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3359,7 +3359,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Requires a ready connection owned by the current user and exactly one of driveItemId or shareUrl. Falls back to the first visible worksheet when the requested worksheet is unavailable.
      * Inspect an Excel workbook
      */
-    async inspectExcelWorkbookRaw(requestParameters: InspectExcelWorkbookOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ExcelWorkbookInspectionResponse>> {
+    async inspectExcelWorkbookRaw(requestParameters: InspectExcelWorkbookOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ExcelWorkbookInspectionResponse>> {
         const requestOptions = await this.inspectExcelWorkbookRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3370,7 +3370,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Requires a ready connection owned by the current user and exactly one of driveItemId or shareUrl. Falls back to the first visible worksheet when the requested worksheet is unavailable.
      * Inspect an Excel workbook
      */
-    async inspectExcelWorkbook(requestParameters: InspectExcelWorkbookOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ExcelWorkbookInspectionResponse> {
+    async inspectExcelWorkbook(requestParameters: InspectExcelWorkbookOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<ExcelWorkbookInspectionResponse> {
         const response = await this.inspectExcelWorkbookRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3420,7 +3420,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Reads sheet names and header columns using a ready connection. headerRow defaults to 1.
      * Inspect a Google spreadsheet
      */
-    async inspectGoogleSheetRaw(requestParameters: InspectGoogleSheetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GoogleSheetInspectionResponse>> {
+    async inspectGoogleSheetRaw(requestParameters: InspectGoogleSheetOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GoogleSheetInspectionResponse>> {
         const requestOptions = await this.inspectGoogleSheetRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3431,7 +3431,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Reads sheet names and header columns using a ready connection. headerRow defaults to 1.
      * Inspect a Google spreadsheet
      */
-    async inspectGoogleSheet(requestParameters: InspectGoogleSheetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GoogleSheetInspectionResponse> {
+    async inspectGoogleSheet(requestParameters: InspectGoogleSheetOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<GoogleSheetInspectionResponse> {
         const response = await this.inspectGoogleSheetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3482,7 +3482,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Requires X-API-Key and a separate verified OIDC token in Authorization: Bearer. Requested scopes must be a subset of the verified token scopes. Omission uses the token scopes. Returns 503 when MCP OIDC is not configured.
      * Link an MCP identity
      */
-    async linkMcpIdentityRaw(requestParameters: LinkMcpIdentityOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpIdentityResponse>> {
+    async linkMcpIdentityRaw(requestParameters: LinkMcpIdentityOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpIdentityResponse>> {
         const requestOptions = await this.linkMcpIdentityRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3493,7 +3493,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Requires X-API-Key and a separate verified OIDC token in Authorization: Bearer. Requested scopes must be a subset of the verified token scopes. Omission uses the token scopes. Returns 503 when MCP OIDC is not configured.
      * Link an MCP identity
      */
-    async linkMcpIdentity(requestParameters: LinkMcpIdentityOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpIdentityResponse> {
+    async linkMcpIdentity(requestParameters: LinkMcpIdentityOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<McpIdentityResponse> {
         const response = await this.linkMcpIdentityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3533,7 +3533,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Lists visible, non-deleted connections for the authenticated team. Credential values are not included.
      * List integration connections
      */
-    async listIntegrationConnectionsRaw(requestParameters: ListIntegrationConnectionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionList>> {
+    async listIntegrationConnectionsRaw(requestParameters: ListIntegrationConnectionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionList>> {
         const requestOptions = await this.listIntegrationConnectionsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3544,7 +3544,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Lists visible, non-deleted connections for the authenticated team. Credential values are not included.
      * List integration connections
      */
-    async listIntegrationConnections(requestParameters: ListIntegrationConnectionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionList> {
+    async listIntegrationConnections(requestParameters: ListIntegrationConnectionsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionList> {
         const response = await this.listIntegrationConnectionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3600,7 +3600,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Lists visible jobs, optionally filtered by connection or status. The default limit is 25 and the maximum is 100. Continue until nextCursor is null.
      * List integration jobs
      */
-    async listIntegrationJobsRaw(requestParameters: ListIntegrationJobsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationJobPage>> {
+    async listIntegrationJobsRaw(requestParameters: ListIntegrationJobsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationJobPage>> {
         const requestOptions = await this.listIntegrationJobsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3611,7 +3611,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Lists visible jobs, optionally filtered by connection or status. The default limit is 25 and the maximum is 100. Continue until nextCursor is null.
      * List integration jobs
      */
-    async listIntegrationJobs(requestParameters: ListIntegrationJobsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationJobPage> {
+    async listIntegrationJobs(requestParameters: ListIntegrationJobsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationJobPage> {
         const response = await this.listIntegrationJobsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3643,7 +3643,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Lists provider metadata, readiness and supported capabilities. Provider identifiers and response status fields remain extensible.
      * List integration providers
      */
-    async listIntegrationProvidersRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationProviderList>> {
+    async listIntegrationProvidersRaw(initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationProviderList>> {
         const requestOptions = await this.listIntegrationProvidersRequestOpts();
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3654,7 +3654,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Lists provider metadata, readiness and supported capabilities. Provider identifiers and response status fields remain extensible.
      * List integration providers
      */
-    async listIntegrationProviders(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationProviderList> {
+    async listIntegrationProviders(initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationProviderList> {
         const response = await this.listIntegrationProvidersRaw(initOverrides);
         return await response.value();
     }
@@ -3694,7 +3694,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Returns up to 100 identities belonging to this user and team.
      * List linked MCP identities
      */
-    async listMcpIdentitiesRaw(requestParameters: ListMcpIdentitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpIdentityList>> {
+    async listMcpIdentitiesRaw(requestParameters: ListMcpIdentitiesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<McpIdentityList>> {
         const requestOptions = await this.listMcpIdentitiesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3705,7 +3705,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Returns up to 100 identities belonging to this user and team.
      * List linked MCP identities
      */
-    async listMcpIdentities(requestParameters: ListMcpIdentitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<McpIdentityList> {
+    async listMcpIdentities(requestParameters: ListMcpIdentitiesRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<McpIdentityList> {
         const response = await this.listMcpIdentitiesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3745,7 +3745,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Returns up to 100 workflows visible to this user. Provider ownership and team administrator rules apply.
      * List spreadsheet workflows
      */
-    async listSheetWorkflowsRaw(requestParameters: ListSheetWorkflowsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowList>> {
+    async listSheetWorkflowsRaw(requestParameters: ListSheetWorkflowsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowList>> {
         const requestOptions = await this.listSheetWorkflowsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3756,7 +3756,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Returns up to 100 workflows visible to this user. Provider ownership and team administrator rules apply.
      * List spreadsheet workflows
      */
-    async listSheetWorkflows(requestParameters: ListSheetWorkflowsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SheetWorkflowList> {
+    async listSheetWorkflows(requestParameters: ListSheetWorkflowsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<SheetWorkflowList> {
         const response = await this.listSheetWorkflowsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3807,7 +3807,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Reads rows and validates the layout without executing the capability. Also updates workflow validation state. rowLimit defaults to 20 and is bounded to 1–50.
      * Preview spreadsheet workflow inputs
      */
-    async previewSheetWorkflowRaw(requestParameters: PreviewSheetWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowPreview>> {
+    async previewSheetWorkflowRaw(requestParameters: PreviewSheetWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowPreview>> {
         const requestOptions = await this.previewSheetWorkflowRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3818,7 +3818,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Reads rows and validates the layout without executing the capability. Also updates workflow validation state. rowLimit defaults to 20 and is bounded to 1–50.
      * Preview spreadsheet workflow inputs
      */
-    async previewSheetWorkflow(requestParameters: PreviewSheetWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SheetWorkflowPreview> {
+    async previewSheetWorkflow(requestParameters: PreviewSheetWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<SheetWorkflowPreview> {
         const response = await this.previewSheetWorkflowRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3869,7 +3869,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Queues selected leads for provider export and returns their count. Supply a stable requestId for request identification. A 202 response acknowledges queuing; poll getIntegrationJob for completion.
      * Queue lead export to an integration
      */
-    async queueIntegrationLeadExportRaw(requestParameters: QueueIntegrationLeadExportOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationLeadExportResponse>> {
+    async queueIntegrationLeadExportRaw(requestParameters: QueueIntegrationLeadExportOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationLeadExportResponse>> {
         const requestOptions = await this.queueIntegrationLeadExportRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3880,7 +3880,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Queues selected leads for provider export and returns their count. Supply a stable requestId for request identification. A 202 response acknowledges queuing; poll getIntegrationJob for completion.
      * Queue lead export to an integration
      */
-    async queueIntegrationLeadExport(requestParameters: QueueIntegrationLeadExportOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationLeadExportResponse> {
+    async queueIntegrationLeadExport(requestParameters: QueueIntegrationLeadExportOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationLeadExportResponse> {
         const response = await this.queueIntegrationLeadExportRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3931,7 +3931,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Queues a provider test notification and returns 202. Poll getIntegrationJob for completion. This can send a message to the configured destination.
      * Queue a test notification
      */
-    async queueNotificationTestRaw(requestParameters: QueueNotificationTestOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<QueuedIntegrationJobResponse>> {
+    async queueNotificationTestRaw(requestParameters: QueueNotificationTestOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<QueuedIntegrationJobResponse>> {
         const requestOptions = await this.queueNotificationTestRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -3942,7 +3942,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Queues a provider test notification and returns 202. Poll getIntegrationJob for completion. This can send a message to the configured destination.
      * Queue a test notification
      */
-    async queueNotificationTest(requestParameters: QueueNotificationTestOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<QueuedIntegrationJobResponse> {
+    async queueNotificationTest(requestParameters: QueueNotificationTestOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<QueuedIntegrationJobResponse> {
         const response = await this.queueNotificationTestRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4000,7 +4000,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Stages and tests the replacement API token before completing rotation.
      * Rotate a Coda credential
      */
-    async rotateCodaCredentialRaw(requestParameters: RotateCodaCredentialOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
+    async rotateCodaCredentialRaw(requestParameters: RotateCodaCredentialOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
         const requestOptions = await this.rotateCodaCredentialRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4011,7 +4011,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Stages and tests the replacement API token before completing rotation.
      * Rotate a Coda credential
      */
-    async rotateCodaCredential(requestParameters: RotateCodaCredentialOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
+    async rotateCodaCredential(requestParameters: RotateCodaCredentialOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
         const response = await this.rotateCodaCredentialRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4069,7 +4069,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Stages and tests the replacement credential before completing rotation. Requires connection operator access.
      * Rotate a Freshsales credential
      */
-    async rotateFreshsalesCredentialRaw(requestParameters: RotateFreshsalesCredentialOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
+    async rotateFreshsalesCredentialRaw(requestParameters: RotateFreshsalesCredentialOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
         const requestOptions = await this.rotateFreshsalesCredentialRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4080,7 +4080,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Stages and tests the replacement credential before completing rotation. Requires connection operator access.
      * Rotate a Freshsales credential
      */
-    async rotateFreshsalesCredential(requestParameters: RotateFreshsalesCredentialOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
+    async rotateFreshsalesCredential(requestParameters: RotateFreshsalesCredentialOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
         const response = await this.rotateFreshsalesCredentialRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4131,7 +4131,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Queues writeback and returns 202, not completion. Supply a stable requestId to identify this workflow revision and request; omission creates a new request ID. Poll getIntegrationJob for completion.
      * Queue a spreadsheet workflow
      */
-    async runSheetWorkflowRaw(requestParameters: RunSheetWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<QueuedIntegrationJobResponse>> {
+    async runSheetWorkflowRaw(requestParameters: RunSheetWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<QueuedIntegrationJobResponse>> {
         const requestOptions = await this.runSheetWorkflowRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4142,7 +4142,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Queues writeback and returns 202, not completion. Supply a stable requestId to identify this workflow revision and request; omission creates a new request ID. Poll getIntegrationJob for completion.
      * Queue a spreadsheet workflow
      */
-    async runSheetWorkflow(requestParameters: RunSheetWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<QueuedIntegrationJobResponse> {
+    async runSheetWorkflow(requestParameters: RunSheetWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<QueuedIntegrationJobResponse> {
         const response = await this.runSheetWorkflowRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4192,7 +4192,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a workflow with 201, or updates the supplied workflowId with 200. The configuration is validated for its spreadsheet provider and capability.
      * Create or update a spreadsheet workflow
      */
-    async saveSheetWorkflowRaw(requestParameters: SaveSheetWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowResponse>> {
+    async saveSheetWorkflowRaw(requestParameters: SaveSheetWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowResponse>> {
         const requestOptions = await this.saveSheetWorkflowRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4203,7 +4203,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a workflow with 201, or updates the supplied workflowId with 200. The configuration is validated for its spreadsheet provider and capability.
      * Create or update a spreadsheet workflow
      */
-    async saveSheetWorkflow(requestParameters: SaveSheetWorkflowOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SheetWorkflowResponse> {
+    async saveSheetWorkflow(requestParameters: SaveSheetWorkflowOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<SheetWorkflowResponse> {
         const response = await this.saveSheetWorkflowRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4246,7 +4246,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates an authorization transaction and returns its URL and expiry. Complete consent in a browser.
      * Start Attio authorization
      */
-    async startAttioOAuthRaw(requestParameters: StartAttioOAuthOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationOAuthStartResponse>> {
+    async startAttioOAuthRaw(requestParameters: StartAttioOAuthOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationOAuthStartResponse>> {
         const requestOptions = await this.startAttioOAuthRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4257,7 +4257,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates an authorization transaction and returns its URL and expiry. Complete consent in a browser.
      * Start Attio authorization
      */
-    async startAttioOAuth(requestParameters: StartAttioOAuthOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationOAuthStartResponse> {
+    async startAttioOAuth(requestParameters: StartAttioOAuthOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationOAuthStartResponse> {
         const response = await this.startAttioOAuthRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4300,7 +4300,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a short-lived authorization transaction. Open authorizationUrl in a browser to complete provider consent before using the resulting connection.
      * Start Google Sheets authorization
      */
-    async startGoogleSheetsOAuthRaw(requestParameters: StartGoogleSheetsOAuthOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationOAuthStartResponse>> {
+    async startGoogleSheetsOAuthRaw(requestParameters: StartGoogleSheetsOAuthOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationOAuthStartResponse>> {
         const requestOptions = await this.startGoogleSheetsOAuthRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4311,7 +4311,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Creates a short-lived authorization transaction. Open authorizationUrl in a browser to complete provider consent before using the resulting connection.
      * Start Google Sheets authorization
      */
-    async startGoogleSheetsOAuth(requestParameters: StartGoogleSheetsOAuthOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationOAuthStartResponse> {
+    async startGoogleSheetsOAuth(requestParameters: StartGoogleSheetsOAuthOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationOAuthStartResponse> {
         const response = await this.startGoogleSheetsOAuthRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4362,7 +4362,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Starts authorization for the supported provider. Complete consent at authorizationUrl before configuring the connection. Provider-specific authorizationServer and resourceUrl inputs are validated by the server.
      * Start provider authorization
      */
-    async startIntegrationOAuthRaw(requestParameters: StartIntegrationOAuthOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationOAuthStartResponse>> {
+    async startIntegrationOAuthRaw(requestParameters: StartIntegrationOAuthOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationOAuthStartResponse>> {
         const requestOptions = await this.startIntegrationOAuthRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4373,7 +4373,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Starts authorization for the supported provider. Complete consent at authorizationUrl before configuring the connection. Provider-specific authorizationServer and resourceUrl inputs are validated by the server.
      * Start provider authorization
      */
-    async startIntegrationOAuth(requestParameters: StartIntegrationOAuthOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationOAuthStartResponse> {
+    async startIntegrationOAuth(requestParameters: StartIntegrationOAuthOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationOAuthStartResponse> {
         const response = await this.startIntegrationOAuthRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4421,7 +4421,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Calls the provider and updates connection health. Inspect test.state and test.code; provider test failure may be represented in a successful HTTP response.
      * Test an integration connection
      */
-    async testIntegrationConnectionRaw(requestParameters: TestIntegrationConnectionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
+    async testIntegrationConnectionRaw(requestParameters: TestIntegrationConnectionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionTestResponse>> {
         const requestOptions = await this.testIntegrationConnectionRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4432,7 +4432,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Calls the provider and updates connection health. Inspect test.state and test.code; provider test failure may be represented in a successful HTTP response.
      * Test an integration connection
      */
-    async testIntegrationConnection(requestParameters: TestIntegrationConnectionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
+    async testIntegrationConnection(requestParameters: TestIntegrationConnectionRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionTestResponse> {
         const response = await this.testIntegrationConnectionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4490,7 +4490,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Pauses, resumes or disconnects a connection. vaultDeletionPending counts credential deletions still pending cleanup.
      * Change integration connection state
      */
-    async updateIntegrationConnectionStateRaw(requestParameters: UpdateIntegrationConnectionStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionStateResponse>> {
+    async updateIntegrationConnectionStateRaw(requestParameters: UpdateIntegrationConnectionStateOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IntegrationConnectionStateResponse>> {
         const requestOptions = await this.updateIntegrationConnectionStateRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4501,7 +4501,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Pauses, resumes or disconnects a connection. vaultDeletionPending counts credential deletions still pending cleanup.
      * Change integration connection state
      */
-    async updateIntegrationConnectionState(requestParameters: UpdateIntegrationConnectionStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IntegrationConnectionStateResponse> {
+    async updateIntegrationConnectionState(requestParameters: UpdateIntegrationConnectionStateOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<IntegrationConnectionStateResponse> {
         const response = await this.updateIntegrationConnectionStateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4559,7 +4559,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Pauses, resumes or deletes the workflow. Delete returns deleted and workflowId; pause and resume return the workflow.
      * Change spreadsheet workflow state
      */
-    async updateSheetWorkflowStateRaw(requestParameters: UpdateSheetWorkflowStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowStateResponse>> {
+    async updateSheetWorkflowStateRaw(requestParameters: UpdateSheetWorkflowStateOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SheetWorkflowStateResponse>> {
         const requestOptions = await this.updateSheetWorkflowStateRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -4570,7 +4570,7 @@ export class IntegrationsApi extends runtime.BaseAPI implements IntegrationsApiI
      * Pauses, resumes or deletes the workflow. Delete returns deleted and workflowId; pause and resume return the workflow.
      * Change spreadsheet workflow state
      */
-    async updateSheetWorkflowState(requestParameters: UpdateSheetWorkflowStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SheetWorkflowStateResponse> {
+    async updateSheetWorkflowState(requestParameters: UpdateSheetWorkflowStateOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<SheetWorkflowStateResponse> {
         const response = await this.updateSheetWorkflowStateRaw(requestParameters, initOverrides);
         return await response.value();
     }
