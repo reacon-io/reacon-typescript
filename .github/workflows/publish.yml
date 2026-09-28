@@ -16,6 +16,11 @@ on:
         description: Retained native-package artifact in this repository
         type: string
         required: true
+      bootstrap:
+        description: First package registration only; requires the temporary work-account credential
+        type: boolean
+        default: false
+        required: false
 
 permissions:
   contents: read
@@ -52,6 +57,8 @@ jobs:
           REACON_RELEASE_ID: ${{ inputs.release_id }}
           REACON_ATTEMPT_ID: ${{ inputs.attempt_id }}
           REACON_CI_ARTIFACT_ID: ${{ inputs.ci_artifact_id }}
+          REACON_NPM_BOOTSTRAP: ${{ inputs.bootstrap }}
+          REACON_NPM_BOOTSTRAP_TOKEN: ${{ inputs.bootstrap && secrets.REACON_NPM_BOOTSTRAP_TOKEN || '' }}
           REACON_GITHUB_APP_PRIVATE_KEY: ${{ secrets.REACON_GITHUB_APP_PRIVATE_KEY }}
           GITHUB_TOKEN: ${{ github.token }}
         run: node .github/sdk-release/publish-npm.mjs
