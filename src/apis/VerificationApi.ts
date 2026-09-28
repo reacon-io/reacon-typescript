@@ -79,13 +79,13 @@ export interface VerificationApiInterface {
      * @throws {RequiredError}
      * @memberof VerificationApiInterface
      */
-    verifyBatchRaw(requestParameters: VerifyBatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BatchVerificationResponse>>;
+    verifyBatchRaw(requestParameters: VerifyBatchRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BatchVerificationResponse>>;
 
     /**
      * Processes email addresses sequentially. A successful HTTP 200 response contains per-item results or errors. Do not replay the whole batch when only one item fails. This operation may consume credits.
      * Verify a batch of email addresses
      */
-    verifyBatch(requestParameters: VerifyBatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BatchVerificationResponse>;
+    verifyBatch(requestParameters: VerifyBatchRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<BatchVerificationResponse>;
 
     /**
      * Creates request options for verifyEmail without sending the request
@@ -107,13 +107,13 @@ export interface VerificationApiInterface {
      * @throws {RequiredError}
      * @memberof VerificationApiInterface
      */
-    verifyEmailRaw(requestParameters: VerifyEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VerificationResponse>>;
+    verifyEmailRaw(requestParameters: VerifyEmailRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VerificationResponse>>;
 
     /**
      * Returns a final JSON aggregate by default. Accept: text/event-stream selects a finite stream of unnamed data events. Events carry a stage, state, result or error; there is no kind field or [DONE] marker on this endpoint. A result or error is terminal. Verification may consume credits and must not be automatically retried or reconnected.
      * Verify an email address
      */
-    verifyEmail(requestParameters: VerifyEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VerificationResponse>;
+    verifyEmail(requestParameters: VerifyEmailRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<VerificationResponse>;
 
 }
 
@@ -159,7 +159,7 @@ export class VerificationApi extends runtime.BaseAPI implements VerificationApiI
      * Processes email addresses sequentially. A successful HTTP 200 response contains per-item results or errors. Do not replay the whole batch when only one item fails. This operation may consume credits.
      * Verify a batch of email addresses
      */
-    async verifyBatchRaw(requestParameters: VerifyBatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BatchVerificationResponse>> {
+    async verifyBatchRaw(requestParameters: VerifyBatchRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BatchVerificationResponse>> {
         const requestOptions = await this.verifyBatchRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -170,7 +170,7 @@ export class VerificationApi extends runtime.BaseAPI implements VerificationApiI
      * Processes email addresses sequentially. A successful HTTP 200 response contains per-item results or errors. Do not replay the whole batch when only one item fails. This operation may consume credits.
      * Verify a batch of email addresses
      */
-    async verifyBatch(requestParameters: VerifyBatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BatchVerificationResponse> {
+    async verifyBatch(requestParameters: VerifyBatchRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<BatchVerificationResponse> {
         const response = await this.verifyBatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -221,7 +221,7 @@ export class VerificationApi extends runtime.BaseAPI implements VerificationApiI
      * Returns a final JSON aggregate by default. Accept: text/event-stream selects a finite stream of unnamed data events. Events carry a stage, state, result or error; there is no kind field or [DONE] marker on this endpoint. A result or error is terminal. Verification may consume credits and must not be automatically retried or reconnected.
      * Verify an email address
      */
-    async verifyEmailRaw(requestParameters: VerifyEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VerificationResponse>> {
+    async verifyEmailRaw(requestParameters: VerifyEmailRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VerificationResponse>> {
         const requestOptions = await this.verifyEmailRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -232,7 +232,7 @@ export class VerificationApi extends runtime.BaseAPI implements VerificationApiI
      * Returns a final JSON aggregate by default. Accept: text/event-stream selects a finite stream of unnamed data events. Events carry a stage, state, result or error; there is no kind field or [DONE] marker on this endpoint. A result or error is terminal. Verification may consume credits and must not be automatically retried or reconnected.
      * Verify an email address
      */
-    async verifyEmail(requestParameters: VerifyEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VerificationResponse> {
+    async verifyEmail(requestParameters: VerifyEmailRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<VerificationResponse> {
         const response = await this.verifyEmailRaw(requestParameters, initOverrides);
         return await response.value();
     }

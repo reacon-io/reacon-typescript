@@ -78,13 +78,13 @@ export interface DomainsApiInterface {
      * @throws {RequiredError}
      * @memberof DomainsApiInterface
      */
-    getDomainCatchAllRaw(requestParameters: GetDomainCatchAllRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCatchAll>>;
+    getDomainCatchAllRaw(requestParameters: GetDomainCatchAllRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCatchAll>>;
 
     /**
      * Returns the currently fresh domain capability. catch_all is null when evidence is missing, expired or inconclusive. This reads existing evidence; it does not start an SMTP probe.
      * Read domain catch-all status
      */
-    getDomainCatchAll(requestParameters: GetDomainCatchAllRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DomainCatchAll>;
+    getDomainCatchAll(requestParameters: GetDomainCatchAllRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<DomainCatchAll>;
 
     /**
      * Creates request options for getDomainCompanyContext without sending the request
@@ -102,13 +102,13 @@ export interface DomainsApiInterface {
      * @throws {RequiredError}
      * @memberof DomainsApiInterface
      */
-    getDomainCompanyContextRaw(requestParameters: GetDomainCompanyContextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCompanyContext>>;
+    getDomainCompanyContextRaw(requestParameters: GetDomainCompanyContextRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCompanyContext>>;
 
     /**
      * Returns the normalized company context and up to ten jobs. company is null when no company context exists.
      * Get company context for a domain
      */
-    getDomainCompanyContext(requestParameters: GetDomainCompanyContextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DomainCompanyContext>;
+    getDomainCompanyContext(requestParameters: GetDomainCompanyContextRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<DomainCompanyContext>;
 
     /**
      * Creates request options for getDomainCounts without sending the request
@@ -126,13 +126,13 @@ export interface DomainsApiInterface {
      * @throws {RequiredError}
      * @memberof DomainsApiInterface
      */
-    getDomainCountsRaw(requestParameters: GetDomainCountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCounts>>;
+    getDomainCountsRaw(requestParameters: GetDomainCountsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCounts>>;
 
     /**
      * Returns personal, generic and total email counts for the domain. Authenticate with X-API-Key.
      * Count known emails for a domain
      */
-    getDomainCounts(requestParameters: GetDomainCountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DomainCounts>;
+    getDomainCounts(requestParameters: GetDomainCountsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<DomainCounts>;
 
 }
 
@@ -176,7 +176,7 @@ export class DomainsApi extends runtime.BaseAPI implements DomainsApiInterface {
      * Returns the currently fresh domain capability. catch_all is null when evidence is missing, expired or inconclusive. This reads existing evidence; it does not start an SMTP probe.
      * Read domain catch-all status
      */
-    async getDomainCatchAllRaw(requestParameters: GetDomainCatchAllRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCatchAll>> {
+    async getDomainCatchAllRaw(requestParameters: GetDomainCatchAllRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCatchAll>> {
         const requestOptions = await this.getDomainCatchAllRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -187,7 +187,7 @@ export class DomainsApi extends runtime.BaseAPI implements DomainsApiInterface {
      * Returns the currently fresh domain capability. catch_all is null when evidence is missing, expired or inconclusive. This reads existing evidence; it does not start an SMTP probe.
      * Read domain catch-all status
      */
-    async getDomainCatchAll(requestParameters: GetDomainCatchAllRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DomainCatchAll> {
+    async getDomainCatchAll(requestParameters: GetDomainCatchAllRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<DomainCatchAll> {
         const response = await this.getDomainCatchAllRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -227,7 +227,7 @@ export class DomainsApi extends runtime.BaseAPI implements DomainsApiInterface {
      * Returns the normalized company context and up to ten jobs. company is null when no company context exists.
      * Get company context for a domain
      */
-    async getDomainCompanyContextRaw(requestParameters: GetDomainCompanyContextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCompanyContext>> {
+    async getDomainCompanyContextRaw(requestParameters: GetDomainCompanyContextRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCompanyContext>> {
         const requestOptions = await this.getDomainCompanyContextRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -238,7 +238,7 @@ export class DomainsApi extends runtime.BaseAPI implements DomainsApiInterface {
      * Returns the normalized company context and up to ten jobs. company is null when no company context exists.
      * Get company context for a domain
      */
-    async getDomainCompanyContext(requestParameters: GetDomainCompanyContextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DomainCompanyContext> {
+    async getDomainCompanyContext(requestParameters: GetDomainCompanyContextRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<DomainCompanyContext> {
         const response = await this.getDomainCompanyContextRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -278,7 +278,7 @@ export class DomainsApi extends runtime.BaseAPI implements DomainsApiInterface {
      * Returns personal, generic and total email counts for the domain. Authenticate with X-API-Key.
      * Count known emails for a domain
      */
-    async getDomainCountsRaw(requestParameters: GetDomainCountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCounts>> {
+    async getDomainCountsRaw(requestParameters: GetDomainCountsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DomainCounts>> {
         const requestOptions = await this.getDomainCountsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -289,7 +289,7 @@ export class DomainsApi extends runtime.BaseAPI implements DomainsApiInterface {
      * Returns personal, generic and total email counts for the domain. Authenticate with X-API-Key.
      * Count known emails for a domain
      */
-    async getDomainCounts(requestParameters: GetDomainCountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DomainCounts> {
+    async getDomainCounts(requestParameters: GetDomainCountsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<DomainCounts> {
         const response = await this.getDomainCountsRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -94,13 +94,13 @@ export interface NamesApiInterface {
      * @throws {RequiredError}
      * @memberof NamesApiInterface
      */
-    listNamePatternsRaw(requestParameters: ListNamePatternsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NamePatternsResponse>>;
+    listNamePatternsRaw(requestParameters: ListNamePatternsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NamePatternsResponse>>;
 
     /**
      * Returns name patterns ranked by score. domain is required and validated; optional first and last query fields do not alter this static pattern list.
      * List supported email name patterns
      */
-    listNamePatterns(requestParameters: ListNamePatternsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NamePatternsResponse>;
+    listNamePatterns(requestParameters: ListNamePatternsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<NamePatternsResponse>;
 
     /**
      * Creates request options for verifyName without sending the request
@@ -126,13 +126,13 @@ export interface NamesApiInterface {
      * @throws {RequiredError}
      * @memberof NamesApiInterface
      */
-    verifyNameRaw(requestParameters: VerifyNameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameVerificationResponse>>;
+    verifyNameRaw(requestParameters: VerifyNameRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameVerificationResponse>>;
 
     /**
      * Verifies candidate addresses built from sanitized first and last names. JSON returns patterns, globalStages and results. With Accept: text/event-stream, events contain stages or individual pattern verdicts; ordinary completion is clean EOF, with no aggregate final marker. When no candidates can be built, the stream instead emits a result envelope and ends. Errors can describe individual candidates; an error event is not universally terminal. The operation may consume credits; never reconnect or replay automatically.
      * Verify name-based email patterns
      */
-    verifyName(requestParameters: VerifyNameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameVerificationResponse>;
+    verifyName(requestParameters: VerifyNameRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<NameVerificationResponse>;
 
 }
 
@@ -187,7 +187,7 @@ export class NamesApi extends runtime.BaseAPI implements NamesApiInterface {
      * Returns name patterns ranked by score. domain is required and validated; optional first and last query fields do not alter this static pattern list.
      * List supported email name patterns
      */
-    async listNamePatternsRaw(requestParameters: ListNamePatternsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NamePatternsResponse>> {
+    async listNamePatternsRaw(requestParameters: ListNamePatternsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NamePatternsResponse>> {
         const requestOptions = await this.listNamePatternsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -198,7 +198,7 @@ export class NamesApi extends runtime.BaseAPI implements NamesApiInterface {
      * Returns name patterns ranked by score. domain is required and validated; optional first and last query fields do not alter this static pattern list.
      * List supported email name patterns
      */
-    async listNamePatterns(requestParameters: ListNamePatternsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NamePatternsResponse> {
+    async listNamePatterns(requestParameters: ListNamePatternsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<NamePatternsResponse> {
         const response = await this.listNamePatternsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -257,7 +257,7 @@ export class NamesApi extends runtime.BaseAPI implements NamesApiInterface {
      * Verifies candidate addresses built from sanitized first and last names. JSON returns patterns, globalStages and results. With Accept: text/event-stream, events contain stages or individual pattern verdicts; ordinary completion is clean EOF, with no aggregate final marker. When no candidates can be built, the stream instead emits a result envelope and ends. Errors can describe individual candidates; an error event is not universally terminal. The operation may consume credits; never reconnect or replay automatically.
      * Verify name-based email patterns
      */
-    async verifyNameRaw(requestParameters: VerifyNameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameVerificationResponse>> {
+    async verifyNameRaw(requestParameters: VerifyNameRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameVerificationResponse>> {
         const requestOptions = await this.verifyNameRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -268,7 +268,7 @@ export class NamesApi extends runtime.BaseAPI implements NamesApiInterface {
      * Verifies candidate addresses built from sanitized first and last names. JSON returns patterns, globalStages and results. With Accept: text/event-stream, events contain stages or individual pattern verdicts; ordinary completion is clean EOF, with no aggregate final marker. When no candidates can be built, the stream instead emits a result envelope and ends. Errors can describe individual candidates; an error event is not universally terminal. The operation may consume credits; never reconnect or replay automatically.
      * Verify name-based email patterns
      */
-    async verifyName(requestParameters: VerifyNameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameVerificationResponse> {
+    async verifyName(requestParameters: VerifyNameRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<NameVerificationResponse> {
         const response = await this.verifyNameRaw(requestParameters, initOverrides);
         return await response.value();
     }

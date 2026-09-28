@@ -1,3 +1,5 @@
+import { RequestOptions, fetchWithRequestPolicy, isReaconRequestError, responseErrorBody, responseErrorCode, responseJson } from './Http.js';
+export { RequestOptions, ReaconRequestTimeoutError, ReaconRequestAbortedError, ReaconTransportError, ReaconResponseDecodeError } from './Http.js';
 /* tslint:disable */
 /* eslint-disable */
 /**
@@ -15,6 +17,8 @@
 export const BASE_PATH = "https://api.reacon.io".replace(/\/+$/, "");
 
 export interface ConfigurationParameters {
+    /** Total network deadline through body reads; defaults to 30000 milliseconds. */
+    requestTimeoutMs?: number;
     basePath?: string; // override base path
     fetchApi?: FetchAPI; // override for fetch implementation
     middleware?: Middleware[]; // middleware to apply before/after fetch requests
@@ -37,6 +41,8 @@ export class Configuration {
     get basePath(): string {
         return this.configuration.basePath != null ? this.configuration.basePath : BASE_PATH;
     }
+
+    get requestTimeoutMs(): number { return this.configuration.requestTimeoutMs ?? 30_000; }
 
     get fetchApi(): FetchAPI | undefined {
         return this.configuration.fetchApi;
@@ -130,16 +136,16 @@ export class BaseAPI {
         return BaseAPI.jsonRegex.test(mime);
     }
 
-    protected async request(context: RequestOpts, initOverrides?: RequestInit | InitOverrideFunction): Promise<Response> {
+    protected async request(context: RequestOpts, initOverrides?: RequestOptions | InitOverrideFunction): Promise<Response> {
         const { url, init } = await this.createFetchParams(context, initOverrides);
         const response = await this.fetchApi(url, init);
         if (response && (response.status >= 200 && response.status < 300)) {
             return response;
         }
-        throw new ResponseError(response, 'Response returned an error code');
+        throw new ResponseError(response, 'Reacon returned HTTP ' + response.status, await responseErrorBody(response));
     }
 
-    private async createFetchParams(context: RequestOpts, initOverrides?: RequestInit | InitOverrideFunction) {
+    private async createFetchParams(context: RequestOpts, initOverrides?: RequestOptions | InitOverrideFunction) {
         let url = this.configuration.basePath + context.path;
         if (context.query !== undefined && Object.keys(context.query).length !== 0) {
             // only add the querystring to the URL if there are query parameters.
@@ -190,7 +196,7 @@ export class BaseAPI {
         return { url, init };
     }
 
-    private fetchApi = async (url: string, init: RequestInit) => {
+    private fetchApi = async (url: string, init: RequestOptions) => {
         let fetchParams = { url, init };
         for (const middleware of this.middleware) {
             if (middleware.pre) {
@@ -202,7 +208,7 @@ export class BaseAPI {
         }
         let response: Response | undefined = undefined;
         try {
-            response = await (this.configuration.fetchApi || fetch)(fetchParams.url, fetchParams.init);
+            response = await fetchWithRequestPolicy(this.configuration.fetchApi || fetch, fetchParams.url, fetchParams.init, this.configuration.requestTimeoutMs);
         } catch (e) {
             for (const middleware of this.middleware) {
                 if (middleware.onError) {
@@ -216,6 +222,7 @@ export class BaseAPI {
                 }
             }
             if (response === undefined) {
+              if (isReaconRequestError(e)) throw e;
               if (e instanceof Error) {
                 throw new FetchError(e, 'The request failed and the interceptors did not return an alternative response');
               } else {
@@ -258,8 +265,16 @@ function isFormData(value: any): value is FormData {
 
 export class ResponseError extends Error {
     override name: "ResponseError" = "ResponseError";
-    constructor(public response: Response, msg?: string) {
+    public readonly status: number;
+    public readonly headers: Headers;
+    public readonly requestId?: string;
+    public readonly code?: string;
+    constructor(public response: Response, msg?: string, public readonly body?: unknown) {
         super(msg);
+        this.status = response.status;
+        this.headers = new Headers(response.headers);
+        this.requestId = response.headers.get('x-request-id') ?? undefined;
+        this.code = responseErrorCode(body);
 
         // restore prototype chain
         const actualProto = new.target.prototype;
@@ -312,7 +327,7 @@ export type HTTPBody = Json | FormData | URLSearchParams;
 export type HTTPRequestInit = { headers?: HTTPHeaders; method: HTTPMethod; credentials?: RequestCredentials; body?: HTTPBody };
 export type ModelPropertyNaming = 'camelCase' | 'snake_case' | 'PascalCase' | 'original';
 
-export type InitOverrideFunction = (requestContext: { init: HTTPRequestInit, context: RequestOpts }) => Promise<RequestInit>
+export type InitOverrideFunction = (requestContext: { init: HTTPRequestInit, context: RequestOpts }) => Promise<RequestOptions>
 
 export interface FetchParams {
     url: string;
@@ -437,7 +452,7 @@ export class JSONApiResponse<T> {
     constructor(public raw: Response, private transformer: ResponseTransformer<T> = (jsonValue: any) => jsonValue) {}
 
     async value(): Promise<T> {
-        return this.transformer(await this.raw.json());
+        return this.transformer(await responseJson(this.raw));
     }
 }
 

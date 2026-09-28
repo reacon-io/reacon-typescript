@@ -54,13 +54,13 @@ export interface InsightsApiInterface {
      * @throws {RequiredError}
      * @memberof InsightsApiInterface
      */
-    getEmailInsightsRaw(requestParameters: GetEmailInsightsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InsightsResponse>>;
+    getEmailInsightsRaw(requestParameters: GetEmailInsightsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InsightsResponse>>;
 
     /**
      * Extracts page mentions and platform findings. JSON returns the aggregate. Accept: text/event-stream selects events discriminated by kind; final carries response and error is terminal. mention_error is an item failure and does not terminate the stream. This executes extraction work despite using GET; do not retry or reconnect automatically. Stream disconnection does not imply that backend work has been cancelled.
      * Extract insights associated with an email
      */
-    getEmailInsights(requestParameters: GetEmailInsightsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InsightsResponse>;
+    getEmailInsights(requestParameters: GetEmailInsightsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<InsightsResponse>;
 
 }
 
@@ -104,7 +104,7 @@ export class InsightsApi extends runtime.BaseAPI implements InsightsApiInterface
      * Extracts page mentions and platform findings. JSON returns the aggregate. Accept: text/event-stream selects events discriminated by kind; final carries response and error is terminal. mention_error is an item failure and does not terminate the stream. This executes extraction work despite using GET; do not retry or reconnect automatically. Stream disconnection does not imply that backend work has been cancelled.
      * Extract insights associated with an email
      */
-    async getEmailInsightsRaw(requestParameters: GetEmailInsightsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InsightsResponse>> {
+    async getEmailInsightsRaw(requestParameters: GetEmailInsightsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InsightsResponse>> {
         const requestOptions = await this.getEmailInsightsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -115,7 +115,7 @@ export class InsightsApi extends runtime.BaseAPI implements InsightsApiInterface
      * Extracts page mentions and platform findings. JSON returns the aggregate. Accept: text/event-stream selects events discriminated by kind; final carries response and error is terminal. mention_error is an item failure and does not terminate the stream. This executes extraction work despite using GET; do not retry or reconnect automatically. Stream disconnection does not imply that backend work has been cancelled.
      * Extract insights associated with an email
      */
-    async getEmailInsights(requestParameters: GetEmailInsightsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InsightsResponse> {
+    async getEmailInsights(requestParameters: GetEmailInsightsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<InsightsResponse> {
         const response = await this.getEmailInsightsRaw(requestParameters, initOverrides);
         return await response.value();
     }

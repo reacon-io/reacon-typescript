@@ -188,13 +188,13 @@ export interface LeadsApiInterface {
      * @throws {RequiredError}
      * @memberof LeadsApiInterface
      */
-    createLeadRaw(requestParameters: CreateLeadOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateLeadResponse>>;
+    createLeadRaw(requestParameters: CreateLeadOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateLeadResponse>>;
 
     /**
      * Creates a lead for the authenticated team. An API key cannot create leads for another team. Uses HTTP 200 with a lead envelope. No idempotency key is implemented; do not automatically retry.
      * Create a lead in a team
      */
-    createLead(requestParameters: CreateLeadOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateLeadResponse>;
+    createLead(requestParameters: CreateLeadOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<CreateLeadResponse>;
 
     /**
      * Creates request options for deleteLead without sending the request
@@ -212,13 +212,13 @@ export interface LeadsApiInterface {
      * @throws {RequiredError}
      * @memberof LeadsApiInterface
      */
-    deleteLeadRaw(requestParameters: DeleteLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteLeadResponse>>;
+    deleteLeadRaw(requestParameters: DeleteLeadRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteLeadResponse>>;
 
     /**
      * Deletes a lead visible to the authenticated team and returns a success envelope. A repeated delete can return 404.
      * Delete a lead
      */
-    deleteLead(requestParameters: DeleteLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteLeadResponse>;
+    deleteLead(requestParameters: DeleteLeadRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<DeleteLeadResponse>;
 
     /**
      * Creates request options for exportLeads without sending the request
@@ -238,13 +238,13 @@ export interface LeadsApiInterface {
      * @throws {RequiredError}
      * @memberof LeadsApiInterface
      */
-    exportLeadsRaw(requestParameters: ExportLeadsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadExportInner>>>;
+    exportLeadsRaw(requestParameters: ExportLeadsOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadExportInner>>>;
 
     /**
      * Exports leads selected by inclusion/exclusion scopes and selected/deselected IDs. The body format field selects a JSON array (default) or text/csv attachment. Oversized selections return 413. Selection scopes must contain at least one item. No automatic replay.
      * Export selected leads
      */
-    exportLeads(requestParameters: ExportLeadsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadExportInner>>;
+    exportLeads(requestParameters: ExportLeadsOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<Array<LeadExportInner>>;
 
     /**
      * Creates request options for getLead without sending the request
@@ -262,13 +262,13 @@ export interface LeadsApiInterface {
      * @throws {RequiredError}
      * @memberof LeadsApiInterface
      */
-    getLeadRaw(requestParameters: GetLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLeadResponse>>;
+    getLeadRaw(requestParameters: GetLeadRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLeadResponse>>;
 
     /**
      * Retrieves a lead visible to the authenticated team. A missing or inaccessible lead can return 404.
      * Retrieve a lead
      */
-    getLead(requestParameters: GetLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLeadResponse>;
+    getLead(requestParameters: GetLeadRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<GetLeadResponse>;
 
     /**
      * Creates request options for listLeads without sending the request
@@ -306,13 +306,13 @@ export interface LeadsApiInterface {
      * @throws {RequiredError}
      * @memberof LeadsApiInterface
      */
-    listLeadsRaw(requestParameters: ListLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadPage>>;
+    listLeadsRaw(requestParameters: ListLeadsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadPage>>;
 
     /**
      * Lists leads belonging to the authenticated team, with filters, optional grouping and opaque cursors. filters is a JSON-encoded object. nextCursor, nextGroupCursor and lastGroupCursor are null when absent. The handler always returns JSON; use exportLeads for CSV.
      * List team leads
      */
-    listLeads(requestParameters: ListLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadPage>;
+    listLeads(requestParameters: ListLeadsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<LeadPage>;
 
     /**
      * Creates request options for updateLead without sending the request
@@ -332,13 +332,13 @@ export interface LeadsApiInterface {
      * @throws {RequiredError}
      * @memberof LeadsApiInterface
      */
-    updateLeadRaw(requestParameters: UpdateLeadOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateLeadResponse>>;
+    updateLeadRaw(requestParameters: UpdateLeadOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateLeadResponse>>;
 
     /**
      * Updates a lead visible to the authenticated team and returns the updated lead envelope. This endpoint uses POST. Missing leads or an update with no changes can return 404; do not automatically replay.
      * Update a lead
      */
-    updateLead(requestParameters: UpdateLeadOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateLeadResponse>;
+    updateLead(requestParameters: UpdateLeadOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<UpdateLeadResponse>;
 
 }
 
@@ -392,7 +392,7 @@ export class LeadsApi extends runtime.BaseAPI implements LeadsApiInterface {
      * Creates a lead for the authenticated team. An API key cannot create leads for another team. Uses HTTP 200 with a lead envelope. No idempotency key is implemented; do not automatically retry.
      * Create a lead in a team
      */
-    async createLeadRaw(requestParameters: CreateLeadOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateLeadResponse>> {
+    async createLeadRaw(requestParameters: CreateLeadOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateLeadResponse>> {
         const requestOptions = await this.createLeadRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -403,7 +403,7 @@ export class LeadsApi extends runtime.BaseAPI implements LeadsApiInterface {
      * Creates a lead for the authenticated team. An API key cannot create leads for another team. Uses HTTP 200 with a lead envelope. No idempotency key is implemented; do not automatically retry.
      * Create a lead in a team
      */
-    async createLead(requestParameters: CreateLeadOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateLeadResponse> {
+    async createLead(requestParameters: CreateLeadOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<CreateLeadResponse> {
         const response = await this.createLeadRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -443,7 +443,7 @@ export class LeadsApi extends runtime.BaseAPI implements LeadsApiInterface {
      * Deletes a lead visible to the authenticated team and returns a success envelope. A repeated delete can return 404.
      * Delete a lead
      */
-    async deleteLeadRaw(requestParameters: DeleteLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteLeadResponse>> {
+    async deleteLeadRaw(requestParameters: DeleteLeadRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteLeadResponse>> {
         const requestOptions = await this.deleteLeadRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -454,7 +454,7 @@ export class LeadsApi extends runtime.BaseAPI implements LeadsApiInterface {
      * Deletes a lead visible to the authenticated team and returns a success envelope. A repeated delete can return 404.
      * Delete a lead
      */
-    async deleteLead(requestParameters: DeleteLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteLeadResponse> {
+    async deleteLead(requestParameters: DeleteLeadRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<DeleteLeadResponse> {
         const response = await this.deleteLeadRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -506,14 +506,14 @@ export class LeadsApi extends runtime.BaseAPI implements LeadsApiInterface {
      */
 
     /** Download a CSV export as text. Uses one request; never retries accepted work. */
-    async exportLeadsCsv(requestParameters: ExportLeadsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+    async exportLeadsCsv(requestParameters: ExportLeadsOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<string> {
         const options = await this.exportLeadsRequestOpts({ ...requestParameters, exportLeadsRequest: { ...requestParameters.exportLeadsRequest, format: 'csv' } });
         const response = await this.request(options, initOverrides);
         if (response.headers.get('content-type')?.split(';')[0].trim() !== 'text/csv') throw new Error('Expected a CSV export response.');
         return await response.text();
     }
 
-    async exportLeadsRaw(requestParameters: ExportLeadsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadExportInner>>> {
+    async exportLeadsRaw(requestParameters: ExportLeadsOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LeadExportInner>>> {
         if (requestParameters.exportLeadsRequest?.format === 'csv') throw new Error('Use exportLeadsCsv for a CSV export.');
         const requestOptions = await this.exportLeadsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
@@ -525,7 +525,7 @@ export class LeadsApi extends runtime.BaseAPI implements LeadsApiInterface {
      * Exports leads selected by inclusion/exclusion scopes and selected/deselected IDs. The body format field selects a JSON array (default) or text/csv attachment. Oversized selections return 413. Selection scopes must contain at least one item. No automatic replay.
      * Export selected leads
      */
-    async exportLeads(requestParameters: ExportLeadsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LeadExportInner>> {
+    async exportLeads(requestParameters: ExportLeadsOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<Array<LeadExportInner>> {
         const response = await this.exportLeadsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -565,7 +565,7 @@ export class LeadsApi extends runtime.BaseAPI implements LeadsApiInterface {
      * Retrieves a lead visible to the authenticated team. A missing or inaccessible lead can return 404.
      * Retrieve a lead
      */
-    async getLeadRaw(requestParameters: GetLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLeadResponse>> {
+    async getLeadRaw(requestParameters: GetLeadRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLeadResponse>> {
         const requestOptions = await this.getLeadRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -576,7 +576,7 @@ export class LeadsApi extends runtime.BaseAPI implements LeadsApiInterface {
      * Retrieves a lead visible to the authenticated team. A missing or inaccessible lead can return 404.
      * Retrieve a lead
      */
-    async getLead(requestParameters: GetLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLeadResponse> {
+    async getLead(requestParameters: GetLeadRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<GetLeadResponse> {
         const response = await this.getLeadRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -656,7 +656,7 @@ export class LeadsApi extends runtime.BaseAPI implements LeadsApiInterface {
      * Lists leads belonging to the authenticated team, with filters, optional grouping and opaque cursors. filters is a JSON-encoded object. nextCursor, nextGroupCursor and lastGroupCursor are null when absent. The handler always returns JSON; use exportLeads for CSV.
      * List team leads
      */
-    async listLeadsRaw(requestParameters: ListLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadPage>> {
+    async listLeadsRaw(requestParameters: ListLeadsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadPage>> {
         const requestOptions = await this.listLeadsRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -667,7 +667,7 @@ export class LeadsApi extends runtime.BaseAPI implements LeadsApiInterface {
      * Lists leads belonging to the authenticated team, with filters, optional grouping and opaque cursors. filters is a JSON-encoded object. nextCursor, nextGroupCursor and lastGroupCursor are null when absent. The handler always returns JSON; use exportLeads for CSV.
      * List team leads
      */
-    async listLeads(requestParameters: ListLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadPage> {
+    async listLeads(requestParameters: ListLeadsRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<LeadPage> {
         const response = await this.listLeadsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -710,7 +710,7 @@ export class LeadsApi extends runtime.BaseAPI implements LeadsApiInterface {
      * Updates a lead visible to the authenticated team and returns the updated lead envelope. This endpoint uses POST. Missing leads or an update with no changes can return 404; do not automatically replay.
      * Update a lead
      */
-    async updateLeadRaw(requestParameters: UpdateLeadOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateLeadResponse>> {
+    async updateLeadRaw(requestParameters: UpdateLeadOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateLeadResponse>> {
         const requestOptions = await this.updateLeadRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
@@ -721,7 +721,7 @@ export class LeadsApi extends runtime.BaseAPI implements LeadsApiInterface {
      * Updates a lead visible to the authenticated team and returns the updated lead envelope. This endpoint uses POST. Missing leads or an update with no changes can return 404; do not automatically replay.
      * Update a lead
      */
-    async updateLead(requestParameters: UpdateLeadOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateLeadResponse> {
+    async updateLead(requestParameters: UpdateLeadOperationRequest, initOverrides?: runtime.RequestOptions | runtime.InitOverrideFunction): Promise<UpdateLeadResponse> {
         const response = await this.updateLeadRaw(requestParameters, initOverrides);
         return await response.value();
     }
