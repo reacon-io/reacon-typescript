@@ -59,7 +59,7 @@ export interface IntegrationCapabilityResponse {
     /**
      * 
      */
-    output: IntegrationCapabilityResponseOutput;
+    output: IntegrationCapabilityResponseOutput | null;
     /**
      * 
      */

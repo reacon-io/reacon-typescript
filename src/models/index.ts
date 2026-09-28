@@ -122,6 +122,7 @@ export * from './InspectExcelWorkbookRequest.js';
 export * from './InspectGoogleSheetRequest.js';
 export * from './IntegrationCapabilityResponse.js';
 export * from './IntegrationCapabilityResponseOutput.js';
+export * from './IntegrationCapabilityResponseOutputNonNull.js';
 export * from './IntegrationConnection.js';
 export * from './IntegrationConnectionHealth.js';
 export * from './IntegrationConnectionList.js';

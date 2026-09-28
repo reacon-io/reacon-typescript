@@ -12,34 +12,97 @@
  * Do not edit the class manually.
  */
 
-import type { CapabilityDomainSearch } from './CapabilityDomainSearch.js';
+import { mapValues } from '../runtime.js';
+import type { CapabilityDomainSearchContactsInner } from './CapabilityDomainSearchContactsInner.js';
 import {
-    instanceOfCapabilityDomainSearch,
-    CapabilityDomainSearchFromJSON,
-    CapabilityDomainSearchFromJSONTyped,
-    CapabilityDomainSearchToJSON,
-} from './CapabilityDomainSearch.js';
-import type { CapabilityEmailFound } from './CapabilityEmailFound.js';
+    CapabilityDomainSearchContactsInnerFromJSON,
+    CapabilityDomainSearchContactsInnerFromJSONTyped,
+    CapabilityDomainSearchContactsInnerToJSON,
+    CapabilityDomainSearchContactsInnerToJSONTyped,
+} from './CapabilityDomainSearchContactsInner.js';
+import type { IntegrationCapabilityResponseOutputNonNull } from './IntegrationCapabilityResponseOutputNonNull.js';
 import {
-    instanceOfCapabilityEmailFound,
-    CapabilityEmailFoundFromJSON,
-    CapabilityEmailFoundFromJSONTyped,
-    CapabilityEmailFoundToJSON,
-} from './CapabilityEmailFound.js';
-import type { CapabilityEmailVerified } from './CapabilityEmailVerified.js';
+    IntegrationCapabilityResponseOutputNonNullFromJSON,
+    IntegrationCapabilityResponseOutputNonNullFromJSONTyped,
+    IntegrationCapabilityResponseOutputNonNullToJSON,
+    IntegrationCapabilityResponseOutputNonNullToJSONTyped,
+} from './IntegrationCapabilityResponseOutputNonNull.js';
+import type { CapabilityEmailVerifiedDetails } from './CapabilityEmailVerifiedDetails.js';
 import {
-    instanceOfCapabilityEmailVerified,
-    CapabilityEmailVerifiedFromJSON,
-    CapabilityEmailVerifiedFromJSONTyped,
-    CapabilityEmailVerifiedToJSON,
-} from './CapabilityEmailVerified.js';
+    CapabilityEmailVerifiedDetailsFromJSON,
+    CapabilityEmailVerifiedDetailsFromJSONTyped,
+    CapabilityEmailVerifiedDetailsToJSON,
+    CapabilityEmailVerifiedDetailsToJSONTyped,
+} from './CapabilityEmailVerifiedDetails.js';
 
 /**
- * @type IntegrationCapabilityResponseOutput
  * Null in preview mode; otherwise the result for the selected capability.
  * @export
+ * @interface IntegrationCapabilityResponseOutput
  */
-export type IntegrationCapabilityResponseOutput = CapabilityDomainSearch | CapabilityEmailFound | CapabilityEmailVerified | object;
+export interface IntegrationCapabilityResponseOutput {
+    /**
+     * 
+     */
+    confidence: number;
+    /**
+     * 
+     */
+    email: string;
+    /**
+     * 
+     */
+    freshness: string;
+    /**
+     * 
+     */
+    status: string;
+    /**
+     * 
+     */
+    checkedAt: string;
+    /**
+     * 
+     */
+    details: CapabilityEmailVerifiedDetails;
+    /**
+     * 
+     */
+    score: number;
+    /**
+     * 
+     */
+    sources: number;
+    /**
+     * 
+     */
+    contacts: Array<CapabilityDomainSearchContactsInner>;
+    /**
+     * 
+     */
+    domain: string;
+    /**
+     * 
+     */
+    organization?: string;
+}
+
+/**
+ * Check if a given object implements the IntegrationCapabilityResponseOutput interface.
+ */
+export function instanceOfIntegrationCapabilityResponseOutput(value: object): value is IntegrationCapabilityResponseOutput {
+    if (!('confidence' in value) || value['confidence'] === undefined) return false;
+    if (!('email' in value) || value['email'] === undefined) return false;
+    if (!('freshness' in value) || value['freshness'] === undefined) return false;
+    if (!('status' in value) || value['status'] === undefined) return false;
+    if (!('checkedAt' in value) || value['checkedAt'] === undefined) return false;
+    if (!('details' in value) || value['details'] === undefined) return false;
+    if (!('score' in value) || value['score'] === undefined) return false;
+    if (!('sources' in value) || value['sources'] === undefined) return false;
+    if (!('contacts' in value) || value['contacts'] === undefined) return false;
+    if (!('domain' in value) || value['domain'] === undefined) return false;
+    return true;
+}
 
 export function IntegrationCapabilityResponseOutputFromJSON(json: any): IntegrationCapabilityResponseOutput {
     return IntegrationCapabilityResponseOutputFromJSONTyped(json, false);
@@ -49,22 +112,23 @@ export function IntegrationCapabilityResponseOutputFromJSONTyped(json: any, igno
     if (json == null) {
         return json;
     }
-    if (typeof json !== 'object') {
-        return json;
-    }
-    if (instanceOfCapabilityDomainSearch(json)) {
-        return CapabilityDomainSearchFromJSONTyped(json, true);
-    }
-    if (instanceOfCapabilityEmailFound(json)) {
-        return CapabilityEmailFoundFromJSONTyped(json, true);
-    }
-    if (instanceOfCapabilityEmailVerified(json)) {
-        return CapabilityEmailVerifiedFromJSONTyped(json, true);
-    }
-    return {} as any;
+    return {
+        
+        'confidence': json['confidence'],
+        'email': json['email'],
+        'freshness': json['freshness'],
+        'status': json['status'],
+        'checkedAt': json['checkedAt'],
+        'details': CapabilityEmailVerifiedDetailsFromJSON(json['details']),
+        'score': json['score'],
+        'sources': json['sources'],
+        'contacts': ((json['contacts'] as Array<any>).map(CapabilityDomainSearchContactsInnerFromJSON)),
+        'domain': json['domain'],
+        'organization': json['organization'] == null ? undefined : json['organization'],
+    };
 }
 
-export function IntegrationCapabilityResponseOutputToJSON(json: any): any {
+export function IntegrationCapabilityResponseOutputToJSON(json: any): IntegrationCapabilityResponseOutput {
     return IntegrationCapabilityResponseOutputToJSONTyped(json, false);
 }
 
@@ -72,18 +136,20 @@ export function IntegrationCapabilityResponseOutputToJSONTyped(value?: Integrati
     if (value == null) {
         return value;
     }
-    if (typeof value !== 'object') {
-        return value;
-    }
-    if (instanceOfCapabilityDomainSearch(value)) {
-        return CapabilityDomainSearchToJSON(value as CapabilityDomainSearch);
-    }
-    if (instanceOfCapabilityEmailFound(value)) {
-        return CapabilityEmailFoundToJSON(value as CapabilityEmailFound);
-    }
-    if (instanceOfCapabilityEmailVerified(value)) {
-        return CapabilityEmailVerifiedToJSON(value as CapabilityEmailVerified);
-    }
-    return {};
+
+    return {
+        
+        'confidence': value['confidence'],
+        'email': value['email'],
+        'freshness': value['freshness'],
+        'status': value['status'],
+        'checkedAt': value['checkedAt'],
+        'details': CapabilityEmailVerifiedDetailsToJSON(value['details']),
+        'score': value['score'],
+        'sources': value['sources'],
+        'contacts': ((value['contacts'] as Array<any>).map(CapabilityDomainSearchContactsInnerToJSON)),
+        'domain': value['domain'],
+        'organization': value['organization'],
+    };
 }
 
