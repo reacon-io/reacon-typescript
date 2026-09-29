@@ -13,6 +13,7 @@
  */
 
 import { mapValues } from '../runtime.js';
+const reaconAdditionalPropertyCollisions = Symbol('reacon.additionalPropertyCollisions');
 /**
  * 
  * @export
@@ -67,7 +68,8 @@ export function UpdateLeadRequestPersonFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-            ...json,
+            ...Object.fromEntries(Object.entries(json).filter(([key]) => !["first_name","last_name","lead_location","linkedin","phone_number","position","twitter"].includes(key))),
+            ...{ [reaconAdditionalPropertyCollisions]: Object.fromEntries(Object.entries(json).filter(([key]) => ["firstName","lastName","leadLocation","phoneNumber"].includes(key))) },
         'firstName': json['first_name'] === undefined ? undefined : json['first_name'] === null ? null : json['first_name'],
         'lastName': json['last_name'] === undefined ? undefined : json['last_name'] === null ? null : json['last_name'],
         'leadLocation': json['lead_location'] === undefined ? undefined : json['lead_location'] === null ? null : json['lead_location'],
@@ -89,7 +91,8 @@ export function UpdateLeadRequestPersonToJSONTyped(value?: UpdateLeadRequestPers
 
     return {
         
-            ...value,
+            ...Object.fromEntries(Object.entries(value).filter(([key]) => !["firstName","lastName","leadLocation","linkedin","phoneNumber","position","twitter"].includes(key))),
+            ...((value as any)[reaconAdditionalPropertyCollisions] ?? {}),
         'first_name': value['firstName'],
         'last_name': value['lastName'],
         'lead_location': value['leadLocation'],

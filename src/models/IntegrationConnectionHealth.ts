@@ -13,6 +13,7 @@
  */
 
 import { mapValues } from '../runtime.js';
+const reaconAdditionalPropertyCollisions = Symbol('reacon.additionalPropertyCollisions');
 /**
  * 
  * @export
@@ -64,7 +65,8 @@ export function IntegrationConnectionHealthFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-            ...json,
+            ...Object.fromEntries(Object.entries(json).filter(([key]) => !["checked_at","code","last_error_code","last_error_message","state"].includes(key))),
+            ...{ [reaconAdditionalPropertyCollisions]: Object.fromEntries(Object.entries(json).filter(([key]) => ["checkedAt","lastErrorCode","lastErrorMessage"].includes(key))) },
         'checkedAt': json['checked_at'],
         'code': json['code'],
         'lastErrorCode': json['last_error_code'],
@@ -84,7 +86,8 @@ export function IntegrationConnectionHealthToJSONTyped(value?: IntegrationConnec
 
     return {
         
-            ...value,
+            ...Object.fromEntries(Object.entries(value).filter(([key]) => !["checkedAt","code","lastErrorCode","lastErrorMessage","state"].includes(key))),
+            ...((value as any)[reaconAdditionalPropertyCollisions] ?? {}),
         'checked_at': value['checkedAt'],
         'code': value['code'],
         'last_error_code': value['lastErrorCode'],
