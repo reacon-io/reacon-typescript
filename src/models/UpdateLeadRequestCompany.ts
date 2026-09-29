@@ -13,6 +13,7 @@
  */
 
 import { mapValues } from '../runtime.js';
+const reaconAdditionalPropertyCollisions = Symbol('reacon.additionalPropertyCollisions');
 import type { CompanyListResultsInnerAddressesInner } from './CompanyListResultsInnerAddressesInner.js';
 import {
     CompanyListResultsInnerAddressesInnerFromJSON,
@@ -91,7 +92,8 @@ export function UpdateLeadRequestCompanyFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
-            ...json,
+            ...Object.fromEntries(Object.entries(json).filter(([key]) => !["addresses","founded_on","industry","linkedin","location","name","number_of_employees","stock","twitter","type","website"].includes(key))),
+            ...{ [reaconAdditionalPropertyCollisions]: Object.fromEntries(Object.entries(json).filter(([key]) => ["foundedOn","numberOfEmployees"].includes(key))) },
         'addresses': json['addresses'] === undefined ? undefined : json['addresses'] === null ? null : ((json['addresses'] as Array<any>).map(CompanyListResultsInnerAddressesInnerFromJSON)),
         'foundedOn': json['founded_on'] === undefined ? undefined : json['founded_on'] === null ? null : json['founded_on'],
         'industry': json['industry'] === undefined ? undefined : json['industry'] === null ? null : json['industry'],
@@ -117,7 +119,8 @@ export function UpdateLeadRequestCompanyToJSONTyped(value?: UpdateLeadRequestCom
 
     return {
         
-            ...value,
+            ...Object.fromEntries(Object.entries(value).filter(([key]) => !["addresses","foundedOn","industry","linkedin","location","name","numberOfEmployees","stock","twitter","type","website"].includes(key))),
+            ...((value as any)[reaconAdditionalPropertyCollisions] ?? {}),
         'addresses': value['addresses'] === undefined ? undefined : value['addresses'] === null ? null : ((value['addresses'] as Array<any>).map(CompanyListResultsInnerAddressesInnerToJSON)),
         'founded_on': value['foundedOn'],
         'industry': value['industry'],

@@ -13,6 +13,7 @@
  */
 
 import { mapValues } from '../runtime.js';
+const reaconAdditionalPropertyCollisions = Symbol('reacon.additionalPropertyCollisions');
 import type { IntegrationConnectionHealth } from './IntegrationConnectionHealth.js';
 import {
     IntegrationConnectionHealthFromJSON,
@@ -112,7 +113,8 @@ export function IntegrationConnectionFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-            ...json,
+            ...Object.fromEntries(Object.entries(json).filter(([key]) => !["capabilities","config","created_at","health","id","label","mode","provider","provider_account_id","provider_base_url","status","team_id","updated_at"].includes(key))),
+            ...{ [reaconAdditionalPropertyCollisions]: Object.fromEntries(Object.entries(json).filter(([key]) => ["createdAt","providerAccountId","providerBaseUrl","teamId","updatedAt"].includes(key))) },
         'capabilities': json['capabilities'],
         'config': json['config'],
         'createdAt': json['created_at'],
@@ -140,7 +142,8 @@ export function IntegrationConnectionToJSONTyped(value?: IntegrationConnection |
 
     return {
         
-            ...value,
+            ...Object.fromEntries(Object.entries(value).filter(([key]) => !["capabilities","config","createdAt","health","id","label","mode","provider","providerAccountId","providerBaseUrl","status","teamId","updatedAt"].includes(key))),
+            ...((value as any)[reaconAdditionalPropertyCollisions] ?? {}),
         'capabilities': value['capabilities'],
         'config': value['config'],
         'created_at': value['createdAt'],

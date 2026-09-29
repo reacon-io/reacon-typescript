@@ -13,6 +13,7 @@
  */
 
 import { mapValues } from '../runtime.js';
+const reaconAdditionalPropertyCollisions = Symbol('reacon.additionalPropertyCollisions');
 import type { QueuedIntegrationJobStreamPosition } from './QueuedIntegrationJobStreamPosition.js';
 import {
     QueuedIntegrationJobStreamPositionFromJSON,
@@ -182,7 +183,8 @@ export function QueuedIntegrationJobFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-            ...json,
+            ...Object.fromEntries(Object.entries(json).filter(([key]) => !["attempt","cancel_requested_at","cancel_requested_by_user_id","canonical_event_id","connection_id","counters","created_at","created_by_user_id","error_code","error_message_redacted","finished_at","id","idempotency_key","input_ref","job_type","lease_expires_at","lease_owner","max_attempts","next_attempt_at","result_ref","started_at","status","stream_position","subject_id","subject_type","team_id","updated_at"].includes(key))),
+            ...{ [reaconAdditionalPropertyCollisions]: Object.fromEntries(Object.entries(json).filter(([key]) => ["cancelRequestedAt","cancelRequestedByUserId","canonicalEventId","connectionId","createdAt","createdByUserId","errorCode","errorMessageRedacted","finishedAt","idempotencyKey","inputRef","jobType","leaseExpiresAt","leaseOwner","maxAttempts","nextAttemptAt","resultRef","startedAt","streamPosition","subjectId","subjectType","teamId","updatedAt"].includes(key))) },
         'attempt': json['attempt'],
         'cancelRequestedAt': json['cancel_requested_at'],
         'cancelRequestedByUserId': json['cancel_requested_by_user_id'],
@@ -224,7 +226,8 @@ export function QueuedIntegrationJobToJSONTyped(value?: QueuedIntegrationJob | n
 
     return {
         
-            ...value,
+            ...Object.fromEntries(Object.entries(value).filter(([key]) => !["attempt","cancelRequestedAt","cancelRequestedByUserId","canonicalEventId","connectionId","counters","createdAt","createdByUserId","errorCode","errorMessageRedacted","finishedAt","id","idempotencyKey","inputRef","jobType","leaseExpiresAt","leaseOwner","maxAttempts","nextAttemptAt","resultRef","startedAt","status","streamPosition","subjectId","subjectType","teamId","updatedAt"].includes(key))),
+            ...((value as any)[reaconAdditionalPropertyCollisions] ?? {}),
         'attempt': value['attempt'],
         'cancel_requested_at': value['cancelRequestedAt'],
         'cancel_requested_by_user_id': value['cancelRequestedByUserId'],

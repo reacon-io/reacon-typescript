@@ -13,6 +13,7 @@
  */
 
 import { mapValues } from '../runtime.js';
+const reaconAdditionalPropertyCollisions = Symbol('reacon.additionalPropertyCollisions');
 import type { CrmSyncConfiguration } from './CrmSyncConfiguration.js';
 import {
     CrmSyncConfigurationFromJSON,
@@ -64,7 +65,8 @@ export function CrmSyncConfigurationResponseFromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
-            ...json,
+            ...Object.fromEntries(Object.entries(json).filter(([key]) => !["configuration","connection"].includes(key))),
+            ...{ [reaconAdditionalPropertyCollisions]: Object.fromEntries(Object.entries(json).filter(([key]) => ["_configuration"].includes(key))) },
         '_configuration': CrmSyncConfigurationFromJSON(json['configuration']),
         'connection': IntegrationConnectionFromJSON(json['connection']),
     };
@@ -81,7 +83,8 @@ export function CrmSyncConfigurationResponseToJSONTyped(value?: CrmSyncConfigura
 
     return {
         
-            ...value,
+            ...Object.fromEntries(Object.entries(value).filter(([key]) => !["_configuration","connection"].includes(key))),
+            ...((value as any)[reaconAdditionalPropertyCollisions] ?? {}),
         'configuration': CrmSyncConfigurationToJSON(value['_configuration']),
         'connection': IntegrationConnectionToJSON(value['connection']),
     };

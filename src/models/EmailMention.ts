@@ -13,6 +13,7 @@
  */
 
 import { mapValues } from '../runtime.js';
+const reaconAdditionalPropertyCollisions = Symbol('reacon.additionalPropertyCollisions');
 /**
  * 
  * @export
@@ -69,7 +70,8 @@ export function EmailMentionFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
-            ...json,
+            ...Object.fromEntries(Object.entries(json).filter(([key]) => !["domain","email","first_seen","last_seen","source_type","source_url"].includes(key))),
+            ...{ [reaconAdditionalPropertyCollisions]: Object.fromEntries(Object.entries(json).filter(([key]) => ["firstSeen","lastSeen","sourceType","sourceUrl"].includes(key))) },
         'domain': json['domain'],
         'email': json['email'],
         'firstSeen': json['first_seen'],
@@ -90,7 +92,8 @@ export function EmailMentionToJSONTyped(value?: EmailMention | null, ignoreDiscr
 
     return {
         
-            ...value,
+            ...Object.fromEntries(Object.entries(value).filter(([key]) => !["domain","email","firstSeen","lastSeen","sourceType","sourceUrl"].includes(key))),
+            ...((value as any)[reaconAdditionalPropertyCollisions] ?? {}),
         'domain': value['domain'],
         'email': value['email'],
         'first_seen': value['firstSeen'],
