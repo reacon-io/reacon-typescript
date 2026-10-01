@@ -4,6 +4,7 @@ import { createServer } from 'node:http';
 import { once } from 'node:events';
 import { pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
+import { fixtureFetch } from './fixed-origin/fetch.cjs';
 import { test, before, after } from 'node:test';
 
 const modulePath = process.env.REACON_HTTP_SDK_MODULE;
@@ -54,11 +55,15 @@ const server = createServer((req, res) => {
 });
 before(async () => { server.listen(0, '127.0.0.1'); await once(server, 'listening'); basePath = `http://127.0.0.1:${server.address().port}`; });
 after(async () => { const done = new Promise(resolve => server.close(resolve)); server.closeAllConnections(); await done; });
-const config = (scenario, extra = {}) => new sdk.Configuration({ basePath, apiKey: 'synthetic-key', headers: { 'x-test-scenario': scenario }, requestTimeoutMs: 1000, ...extra });
+const config = (scenario, extra = {}) => new sdk.Configuration({ fetchApi: fixtureFetch(basePath), apiKey: 'synthetic-key', headers: { 'x-test-scenario': scenario }, requestTimeoutMs: 1000, ...extra });
 const client = (scenario, extra) => new sdk.DomainsApi(config(scenario, extra));
 const call = (api, options) => api.getDomainCounts({ domain: 'example.invalid' }, options);
 async function rejection(promise) { try { await promise; assert.fail('Expected rejection'); } catch (error) { if (error.code === 'ERR_ASSERTION') throw error; return error; } }
 
+test('public SDK configuration rejects service URL overrides before I/O', () => {
+  assert.equal(new sdk.Configuration().basePath, 'https://api.reacon.io');
+  assert.throws(() => new sdk.Configuration({ basePath: 'https://other.invalid' }), /API URL is fixed/);
+});
 test('generated JSON operation serializes authentication and decodes the model', async () => {
   assert.deepEqual(await call(client('success')), expected);
   assert.deepEqual(requests.at(-1), { scenario: 'success', method: 'GET', url: '/v1/domains/example.invalid/counts', key: 'synthetic-key' });
@@ -146,8 +151,9 @@ for (const method of ['revealEmail', 'deleteEmail']) test(`lost response to ${me
 
 function retryClient(responses, extra = {}) {
   const calls = [];
-  const api = new sdk.DomainsApi(new sdk.Configuration({ basePath: 'https://fixture.invalid', requestTimeoutMs: 5000, ...extra,
+  const api = new sdk.DomainsApi(new sdk.Configuration({ requestTimeoutMs: 5000, ...extra,
     fetchApi: async (url, init) => {
+      assert.equal(new URL(url).origin, 'https://api.reacon.io');
       calls.push({ url, init, at: Date.now() });
       const step = responses[calls.length - 1]; assert(step, 'Unexpected extra retry');
       if (step instanceof Error) throw step;

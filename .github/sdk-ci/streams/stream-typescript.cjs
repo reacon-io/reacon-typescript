@@ -3,9 +3,10 @@ const { Reacon, ReaconProtocolError, ReaconTimeoutError, ReaconStreamApiError } 
 async function collect(stream) { const values = []; for await (const value of stream) values.push(value); return values; }
 async function main() {
   const basePath = process.env.REACON_TEST_URL;
+  const { fixtureFetch } = require('./fixed-origin/fetch.cjs');
   const mode = process.env.REACON_STREAM_MODE ?? 'typescript';
-  const client = new Reacon({ basePath, apiKey: `synthetic-${mode}` });
-  const isolated = new Reacon({ basePath, apiKey: `isolated-${mode}` });
+  const client = new Reacon({ fetchApi: fixtureFetch(basePath), apiKey: `synthetic-${mode}` });
+  const isolated = new Reacon({ fetchApi: fixtureFetch(basePath), apiKey: `isolated-${mode}` });
   client.verification.stream('never@example.test'); // creating a stream sends nothing
   const preCancelled = new AbortController(); preCancelled.abort();
   await assert.rejects(() => collect(client.verification.stream('never@example.test', { signal: preCancelled.signal })), error => error.name === 'AbortError');
