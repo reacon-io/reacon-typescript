@@ -27,6 +27,13 @@ import {
     MailStoredSmtpSettingsToJSON,
     MailStoredSmtpSettingsToJSONTyped,
 } from './MailStoredSmtpSettings.js';
+import type { MailImapCursor } from './MailImapCursor.js';
+import {
+    MailImapCursorFromJSON,
+    MailImapCursorFromJSONTyped,
+    MailImapCursorToJSON,
+    MailImapCursorToJSONTyped,
+} from './MailImapCursor.js';
 
 /**
  * 
@@ -45,7 +52,7 @@ export interface MailMailboxConnectionRecord {
     /**
      * 
      */
-    cursors: object;
+    cursors: { [key: string]: MailImapCursor; };
     /**
      * 
      */
@@ -129,7 +136,7 @@ export function MailMailboxConnectionRecordFromJSONTyped(json: any, ignoreDiscri
         
         'createdAt': json['createdAt'],
         'credentialId': json['credentialId'] == null ? undefined : json['credentialId'],
-        'cursors': json['cursors'],
+        'cursors': (mapValues(json['cursors'], MailImapCursorFromJSON)),
         'imap': json['imap'] == null ? undefined : MailStoredImapSettingsFromJSON(json['imap']),
         'integrationConnectionId': json['integrationConnectionId'],
         'lastErrorCode': json['lastErrorCode'] == null ? undefined : json['lastErrorCode'],
@@ -159,7 +166,7 @@ export function MailMailboxConnectionRecordToJSONTyped(value?: MailMailboxConnec
         
         'createdAt': value['createdAt'],
         'credentialId': value['credentialId'],
-        'cursors': value['cursors'],
+        'cursors': (mapValues(value['cursors'], MailImapCursorToJSON)),
         'imap': MailStoredImapSettingsToJSON(value['imap']),
         'integrationConnectionId': value['integrationConnectionId'],
         'lastErrorCode': value['lastErrorCode'],

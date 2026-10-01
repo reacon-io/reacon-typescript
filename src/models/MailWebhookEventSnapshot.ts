@@ -34,7 +34,7 @@ export interface MailWebhookEventSnapshot {
     /**
      * 
      */
-    payload: object;
+    payload: { [key: string]: any; };
     /**
      * 
      */

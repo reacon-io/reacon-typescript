@@ -99,7 +99,7 @@ export interface MailMessageRecord {
     /**
      * 
      */
-    metadata: object;
+    metadata: { [key: string]: string; };
     /**
      * 
      */

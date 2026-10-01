@@ -34,7 +34,7 @@ export interface MailOperationalAnalyticsOverview {
     /**
      * 
      */
-    replyLabels: object;
+    replyLabels: { [key: string]: number; };
     /**
      * 
      */
@@ -42,11 +42,11 @@ export interface MailOperationalAnalyticsOverview {
     /**
      * 
      */
-    stages: object;
+    stages: { [key: string]: number; };
     /**
      * 
      */
-    taskOutcomes: object;
+    taskOutcomes: { [key: string]: number; };
 }
 
 /**
