@@ -9,7 +9,8 @@ const sdk = process.env.REACON_HTTP_MODULE_MODE === 'cjs'
 const page = (ids, nextCursor = null) => ({ results: ids.map(id => ({ id, email: `${id}@example.invalid` })), nextCursor, totalCount: ids.length, groupTotals: null });
 function fixture(pages, extra = {}) {
   const calls = [];
-  const client = new sdk.Reacon({ apiKey: 'synthetic', basePath: 'https://fixture.invalid', ...extra, fetchApi: async (url, init) => {
+  const client = new sdk.Reacon({ apiKey: 'synthetic', ...extra, fetchApi: async (url, init) => {
+    assert.equal(new URL(url).origin, 'https://api.reacon.io');
     calls.push({ url: new URL(url), headers: new Headers(init.headers), signal: init.signal });
     assert.equal(new Headers(init.headers).get('x-api-key'), 'synthetic');
     const response = pages[calls.length - 1];

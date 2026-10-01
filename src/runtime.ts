@@ -21,7 +21,6 @@ export interface ConfigurationParameters {
     safeRetries?: RetryOptions;
     /** Total network deadline through body reads; defaults to 30000 milliseconds. */
     requestTimeoutMs?: number;
-    basePath?: string; // override base path
     fetchApi?: FetchAPI; // override for fetch implementation
     middleware?: Middleware[]; // middleware to apply before/after fetch requests
     queryParamsStringify?: (params: HTTPQuery) => string; // stringify function for query strings
@@ -34,14 +33,16 @@ export interface ConfigurationParameters {
 }
 
 export class Configuration {
-    constructor(private configuration: ConfigurationParameters = {}) {}
+    constructor(private configuration: ConfigurationParameters = {}) {
+        if ('basePath' in configuration) throw new TypeError('The Reacon API URL is fixed.');
+    }
 
     set config(configuration: Configuration) {
         this.configuration = configuration;
     }
 
     get basePath(): string {
-        return this.configuration.basePath != null ? this.configuration.basePath : BASE_PATH;
+        return BASE_PATH;
     }
 
     get requestTimeoutMs(): number { return this.configuration.requestTimeoutMs ?? 30_000; }
