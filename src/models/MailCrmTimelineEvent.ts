@@ -38,7 +38,7 @@ export interface MailCrmTimelineEvent {
     /**
      * 
      */
-    payload: object;
+    payload: { [key: string]: any; };
     /**
      * 
      */

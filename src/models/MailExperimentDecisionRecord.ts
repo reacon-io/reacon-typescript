@@ -46,7 +46,7 @@ export interface MailExperimentDecisionRecord {
     /**
      * 
      */
-    resultSnapshot: object;
+    resultSnapshot: { [key: string]: any; };
     /**
      * 
      */

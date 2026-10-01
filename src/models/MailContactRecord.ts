@@ -26,7 +26,7 @@ export interface MailContactRecord {
     /**
      * 
      */
-    customFields: object;
+    customFields: { [key: string]: string; };
     /**
      * 
      */

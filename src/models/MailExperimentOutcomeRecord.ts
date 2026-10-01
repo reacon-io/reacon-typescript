@@ -26,7 +26,7 @@ export interface MailExperimentOutcomeRecord {
     /**
      * 
      */
-    metadata: object;
+    metadata: { [key: string]: any; };
     /**
      * 
      */

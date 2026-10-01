@@ -54,7 +54,7 @@ export interface MailExperimentReportDecision {
     /**
      * 
      */
-    resultSnapshot: object;
+    resultSnapshot: { [key: string]: any; };
     /**
      * 
      */

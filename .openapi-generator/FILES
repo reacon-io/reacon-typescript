@@ -267,6 +267,7 @@ src/models/MailGetTrackingDomainResponse200.ts
 src/models/MailGetTrackingDomainResponse200Domain.ts
 src/models/MailGetWebhooksResponse200.ts
 src/models/MailGetWebhooksResponse200SubscriptionsInner.ts
+src/models/MailImapCursor.ts
 src/models/MailInboxMessageRecord.ts
 src/models/MailMailAddress.ts
 src/models/MailMailPortfolio.ts
@@ -337,8 +338,6 @@ src/models/MailPostCadencesResponse200.ts
 src/models/MailPostCampaignsByCampaignIdDuplicateResponse201.ts
 src/models/MailPostCampaignsByCampaignIdLaunchRequest.ts
 src/models/MailPostCampaignsByCampaignIdLaunchResponse200.ts
-src/models/MailPostCampaignsByCampaignIdLaunchResponse200AnyOf.ts
-src/models/MailPostCampaignsByCampaignIdLaunchResponse200AnyOf1.ts
 src/models/MailPostCampaignsByCampaignIdLaunchResponse200Campaign.ts
 src/models/MailPostCampaignsByCampaignIdStateRequest.ts
 src/models/MailPostCampaignsByCampaignIdStateResponse200.ts

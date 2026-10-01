@@ -38,7 +38,7 @@ export interface MailMessageVariantInput {
     /**
      * 
      */
-    variables?: object;
+    variables?: { [key: string]: any; };
     /**
      * 
      */
