@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime.js';
+import type { ApiValidationIssue } from './ApiValidationIssue.js';
+import {
+    ApiValidationIssueFromJSON,
+    ApiValidationIssueFromJSONTyped,
+    ApiValidationIssueToJSON,
+    ApiValidationIssueToJSONTyped,
+} from './ApiValidationIssue.js';
+
 /**
  * 
  * @export
@@ -35,7 +43,7 @@ export interface ApiError {
     /**
      * 
      */
-    issues?: Array<{ [key: string]: any; }>;
+    issues?: Array<ApiValidationIssue>;
     /**
      * 
      */
@@ -80,7 +88,7 @@ export function ApiErrorFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'code': json['code'] == null ? undefined : json['code'],
         'details': json['details'] == null ? undefined : json['details'],
         'error': json['error'],
-        'issues': json['issues'] == null ? undefined : json['issues'],
+        'issues': json['issues'] == null ? undefined : ((json['issues'] as Array<any>).map(ApiValidationIssueFromJSON)),
         'message': json['message'] == null ? undefined : json['message'],
         'remainingCredits': json['remainingCredits'] == null ? undefined : json['remainingCredits'],
         'requestId': json['requestId'] == null ? undefined : json['requestId'],
@@ -104,7 +112,7 @@ export function ApiErrorToJSONTyped(value?: ApiError | null, ignoreDiscriminator
         'code': value['code'],
         'details': value['details'],
         'error': value['error'],
-        'issues': value['issues'],
+        'issues': value['issues'] == null ? undefined : ((value['issues'] as Array<any>).map(ApiValidationIssueToJSON)),
         'message': value['message'],
         'remainingCredits': value['remainingCredits'],
         'requestId': value['requestId'],
