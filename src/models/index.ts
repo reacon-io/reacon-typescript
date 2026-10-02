@@ -7,6 +7,7 @@ export * from './AirtableMappingOptionsResponseOptionsTablesInner.js';
 export * from './AirtableMappingOptionsResponseOptionsTablesInnerFieldsInner.js';
 export * from './ApiError.js';
 export * from './ApiKeyIdentity.js';
+export * from './ApiValidationIssue.js';
 export * from './AutomationHookCreated.js';
 export * from './BatchVerificationError.js';
 export * from './BatchVerificationItem.js';

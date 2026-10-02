@@ -25,6 +25,7 @@ src/models/AirtableMappingOptionsResponseOptionsTablesInner.ts
 src/models/AirtableMappingOptionsResponseOptionsTablesInnerFieldsInner.ts
 src/models/ApiError.ts
 src/models/ApiKeyIdentity.ts
+src/models/ApiValidationIssue.ts
 src/models/AutomationHookCreated.ts
 src/models/BatchVerificationError.ts
 src/models/BatchVerificationItem.ts
