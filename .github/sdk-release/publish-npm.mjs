@@ -955,8 +955,11 @@ async function githubReleaseStateStore({
   now = Date.now,
   runGit = defaultRunGit,
   waitImpl = delay2,
-  commitLockDirectory = process.env.REACON_BUILD_JOB_DIRECTORY
+  commitLockDirectory = process.env.REACON_BUILD_JOB_DIRECTORY,
+  leaseReuseMilliseconds = 6e4
 }) {
+  if (!Number.isSafeInteger(leaseReuseMilliseconds) || leaseReuseMilliseconds < 0 || leaseReuseMilliseconds > 6e4)
+    throw Error("State credential reuse must be between zero and 60000 milliseconds");
   if (!["read", "write"].includes(access)) throw new Error("State access must be read or write");
   const getCredentials = githubReleaseStateCredentials({ inventory, packages, clientId, privateKey, fetchImpl, now, access });
   const parent = resolve3(directory2);
@@ -968,18 +971,39 @@ async function githubReleaseStateStore({
   const inOrder = serialQueue();
   const snapshots = /* @__PURE__ */ new Map();
   let pendingRead;
-  const transaction = (operation) => inOrder(async () => {
+  let reusableLease, reuseUntil = 0, expiryTimer;
+  const revokeLease = async () => {
+    clearTimeout(expiryTimer);
+    expiryTimer = void 0;
+    if (!reusableLease) return;
+    try {
+      await reusableLease.revoke();
+      reusableLease = void 0;
+      reuseUntil = 0;
+    } catch {
+      credentialCleanupFailed = true;
+      throw Error("GitHub state token revocation failed; stop and reconcile");
+    }
+  };
+  const transaction = (operation, retainReadLease = false) => inOrder(async () => {
     if (closed) throw new Error("GitHub state store is closed");
     if (credentialCleanupFailed) throw new Error("GitHub state token revocation failed; stop and reconcile");
-    const context = { lease: null };
+    if (reusableLease && now() >= reuseUntil) await revokeLease();
+    const context = { lease: reusableLease };
+    let passed = false;
     try {
-      return await transactions.run(context, operation);
+      const result = await transactions.run(context, operation);
+      passed = true;
+      return result;
     } finally {
-      if (context.lease) try {
-        await context.lease.revoke();
-      } catch {
-        credentialCleanupFailed = true;
-        throw new Error("GitHub state token revocation failed; stop and reconcile");
+      if (!passed || !retainReadLease || now() >= reuseUntil) await revokeLease();
+      else if (reusableLease && !expiryTimer) {
+        expiryTimer = setTimeout(() => {
+          expiryTimer = void 0;
+          void inOrder(revokeLease).catch(() => {
+          });
+        }, Math.max(1, reuseUntil - now()));
+        expiryTimer.unref();
       }
     }
   });
@@ -1016,7 +1040,11 @@ async function githubReleaseStateStore({
     }
     const context = transactions.getStore();
     if (!context) throw new Error("GitHub state transport requires a scoped transaction");
-    context.lease ??= await getCredentials({ repository: RELEASE_STATE_REPOSITORY });
+    if (!context.lease) {
+      context.lease = await getCredentials({ repository: RELEASE_STATE_REPOSITORY });
+      reusableLease = context.lease;
+      reuseUntil = Math.min(now() + leaseReuseMilliseconds, context.lease.expiresAt - 3e4);
+    }
     const lease = context.lease;
     for (let attempt = 0; ; attempt++) {
       try {
@@ -1048,7 +1076,7 @@ async function githubReleaseStateStore({
       read() {
         if (closed) return Promise.reject(new Error("GitHub state store is closed"));
         if (!pendingRead) {
-          const operation = transaction(read).finally(() => {
+          const operation = transaction(read, true).finally(() => {
             if (pendingRead === operation) pendingRead = void 0;
           });
           pendingRead = operation;
@@ -1074,8 +1102,15 @@ async function githubReleaseStateStore({
       remote: REMOTE,
       access,
       async close() {
-        closed = true;
-        await rm2(cache, { recursive: true, force: true });
+        return inOrder(async () => {
+          if (closed) return;
+          closed = true;
+          try {
+            await revokeLease();
+          } finally {
+            await rm2(cache, { recursive: true, force: true });
+          }
+        });
       }
     };
   } catch (error) {
@@ -2377,6 +2412,7 @@ async function runFilePublicationWorker({
   }
   const started = Date.parse(now());
   if (!Number.isFinite(started)) throw new Error("Valid publication clock required");
+  const timings = { startedAt: new Date(started).toISOString() };
   let snapshot, release, pkg, unit;
   for (; ; ) {
     snapshot = await store2.read();
@@ -2396,16 +2432,19 @@ async function runFilePublicationWorker({
     if (Date.parse(now()) - started >= waitForIntentMs) throw new Error("No durable intent arrived for this worker; nothing uploaded");
     await wait(5e3);
   }
+  timings.intentReadyAt = now();
   let loaded;
   try {
     loaded = await loadPackage();
   } catch {
+    timings.completedAt = now();
     return {
       formatVersion: 1,
       kind: "sdk-file-publication-worker",
       family,
       unit: unitName,
-      observedAt: now(),
+      observedAt: timings.completedAt,
+      timings,
       releaseId,
       attemptId,
       workerId: identity2.workerId,
@@ -2424,6 +2463,7 @@ async function runFilePublicationWorker({
       publicInstallVerified: false
     };
   }
+  timings.packageLoadedAt = now();
   const manifest = {
     formatVersion: 1,
     kind: "sdk-package-artifacts",
@@ -2462,14 +2502,22 @@ async function runFilePublicationWorker({
       return loaded.bytes;
     }
   });
-  const before = await registry.inspect(subject);
+  const observations = [];
+  const inspect = async () => {
+    const startedAt = now(), observation = await registry.inspect(subject);
+    observations.push({ startedAt, completedAt: now(), ...observation });
+    return observation;
+  };
+  const before = await inspect();
   let uploadAttempted = false, uploadReturned = false, uploadFailure = null;
   if (before.status === "found" && before.identitySha256 !== expected.identitySha256) throw new Error("Registry version collision; nothing uploaded");
   if (before.status === "absent" && unit.state === "publishing") {
     uploadAttempted = true;
+    timings.uploadStartedAt = now();
     try {
       await registry.publish(subject);
       uploadReturned = true;
+      timings.uploadReturnedAt = now();
     } catch (error) {
       const known = [
         "Git state command failed",
@@ -2496,19 +2544,24 @@ async function runFilePublicationWorker({
       uploadFailure = error.publicationDiagnostic ?? { stage: "upload", reason: known.includes(error.message) || recognizedStatus ? error.message : "Unrecognized upload error; details suppressed" };
     }
   }
-  let after = uploadAttempted ? await registry.inspect(subject) : before;
+  if (uploadAttempted) timings.uploadFinishedAt = now();
+  let after = uploadAttempted ? await inspect() : before;
   let propagationChecks = 0;
-  while (uploadAttempted && after.status !== "found" && propagationChecks < 12) {
+  while (uploadAttempted && after.status !== "found" && propagationChecks < 12 && !(family === "typescript" && uploadReturned && after.status === "absent")) {
     await wait(5e3);
-    after = await registry.inspect(subject);
+    after = await inspect();
     propagationChecks++;
   }
+  timings.completedAt = now();
   return {
     formatVersion: 1,
     kind: "sdk-file-publication-worker",
     family,
     unit: unitName,
-    observedAt: now(),
+    observedAt: timings.completedAt,
+    timings,
+    observations,
+    awaitingRegistry: uploadReturned && uploadFailure === null && after.status === "absent",
     releaseId,
     attemptId,
     workerId: identity2.workerId,
@@ -2634,8 +2687,8 @@ try {
     }
   });
   await writeFile3("sdk-release-results/publication.json", JSON.stringify({ ...report, npmBootstrap }, null, 2) + "\n");
-  if (!report.packagePublished) throw new Error("npm outcome requires coordinator reconciliation; no automatic retry");
-  console.log("Exact npm package observed. Coordinator must verify installation and update the release ledger.");
+  if (!report.packagePublished && !report.awaitingRegistry) throw new Error("npm outcome requires coordinator reconciliation; no automatic retry");
+  console.log(report.awaitingRegistry ? "npm accepted the upload; registry availability is pending. Coordinator will reconcile without reuploading." : "Exact npm package observed. Coordinator must verify installation and update the release ledger.");
 } finally {
   bootstrapToken = void 0;
   await store?.close();
