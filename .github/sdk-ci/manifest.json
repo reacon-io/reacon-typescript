@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "family": "typescript",
-  "packageVersion": "2.0.4-beta.1",
-  "canonicalVersion": "2.0.4-beta.1",
+  "packageVersion": "2.0.5-beta.1",
+  "canonicalVersion": "2.0.5-beta.1",
   "image": "node@sha256:a9f5f7c91a432850b2a8a7797adf5eadb6c733ceed61167806cee7ea7fbc29df",
   "contractSha256": "2aaffb580e76767ebfd104e2cb9ac5a335c06f717e365b322ff1ea5bec35fa21",
   "recordingIndexSha256": "7160b43fc04e70b73c4bfcd8fc04d22186e5f3148ba20ca34b7fcc4ea9d1cab5",
