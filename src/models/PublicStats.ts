@@ -20,6 +20,10 @@ import { mapValues } from '../runtime.js';
  */
 export interface PublicStats {
     /**
+     * Wire protocol major version, independent of SDK and actions-package versions.
+     */
+    apiProtocolVersion?: number;
+    /**
      * 
      */
     emails: number;
@@ -53,6 +57,7 @@ export function PublicStatsFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
+        'apiProtocolVersion': json['apiProtocolVersion'] == null ? undefined : json['apiProtocolVersion'],
         'emails': json['emails'],
         'mentions': json['mentions'],
         'version': json['version'],
@@ -70,6 +75,7 @@ export function PublicStatsToJSONTyped(value?: PublicStats | null, ignoreDiscrim
 
     return {
         
+        'apiProtocolVersion': value['apiProtocolVersion'],
         'emails': value['emails'],
         'mentions': value['mentions'],
         'version': value['version'],
