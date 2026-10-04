@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime.js';
+import type { MailMailPortfolioSuppression } from './MailMailPortfolioSuppression.js';
+import {
+    MailMailPortfolioSuppressionFromJSON,
+    MailMailPortfolioSuppressionFromJSONTyped,
+    MailMailPortfolioSuppressionToJSON,
+    MailMailPortfolioSuppressionToJSONTyped,
+} from './MailMailPortfolioSuppression.js';
 import type { MailMailPortfolio } from './MailMailPortfolio.js';
 import {
     MailMailPortfolioFromJSON,
@@ -41,7 +48,7 @@ export interface MailPostPortfolioResponse200 {
     /**
      * 
      */
-    suppressions: Array<object>;
+    suppressions: Array<MailMailPortfolioSuppression>;
     /**
      * 
      */
@@ -69,7 +76,7 @@ export function MailPostPortfolioResponse200FromJSONTyped(json: any, ignoreDiscr
     return {
         
         'portfolio': MailMailPortfolioFromJSON(json['portfolio']),
-        'suppressions': json['suppressions'],
+        'suppressions': ((json['suppressions'] as Array<any>).map(MailMailPortfolioSuppressionFromJSON)),
         'teams': ((json['teams'] as Array<any>).map(MailMailPortfolioTeamFromJSON)),
     };
 }
@@ -86,7 +93,7 @@ export function MailPostPortfolioResponse200ToJSONTyped(value?: MailPostPortfoli
     return {
         
         'portfolio': MailMailPortfolioToJSON(value['portfolio']),
-        'suppressions': value['suppressions'],
+        'suppressions': ((value['suppressions'] as Array<any>).map(MailMailPortfolioSuppressionToJSON)),
         'teams': ((value['teams'] as Array<any>).map(MailMailPortfolioTeamToJSON)),
     };
 }

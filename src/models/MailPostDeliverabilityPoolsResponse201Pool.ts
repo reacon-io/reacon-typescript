@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime.js';
+import type { MailMailboxPoolMember } from './MailMailboxPoolMember.js';
+import {
+    MailMailboxPoolMemberFromJSON,
+    MailMailboxPoolMemberFromJSONTyped,
+    MailMailboxPoolMemberToJSON,
+    MailMailboxPoolMemberToJSONTyped,
+} from './MailMailboxPoolMember.js';
+
 /**
  * 
  * @export
@@ -30,7 +38,7 @@ export interface MailPostDeliverabilityPoolsResponse201Pool {
     /**
      * 
      */
-    members: Array<object>;
+    members: Array<MailMailboxPoolMember>;
     /**
      * 
      */
@@ -75,7 +83,7 @@ export function MailPostDeliverabilityPoolsResponse201PoolFromJSONTyped(json: an
         
         'createdAt': json['createdAt'],
         'id': json['id'],
-        'members': json['members'],
+        'members': ((json['members'] as Array<any>).map(MailMailboxPoolMemberFromJSON)),
         'name': json['name'],
         'strategy': json['strategy'],
         'tenantId': json['tenantId'],
@@ -96,7 +104,7 @@ export function MailPostDeliverabilityPoolsResponse201PoolToJSONTyped(value?: Ma
         
         'createdAt': value['createdAt'],
         'id': value['id'],
-        'members': value['members'],
+        'members': ((value['members'] as Array<any>).map(MailMailboxPoolMemberToJSON)),
         'name': value['name'],
         'strategy': value['strategy'],
         'tenantId': value['tenantId'],
