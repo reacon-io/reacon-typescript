@@ -179,7 +179,6 @@ export * from './MailContactCrmState.js';
 export * from './MailContactListSummaryRecord.js';
 export * from './MailContactRecord.js';
 export * from './MailContactRecordVerification.js';
-export * from './MailContactRecordVerificationLastVerifiedAt.js';
 export * from './MailConversationEntry.js';
 export * from './MailConversationEntryFrom.js';
 export * from './MailConversationEntryLastError.js';
