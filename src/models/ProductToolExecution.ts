@@ -271,6 +271,83 @@ import {
     ProductLeadsListExecutionFromJSONTyped,
     ProductLeadsListExecutionToJSON,
 } from './ProductLeadsListExecution.js';
+import type { ProductMailSequenceAddAbExecution } from './ProductMailSequenceAddAbExecution.js';
+import {
+    instanceOfProductMailSequenceAddAbExecution,
+    ProductMailSequenceAddAbExecutionFromJSON,
+    ProductMailSequenceAddAbExecutionFromJSONTyped,
+    ProductMailSequenceAddAbExecutionToJSON,
+} from './ProductMailSequenceAddAbExecution.js';
+import type { ProductMailSequenceAddAudienceExecution } from './ProductMailSequenceAddAudienceExecution.js';
+import {
+    instanceOfProductMailSequenceAddAudienceExecution,
+    ProductMailSequenceAddAudienceExecutionFromJSON,
+    ProductMailSequenceAddAudienceExecutionFromJSONTyped,
+    ProductMailSequenceAddAudienceExecutionToJSON,
+} from './ProductMailSequenceAddAudienceExecution.js';
+import type { ProductMailSequenceCampaignsListExecution } from './ProductMailSequenceCampaignsListExecution.js';
+import {
+    instanceOfProductMailSequenceCampaignsListExecution,
+    ProductMailSequenceCampaignsListExecutionFromJSON,
+    ProductMailSequenceCampaignsListExecutionFromJSONTyped,
+    ProductMailSequenceCampaignsListExecutionToJSON,
+} from './ProductMailSequenceCampaignsListExecution.js';
+import type { ProductMailSequenceDraftSaveExecution } from './ProductMailSequenceDraftSaveExecution.js';
+import {
+    instanceOfProductMailSequenceDraftSaveExecution,
+    ProductMailSequenceDraftSaveExecutionFromJSON,
+    ProductMailSequenceDraftSaveExecutionFromJSONTyped,
+    ProductMailSequenceDraftSaveExecutionToJSON,
+} from './ProductMailSequenceDraftSaveExecution.js';
+import type { ProductMailSequenceDraftsListExecution } from './ProductMailSequenceDraftsListExecution.js';
+import {
+    instanceOfProductMailSequenceDraftsListExecution,
+    ProductMailSequenceDraftsListExecutionFromJSON,
+    ProductMailSequenceDraftsListExecutionFromJSONTyped,
+    ProductMailSequenceDraftsListExecutionToJSON,
+} from './ProductMailSequenceDraftsListExecution.js';
+import type { ProductMailSequenceLaunchExecution } from './ProductMailSequenceLaunchExecution.js';
+import {
+    instanceOfProductMailSequenceLaunchExecution,
+    ProductMailSequenceLaunchExecutionFromJSON,
+    ProductMailSequenceLaunchExecutionFromJSONTyped,
+    ProductMailSequenceLaunchExecutionToJSON,
+} from './ProductMailSequenceLaunchExecution.js';
+import type { ProductMailSequencePublishExecution } from './ProductMailSequencePublishExecution.js';
+import {
+    instanceOfProductMailSequencePublishExecution,
+    ProductMailSequencePublishExecutionFromJSON,
+    ProductMailSequencePublishExecutionFromJSONTyped,
+    ProductMailSequencePublishExecutionToJSON,
+} from './ProductMailSequencePublishExecution.js';
+import type { ProductMailSequenceReadinessExecution } from './ProductMailSequenceReadinessExecution.js';
+import {
+    instanceOfProductMailSequenceReadinessExecution,
+    ProductMailSequenceReadinessExecutionFromJSON,
+    ProductMailSequenceReadinessExecutionFromJSONTyped,
+    ProductMailSequenceReadinessExecutionToJSON,
+} from './ProductMailSequenceReadinessExecution.js';
+import type { ProductMailSequenceRecipientsListExecution } from './ProductMailSequenceRecipientsListExecution.js';
+import {
+    instanceOfProductMailSequenceRecipientsListExecution,
+    ProductMailSequenceRecipientsListExecutionFromJSON,
+    ProductMailSequenceRecipientsListExecutionFromJSONTyped,
+    ProductMailSequenceRecipientsListExecutionToJSON,
+} from './ProductMailSequenceRecipientsListExecution.js';
+import type { ProductMailSequenceResultsExecution } from './ProductMailSequenceResultsExecution.js';
+import {
+    instanceOfProductMailSequenceResultsExecution,
+    ProductMailSequenceResultsExecutionFromJSON,
+    ProductMailSequenceResultsExecutionFromJSONTyped,
+    ProductMailSequenceResultsExecutionToJSON,
+} from './ProductMailSequenceResultsExecution.js';
+import type { ProductMailSequenceStateExecution } from './ProductMailSequenceStateExecution.js';
+import {
+    instanceOfProductMailSequenceStateExecution,
+    ProductMailSequenceStateExecutionFromJSON,
+    ProductMailSequenceStateExecutionFromJSONTyped,
+    ProductMailSequenceStateExecutionToJSON,
+} from './ProductMailSequenceStateExecution.js';
 import type { ProductPersonEnrichExecution } from './ProductPersonEnrichExecution.js';
 import {
     instanceOfProductPersonEnrichExecution,
@@ -354,7 +431,7 @@ import {
  * 
  * @export
  */
-export type ProductToolExecution = { tool: 'account_info' } & ProductAccountInfoExecution | { tool: 'combined_enrich' } & ProductCombinedEnrichExecution | { tool: 'companies_list' } & ProductCompaniesListExecution | { tool: 'company_delete' } & ProductCompanyDeleteExecution | { tool: 'company_enrich' } & ProductCompanyEnrichExecution | { tool: 'company_list_add' } & ProductCompanyListAddExecution | { tool: 'company_list_create' } & ProductCompanyListCreateExecution | { tool: 'company_list_remove' } & ProductCompanyListRemoveExecution | { tool: 'company_lists_list' } & ProductCompanyListsListExecution | { tool: 'company_track' } & ProductCompanyTrackExecution | { tool: 'company_update' } & ProductCompanyUpdateExecution | { tool: 'connected_app_push' } & ProductConnectedAppPushExecution | { tool: 'connected_apps' } & ProductConnectedAppsExecution | { tool: 'custom_attribute_create' } & ProductCustomAttributeCreateExecution | { tool: 'custom_attributes_list' } & ProductCustomAttributesListExecution | { tool: 'discover_companies' } & ProductDiscoverCompaniesExecution | { tool: 'discover_people' } & ProductDiscoverPeopleExecution | { tool: 'domain_finder' } & ProductDomainFinderExecution | { tool: 'email_count' } & ProductEmailCountExecution | { tool: 'lead_bulk_delete' } & ProductLeadBulkDeleteExecution | { tool: 'lead_create' } & ProductLeadCreateExecution | { tool: 'lead_delete' } & ProductLeadDeleteExecution | { tool: 'lead_enrich' } & ProductLeadEnrichExecution | { tool: 'lead_get' } & ProductLeadGetExecution | { tool: 'lead_list_add_lead' } & ProductLeadListAddLeadExecution | { tool: 'lead_list_create' } & ProductLeadListCreateExecution | { tool: 'lead_list_delete' } & ProductLeadListDeleteExecution | { tool: 'lead_list_remove_lead' } & ProductLeadListRemoveLeadExecution | { tool: 'lead_list_update' } & ProductLeadListUpdateExecution | { tool: 'lead_lists_list' } & ProductLeadListsListExecution | { tool: 'lead_tag_assign' } & ProductLeadTagAssignExecution | { tool: 'lead_tag_create' } & ProductLeadTagCreateExecution | { tool: 'lead_tag_remove' } & ProductLeadTagRemoveExecution | { tool: 'lead_tags_list' } & ProductLeadTagsListExecution | { tool: 'lead_update' } & ProductLeadUpdateExecution | { tool: 'lead_upsert' } & ProductLeadUpsertExecution | { tool: 'leads_list' } & ProductLeadsListExecution | { tool: 'person_enrich' } & ProductPersonEnrichExecution | { tool: 'saved_searches_list' } & ProductSavedSearchesListExecution | { tool: 'sequence_recipient_add' } & ProductSequenceRecipientAddExecution | { tool: 'sequence_recipient_cancel' } & ProductSequenceRecipientCancelExecution | { tool: 'sequence_recipients_add' } & ProductSequenceRecipientsAddExecution | { tool: 'sequence_recipients_list' } & ProductSequenceRecipientsListExecution | { tool: 'sequence_start' } & ProductSequenceStartExecution | { tool: 'sequences_list' } & ProductSequencesListExecution | { tool: 'team_members' } & ProductTeamMembersExecution | { tool: 'usage' } & ProductUsageExecution | { tool: 'usage_history' } & ProductUsageHistoryExecution;
+export type ProductToolExecution = { tool: 'account_info' } & ProductAccountInfoExecution | { tool: 'combined_enrich' } & ProductCombinedEnrichExecution | { tool: 'companies_list' } & ProductCompaniesListExecution | { tool: 'company_delete' } & ProductCompanyDeleteExecution | { tool: 'company_enrich' } & ProductCompanyEnrichExecution | { tool: 'company_list_add' } & ProductCompanyListAddExecution | { tool: 'company_list_create' } & ProductCompanyListCreateExecution | { tool: 'company_list_remove' } & ProductCompanyListRemoveExecution | { tool: 'company_lists_list' } & ProductCompanyListsListExecution | { tool: 'company_track' } & ProductCompanyTrackExecution | { tool: 'company_update' } & ProductCompanyUpdateExecution | { tool: 'connected_app_push' } & ProductConnectedAppPushExecution | { tool: 'connected_apps' } & ProductConnectedAppsExecution | { tool: 'custom_attribute_create' } & ProductCustomAttributeCreateExecution | { tool: 'custom_attributes_list' } & ProductCustomAttributesListExecution | { tool: 'discover_companies' } & ProductDiscoverCompaniesExecution | { tool: 'discover_people' } & ProductDiscoverPeopleExecution | { tool: 'domain_finder' } & ProductDomainFinderExecution | { tool: 'email_count' } & ProductEmailCountExecution | { tool: 'lead_bulk_delete' } & ProductLeadBulkDeleteExecution | { tool: 'lead_create' } & ProductLeadCreateExecution | { tool: 'lead_delete' } & ProductLeadDeleteExecution | { tool: 'lead_enrich' } & ProductLeadEnrichExecution | { tool: 'lead_get' } & ProductLeadGetExecution | { tool: 'lead_list_add_lead' } & ProductLeadListAddLeadExecution | { tool: 'lead_list_create' } & ProductLeadListCreateExecution | { tool: 'lead_list_delete' } & ProductLeadListDeleteExecution | { tool: 'lead_list_remove_lead' } & ProductLeadListRemoveLeadExecution | { tool: 'lead_list_update' } & ProductLeadListUpdateExecution | { tool: 'lead_lists_list' } & ProductLeadListsListExecution | { tool: 'lead_tag_assign' } & ProductLeadTagAssignExecution | { tool: 'lead_tag_create' } & ProductLeadTagCreateExecution | { tool: 'lead_tag_remove' } & ProductLeadTagRemoveExecution | { tool: 'lead_tags_list' } & ProductLeadTagsListExecution | { tool: 'lead_update' } & ProductLeadUpdateExecution | { tool: 'lead_upsert' } & ProductLeadUpsertExecution | { tool: 'leads_list' } & ProductLeadsListExecution | { tool: 'mail_sequence_add_ab' } & ProductMailSequenceAddAbExecution | { tool: 'mail_sequence_add_audience' } & ProductMailSequenceAddAudienceExecution | { tool: 'mail_sequence_campaigns_list' } & ProductMailSequenceCampaignsListExecution | { tool: 'mail_sequence_draft_save' } & ProductMailSequenceDraftSaveExecution | { tool: 'mail_sequence_drafts_list' } & ProductMailSequenceDraftsListExecution | { tool: 'mail_sequence_launch' } & ProductMailSequenceLaunchExecution | { tool: 'mail_sequence_publish' } & ProductMailSequencePublishExecution | { tool: 'mail_sequence_readiness' } & ProductMailSequenceReadinessExecution | { tool: 'mail_sequence_recipients_list' } & ProductMailSequenceRecipientsListExecution | { tool: 'mail_sequence_results' } & ProductMailSequenceResultsExecution | { tool: 'mail_sequence_state' } & ProductMailSequenceStateExecution | { tool: 'person_enrich' } & ProductPersonEnrichExecution | { tool: 'saved_searches_list' } & ProductSavedSearchesListExecution | { tool: 'sequence_recipient_add' } & ProductSequenceRecipientAddExecution | { tool: 'sequence_recipient_cancel' } & ProductSequenceRecipientCancelExecution | { tool: 'sequence_recipients_add' } & ProductSequenceRecipientsAddExecution | { tool: 'sequence_recipients_list' } & ProductSequenceRecipientsListExecution | { tool: 'sequence_start' } & ProductSequenceStartExecution | { tool: 'sequences_list' } & ProductSequencesListExecution | { tool: 'team_members' } & ProductTeamMembersExecution | { tool: 'usage' } & ProductUsageExecution | { tool: 'usage_history' } & ProductUsageHistoryExecution;
 
 export function ProductToolExecutionFromJSON(json: any): ProductToolExecution {
     return ProductToolExecutionFromJSONTyped(json, false);
@@ -439,6 +516,28 @@ export function ProductToolExecutionFromJSONTyped(json: any, ignoreDiscriminator
             return Object.assign({}, ProductLeadUpsertExecutionFromJSONTyped(json, true), { tool: 'lead_upsert' } as const);
         case 'leads_list':
             return Object.assign({}, ProductLeadsListExecutionFromJSONTyped(json, true), { tool: 'leads_list' } as const);
+        case 'mail_sequence_add_ab':
+            return Object.assign({}, ProductMailSequenceAddAbExecutionFromJSONTyped(json, true), { tool: 'mail_sequence_add_ab' } as const);
+        case 'mail_sequence_add_audience':
+            return Object.assign({}, ProductMailSequenceAddAudienceExecutionFromJSONTyped(json, true), { tool: 'mail_sequence_add_audience' } as const);
+        case 'mail_sequence_campaigns_list':
+            return Object.assign({}, ProductMailSequenceCampaignsListExecutionFromJSONTyped(json, true), { tool: 'mail_sequence_campaigns_list' } as const);
+        case 'mail_sequence_draft_save':
+            return Object.assign({}, ProductMailSequenceDraftSaveExecutionFromJSONTyped(json, true), { tool: 'mail_sequence_draft_save' } as const);
+        case 'mail_sequence_drafts_list':
+            return Object.assign({}, ProductMailSequenceDraftsListExecutionFromJSONTyped(json, true), { tool: 'mail_sequence_drafts_list' } as const);
+        case 'mail_sequence_launch':
+            return Object.assign({}, ProductMailSequenceLaunchExecutionFromJSONTyped(json, true), { tool: 'mail_sequence_launch' } as const);
+        case 'mail_sequence_publish':
+            return Object.assign({}, ProductMailSequencePublishExecutionFromJSONTyped(json, true), { tool: 'mail_sequence_publish' } as const);
+        case 'mail_sequence_readiness':
+            return Object.assign({}, ProductMailSequenceReadinessExecutionFromJSONTyped(json, true), { tool: 'mail_sequence_readiness' } as const);
+        case 'mail_sequence_recipients_list':
+            return Object.assign({}, ProductMailSequenceRecipientsListExecutionFromJSONTyped(json, true), { tool: 'mail_sequence_recipients_list' } as const);
+        case 'mail_sequence_results':
+            return Object.assign({}, ProductMailSequenceResultsExecutionFromJSONTyped(json, true), { tool: 'mail_sequence_results' } as const);
+        case 'mail_sequence_state':
+            return Object.assign({}, ProductMailSequenceStateExecutionFromJSONTyped(json, true), { tool: 'mail_sequence_state' } as const);
         case 'person_enrich':
             return Object.assign({}, ProductPersonEnrichExecutionFromJSONTyped(json, true), { tool: 'person_enrich' } as const);
         case 'saved_searches_list':
@@ -549,6 +648,28 @@ export function ProductToolExecutionToJSONTyped(value?: ProductToolExecution | n
             return Object.assign({}, ProductLeadUpsertExecutionToJSON(value), { 'tool': 'lead_upsert' } as const);
         case 'leads_list':
             return Object.assign({}, ProductLeadsListExecutionToJSON(value), { 'tool': 'leads_list' } as const);
+        case 'mail_sequence_add_ab':
+            return Object.assign({}, ProductMailSequenceAddAbExecutionToJSON(value), { 'tool': 'mail_sequence_add_ab' } as const);
+        case 'mail_sequence_add_audience':
+            return Object.assign({}, ProductMailSequenceAddAudienceExecutionToJSON(value), { 'tool': 'mail_sequence_add_audience' } as const);
+        case 'mail_sequence_campaigns_list':
+            return Object.assign({}, ProductMailSequenceCampaignsListExecutionToJSON(value), { 'tool': 'mail_sequence_campaigns_list' } as const);
+        case 'mail_sequence_draft_save':
+            return Object.assign({}, ProductMailSequenceDraftSaveExecutionToJSON(value), { 'tool': 'mail_sequence_draft_save' } as const);
+        case 'mail_sequence_drafts_list':
+            return Object.assign({}, ProductMailSequenceDraftsListExecutionToJSON(value), { 'tool': 'mail_sequence_drafts_list' } as const);
+        case 'mail_sequence_launch':
+            return Object.assign({}, ProductMailSequenceLaunchExecutionToJSON(value), { 'tool': 'mail_sequence_launch' } as const);
+        case 'mail_sequence_publish':
+            return Object.assign({}, ProductMailSequencePublishExecutionToJSON(value), { 'tool': 'mail_sequence_publish' } as const);
+        case 'mail_sequence_readiness':
+            return Object.assign({}, ProductMailSequenceReadinessExecutionToJSON(value), { 'tool': 'mail_sequence_readiness' } as const);
+        case 'mail_sequence_recipients_list':
+            return Object.assign({}, ProductMailSequenceRecipientsListExecutionToJSON(value), { 'tool': 'mail_sequence_recipients_list' } as const);
+        case 'mail_sequence_results':
+            return Object.assign({}, ProductMailSequenceResultsExecutionToJSON(value), { 'tool': 'mail_sequence_results' } as const);
+        case 'mail_sequence_state':
+            return Object.assign({}, ProductMailSequenceStateExecutionToJSON(value), { 'tool': 'mail_sequence_state' } as const);
         case 'person_enrich':
             return Object.assign({}, ProductPersonEnrichExecutionToJSON(value), { 'tool': 'person_enrich' } as const);
         case 'saved_searches_list':

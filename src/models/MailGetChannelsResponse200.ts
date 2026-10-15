@@ -34,6 +34,13 @@ import {
     MailGetChannelsResponse200SmsToJSON,
     MailGetChannelsResponse200SmsToJSONTyped,
 } from './MailGetChannelsResponse200Sms.js';
+import type { MailMailExecutionWorkerStatus } from './MailMailExecutionWorkerStatus.js';
+import {
+    MailMailExecutionWorkerStatusFromJSON,
+    MailMailExecutionWorkerStatusFromJSONTyped,
+    MailMailExecutionWorkerStatusToJSON,
+    MailMailExecutionWorkerStatusToJSONTyped,
+} from './MailMailExecutionWorkerStatus.js';
 import type { MailGetChannelsResponse200Email } from './MailGetChannelsResponse200Email.js';
 import {
     MailGetChannelsResponse200EmailFromJSON,
@@ -64,6 +71,10 @@ export interface MailGetChannelsResponse200 {
      * 
      */
     whatsapp: MailGetChannelsResponse200Whatsapp;
+    /**
+     * 
+     */
+    worker: MailMailExecutionWorkerStatus;
 }
 
 /**
@@ -74,6 +85,7 @@ export function instanceOfMailGetChannelsResponse200(value: object): value is Ma
     if (!('execution' in value) || value['execution'] === undefined) return false;
     if (!('sms' in value) || value['sms'] === undefined) return false;
     if (!('whatsapp' in value) || value['whatsapp'] === undefined) return false;
+    if (!('worker' in value) || value['worker'] === undefined) return false;
     return true;
 }
 
@@ -91,6 +103,7 @@ export function MailGetChannelsResponse200FromJSONTyped(json: any, ignoreDiscrim
         'execution': MailGetChannelsResponse200ExecutionFromJSON(json['execution']),
         'sms': MailGetChannelsResponse200SmsFromJSON(json['sms']),
         'whatsapp': MailGetChannelsResponse200WhatsappFromJSON(json['whatsapp']),
+        'worker': MailMailExecutionWorkerStatusFromJSON(json['worker']),
     };
 }
 
@@ -109,6 +122,7 @@ export function MailGetChannelsResponse200ToJSONTyped(value?: MailGetChannelsRes
         'execution': MailGetChannelsResponse200ExecutionToJSON(value['execution']),
         'sms': MailGetChannelsResponse200SmsToJSON(value['sms']),
         'whatsapp': MailGetChannelsResponse200WhatsappToJSON(value['whatsapp']),
+        'worker': MailMailExecutionWorkerStatusToJSON(value['worker']),
     };
 }
 

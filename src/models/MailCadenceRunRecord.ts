@@ -106,6 +106,10 @@ export interface MailCadenceRunRecord {
     /**
      * 
      */
+    messageEditRevision?: number;
+    /**
+     * 
+     */
     outcome?: string;
     /**
      * 
@@ -188,6 +192,7 @@ export function MailCadenceRunRecordFromJSONTyped(json: any, ignoreDiscriminator
         'leaseExpiresAt': json['leaseExpiresAt'] == null ? undefined : json['leaseExpiresAt'],
         'leaseOwner': json['leaseOwner'] == null ? undefined : json['leaseOwner'],
         'mailboxId': json['mailboxId'],
+        'messageEditRevision': json['messageEditRevision'] == null ? undefined : json['messageEditRevision'],
         'outcome': json['outcome'] == null ? undefined : json['outcome'],
         'pendingMessageId': json['pendingMessageId'] == null ? undefined : json['pendingMessageId'],
         'pendingNextNodeId': json['pendingNextNodeId'] == null ? undefined : json['pendingNextNodeId'],
@@ -229,6 +234,7 @@ export function MailCadenceRunRecordToJSONTyped(value?: MailCadenceRunRecord | n
         'leaseExpiresAt': value['leaseExpiresAt'],
         'leaseOwner': value['leaseOwner'],
         'mailboxId': value['mailboxId'],
+        'messageEditRevision': value['messageEditRevision'],
         'outcome': value['outcome'],
         'pendingMessageId': value['pendingMessageId'],
         'pendingNextNodeId': value['pendingNextNodeId'],

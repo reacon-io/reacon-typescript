@@ -41,6 +41,20 @@ import {
     MailMessageAnalyticsOverviewDailyInnerToJSON,
     MailMessageAnalyticsOverviewDailyInnerToJSONTyped,
 } from './MailMessageAnalyticsOverviewDailyInner.js';
+import type { MailRecipientEngagement } from './MailRecipientEngagement.js';
+import {
+    MailRecipientEngagementFromJSON,
+    MailRecipientEngagementFromJSONTyped,
+    MailRecipientEngagementToJSON,
+    MailRecipientEngagementToJSONTyped,
+} from './MailRecipientEngagement.js';
+import type { MailSequenceRecipientEngagement } from './MailSequenceRecipientEngagement.js';
+import {
+    MailSequenceRecipientEngagementFromJSON,
+    MailSequenceRecipientEngagementFromJSONTyped,
+    MailSequenceRecipientEngagementToJSON,
+    MailSequenceRecipientEngagementToJSONTyped,
+} from './MailSequenceRecipientEngagement.js';
 
 /**
  * 
@@ -87,7 +101,15 @@ export interface MailMessageAnalyticsOverview {
     /**
      * 
      */
+    recipients?: MailRecipientEngagement;
+    /**
+     * Legacy message-based rate, retained for API compatibility.
+     */
     replyRate: number;
+    /**
+     * 
+     */
+    sequences?: Array<MailSequenceRecipientEngagement>;
     /**
      * 
      */
@@ -141,7 +163,9 @@ export function MailMessageAnalyticsOverviewFromJSONTyped(json: any, ignoreDiscr
         'deliveryRate': json['deliveryRate'],
         'from': json['from'],
         'mailboxes': ((json['mailboxes'] as Array<any>).map(MailMessageAnalyticsOverviewMailboxesInnerFromJSON)),
+        'recipients': json['recipients'] == null ? undefined : MailRecipientEngagementFromJSON(json['recipients']),
         'replyRate': json['replyRate'],
+        'sequences': json['sequences'] == null ? undefined : ((json['sequences'] as Array<any>).map(MailSequenceRecipientEngagementFromJSON)),
         'to': json['to'],
         'total': json['total'],
         'variants': ((json['variants'] as Array<any>).map(MailMessageAnalyticsOverviewVariantsInnerFromJSON)),
@@ -168,7 +192,9 @@ export function MailMessageAnalyticsOverviewToJSONTyped(value?: MailMessageAnaly
         'deliveryRate': value['deliveryRate'],
         'from': value['from'],
         'mailboxes': ((value['mailboxes'] as Array<any>).map(MailMessageAnalyticsOverviewMailboxesInnerToJSON)),
+        'recipients': MailRecipientEngagementToJSON(value['recipients']),
         'replyRate': value['replyRate'],
+        'sequences': value['sequences'] == null ? undefined : ((value['sequences'] as Array<any>).map(MailSequenceRecipientEngagementToJSON)),
         'to': value['to'],
         'total': value['total'],
         'variants': ((value['variants'] as Array<any>).map(MailMessageAnalyticsOverviewVariantsInnerToJSON)),

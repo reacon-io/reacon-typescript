@@ -42,6 +42,10 @@ export interface MailCadenceNodeAnyOf1 {
     /**
      * 
      */
+    emailThread?: string;
+    /**
+     * 
+     */
     experiment?: MailCadenceMessageExperiment;
     /**
      * 
@@ -100,6 +104,7 @@ export function MailCadenceNodeAnyOf1FromJSONTyped(json: any, ignoreDiscriminato
         'id': json['id'],
         'name': json['name'],
         'channel': json['channel'],
+        'emailThread': json['emailThread'] == null ? undefined : json['emailThread'],
         'experiment': json['experiment'] == null ? undefined : MailCadenceMessageExperimentFromJSON(json['experiment']),
         'kind': json['kind'],
         'nextNodeId': json['nextNodeId'],
@@ -122,6 +127,7 @@ export function MailCadenceNodeAnyOf1ToJSONTyped(value?: MailCadenceNodeAnyOf1 |
         'id': value['id'],
         'name': value['name'],
         'channel': value['channel'],
+        'emailThread': value['emailThread'],
         'experiment': MailCadenceMessageExperimentToJSON(value['experiment']),
         'kind': value['kind'],
         'nextNodeId': value['nextNodeId'],

@@ -13,20 +13,20 @@
  */
 
 import { mapValues } from '../runtime.js';
-import type { MailSignatureCandidateFields } from './MailSignatureCandidateFields.js';
+import type { MailGetSignaturesResponse200CandidatesInnerFields } from './MailGetSignaturesResponse200CandidatesInnerFields.js';
 import {
-    MailSignatureCandidateFieldsFromJSON,
-    MailSignatureCandidateFieldsFromJSONTyped,
-    MailSignatureCandidateFieldsToJSON,
-    MailSignatureCandidateFieldsToJSONTyped,
-} from './MailSignatureCandidateFields.js';
+    MailGetSignaturesResponse200CandidatesInnerFieldsFromJSON,
+    MailGetSignaturesResponse200CandidatesInnerFieldsFromJSONTyped,
+    MailGetSignaturesResponse200CandidatesInnerFieldsToJSON,
+    MailGetSignaturesResponse200CandidatesInnerFieldsToJSONTyped,
+} from './MailGetSignaturesResponse200CandidatesInnerFields.js';
 
 /**
  * 
  * @export
- * @interface MailSignatureCandidate
+ * @interface MailGetSignaturesResponse200CandidatesInner
  */
-export interface MailSignatureCandidate {
+export interface MailGetSignaturesResponse200CandidatesInner {
     /**
      * 
      */
@@ -42,7 +42,7 @@ export interface MailSignatureCandidate {
     /**
      * 
      */
-    fields: MailSignatureCandidateFields;
+    fields: MailGetSignaturesResponse200CandidatesInnerFields;
     /**
      * 
      */
@@ -74,9 +74,9 @@ export interface MailSignatureCandidate {
 }
 
 /**
- * Check if a given object implements the MailSignatureCandidate interface.
+ * Check if a given object implements the MailGetSignaturesResponse200CandidatesInner interface.
  */
-export function instanceOfMailSignatureCandidate(value: object): value is MailSignatureCandidate {
+export function instanceOfMailGetSignaturesResponse200CandidatesInner(value: object): value is MailGetSignaturesResponse200CandidatesInner {
     if (!('confidence' in value) || value['confidence'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('extractorVersion' in value) || value['extractorVersion'] === undefined) return false;
@@ -91,11 +91,11 @@ export function instanceOfMailSignatureCandidate(value: object): value is MailSi
     return true;
 }
 
-export function MailSignatureCandidateFromJSON(json: any): MailSignatureCandidate {
-    return MailSignatureCandidateFromJSONTyped(json, false);
+export function MailGetSignaturesResponse200CandidatesInnerFromJSON(json: any): MailGetSignaturesResponse200CandidatesInner {
+    return MailGetSignaturesResponse200CandidatesInnerFromJSONTyped(json, false);
 }
 
-export function MailSignatureCandidateFromJSONTyped(json: any, ignoreDiscriminator: boolean): MailSignatureCandidate {
+export function MailGetSignaturesResponse200CandidatesInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): MailGetSignaturesResponse200CandidatesInner {
     if (json == null) {
         return json;
     }
@@ -104,7 +104,7 @@ export function MailSignatureCandidateFromJSONTyped(json: any, ignoreDiscriminat
         'confidence': json['confidence'],
         'createdAt': json['createdAt'],
         'extractorVersion': json['extractorVersion'],
-        'fields': MailSignatureCandidateFieldsFromJSON(json['fields']),
+        'fields': MailGetSignaturesResponse200CandidatesInnerFieldsFromJSON(json['fields']),
         'id': json['id'],
         'signatureFingerprint': json['signatureFingerprint'],
         'signatureText': json['signatureText'],
@@ -115,11 +115,11 @@ export function MailSignatureCandidateFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function MailSignatureCandidateToJSON(json: any): MailSignatureCandidate {
-    return MailSignatureCandidateToJSONTyped(json, false);
+export function MailGetSignaturesResponse200CandidatesInnerToJSON(json: any): MailGetSignaturesResponse200CandidatesInner {
+    return MailGetSignaturesResponse200CandidatesInnerToJSONTyped(json, false);
 }
 
-export function MailSignatureCandidateToJSONTyped(value?: MailSignatureCandidate | null, ignoreDiscriminator: boolean = false): any {
+export function MailGetSignaturesResponse200CandidatesInnerToJSONTyped(value?: MailGetSignaturesResponse200CandidatesInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -129,7 +129,7 @@ export function MailSignatureCandidateToJSONTyped(value?: MailSignatureCandidate
         'confidence': value['confidence'],
         'createdAt': value['createdAt'],
         'extractorVersion': value['extractorVersion'],
-        'fields': MailSignatureCandidateFieldsToJSON(value['fields']),
+        'fields': MailGetSignaturesResponse200CandidatesInnerFieldsToJSON(value['fields']),
         'id': value['id'],
         'signatureFingerprint': value['signatureFingerprint'],
         'signatureText': value['signatureText'],

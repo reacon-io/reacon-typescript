@@ -20,6 +20,13 @@ import {
     MailCadenceEnrollmentVariableGapToJSON,
     MailCadenceEnrollmentVariableGapToJSONTyped,
 } from './MailCadenceEnrollmentVariableGap.js';
+import type { MailRecipientEligibilitySummary } from './MailRecipientEligibilitySummary.js';
+import {
+    MailRecipientEligibilitySummaryFromJSON,
+    MailRecipientEligibilitySummaryFromJSONTyped,
+    MailRecipientEligibilitySummaryToJSON,
+    MailRecipientEligibilitySummaryToJSONTyped,
+} from './MailRecipientEligibilitySummary.js';
 
 /**
  * 
@@ -39,6 +46,10 @@ export interface MailPostCadenceRunsPreflightResponse200 {
      * 
      */
     cadenceVersion: number;
+    /**
+     * 
+     */
+    eligibility?: MailRecipientEligibilitySummary;
     /**
      * 
      */
@@ -84,6 +95,7 @@ export function MailPostCadenceRunsPreflightResponse200FromJSONTyped(json: any, 
         'audienceCount': json['audienceCount'],
         'cadenceId': json['cadenceId'],
         'cadenceVersion': json['cadenceVersion'],
+        'eligibility': json['eligibility'] == null ? undefined : MailRecipientEligibilitySummaryFromJSON(json['eligibility']),
         'missingVariables': ((json['missingVariables'] as Array<any>).map(MailCadenceEnrollmentVariableGapFromJSON)),
         'ready': json['ready'],
         'requiredVariables': json['requiredVariables'],
@@ -105,6 +117,7 @@ export function MailPostCadenceRunsPreflightResponse200ToJSONTyped(value?: MailP
         'audienceCount': value['audienceCount'],
         'cadenceId': value['cadenceId'],
         'cadenceVersion': value['cadenceVersion'],
+        'eligibility': MailRecipientEligibilitySummaryToJSON(value['eligibility']),
         'missingVariables': ((value['missingVariables'] as Array<any>).map(MailCadenceEnrollmentVariableGapToJSON)),
         'ready': value['ready'],
         'requiredVariables': value['requiredVariables'],

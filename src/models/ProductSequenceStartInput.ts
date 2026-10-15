@@ -22,19 +22,61 @@ export interface ProductSequenceStartInput {
     /**
      * 
      */
+    audienceListId: string;
+    /**
+     * 
+     */
+    cadenceId: string;
+    /**
+     * 
+     */
+    cadenceVersion: number;
+    /**
+     * 
+     */
+    enrollmentMode?: ProductSequenceStartInputEnrollmentModeEnum;
+    /**
+     * 
+     */
     idempotencyKey: string;
     /**
      * 
      */
-    sequenceId: string;
+    mailboxId?: string;
+    /**
+     * 
+     */
+    mailboxPoolId?: string;
+    /**
+     * The server applies trim before validating {"type":"string","minLength":1,"maxLength":200}.
+     */
+    name: string;
+    /**
+     * 
+     */
+    scheduledAt?: string;
 }
+
+
+/**
+ * @export
+ */
+export const ProductSequenceStartInputEnrollmentModeEnum = {
+    NewOnly: 'new_only',
+    Reenroll: 'reenroll',
+} as const;
+export type ProductSequenceStartInputEnrollmentModeEnum = typeof ProductSequenceStartInputEnrollmentModeEnum[keyof typeof ProductSequenceStartInputEnrollmentModeEnum];
+
 
 /**
  * Check if a given object implements the ProductSequenceStartInput interface.
  */
 export function instanceOfProductSequenceStartInput(value: object): value is ProductSequenceStartInput {
+    if (!('audienceListId' in value) || value['audienceListId'] === undefined) return false;
+    if (!('cadenceId' in value) || value['cadenceId'] === undefined) return false;
+    if (!('cadenceVersion' in value) || value['cadenceVersion'] === undefined) return false;
     if (!('idempotencyKey' in value) || value['idempotencyKey'] === undefined) return false;
-    if (!('sequenceId' in value) || value['sequenceId'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
     return true;
 }
 
@@ -48,8 +90,15 @@ export function ProductSequenceStartInputFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
+        'audienceListId': json['audienceListId'],
+        'cadenceId': json['cadenceId'],
+        'cadenceVersion': json['cadenceVersion'],
+        'enrollmentMode': json['enrollmentMode'] == null ? undefined : json['enrollmentMode'],
         'idempotencyKey': json['idempotencyKey'],
-        'sequenceId': json['sequenceId'],
+        'mailboxId': json['mailboxId'] == null ? undefined : json['mailboxId'],
+        'mailboxPoolId': json['mailboxPoolId'] == null ? undefined : json['mailboxPoolId'],
+        'name': json['name'],
+        'scheduledAt': json['scheduledAt'] == null ? undefined : json['scheduledAt'],
     };
 }
 
@@ -64,8 +113,15 @@ export function ProductSequenceStartInputToJSONTyped(value?: ProductSequenceStar
 
     return {
         
+        'audienceListId': value['audienceListId'],
+        'cadenceId': value['cadenceId'],
+        'cadenceVersion': value['cadenceVersion'],
+        'enrollmentMode': value['enrollmentMode'],
         'idempotencyKey': value['idempotencyKey'],
-        'sequenceId': value['sequenceId'],
+        'mailboxId': value['mailboxId'],
+        'mailboxPoolId': value['mailboxPoolId'],
+        'name': value['name'],
+        'scheduledAt': value['scheduledAt'],
     };
 }
 

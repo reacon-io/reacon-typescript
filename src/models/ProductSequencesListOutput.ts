@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime.js';
-import type { ProductSequence } from './ProductSequence.js';
-import {
-    ProductSequenceFromJSON,
-    ProductSequenceFromJSONTyped,
-    ProductSequenceToJSON,
-    ProductSequenceToJSONTyped,
-} from './ProductSequence.js';
-
 /**
  * 
  * @export
@@ -30,14 +22,46 @@ export interface ProductSequencesListOutput {
     /**
      * 
      */
-    items: Array<ProductSequence>;
+    cadences: Array<{ [key: string]: any; }>;
+    /**
+     * 
+     */
+    campaigns: Array<{ [key: string]: any; }>;
+    /**
+     * 
+     */
+    drafts: Array<{ [key: string]: any; }>;
+    /**
+     * 
+     */
+    items: Array<{ [key: string]: any; }>;
+    /**
+     * 
+     */
+    source: ProductSequencesListOutputSourceEnum;
 }
+
+
+/**
+ * @export
+ */
+export const ProductSequencesListOutputSourceEnum = {
+    CanonicalMail: 'canonical_mail',
+} as const;
+export type ProductSequencesListOutputSourceEnum = typeof ProductSequencesListOutputSourceEnum[keyof typeof ProductSequencesListOutputSourceEnum];
+
 
 /**
  * Check if a given object implements the ProductSequencesListOutput interface.
  */
 export function instanceOfProductSequencesListOutput(value: object): value is ProductSequencesListOutput {
+    if (!('cadences' in value) || value['cadences'] === undefined) return false;
+    if (!('campaigns' in value) || value['campaigns'] === undefined) return false;
+    if (!('drafts' in value) || value['drafts'] === undefined) return false;
     if (!('items' in value) || value['items'] === undefined) return false;
+    if (!('source' in value) || value['source'] === undefined) return false;
+    if (value['source'] !== 'canonical_mail') return false;
+    
     return true;
 }
 
@@ -51,7 +75,11 @@ export function ProductSequencesListOutputFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'items': ((json['items'] as Array<any>).map(ProductSequenceFromJSON)),
+        'cadences': json['cadences'],
+        'campaigns': json['campaigns'],
+        'drafts': json['drafts'],
+        'items': json['items'],
+        'source': json['source'],
     };
 }
 
@@ -66,7 +94,11 @@ export function ProductSequencesListOutputToJSONTyped(value?: ProductSequencesLi
 
     return {
         
-        'items': ((value['items'] as Array<any>).map(ProductSequenceToJSON)),
+        'cadences': value['cadences'],
+        'campaigns': value['campaigns'],
+        'drafts': value['drafts'],
+        'items': value['items'],
+        'source': value['source'],
     };
 }
 

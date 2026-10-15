@@ -22,6 +22,14 @@ export interface ProductSequenceRecipientsListInput {
     /**
      * 
      */
+    limit?: number;
+    /**
+     * 
+     */
+    offset?: number;
+    /**
+     * 
+     */
     sequenceId: string;
 }
 
@@ -43,6 +51,8 @@ export function ProductSequenceRecipientsListInputFromJSONTyped(json: any, ignor
     }
     return {
         
+        'limit': json['limit'] == null ? undefined : json['limit'],
+        'offset': json['offset'] == null ? undefined : json['offset'],
         'sequenceId': json['sequenceId'],
     };
 }
@@ -58,6 +68,8 @@ export function ProductSequenceRecipientsListInputToJSONTyped(value?: ProductSeq
 
     return {
         
+        'limit': value['limit'],
+        'offset': value['offset'],
         'sequenceId': value['sequenceId'],
     };
 }
