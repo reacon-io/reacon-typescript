@@ -197,7 +197,6 @@ src/models/MailContactCrmState.ts
 src/models/MailContactListSummaryRecord.ts
 src/models/MailContactRecord.ts
 src/models/MailContactRecordVerification.ts
-src/models/MailContactRecordVerificationLastVerifiedAt.ts
 src/models/MailConversationEntry.ts
 src/models/MailConversationEntryFrom.ts
 src/models/MailConversationEntryLastError.ts

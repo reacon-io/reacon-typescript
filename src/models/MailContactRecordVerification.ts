@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime.js';
-import type { MailContactRecordVerificationLastVerifiedAt } from './MailContactRecordVerificationLastVerifiedAt.js';
-import {
-    MailContactRecordVerificationLastVerifiedAtFromJSON,
-    MailContactRecordVerificationLastVerifiedAtFromJSONTyped,
-    MailContactRecordVerificationLastVerifiedAtToJSON,
-    MailContactRecordVerificationLastVerifiedAtToJSONTyped,
-} from './MailContactRecordVerificationLastVerifiedAt.js';
-
 /**
  * 
  * @export
@@ -30,7 +22,7 @@ export interface MailContactRecordVerification {
     /**
      * 
      */
-    lastVerifiedAt: MailContactRecordVerificationLastVerifiedAt;
+    lastVerifiedAt: string | null;
     /**
      * 
      */
@@ -56,7 +48,7 @@ export function MailContactRecordVerificationFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
-        'lastVerifiedAt': MailContactRecordVerificationLastVerifiedAtFromJSON(json['lastVerifiedAt']),
+        'lastVerifiedAt': json['lastVerifiedAt'],
         'status': json['status'],
     };
 }
@@ -72,7 +64,7 @@ export function MailContactRecordVerificationToJSONTyped(value?: MailContactReco
 
     return {
         
-        'lastVerifiedAt': MailContactRecordVerificationLastVerifiedAtToJSON(value['lastVerifiedAt']),
+        'lastVerifiedAt': value['lastVerifiedAt'],
         'status': value['status'],
     };
 }
