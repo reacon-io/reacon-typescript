@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime.js';
-import type { ProductSequenceStartOutput } from './ProductSequenceStartOutput.js';
-import {
-    ProductSequenceStartOutputFromJSON,
-    ProductSequenceStartOutputFromJSONTyped,
-    ProductSequenceStartOutputToJSON,
-    ProductSequenceStartOutputToJSONTyped,
-} from './ProductSequenceStartOutput.js';
-
 /**
  * 
  * @export
@@ -32,9 +24,9 @@ export interface ProductSequenceStartExecution {
      */
     executionId: string;
     /**
-     * 
+     * Response body of the Mail API operation POST /v1/teams/{teamId}/mail/cadence-campaigns, returned unchanged.
      */
-    output: ProductSequenceStartOutput;
+    output: { [key: string]: any; };
     /**
      * 
      */
@@ -79,7 +71,7 @@ export function ProductSequenceStartExecutionFromJSONTyped(json: any, ignoreDisc
     return {
         
         'executionId': json['executionId'],
-        'output': ProductSequenceStartOutputFromJSON(json['output']),
+        'output': json['output'],
         'replay': json['replay'],
         'tool': json['tool'],
     };
@@ -97,7 +89,7 @@ export function ProductSequenceStartExecutionToJSONTyped(value?: ProductSequence
     return {
         
         'executionId': value['executionId'],
-        'output': ProductSequenceStartOutputToJSON(value['output']),
+        'output': value['output'],
         'replay': value['replay'],
         'tool': value['tool'],
     };

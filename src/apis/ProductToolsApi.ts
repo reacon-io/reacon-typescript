@@ -49,7 +49,7 @@ export interface ExecuteProductToolRequest {
 export interface ProductToolsApiInterface {
     /**
      * Creates request options for executeProductTool without sending the request
-     * @param {'discover_companies' | 'discover_people' | 'domain_finder' | 'email_count' | 'person_enrich' | 'company_enrich' | 'combined_enrich' | 'saved_searches_list' | 'leads_list' | 'lead_get' | 'lead_create' | 'lead_update' | 'lead_upsert' | 'lead_delete' | 'lead_enrich' | 'lead_bulk_delete' | 'lead_tags_list' | 'lead_tag_create' | 'lead_tag_assign' | 'lead_tag_remove' | 'custom_attributes_list' | 'custom_attribute_create' | 'lead_lists_list' | 'lead_list_create' | 'lead_list_update' | 'lead_list_delete' | 'lead_list_add_lead' | 'lead_list_remove_lead' | 'companies_list' | 'company_track' | 'company_update' | 'company_delete' | 'company_lists_list' | 'company_list_create' | 'company_list_add' | 'company_list_remove' | 'sequences_list' | 'sequence_recipients_list' | 'sequence_recipients_add' | 'sequence_recipient_add' | 'sequence_recipient_cancel' | 'sequence_start' | 'account_info' | 'usage' | 'usage_history' | 'team_members' | 'connected_apps' | 'connected_app_push'} tool 
+     * @param {'discover_companies' | 'discover_people' | 'domain_finder' | 'email_count' | 'person_enrich' | 'company_enrich' | 'combined_enrich' | 'saved_searches_list' | 'leads_list' | 'lead_get' | 'lead_create' | 'lead_update' | 'lead_upsert' | 'lead_delete' | 'lead_enrich' | 'lead_bulk_delete' | 'lead_tags_list' | 'lead_tag_create' | 'lead_tag_assign' | 'lead_tag_remove' | 'custom_attributes_list' | 'custom_attribute_create' | 'lead_lists_list' | 'lead_list_create' | 'lead_list_update' | 'lead_list_delete' | 'lead_list_add_lead' | 'lead_list_remove_lead' | 'companies_list' | 'company_track' | 'company_update' | 'company_delete' | 'company_lists_list' | 'company_list_create' | 'company_list_add' | 'company_list_remove' | 'sequences_list' | 'sequence_recipients_list' | 'sequence_recipients_add' | 'sequence_recipient_add' | 'sequence_recipient_cancel' | 'sequence_start' | 'mail_sequence_drafts_list' | 'mail_sequence_draft_save' | 'mail_sequence_add_audience' | 'mail_sequence_readiness' | 'mail_sequence_publish' | 'mail_sequence_launch' | 'mail_sequence_campaigns_list' | 'mail_sequence_recipients_list' | 'mail_sequence_add_ab' | 'mail_sequence_state' | 'mail_sequence_results' | 'account_info' | 'usage' | 'usage_history' | 'team_members' | 'connected_apps' | 'connected_app_push'} tool 
      * @param {ProductToolRequest} productToolRequest 
      * @throws {RequiredError}
      * @memberof ProductToolsApiInterface
@@ -59,7 +59,7 @@ export interface ProductToolsApiInterface {
     /**
      * Execute one of the listed tools using a team API key. Choose the input schema associated with the tool path parameter; the input union alone cannot express that relationship. Read tools return executionId=null and replay=false. Write tools require input.idempotencyKey (16–200 characters), scoped to the team across tools. Reusing a key with the same tool and validated input returns the committed output with replay=true while retained; different input or an unfinished execution returns HTTP 409. The SDK does not automatically retry this dispatcher. Tool scopes describe the shared integration/MCP catalog; this HTTP endpoint uses team API-key authentication and team-access checks. Missing database resources can currently surface as HTTP 500. See each tool for output and pagination semantics.
      * @summary Execute a product tool
-     * @param {'discover_companies' | 'discover_people' | 'domain_finder' | 'email_count' | 'person_enrich' | 'company_enrich' | 'combined_enrich' | 'saved_searches_list' | 'leads_list' | 'lead_get' | 'lead_create' | 'lead_update' | 'lead_upsert' | 'lead_delete' | 'lead_enrich' | 'lead_bulk_delete' | 'lead_tags_list' | 'lead_tag_create' | 'lead_tag_assign' | 'lead_tag_remove' | 'custom_attributes_list' | 'custom_attribute_create' | 'lead_lists_list' | 'lead_list_create' | 'lead_list_update' | 'lead_list_delete' | 'lead_list_add_lead' | 'lead_list_remove_lead' | 'companies_list' | 'company_track' | 'company_update' | 'company_delete' | 'company_lists_list' | 'company_list_create' | 'company_list_add' | 'company_list_remove' | 'sequences_list' | 'sequence_recipients_list' | 'sequence_recipients_add' | 'sequence_recipient_add' | 'sequence_recipient_cancel' | 'sequence_start' | 'account_info' | 'usage' | 'usage_history' | 'team_members' | 'connected_apps' | 'connected_app_push'} tool 
+     * @param {'discover_companies' | 'discover_people' | 'domain_finder' | 'email_count' | 'person_enrich' | 'company_enrich' | 'combined_enrich' | 'saved_searches_list' | 'leads_list' | 'lead_get' | 'lead_create' | 'lead_update' | 'lead_upsert' | 'lead_delete' | 'lead_enrich' | 'lead_bulk_delete' | 'lead_tags_list' | 'lead_tag_create' | 'lead_tag_assign' | 'lead_tag_remove' | 'custom_attributes_list' | 'custom_attribute_create' | 'lead_lists_list' | 'lead_list_create' | 'lead_list_update' | 'lead_list_delete' | 'lead_list_add_lead' | 'lead_list_remove_lead' | 'companies_list' | 'company_track' | 'company_update' | 'company_delete' | 'company_lists_list' | 'company_list_create' | 'company_list_add' | 'company_list_remove' | 'sequences_list' | 'sequence_recipients_list' | 'sequence_recipients_add' | 'sequence_recipient_add' | 'sequence_recipient_cancel' | 'sequence_start' | 'mail_sequence_drafts_list' | 'mail_sequence_draft_save' | 'mail_sequence_add_audience' | 'mail_sequence_readiness' | 'mail_sequence_publish' | 'mail_sequence_launch' | 'mail_sequence_campaigns_list' | 'mail_sequence_recipients_list' | 'mail_sequence_add_ab' | 'mail_sequence_state' | 'mail_sequence_results' | 'account_info' | 'usage' | 'usage_history' | 'team_members' | 'connected_apps' | 'connected_app_push'} tool 
      * @param {ProductToolRequest} productToolRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -189,6 +189,17 @@ export const ExecuteProductToolToolEnum = {
     SequenceRecipientAdd: 'sequence_recipient_add',
     SequenceRecipientCancel: 'sequence_recipient_cancel',
     SequenceStart: 'sequence_start',
+    MailSequenceDraftsList: 'mail_sequence_drafts_list',
+    MailSequenceDraftSave: 'mail_sequence_draft_save',
+    MailSequenceAddAudience: 'mail_sequence_add_audience',
+    MailSequenceReadiness: 'mail_sequence_readiness',
+    MailSequencePublish: 'mail_sequence_publish',
+    MailSequenceLaunch: 'mail_sequence_launch',
+    MailSequenceCampaignsList: 'mail_sequence_campaigns_list',
+    MailSequenceRecipientsList: 'mail_sequence_recipients_list',
+    MailSequenceAddAb: 'mail_sequence_add_ab',
+    MailSequenceState: 'mail_sequence_state',
+    MailSequenceResults: 'mail_sequence_results',
     AccountInfo: 'account_info',
     Usage: 'usage',
     UsageHistory: 'usage_history',

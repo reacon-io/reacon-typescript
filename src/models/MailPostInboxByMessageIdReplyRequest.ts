@@ -26,6 +26,10 @@ export interface MailPostInboxByMessageIdReplyRequest {
     /**
      * 
      */
+    draftRevision?: number;
+    /**
+     * 
+     */
     text: string;
 }
 
@@ -49,6 +53,7 @@ export function MailPostInboxByMessageIdReplyRequestFromJSONTyped(json: any, ign
     return {
         
         'clientRequestId': json['clientRequestId'],
+        'draftRevision': json['draftRevision'] == null ? undefined : json['draftRevision'],
         'text': json['text'],
     };
 }
@@ -65,6 +70,7 @@ export function MailPostInboxByMessageIdReplyRequestToJSONTyped(value?: MailPost
     return {
         
         'clientRequestId': value['clientRequestId'],
+        'draftRevision': value['draftRevision'],
         'text': value['text'],
     };
 }

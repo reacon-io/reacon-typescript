@@ -13,12 +13,24 @@
  */
 
 import { mapValues } from '../runtime.js';
+import type { MailMailAttachmentReference } from './MailMailAttachmentReference.js';
+import {
+    MailMailAttachmentReferenceFromJSON,
+    MailMailAttachmentReferenceFromJSONTyped,
+    MailMailAttachmentReferenceToJSON,
+    MailMailAttachmentReferenceToJSONTyped,
+} from './MailMailAttachmentReference.js';
+
 /**
  * 
  * @export
  * @interface MailRenderedMessage
  */
 export interface MailRenderedMessage {
+    /**
+     * 
+     */
+    attachments?: Array<MailMailAttachmentReference>;
     /**
      * 
      */
@@ -52,6 +64,7 @@ export function MailRenderedMessageFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
+        'attachments': json['attachments'] == null ? undefined : ((json['attachments'] as Array<any>).map(MailMailAttachmentReferenceFromJSON)),
         'html': json['html'] == null ? undefined : json['html'],
         'subject': json['subject'],
         'text': json['text'],
@@ -69,6 +82,7 @@ export function MailRenderedMessageToJSONTyped(value?: MailRenderedMessage | nul
 
     return {
         
+        'attachments': value['attachments'] == null ? undefined : ((value['attachments'] as Array<any>).map(MailMailAttachmentReferenceToJSON)),
         'html': value['html'],
         'subject': value['subject'],
         'text': value['text'],

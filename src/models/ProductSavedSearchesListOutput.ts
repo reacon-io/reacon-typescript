@@ -23,6 +23,14 @@ export interface ProductSavedSearchesListOutput {
      * Currently always empty.
      */
     items: Array<object>;
+    /**
+     * 
+     */
+    reason: string;
+    /**
+     * 
+     */
+    supported: boolean;
 }
 
 /**
@@ -30,6 +38,8 @@ export interface ProductSavedSearchesListOutput {
  */
 export function instanceOfProductSavedSearchesListOutput(value: object): value is ProductSavedSearchesListOutput {
     if (!('items' in value) || value['items'] === undefined) return false;
+    if (!('reason' in value) || value['reason'] === undefined) return false;
+    if (!('supported' in value) || value['supported'] === undefined) return false;
     return true;
 }
 
@@ -44,6 +54,8 @@ export function ProductSavedSearchesListOutputFromJSONTyped(json: any, ignoreDis
     return {
         
         'items': json['items'],
+        'reason': json['reason'],
+        'supported': json['supported'],
     };
 }
 
@@ -59,6 +71,8 @@ export function ProductSavedSearchesListOutputToJSONTyped(value?: ProductSavedSe
     return {
         
         'items': value['items'],
+        'reason': value['reason'],
+        'supported': value['supported'],
     };
 }
 

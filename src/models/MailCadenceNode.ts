@@ -106,6 +106,10 @@ export interface MailCadenceNode {
     /**
      * 
      */
+    emailThread?: string;
+    /**
+     * 
+     */
     experiment: MailCadenceWorkflowExperiment;
     /**
      * 
@@ -194,6 +198,7 @@ export function MailCadenceNodeFromJSONTyped(json: any, ignoreDiscriminator: boo
         'kind': json['kind'],
         'nextNodeId': json['nextNodeId'],
         'channel': json['channel'],
+        'emailThread': json['emailThread'] == null ? undefined : json['emailThread'],
         'experiment': MailCadenceWorkflowExperimentFromJSON(json['experiment']),
         'templateId': json['templateId'],
         'templateVersion': json['templateVersion'],
@@ -223,6 +228,7 @@ export function MailCadenceNodeToJSONTyped(value?: MailCadenceNode | null, ignor
         'kind': value['kind'],
         'nextNodeId': value['nextNodeId'],
         'channel': value['channel'],
+        'emailThread': value['emailThread'],
         'experiment': MailCadenceWorkflowExperimentToJSON(value['experiment']),
         'templateId': value['templateId'],
         'templateVersion': value['templateVersion'],

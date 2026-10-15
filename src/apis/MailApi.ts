@@ -1403,6 +1403,18 @@ export interface ListMailMessagesRequest {
      * 
      */
     cursor?: string;
+    /**
+     * 
+     */
+    query?: string;
+    /**
+     * 
+     */
+    status?: ListMailMessagesStatusEnum;
+    /**
+     * 
+     */
+    sequenceId?: string;
 }
 
 export interface ListMailReplyAutomationsRequest {
@@ -3360,6 +3372,9 @@ export interface MailApiInterface {
      * @param {string} teamId 
      * @param {number} [limit] 
      * @param {string} [cursor] 
+     * @param {string} [query] 
+     * @param {'queued' | 'retry_scheduled' | 'sending' | 'provider_accepted' | 'delivered' | 'replied' | 'auto_replied' | 'bounced' | 'unsubscribed' | 'complained' | 'suppressed' | 'cancelled' | 'failed'} [status] 
+     * @param {string} [sequenceId] 
      * @throws {RequiredError}
      * @memberof MailApiInterface
      */
@@ -3371,6 +3386,9 @@ export interface MailApiInterface {
      * @param {string} teamId 
      * @param {number} [limit] 
      * @param {string} [cursor] 
+     * @param {string} [query] 
+     * @param {'queued' | 'retry_scheduled' | 'sending' | 'provider_accepted' | 'delivered' | 'replied' | 'auto_replied' | 'bounced' | 'unsubscribed' | 'complained' | 'suppressed' | 'cancelled' | 'failed'} [status] 
+     * @param {string} [sequenceId] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MailApiInterface
@@ -7812,6 +7830,18 @@ export class MailApi extends runtime.BaseAPI implements MailApiInterface {
             queryParameters['cursor'] = requestParameters['cursor'];
         }
 
+        if (requestParameters['query'] != null) {
+            queryParameters['query'] = requestParameters['query'];
+        }
+
+        if (requestParameters['status'] != null) {
+            queryParameters['status'] = requestParameters['status'];
+        }
+
+        if (requestParameters['sequenceId'] != null) {
+            queryParameters['sequenceId'] = requestParameters['sequenceId'];
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.apiKey) {
@@ -9801,3 +9831,22 @@ export const ListMailInboxThreadsAssignmentEnum = {
     Unassigned: 'unassigned',
 } as const;
 export type ListMailInboxThreadsAssignmentEnum = typeof ListMailInboxThreadsAssignmentEnum[keyof typeof ListMailInboxThreadsAssignmentEnum];
+/**
+ * @export
+ */
+export const ListMailMessagesStatusEnum = {
+    Queued: 'queued',
+    RetryScheduled: 'retry_scheduled',
+    Sending: 'sending',
+    ProviderAccepted: 'provider_accepted',
+    Delivered: 'delivered',
+    Replied: 'replied',
+    AutoReplied: 'auto_replied',
+    Bounced: 'bounced',
+    Unsubscribed: 'unsubscribed',
+    Complained: 'complained',
+    Suppressed: 'suppressed',
+    Cancelled: 'cancelled',
+    Failed: 'failed',
+} as const;
+export type ListMailMessagesStatusEnum = typeof ListMailMessagesStatusEnum[keyof typeof ListMailMessagesStatusEnum];

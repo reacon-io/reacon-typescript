@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime.js';
+import type { MailPostCadencesRequestEmailRecipientOverridesInner } from './MailPostCadencesRequestEmailRecipientOverridesInner.js';
+import {
+    MailPostCadencesRequestEmailRecipientOverridesInnerFromJSON,
+    MailPostCadencesRequestEmailRecipientOverridesInnerFromJSONTyped,
+    MailPostCadencesRequestEmailRecipientOverridesInnerToJSON,
+    MailPostCadencesRequestEmailRecipientOverridesInnerToJSONTyped,
+} from './MailPostCadencesRequestEmailRecipientOverridesInner.js';
 import type { MailPostCadencesRequestStopConditions } from './MailPostCadencesRequestStopConditions.js';
 import {
     MailPostCadencesRequestStopConditionsFromJSON,
@@ -34,6 +41,14 @@ import {
  * @interface MailPostCadencesRequest
  */
 export interface MailPostCadencesRequest {
+    /**
+     * 
+     */
+    emailExcludedContactIds?: Array<string>;
+    /**
+     * 
+     */
+    emailRecipientOverrides?: Array<MailPostCadencesRequestEmailRecipientOverridesInner>;
     /**
      * 
      */
@@ -88,6 +103,8 @@ export function MailPostCadencesRequestFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
+        'emailExcludedContactIds': json['emailExcludedContactIds'] == null ? undefined : json['emailExcludedContactIds'],
+        'emailRecipientOverrides': json['emailRecipientOverrides'] == null ? undefined : ((json['emailRecipientOverrides'] as Array<any>).map(MailPostCadencesRequestEmailRecipientOverridesInnerFromJSON)),
         'id': json['id'] == null ? undefined : json['id'],
         'name': json['name'],
         'nodes': ((json['nodes'] as Array<any>).map(MailPostCadencesRequestNodesInnerFromJSON)),
@@ -107,6 +124,8 @@ export function MailPostCadencesRequestToJSONTyped(value?: MailPostCadencesReque
 
     return {
         
+        'emailExcludedContactIds': value['emailExcludedContactIds'],
+        'emailRecipientOverrides': value['emailRecipientOverrides'] == null ? undefined : ((value['emailRecipientOverrides'] as Array<any>).map(MailPostCadencesRequestEmailRecipientOverridesInnerToJSON)),
         'id': value['id'],
         'name': value['name'],
         'nodes': ((value['nodes'] as Array<any>).map(MailPostCadencesRequestNodesInnerToJSON)),

@@ -20,6 +20,13 @@ import {
     MailMessageTemplateVersionWhatsappApprovalToJSON,
     MailMessageTemplateVersionWhatsappApprovalToJSONTyped,
 } from './MailMessageTemplateVersionWhatsappApproval.js';
+import type { MailEmailAssetReference } from './MailEmailAssetReference.js';
+import {
+    MailEmailAssetReferenceFromJSON,
+    MailEmailAssetReferenceFromJSONTyped,
+    MailEmailAssetReferenceToJSON,
+    MailEmailAssetReferenceToJSONTyped,
+} from './MailEmailAssetReference.js';
 
 /**
  * 
@@ -27,6 +34,10 @@ import {
  * @interface MailMessageTemplateVersion
  */
 export interface MailMessageTemplateVersion {
+    /**
+     * 
+     */
+    attachments?: Array<MailEmailAssetReference>;
     /**
      * 
      */
@@ -104,6 +115,7 @@ export function MailMessageTemplateVersionFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
+        'attachments': json['attachments'] == null ? undefined : ((json['attachments'] as Array<any>).map(MailEmailAssetReferenceFromJSON)),
         'body': json['body'],
         'channel': json['channel'],
         'createdAt': json['createdAt'],
@@ -130,6 +142,7 @@ export function MailMessageTemplateVersionToJSONTyped(value?: MailMessageTemplat
 
     return {
         
+        'attachments': value['attachments'] == null ? undefined : ((value['attachments'] as Array<any>).map(MailEmailAssetReferenceToJSON)),
         'body': value['body'],
         'channel': value['channel'],
         'createdAt': value['createdAt'],

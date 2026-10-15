@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime.js';
+import type { MailContactRecordVerification } from './MailContactRecordVerification.js';
+import {
+    MailContactRecordVerificationFromJSON,
+    MailContactRecordVerificationFromJSONTyped,
+    MailContactRecordVerificationToJSON,
+    MailContactRecordVerificationToJSONTyped,
+} from './MailContactRecordVerification.js';
+
 /**
  * 
  * @export
@@ -47,6 +55,10 @@ export interface MailContactRecord {
      * 
      */
     updatedAt: string;
+    /**
+     * 
+     */
+    verification?: MailContactRecordVerification;
 }
 
 /**
@@ -79,6 +91,7 @@ export function MailContactRecordFromJSONTyped(json: any, ignoreDiscriminator: b
         'name': json['name'] == null ? undefined : json['name'],
         'tenantId': json['tenantId'],
         'updatedAt': json['updatedAt'],
+        'verification': json['verification'] == null ? undefined : MailContactRecordVerificationFromJSON(json['verification']),
     };
 }
 
@@ -100,6 +113,7 @@ export function MailContactRecordToJSONTyped(value?: MailContactRecord | null, i
         'name': value['name'],
         'tenantId': value['tenantId'],
         'updatedAt': value['updatedAt'],
+        'verification': MailContactRecordVerificationToJSON(value['verification']),
     };
 }
 

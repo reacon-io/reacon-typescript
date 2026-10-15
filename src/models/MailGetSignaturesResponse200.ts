@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime.js';
-import type { MailSignatureCandidate } from './MailSignatureCandidate.js';
+import type { MailGetSignaturesResponse200CandidatesInner } from './MailGetSignaturesResponse200CandidatesInner.js';
 import {
-    MailSignatureCandidateFromJSON,
-    MailSignatureCandidateFromJSONTyped,
-    MailSignatureCandidateToJSON,
-    MailSignatureCandidateToJSONTyped,
-} from './MailSignatureCandidate.js';
+    MailGetSignaturesResponse200CandidatesInnerFromJSON,
+    MailGetSignaturesResponse200CandidatesInnerFromJSONTyped,
+    MailGetSignaturesResponse200CandidatesInnerToJSON,
+    MailGetSignaturesResponse200CandidatesInnerToJSONTyped,
+} from './MailGetSignaturesResponse200CandidatesInner.js';
 
 /**
  * 
@@ -30,7 +30,7 @@ export interface MailGetSignaturesResponse200 {
     /**
      * 
      */
-    candidates: Array<MailSignatureCandidate>;
+    candidates: Array<MailGetSignaturesResponse200CandidatesInner>;
     /**
      * 
      */
@@ -55,7 +55,7 @@ export function MailGetSignaturesResponse200FromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
-        'candidates': ((json['candidates'] as Array<any>).map(MailSignatureCandidateFromJSON)),
+        'candidates': ((json['candidates'] as Array<any>).map(MailGetSignaturesResponse200CandidatesInnerFromJSON)),
         'nextCursor': json['nextCursor'] == null ? undefined : json['nextCursor'],
     };
 }
@@ -71,7 +71,7 @@ export function MailGetSignaturesResponse200ToJSONTyped(value?: MailGetSignature
 
     return {
         
-        'candidates': ((value['candidates'] as Array<any>).map(MailSignatureCandidateToJSON)),
+        'candidates': ((value['candidates'] as Array<any>).map(MailGetSignaturesResponse200CandidatesInnerToJSON)),
         'nextCursor': value['nextCursor'],
     };
 }

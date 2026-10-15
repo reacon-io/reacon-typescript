@@ -20,20 +20,20 @@ import {
     MailEvidenceFieldToJSON,
     MailEvidenceFieldToJSONTyped,
 } from './MailEvidenceField.js';
-import type { MailSignatureCandidateFieldsPhonesInner } from './MailSignatureCandidateFieldsPhonesInner.js';
+import type { MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner } from './MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner.js';
 import {
-    MailSignatureCandidateFieldsPhonesInnerFromJSON,
-    MailSignatureCandidateFieldsPhonesInnerFromJSONTyped,
-    MailSignatureCandidateFieldsPhonesInnerToJSON,
-    MailSignatureCandidateFieldsPhonesInnerToJSONTyped,
-} from './MailSignatureCandidateFieldsPhonesInner.js';
+    MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInnerFromJSON,
+    MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInnerFromJSONTyped,
+    MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInnerToJSON,
+    MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInnerToJSONTyped,
+} from './MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner.js';
 
 /**
  * 
  * @export
- * @interface MailSignatureCandidateFields
+ * @interface MailGetSignaturesResponse200CandidatesInnerFields
  */
-export interface MailSignatureCandidateFields {
+export interface MailGetSignaturesResponse200CandidatesInnerFields {
     /**
      * 
      */
@@ -57,7 +57,7 @@ export interface MailSignatureCandidateFields {
     /**
      * 
      */
-    phones: Array<MailSignatureCandidateFieldsPhonesInner>;
+    phones: Array<MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner>;
     /**
      * 
      */
@@ -69,9 +69,9 @@ export interface MailSignatureCandidateFields {
 }
 
 /**
- * Check if a given object implements the MailSignatureCandidateFields interface.
+ * Check if a given object implements the MailGetSignaturesResponse200CandidatesInnerFields interface.
  */
-export function instanceOfMailSignatureCandidateFields(value: object): value is MailSignatureCandidateFields {
+export function instanceOfMailGetSignaturesResponse200CandidatesInnerFields(value: object): value is MailGetSignaturesResponse200CandidatesInnerFields {
     if (!('emails' in value) || value['emails'] === undefined) return false;
     if (!('phones' in value) || value['phones'] === undefined) return false;
     if (!('socialProfiles' in value) || value['socialProfiles'] === undefined) return false;
@@ -79,11 +79,11 @@ export function instanceOfMailSignatureCandidateFields(value: object): value is 
     return true;
 }
 
-export function MailSignatureCandidateFieldsFromJSON(json: any): MailSignatureCandidateFields {
-    return MailSignatureCandidateFieldsFromJSONTyped(json, false);
+export function MailGetSignaturesResponse200CandidatesInnerFieldsFromJSON(json: any): MailGetSignaturesResponse200CandidatesInnerFields {
+    return MailGetSignaturesResponse200CandidatesInnerFieldsFromJSONTyped(json, false);
 }
 
-export function MailSignatureCandidateFieldsFromJSONTyped(json: any, ignoreDiscriminator: boolean): MailSignatureCandidateFields {
+export function MailGetSignaturesResponse200CandidatesInnerFieldsFromJSONTyped(json: any, ignoreDiscriminator: boolean): MailGetSignaturesResponse200CandidatesInnerFields {
     if (json == null) {
         return json;
     }
@@ -94,17 +94,17 @@ export function MailSignatureCandidateFieldsFromJSONTyped(json: any, ignoreDiscr
         'emails': ((json['emails'] as Array<any>).map(MailEvidenceFieldFromJSON)),
         'jobTitle': json['jobTitle'] == null ? undefined : MailEvidenceFieldFromJSON(json['jobTitle']),
         'personName': json['personName'] == null ? undefined : MailEvidenceFieldFromJSON(json['personName']),
-        'phones': ((json['phones'] as Array<any>).map(MailSignatureCandidateFieldsPhonesInnerFromJSON)),
+        'phones': ((json['phones'] as Array<any>).map(MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInnerFromJSON)),
         'socialProfiles': ((json['socialProfiles'] as Array<any>).map(MailEvidenceFieldFromJSON)),
         'websites': ((json['websites'] as Array<any>).map(MailEvidenceFieldFromJSON)),
     };
 }
 
-export function MailSignatureCandidateFieldsToJSON(json: any): MailSignatureCandidateFields {
-    return MailSignatureCandidateFieldsToJSONTyped(json, false);
+export function MailGetSignaturesResponse200CandidatesInnerFieldsToJSON(json: any): MailGetSignaturesResponse200CandidatesInnerFields {
+    return MailGetSignaturesResponse200CandidatesInnerFieldsToJSONTyped(json, false);
 }
 
-export function MailSignatureCandidateFieldsToJSONTyped(value?: MailSignatureCandidateFields | null, ignoreDiscriminator: boolean = false): any {
+export function MailGetSignaturesResponse200CandidatesInnerFieldsToJSONTyped(value?: MailGetSignaturesResponse200CandidatesInnerFields | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -116,7 +116,7 @@ export function MailSignatureCandidateFieldsToJSONTyped(value?: MailSignatureCan
         'emails': ((value['emails'] as Array<any>).map(MailEvidenceFieldToJSON)),
         'jobTitle': MailEvidenceFieldToJSON(value['jobTitle']),
         'personName': MailEvidenceFieldToJSON(value['personName']),
-        'phones': ((value['phones'] as Array<any>).map(MailSignatureCandidateFieldsPhonesInnerToJSON)),
+        'phones': ((value['phones'] as Array<any>).map(MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInnerToJSON)),
         'socialProfiles': ((value['socialProfiles'] as Array<any>).map(MailEvidenceFieldToJSON)),
         'websites': ((value['websites'] as Array<any>).map(MailEvidenceFieldToJSON)),
     };

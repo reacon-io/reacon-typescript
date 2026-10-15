@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime.js';
-import type { ProductSequenceRecipientsListOutput } from './ProductSequenceRecipientsListOutput.js';
-import {
-    ProductSequenceRecipientsListOutputFromJSON,
-    ProductSequenceRecipientsListOutputFromJSONTyped,
-    ProductSequenceRecipientsListOutputToJSON,
-    ProductSequenceRecipientsListOutputToJSONTyped,
-} from './ProductSequenceRecipientsListOutput.js';
-
 /**
  * 
  * @export
@@ -32,9 +24,9 @@ export interface ProductSequenceRecipientsListExecution {
      */
     executionId: string | null;
     /**
-     * 
+     * Response body of the Mail API operation GET /v1/teams/{teamId}/mail/cadence-recipients, returned unchanged.
      */
-    output: ProductSequenceRecipientsListOutput;
+    output: { [key: string]: any; };
     /**
      * 
      */
@@ -79,7 +71,7 @@ export function ProductSequenceRecipientsListExecutionFromJSONTyped(json: any, i
     return {
         
         'executionId': json['executionId'],
-        'output': ProductSequenceRecipientsListOutputFromJSON(json['output']),
+        'output': json['output'],
         'replay': json['replay'],
         'tool': json['tool'],
     };
@@ -97,7 +89,7 @@ export function ProductSequenceRecipientsListExecutionToJSONTyped(value?: Produc
     return {
         
         'executionId': value['executionId'],
-        'output': ProductSequenceRecipientsListOutputToJSON(value['output']),
+        'output': value['output'],
         'replay': value['replay'],
         'tool': value['tool'],
     };

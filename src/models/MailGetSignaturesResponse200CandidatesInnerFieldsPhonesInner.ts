@@ -24,9 +24,9 @@ import {
 /**
  * 
  * @export
- * @interface MailSignatureCandidateFieldsPhonesInner
+ * @interface MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner
  */
-export interface MailSignatureCandidateFieldsPhonesInner {
+export interface MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner {
     /**
      * 
      */
@@ -54,9 +54,9 @@ export interface MailSignatureCandidateFieldsPhonesInner {
 }
 
 /**
- * Check if a given object implements the MailSignatureCandidateFieldsPhonesInner interface.
+ * Check if a given object implements the MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner interface.
  */
-export function instanceOfMailSignatureCandidateFieldsPhonesInner(value: object): value is MailSignatureCandidateFieldsPhonesInner {
+export function instanceOfMailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner(value: object): value is MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner {
     if (!('confidence' in value) || value['confidence'] === undefined) return false;
     if (!('method' in value) || value['method'] === undefined) return false;
     if (!('normalizedValue' in value) || value['normalizedValue'] === undefined) return false;
@@ -66,11 +66,11 @@ export function instanceOfMailSignatureCandidateFieldsPhonesInner(value: object)
     return true;
 }
 
-export function MailSignatureCandidateFieldsPhonesInnerFromJSON(json: any): MailSignatureCandidateFieldsPhonesInner {
-    return MailSignatureCandidateFieldsPhonesInnerFromJSONTyped(json, false);
+export function MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInnerFromJSON(json: any): MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner {
+    return MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInnerFromJSONTyped(json, false);
 }
 
-export function MailSignatureCandidateFieldsPhonesInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): MailSignatureCandidateFieldsPhonesInner {
+export function MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner {
     if (json == null) {
         return json;
     }
@@ -85,11 +85,11 @@ export function MailSignatureCandidateFieldsPhonesInnerFromJSONTyped(json: any, 
     };
 }
 
-export function MailSignatureCandidateFieldsPhonesInnerToJSON(json: any): MailSignatureCandidateFieldsPhonesInner {
-    return MailSignatureCandidateFieldsPhonesInnerToJSONTyped(json, false);
+export function MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInnerToJSON(json: any): MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner {
+    return MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInnerToJSONTyped(json, false);
 }
 
-export function MailSignatureCandidateFieldsPhonesInnerToJSONTyped(value?: MailSignatureCandidateFieldsPhonesInner | null, ignoreDiscriminator: boolean = false): any {
+export function MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInnerToJSONTyped(value?: MailGetSignaturesResponse200CandidatesInnerFieldsPhonesInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

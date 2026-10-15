@@ -30,6 +30,10 @@ export interface MailCadenceCampaignRecord {
     /**
      * 
      */
+    archivedAt?: string;
+    /**
+     * 
+     */
     attemptCount: number;
     /**
      * 
@@ -178,6 +182,7 @@ export function MailCadenceCampaignRecordFromJSONTyped(json: any, ignoreDiscrimi
         
         'activatedAt': json['activatedAt'] == null ? undefined : json['activatedAt'],
         'actorId': json['actorId'],
+        'archivedAt': json['archivedAt'] == null ? undefined : json['archivedAt'],
         'attemptCount': json['attemptCount'],
         'audienceCount': json['audienceCount'],
         'audienceListId': json['audienceListId'],
@@ -221,6 +226,7 @@ export function MailCadenceCampaignRecordToJSONTyped(value?: MailCadenceCampaign
         
         'activatedAt': value['activatedAt'],
         'actorId': value['actorId'],
+        'archivedAt': value['archivedAt'],
         'attemptCount': value['attemptCount'],
         'audienceCount': value['audienceCount'],
         'audienceListId': value['audienceListId'],

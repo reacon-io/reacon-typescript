@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime.js';
+import type { MailEmailSequenceRecipientOverride } from './MailEmailSequenceRecipientOverride.js';
+import {
+    MailEmailSequenceRecipientOverrideFromJSON,
+    MailEmailSequenceRecipientOverrideFromJSONTyped,
+    MailEmailSequenceRecipientOverrideToJSON,
+    MailEmailSequenceRecipientOverrideToJSONTyped,
+} from './MailEmailSequenceRecipientOverride.js';
 import type { MailCadenceStopConditions } from './MailCadenceStopConditions.js';
 import {
     MailCadenceStopConditionsFromJSON,
@@ -20,6 +27,13 @@ import {
     MailCadenceStopConditionsToJSON,
     MailCadenceStopConditionsToJSONTyped,
 } from './MailCadenceStopConditions.js';
+import type { MailEmailSequenceDeliverySettings } from './MailEmailSequenceDeliverySettings.js';
+import {
+    MailEmailSequenceDeliverySettingsFromJSON,
+    MailEmailSequenceDeliverySettingsFromJSONTyped,
+    MailEmailSequenceDeliverySettingsToJSON,
+    MailEmailSequenceDeliverySettingsToJSONTyped,
+} from './MailEmailSequenceDeliverySettings.js';
 import type { MailCadenceNode } from './MailCadenceNode.js';
 import {
     MailCadenceNodeFromJSON,
@@ -37,11 +51,31 @@ export interface MailCadenceDefinition {
     /**
      * 
      */
+    authoringRevision?: number;
+    /**
+     * 
+     */
     createdAt: string;
     /**
      * 
      */
     createdByActorId: string;
+    /**
+     * 
+     */
+    emailDelivery?: MailEmailSequenceDeliverySettings;
+    /**
+     * 
+     */
+    emailExcludedContactIds?: Array<string>;
+    /**
+     * 
+     */
+    emailRecipientOverrides?: Array<MailEmailSequenceRecipientOverride>;
+    /**
+     * 
+     */
+    emailRenderSeed?: string;
     /**
      * 
      */
@@ -97,8 +131,13 @@ export function MailCadenceDefinitionFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
+        'authoringRevision': json['authoringRevision'] == null ? undefined : json['authoringRevision'],
         'createdAt': json['createdAt'],
         'createdByActorId': json['createdByActorId'],
+        'emailDelivery': json['emailDelivery'] == null ? undefined : MailEmailSequenceDeliverySettingsFromJSON(json['emailDelivery']),
+        'emailExcludedContactIds': json['emailExcludedContactIds'] == null ? undefined : json['emailExcludedContactIds'],
+        'emailRecipientOverrides': json['emailRecipientOverrides'] == null ? undefined : ((json['emailRecipientOverrides'] as Array<any>).map(MailEmailSequenceRecipientOverrideFromJSON)),
+        'emailRenderSeed': json['emailRenderSeed'] == null ? undefined : json['emailRenderSeed'],
         'id': json['id'],
         'name': json['name'],
         'nodes': ((json['nodes'] as Array<any>).map(MailCadenceNodeFromJSON)),
@@ -120,8 +159,13 @@ export function MailCadenceDefinitionToJSONTyped(value?: MailCadenceDefinition |
 
     return {
         
+        'authoringRevision': value['authoringRevision'],
         'createdAt': value['createdAt'],
         'createdByActorId': value['createdByActorId'],
+        'emailDelivery': MailEmailSequenceDeliverySettingsToJSON(value['emailDelivery']),
+        'emailExcludedContactIds': value['emailExcludedContactIds'],
+        'emailRecipientOverrides': value['emailRecipientOverrides'] == null ? undefined : ((value['emailRecipientOverrides'] as Array<any>).map(MailEmailSequenceRecipientOverrideToJSON)),
+        'emailRenderSeed': value['emailRenderSeed'],
         'id': value['id'],
         'name': value['name'],
         'nodes': ((value['nodes'] as Array<any>).map(MailCadenceNodeToJSON)),
